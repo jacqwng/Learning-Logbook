@@ -259,33 +259,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="get_temp_data.html"><a href="get_temp_data.html#exercises_getting"><i class="fa fa-check"></i><code>Exercises</code> on getting temperature data</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html"><i class="fa fa-check"></i><b>11</b> Filling gaps in temperature records</a>
-<ul>
-<li class="chapter" data-level="11.1" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html#learning-goals-7"><i class="fa fa-check"></i><b>11.1</b> Learning goals</a></li>
-<li class="chapter" data-level="11.2" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html#gaps"><i class="fa fa-check"></i><b>11.2</b> Gaps</a></li>
-<li class="chapter" data-level="11.3" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html#filling-short-gaps-in-daily-records"><i class="fa fa-check"></i><b>11.3</b> Filling short gaps in daily records</a></li>
-<li class="chapter" data-level="11.4" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html#filling-long-gaps-in-daily-records"><i class="fa fa-check"></i><b>11.4</b> Filling long gaps in daily records</a>
-<ul>
-<li class="chapter" data-level="11.4.1" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html#bias-correction-for-shorter-intervals"><i class="fa fa-check"></i><b>11.4.1</b> Bias-correction for shorter intervals</a></li>
-<li class="chapter" data-level="11.4.2" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html#saving-the-data-for-later"><i class="fa fa-check"></i><b>11.4.2</b> Saving the data for later</a></li>
-</ul></li>
-<li class="chapter" data-level="11.5" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html#exercises-on-filling-gaps"><i class="fa fa-check"></i><b>11.5</b> <code>Exercises</code> on filling gaps</a></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="generating-temperature-scenarios.html"><a href="generating-temperature-scenarios.html"><i class="fa fa-check"></i><b>12</b> Generating temperature scenarios</a>
-<ul>
-<li class="chapter" data-level="12.1" data-path="generating-temperature-scenarios.html"><a href="generating-temperature-scenarios.html#learning-goals-8"><i class="fa fa-check"></i><b>12.1</b> Learning goals</a></li>
-<li class="chapter" data-level="12.2" data-path="generating-temperature-scenarios.html"><a href="generating-temperature-scenarios.html#chill-scenarios"><i class="fa fa-check"></i><b>12.2</b> Chill scenarios</a></li>
-<li class="chapter" data-level="12.3" data-path="generating-temperature-scenarios.html"><a href="generating-temperature-scenarios.html#risk-assessment-in-orchard-planning"><i class="fa fa-check"></i><b>12.3</b> Risk assessment in orchard planning</a></li>
-<li class="chapter" data-level="12.4" data-path="generating-temperature-scenarios.html"><a href="generating-temperature-scenarios.html#weather-generators"><i class="fa fa-check"></i><b>12.4</b> Weather generators</a></li>
-<li class="chapter" data-level="12.5" data-path="generating-temperature-scenarios.html"><a href="generating-temperature-scenarios.html#weather-generation-in-chillr"><i class="fa fa-check"></i><b>12.5</b> Weather generation in <code>chillR</code></a></li>
-<li class="chapter" data-level="12.6" data-path="generating-temperature-scenarios.html"><a href="generating-temperature-scenarios.html#exercises-on-temperature-generation"><i class="fa fa-check"></i><b>12.6</b> <code>Exercises</code> on temperature generation</a></li>
-</ul></li>
-<li class="chapter" data-level="13" data-path="saving-and-loading-data-and-hiding-this-in-markdown.html"><a href="saving-and-loading-data-and-hiding-this-in-markdown.html"><i class="fa fa-check"></i><b>13</b> Saving and loading data (and hiding this in markdown)</a>
-<ul>
-<li class="chapter" data-level="13.1" data-path="saving-and-loading-data-and-hiding-this-in-markdown.html"><a href="saving-and-loading-data-and-hiding-this-in-markdown.html#learning-goals-9"><i class="fa fa-check"></i><b>13.1</b> Learning Goals</a></li>
-<li class="chapter" data-level="13.2" data-path="saving-and-loading-data-and-hiding-this-in-markdown.html"><a href="saving-and-loading-data-and-hiding-this-in-markdown.html#saving-and-loading-data"><i class="fa fa-check"></i><b>13.2</b> Saving and loading data</a></li>
-<li class="chapter" data-level="13.3" data-path="saving-and-loading-data-and-hiding-this-in-markdown.html"><a href="saving-and-loading-data-and-hiding-this-in-markdown.html#hiding-all-this-from-the-readers-of-our-markdown-file"><i class="fa fa-check"></i><b>13.3</b> Hiding all this from the readers of our markdown file</a></li>
-</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -319,22 +292,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">7.2</span> <code>Chilling_Hours()</code> function<a href="chill.html#chilling_hours-function" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>Chilling_Hours()</code> function calculates the time during which temperatures fall within a key range for chill accumulation. It takes hourly temperature data as input and, by default, provides the cumulative amount of chilling accumulated over time.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="chill.html#cb13-1" tabindex="-1"></a><span class="fu">Chilling_Hours</span>(Winters_hours_gaps<span class="sc">$</span>Temp)[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>]</span></code></pre></div>
-<pre><code>##   [1]  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  2  2  2  3  4  5  6  6  6  6  6  6  6  6  6  6  6
-##  [33]  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  7  8  9
-##  [65] 10 11 12 13 14 15 16 16 16 16 16 16 16 16 16 16 16 16 16 16 16 17 18 19 20 21 22 23 24 25 25 25
-##  [97] 25 25 25 25</code></pre>
+<pre><code>##   [1]  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  2  2  2  3  4  5  6  6  6  6  6  6
+##  [28]  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6
+##  [55]  6  6  6  6  6  6  6  7  8  9 10 11 12 13 14 15 16 16 16 16 16 16 16 16 16 16 16
+##  [82] 16 16 16 16 17 18 19 20 21 22 23 24 25 25 25 25 25 25 25</code></pre>
 <p>The result will show the first 100 values, where the cumulative chilling hours increase as the temperature falls within the specified range.</p>
 </div>
 <div id="utah-model" class="section level2 hasAnchor" number="7.3">
 <h2><span class="header-section-number">7.3</span> Utah Model<a href="chill.html#utah-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The Utah Model assigns different weights to various temperature ranges, reflecting their impact on chill accumulation. The <code>Utah_Model()</code> function in <code>chillR</code> calculates these weighted chilling contributions for each hour of temperature data. The output will show the Utah model values for the first 100 hours, where positive, zero, and negative weights are applied based on the temperature:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="chill.html#cb15-1" tabindex="-1"></a><span class="fu">Utah_Model</span>(Winters_hours_gaps<span class="sc">$</span>Temp)[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>]</span></code></pre></div>
-<pre><code>##   [1]  0.0 -0.5 -1.5 -2.5 -3.5 -4.5 -5.5 -6.0 -6.0 -6.0 -5.5 -5.0 -4.0 -3.0 -2.0 -1.0  0.0  0.5  1.5
-##  [20]  2.5  3.5  4.5  5.0  5.0  5.0  4.0  3.0  2.0  1.0  0.0 -1.0 -2.0 -2.5 -2.5 -2.0 -1.5 -1.0 -0.5
-##  [39]  0.5  1.0  1.5  2.0  2.0  2.5  3.0  3.5  4.0  4.0  4.0  3.5  2.5  1.5  0.5 -0.5 -1.5 -2.5 -3.0
-##  [58] -3.0 -2.5 -1.5 -0.5  0.5  1.5  2.5  3.5  4.5  5.5  6.5  7.5  8.5  9.5 10.0 10.0  9.5  9.0  8.5
-##  [77]  8.0  7.5  7.0  6.5  6.5  7.0  7.5  8.5  9.5 10.5 11.5 12.5 13.5 14.5 15.5 16.5 17.5 18.5 19.0
-##  [96] 19.0 19.0 18.5 17.5 16.5</code></pre>
+<pre><code>##   [1]  0.0 -0.5 -1.5 -2.5 -3.5 -4.5 -5.5 -6.0 -6.0 -6.0 -5.5 -5.0 -4.0 -3.0 -2.0 -1.0
+##  [17]  0.0  0.5  1.5  2.5  3.5  4.5  5.0  5.0  5.0  4.0  3.0  2.0  1.0  0.0 -1.0 -2.0
+##  [33] -2.5 -2.5 -2.0 -1.5 -1.0 -0.5  0.5  1.0  1.5  2.0  2.0  2.5  3.0  3.5  4.0  4.0
+##  [49]  4.0  3.5  2.5  1.5  0.5 -0.5 -1.5 -2.5 -3.0 -3.0 -2.5 -1.5 -0.5  0.5  1.5  2.5
+##  [65]  3.5  4.5  5.5  6.5  7.5  8.5  9.5 10.0 10.0  9.5  9.0  8.5  8.0  7.5  7.0  6.5
+##  [81]  6.5  7.0  7.5  8.5  9.5 10.5 11.5 12.5 13.5 14.5 15.5 16.5 17.5 18.5 19.0 19.0
+##  [97] 19.0 18.5 17.5 16.5</code></pre>
 </div>
 <div id="creating-custom-chill-models-with-step_model" class="section level2 hasAnchor" number="7.4">
 <h2><span class="header-section-number">7.4</span> Creating Custom Chill Models with <code>step_model()</code><a href="chill.html#creating-custom-chill-models-with-step_model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -440,27 +414,28 @@ weight
 <p>A function called <code>custom()</code> implements a chill model based on this data frame. This function is then applied to the <code>Winters_hours_gaps</code> dataset to calculate the chilling contributions:</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="chill.html#cb18-1" tabindex="-1"></a>custom <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">step_model</span>(x, df)</span>
 <span id="cb18-2"><a href="chill.html#cb18-2" tabindex="-1"></a><span class="fu">custom</span>(Winters_hours_gaps<span class="sc">$</span>Temp)[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>]</span></code></pre></div>
-<pre><code>##   [1]  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  4  7  7  7  7  7  7  7  7  7  7  7
-##  [33]  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7
-##  [65]  8 10 13 16 19 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 23 25 27 29 31 34 37 37 37
-##  [97] 37 37 37 37</code></pre>
+<pre><code>##   [1]  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  4  7  7  7  7  7  7
+##  [28]  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7
+##  [55]  7  7  7  7  7  7  7  7  7  7  8 10 13 16 19 22 22 22 22 22 22 22 22 22 22 22 22
+##  [82] 22 22 22 22 22 22 23 25 27 29 31 34 37 37 37 37 37 37 37</code></pre>
 </div>
 <div id="dynamic-model" class="section level2 hasAnchor" number="7.5">
 <h2><span class="header-section-number">7.5</span> Dynamic model<a href="chill.html#dynamic-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The Dynamic Model provides a more complex and reliable approach to calculating chill, with the <code>Dynamic_Model()</code> function handling the intricate equations involved. This function can be easily applied to the <code>Winters_hours_gaps</code> dataset, producing output that displays dynamic chill values for the first 100 hours, reflecting the underlying physiological processes:</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="chill.html#cb20-1" tabindex="-1"></a><span class="fu">Dynamic_Model</span>(Winters_hours_gaps<span class="sc">$</span>Temp)[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>]</span></code></pre></div>
-<pre><code>##   [1] 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000
-##  [10] 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000
-##  [19] 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000
-##  [28] 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000
-##  [37] 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000
-##  [46] 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000
-##  [55] 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000
-##  [64] 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.9698435
-##  [73] 0.9698435 0.9698435 0.9698435 0.9698435 0.9698435 0.9698435 0.9698435 0.9698435 0.9698435
-##  [82] 0.9698435 0.9698435 0.9698435 0.9698435 0.9698435 0.9698435 0.9698435 0.9698435 0.9698435
-##  [91] 0.9698435 0.9698435 0.9698435 0.9698435 0.9698435 0.9698435 0.9698435 0.9698435 0.9698435
-## [100] 0.9698435</code></pre>
+<pre><code>##   [1] 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000
+##   [9] 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000
+##  [17] 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000
+##  [25] 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000
+##  [33] 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000
+##  [41] 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000
+##  [49] 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000
+##  [57] 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000
+##  [65] 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.9698435
+##  [73] 0.9698435 0.9698435 0.9698435 0.9698435 0.9698435 0.9698435 0.9698435 0.9698435
+##  [81] 0.9698435 0.9698435 0.9698435 0.9698435 0.9698435 0.9698435 0.9698435 0.9698435
+##  [89] 0.9698435 0.9698435 0.9698435 0.9698435 0.9698435 0.9698435 0.9698435 0.9698435
+##  [97] 0.9698435 0.9698435 0.9698435 0.9698435</code></pre>
 </div>
 <div id="chilling-and-tempresponse-functions" class="section level2 hasAnchor" number="7.6">
 <h2><span class="header-section-number">7.6</span> <code>Chilling</code> and <code>tempResponse</code> functions<a href="chill.html#chilling-and-tempresponse-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>

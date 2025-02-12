@@ -259,33 +259,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="get_temp_data.html"><a href="get_temp_data.html#exercises_getting"><i class="fa fa-check"></i><code>Exercises</code> on getting temperature data</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html"><i class="fa fa-check"></i><b>11</b> Filling gaps in temperature records</a>
-<ul>
-<li class="chapter" data-level="11.1" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html#learning-goals-7"><i class="fa fa-check"></i><b>11.1</b> Learning goals</a></li>
-<li class="chapter" data-level="11.2" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html#gaps"><i class="fa fa-check"></i><b>11.2</b> Gaps</a></li>
-<li class="chapter" data-level="11.3" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html#filling-short-gaps-in-daily-records"><i class="fa fa-check"></i><b>11.3</b> Filling short gaps in daily records</a></li>
-<li class="chapter" data-level="11.4" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html#filling-long-gaps-in-daily-records"><i class="fa fa-check"></i><b>11.4</b> Filling long gaps in daily records</a>
-<ul>
-<li class="chapter" data-level="11.4.1" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html#bias-correction-for-shorter-intervals"><i class="fa fa-check"></i><b>11.4.1</b> Bias-correction for shorter intervals</a></li>
-<li class="chapter" data-level="11.4.2" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html#saving-the-data-for-later"><i class="fa fa-check"></i><b>11.4.2</b> Saving the data for later</a></li>
-</ul></li>
-<li class="chapter" data-level="11.5" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html#exercises-on-filling-gaps"><i class="fa fa-check"></i><b>11.5</b> <code>Exercises</code> on filling gaps</a></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="generating-temperature-scenarios.html"><a href="generating-temperature-scenarios.html"><i class="fa fa-check"></i><b>12</b> Generating temperature scenarios</a>
-<ul>
-<li class="chapter" data-level="12.1" data-path="generating-temperature-scenarios.html"><a href="generating-temperature-scenarios.html#learning-goals-8"><i class="fa fa-check"></i><b>12.1</b> Learning goals</a></li>
-<li class="chapter" data-level="12.2" data-path="generating-temperature-scenarios.html"><a href="generating-temperature-scenarios.html#chill-scenarios"><i class="fa fa-check"></i><b>12.2</b> Chill scenarios</a></li>
-<li class="chapter" data-level="12.3" data-path="generating-temperature-scenarios.html"><a href="generating-temperature-scenarios.html#risk-assessment-in-orchard-planning"><i class="fa fa-check"></i><b>12.3</b> Risk assessment in orchard planning</a></li>
-<li class="chapter" data-level="12.4" data-path="generating-temperature-scenarios.html"><a href="generating-temperature-scenarios.html#weather-generators"><i class="fa fa-check"></i><b>12.4</b> Weather generators</a></li>
-<li class="chapter" data-level="12.5" data-path="generating-temperature-scenarios.html"><a href="generating-temperature-scenarios.html#weather-generation-in-chillr"><i class="fa fa-check"></i><b>12.5</b> Weather generation in <code>chillR</code></a></li>
-<li class="chapter" data-level="12.6" data-path="generating-temperature-scenarios.html"><a href="generating-temperature-scenarios.html#exercises-on-temperature-generation"><i class="fa fa-check"></i><b>12.6</b> <code>Exercises</code> on temperature generation</a></li>
-</ul></li>
-<li class="chapter" data-level="13" data-path="saving-and-loading-data-and-hiding-this-in-markdown.html"><a href="saving-and-loading-data-and-hiding-this-in-markdown.html"><i class="fa fa-check"></i><b>13</b> Saving and loading data (and hiding this in markdown)</a>
-<ul>
-<li class="chapter" data-level="13.1" data-path="saving-and-loading-data-and-hiding-this-in-markdown.html"><a href="saving-and-loading-data-and-hiding-this-in-markdown.html#learning-goals-9"><i class="fa fa-check"></i><b>13.1</b> Learning Goals</a></li>
-<li class="chapter" data-level="13.2" data-path="saving-and-loading-data-and-hiding-this-in-markdown.html"><a href="saving-and-loading-data-and-hiding-this-in-markdown.html#saving-and-loading-data"><i class="fa fa-check"></i><b>13.2</b> Saving and loading data</a></li>
-<li class="chapter" data-level="13.3" data-path="saving-and-loading-data-and-hiding-this-in-markdown.html"><a href="saving-and-loading-data-and-hiding-this-in-markdown.html#hiding-all-this-from-the-readers-of-our-markdown-file"><i class="fa fa-check"></i><b>13.3</b> Hiding all this from the readers of our markdown file</a></li>
-</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -318,20 +291,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="temperature-data-needs" class="section level2 hasAnchor" number="10.1">
 <h2><span class="header-section-number">10.1</span> Temperature data needs<a href="get_temp_data.html#temperature-data-needs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Obviously, without temperature data we can’t do much phenology and chill modeling. This is a pretty critical input to all models we can make or may want to run. It also seems like an easy-to-find resource, doesn’t it? Well, you may be surprised by how difficult it is to get such data. While all countries in the world have official weather stations that record precisely the type of information we need, many are very protective of these data. Many national weather services sell such information (the collection of which was likely funded by taxpayer money) at rather high prices. If you only want to do a study on one location, you may be able to shell out that money, but this quickly becomes unrealistic, when you’re targeting a larger-scale analysis.</p>
-<p>On a personal note, I must say that I find it pretty outrageous that at a time where we should be making every effort to understand the impacts of climate change on our world and to find ways to adapt, weather services are putting up such access barriers. I really wonder how many climate-related studies that have been done turned out less useful than they could have been, had more data been easily and freely available. Well, back to the main story…</p>
-<p>To be clear, it’s of course preferable to have a high-quality dataset collected in the exact place that you want to analyze. If we don’t have such data, however, there are a few databases out there that we can draw on as an alternative option. <code>chillR</code> currently has the capability to access one global database, as well as one for California. There is certainly scope for expanding this capability, but let’s start working with what’s available now.</p>
+<p>Temperature data is essential for phenology and chill modeling, as it serves as a key input for these models. Although weather data might seem easily accessible, it is often challenging to obtain. Many countries have official weather stations that record the necessary information, but access to these data is frequently restricted and expensive, despite likely being funded by taxpayers. While such costs may be manageable for small-scale studies, they quickly become prohibitive for larger analyses.</p>
+<p>Given the urgent need to understand climate change impacts, these access limitations are a barrier to effective climate research. Such restrictions may also reduce the quality of studies that rely on comprehensive data. Ideally, high-quality, localized datasets would be available, but in their absence, some alternative databases can be used. Currently, <code>chillR</code> connects to one global and one California-specific database, with the potential to expand as more data sources become accessible.</p>
 </div>
 <div id="the-global-summary-of-the-day-database" class="section level2 hasAnchor" number="10.2">
 <h2><span class="header-section-number">10.2</span> The Global Summary of the Day database<a href="get_temp_data.html#the-global-summary-of-the-day-database" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>An invaluable source of temperature data is the <a href="https://www.ncei.noaa.gov/">National Centers for Environmental Information (NCEI)</a>, formerly the National Climatic Data Center (NCDC) of the <a href="https://www.noaa.gov/">United States National Oceanic and Atmospheric Administration (NOAA)</a>, in particular their <a href="https://www.ncei.noaa.gov/access/search/data-search/global-summary-of-the-day">Global Summary of the Day (GSOD) database</a>. That was a pretty long name, so let’s stick with the abbreviation <code>GSOD</code>.</p>
-<p>Check out the <a href="https://www.ncei.noaa.gov/access/search/data-search/global-summary-of-the-day">GSOD website</a> to take a look at the interface: <a href="https://www.ncei.noaa.gov/access/search/data-search/global-summary-of-the-day" class="uri">https://www.ncei.noaa.gov/access/search/data-search/global-summary-of-the-day</a>. This interface used to be pretty confusing in the past - and I almost find it more confusing now. Fortunately, if you click on the <code>Bulk downloads</code> button, you can get to a place where you can directly access the weather data: <a href="https://www.ncei.noaa.gov/data/global-summary-of-the-day/access/" class="uri">https://www.ncei.noaa.gov/data/global-summary-of-the-day/access/</a>. What we find here is, at first glance, even more inaccessible than the web interface, but at least we can recognize some structure now: All records are stored in separate files for each station and year, with the files named according to a code assigned to the weather stations. You could now download these records by hand, if you wanted to, but this would take a long time (if you want data for many years), and you’d first have to find out what station is of interest to you.</p>
-<p>Fortunately, I found a list of all the weather stations somewhere on NOAA’s website: <a href="ftp://ftp.ncdc.noaa.gov/pub/data/noaa/isd-history.csv" class="uri">ftp://ftp.ncdc.noaa.gov/pub/data/noaa/isd-history.csv</a>, and I automated the tedious data download and assembling process in <code>chillR</code>. My attempt resulted in a reliable but fairly slow procedure, but a former participant of this module, Adrian Fülle, found a much more elegant - and much faster - way to achieve this.</p>
-<p>Let’s see how this works:</p>
-<p>There’s a single <code>chillR</code> function, <code>handle_gsod()</code>, that can take care of all data retrieval steps. Since there are multiple steps involved, we have to use the function’s <code>action</code> parameter to tell it what to do:</p>
+<p>The <a href="https://www.ncei.noaa.gov/">National Centers for Environmental Information (NCEI)</a>, formerly known as the National Climatic Data Center (NCDC), offers valuable temperature data through its <a href="https://www.ncei.noaa.gov/access/search/data-search/global-summary-of-the-day">Global Summary of the Day (GSOD) database</a>. While accessing this data can be challenging, the bulk download section provides weather records for each station and year. However, finding specific stations can be time-consuming.</p>
+<p>A list of weather stations is available on NOAA’s website, and the process of downloading and organizing the data can be automated using the <code>chillR</code> tool. A previous user, <a href="https://www.gartenbauwissenschaft.uni-bonn.de/author/adrian-fulle/">Adrian Fülle</a>, developed a faster and more efficient method for this task. The <code>chillR</code> function <code>handle_gsod()</code> simplifies the process by guiding users through the necessary steps.</p>
 <div id="actionlist_stations" class="section level3 hasAnchor" number="10.2.1">
 <h3><span class="header-section-number">10.2.1</span> <code>action=list_stations</code><a href="get_temp_data.html#actionlist_stations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>When used with this action, <code>handle_gsod()</code> retrieves the station list and sorts the stations based on their proximity to a set of coordinates we specify. Let’s look for stations around Bonn (Latitude= 50.73; Longitude= 7.10). I’ll also add a time interval of interest (1990-2020) to narrow the search.</p>
+<p>When used with this action, the <code>handle_gsod()</code> function retrieves a list of weather stations and sorts them by their proximity to specified coordinates. For example, stations near Bonn (Latitude: 50.73, Longitude: 7.10) can be identified. Additionally, a time interval, such as 1990-2020, can be set to limit the search to data from those specific years:</p>
 <div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="get_temp_data.html#cb117-1" tabindex="-1"></a><span class="fu">library</span>(chillR)</span>
 <span id="cb117-2"><a href="get_temp_data.html#cb117-2" tabindex="-1"></a>station_list<span class="ot">&lt;-</span><span class="fu">handle_gsod</span>(<span class="at">action=</span><span class="st">&quot;list_stations&quot;</span>,</span>
 <span id="cb117-3"><a href="get_temp_data.html#cb117-3" tabindex="-1"></a>                          <span class="at">location=</span><span class="fu">c</span>(<span class="fl">7.10</span>,<span class="fl">50.73</span>),</span>
@@ -1178,17 +1147,17 @@ GM
 </tr>
 </tbody>
 </table>
-<p>This list contains the 25 closest stations to the location we entered, ordered by their distance to the target coordinates. This distance is shown in the <code>distance</code> column. The <code>Overlap_years</code> column shows the number of years that are available, and the <code>Perc_interval_covered</code> column the percentage of the target interval that is covered. Note that this is only based on the <code>BEGIN</code> and <code>END</code> dates in the table - it’s quite possible (and usually the case) that the dataset contains gaps, which sometimes cover almost the entire record.</p>
+<p>The list provided contains the 25 closest weather stations to the specified location, ordered by their distance to the target coordinates, which is shown in the <code>distance</code> column. The <code>Overlap_years</code> column indicates the number of years for which data is available, while the <code>Perc_interval_covered</code> column shows the percentage of the target time period that is covered by the data. It’s important to note that this is based solely on the start and end dates in the table. The dataset may have gaps, and these gaps can sometimes cover almost the entire record.</p>
 </div>
 <div id="actiondownload_weather" class="section level3 hasAnchor" number="10.2.2">
 <h3><span class="header-section-number">10.2.2</span> <code>action="download_weather"</code><a href="get_temp_data.html#actiondownload_weather" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>When used with this option, the <code>handle_gsod()</code> function downloads the weather data for a particular station, based on a station-specific <code>chillR_code</code> (shown in the respective column of the table above). Rather than typing the code manually, we can refer to the code in the station_list. Let’s download the data for the 4<sup>th</sup> entry in the list, which looks like it covers most of the period we’re interested in.</p>
+<p>When used with this option, the <code>handle_gsod()</code> function downloads the weather data for a specific station, using its unique <code>chillR_code</code>, which is displayed in the respective column of the station list. Instead of manually entering the code, the function can reference the code from the station list. To download the data, the code for the 4th station in the list can be used, as it appears to cover most of the desired time period.</p>
 <div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="get_temp_data.html#cb119-1" tabindex="-1"></a>weather<span class="ot">&lt;-</span><span class="fu">handle_gsod</span>(<span class="at">action=</span><span class="st">&quot;download_weather&quot;</span>,</span>
 <span id="cb119-2"><a href="get_temp_data.html#cb119-2" tabindex="-1"></a>                     <span class="at">location=</span>station_list<span class="sc">$</span>chillR_code[<span class="dv">4</span>],</span>
 <span id="cb119-3"><a href="get_temp_data.html#cb119-3" tabindex="-1"></a>                     <span class="at">time_interval=</span><span class="fu">c</span>(<span class="dv">1990</span>,<span class="dv">2020</span>))</span></code></pre></div>
-<p>The result of this operation is a list with two elements. Element 1 (<code>weather[[1]]</code>) is an indication of the database the data come from. Element 2 (<code>weather[[2]]</code>) is the actual dataset, which we can see here:</p>
+<p>The result of this operation is a list with two elements. The first element (<code>weather[[1]]</code>) indicates the source of the database from which the data was retrieved. The second element (<code>weather[[2]]</code>) contains the actual weather dataset, which can be viewed here.</p>
 <div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="get_temp_data.html#cb120-1" tabindex="-1"></a>weather[[<span class="dv">1</span>]][<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,]</span></code></pre></div>
-<table class="table table-striped" style="font-size: 8px; color: black; ">
+<table class="table table-striped" style="font-size: 14px; color: black; ">
 <thead>
 <tr>
 <th style="text-align:right;">
@@ -2181,14 +2150,14 @@ FALSE
 </tr>
 </tbody>
 </table>
-<p>This still looks pretty complicated, and it contains a lot of information we don’t need. <code>chillR</code> therefore contains a function to simplify this record. Note, however, that this removes a lot of variables you may be interested in. More importantly, this also removes quality flags, which may indicate that particular records aren’t reliable. I’ve generously ignored this so far, but there’s room for improvement here.</p>
+<p>The data appears complicated and includes unnecessary information. To simplify this, <code>chillR</code> provides a function that streamlines the record. However, this process removes several variables, including quality flags, which may indicate unreliable data. While these have been overlooked so far, there is potential for improvement.</p>
 </div>
 <div id="downloaded-weather-as-action-argument" class="section level3 hasAnchor" number="10.2.3">
 <h3><span class="header-section-number">10.2.3</span> downloaded weather as <code>action</code> argument<a href="get_temp_data.html#downloaded-weather-as-action-argument" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>This way of calling <code>handle_gsod()</code> serves to clean the dataset and convert it into a format that <code>chillR</code> can easily handle</p>
+<p>This method of calling <code>handle_gsod()</code> cleans the dataset and converts it into a format that <code>chillR</code> can easily process.</p>
 <div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="get_temp_data.html#cb121-1" tabindex="-1"></a>cleaned_weather<span class="ot">&lt;-</span><span class="fu">handle_gsod</span>(weather)</span></code></pre></div>
 <div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="get_temp_data.html#cb122-1" tabindex="-1"></a>cleaned_weather[[<span class="dv">1</span>]][<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,]</span></code></pre></div>
-<table class="table table-striped" style="font-size: 8px; color: black; ">
+<table class="table table-striped" style="font-size: 14px; color: black; ">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -2740,13 +2709,12 @@ Prec
 </tr>
 </tbody>
 </table>
-<p>Note that the reason for many of the strange numbers in these records is that the original database stores them in degrees Fahrenheit, so that they had to be converted to degrees Celsius. That often creates ugly numbers, but it’s not hard:</p>
+<p>The strange numbers in the dataset are due to the original database storing temperatures in degrees Fahrenheit. These values were then converted to degrees Celsius using the formula:</p>
 <p><span class="math inline">\(Temperature[°C]=(Temperature[°F]-32)\cdot\frac{5}{9}\)</span></p>
-<p>We now have a temperature record in a format that we can easily work with in <code>chillR</code>.</p>
-<p>Upon closer inspection, however, you’ll notice that this dataset has pretty substantial gaps, including several entire years of missing data. How can we deal with this? Let’s find out in the lesson on <a href="filling-gaps-in-temperature-records.html#filling-gaps-in-temperature-records">Filling gaps in temperature records</a>.</p>
-<p>Note that <code>chillR</code> has a pretty similar function to download data from the <a href="https://cimis.water.ca.gov/">California Irrigation Management Information System (CIMIS)</a>.</p>
-<p>There’s surely room for improvement here. There’s a lot more data out there that <code>chillR</code> could have a download function for.</p>
-<p>Now let’s save the files we generated here, so that we can use them in the upcoming chapters:</p>
+<p>This conversion process can result in awkward numbers, but it’s straightforward to apply. After this conversion, the temperature records are now in a more usable format for working with <code>chillR</code>.</p>
+<p>However, upon closer inspection, the dataset reveals significant gaps, including entire years with missing data. This issue will be addressed in the lesson on filling gaps in temperature records.</p>
+<p>Additionally, <code>chillR</code> has a similar function for downloading data from the <a href="https://cimis.water.ca.gov/">California Irrigation Management Information System (CIMIS)</a>, and there is potential for more data sources to be integrated into <code>chillR</code>.</p>
+<p>Finally, the files generated in this process will be saved for use in upcoming chapters:</p>
 <div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="get_temp_data.html#cb123-1" tabindex="-1"></a><span class="fu">write.csv</span>(station_list,<span class="st">&quot;data/station_list.csv&quot;</span>,<span class="at">row.names=</span><span class="cn">FALSE</span>)</span>
 <span id="cb123-2"><a href="get_temp_data.html#cb123-2" tabindex="-1"></a><span class="fu">write.csv</span>(weather[[<span class="dv">1</span>]],<span class="st">&quot;data/Bonn_raw_weather.csv&quot;</span>,<span class="at">row.names=</span><span class="cn">FALSE</span>)</span>
 <span id="cb123-3"><a href="get_temp_data.html#cb123-3" tabindex="-1"></a><span class="fu">write.csv</span>(cleaned_weather[[<span class="dv">1</span>]],<span class="st">&quot;data/Bonn_chillR_weather.csv&quot;</span>,<span class="at">row.names=</span><span class="cn">FALSE</span>)</span></code></pre></div>
@@ -2757,12 +2725,3213 @@ Prec
 <p>Please document all results of the following assignments in your <code>learning logbook</code>.</p>
 <ol style="list-style-type: decimal">
 <li>Choose a location of interest and find the 25 closest weather stations using the <code>handle_gsod</code> function</li>
+</ol>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="get_temp_data.html#cb124-1" tabindex="-1"></a>station_list_Yakima <span class="ot">&lt;-</span> <span class="fu">handle_gsod</span>(<span class="at">action =</span> <span class="st">&quot;list_stations&quot;</span>,</span>
+<span id="cb124-2"><a href="get_temp_data.html#cb124-2" tabindex="-1"></a>                                   <span class="at">location =</span> <span class="fu">c</span>(<span class="at">long =</span> <span class="sc">-</span><span class="fl">120.50</span>, <span class="at">lat =</span> <span class="fl">46.60</span>), </span>
+<span id="cb124-3"><a href="get_temp_data.html#cb124-3" tabindex="-1"></a>                                   <span class="at">time_interval =</span> <span class="fu">c</span>(<span class="dv">1990</span>, <span class="dv">2020</span>))</span></code></pre></div>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped" style="font-size: 14px; color: black; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+chillR_code
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+STATION.NAME
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+CTRY
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+Lat
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+Long
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+BEGIN
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+END
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+Distance
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+Overlap_years
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+Perc_interval_covered
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+YAKIMA AIR TERMINAL/MCALSR FIELD AP
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+46.564
+</td>
+<td style="text-align:center;">
+-120.535
+</td>
+<td style="text-align:center;">
+19730101
+</td>
+<td style="text-align:center;">
+20250210
+</td>
+<td style="text-align:center;">
+4.82
+</td>
+<td style="text-align:center;">
+31.00
+</td>
+<td style="text-align:center;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+99999924243
+</td>
+<td style="text-align:center;">
+YAKIMA AIR TERMINAL
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+46.568
+</td>
+<td style="text-align:center;">
+-120.543
+</td>
+<td style="text-align:center;">
+19480101
+</td>
+<td style="text-align:center;">
+19721231
+</td>
+<td style="text-align:center;">
+4.85
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781399999
+</td>
+<td style="text-align:center;">
+VAGABOND AAF / YAKIMA TRAINING CENTER WASHINGTON USA
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+46.667
+</td>
+<td style="text-align:center;">
+-120.454
+</td>
+<td style="text-align:center;">
+20030617
+</td>
+<td style="text-align:center;">
+20081110
+</td>
+<td style="text-align:center;">
+8.25
+</td>
+<td style="text-align:center;">
+5.40
+</td>
+<td style="text-align:center;">
+17
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72056299999
+</td>
+<td style="text-align:center;">
+RANGE OP 13 / YAKIMA TRAINING CENTER
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+46.800
+</td>
+<td style="text-align:center;">
+-120.167
+</td>
+<td style="text-align:center;">
+20080530
+</td>
+<td style="text-align:center;">
+20170920
+</td>
+<td style="text-align:center;">
+33.79
+</td>
+<td style="text-align:center;">
+9.31
+</td>
+<td style="text-align:center;">
+30
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72788399999
+</td>
+<td style="text-align:center;">
+BOWERS FLD
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+47.033
+</td>
+<td style="text-align:center;">
+-120.531
+</td>
+<td style="text-align:center;">
+20000101
+</td>
+<td style="text-align:center;">
+20031231
+</td>
+<td style="text-align:center;">
+48.26
+</td>
+<td style="text-align:center;">
+4.00
+</td>
+<td style="text-align:center;">
+13
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72788324220
+</td>
+<td style="text-align:center;">
+BOWERS FIELD AIRPORT
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+47.034
+</td>
+<td style="text-align:center;">
+-120.531
+</td>
+<td style="text-align:center;">
+19880106
+</td>
+<td style="text-align:center;">
+20250209
+</td>
+<td style="text-align:center;">
+48.37
+</td>
+<td style="text-align:center;">
+31.00
+</td>
+<td style="text-align:center;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+99999924220
+</td>
+<td style="text-align:center;">
+ELLENSBURG BOWERS FI
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+47.034
+</td>
+<td style="text-align:center;">
+-120.530
+</td>
+<td style="text-align:center;">
+19480601
+</td>
+<td style="text-align:center;">
+19550101
+</td>
+<td style="text-align:center;">
+48.37
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72784094187
+</td>
+<td style="text-align:center;">
+HANFORD AIRPORT
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+46.567
+</td>
+<td style="text-align:center;">
+-119.600
+</td>
+<td style="text-align:center;">
+20060101
+</td>
+<td style="text-align:center;">
+20130326
+</td>
+<td style="text-align:center;">
+68.96
+</td>
+<td style="text-align:center;">
+7.23
+</td>
+<td style="text-align:center;">
+23
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72784099999
+</td>
+<td style="text-align:center;">
+HANFORD
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+46.567
+</td>
+<td style="text-align:center;">
+-119.600
+</td>
+<td style="text-align:center;">
+19730101
+</td>
+<td style="text-align:center;">
+19971231
+</td>
+<td style="text-align:center;">
+68.96
+</td>
+<td style="text-align:center;">
+8.00
+</td>
+<td style="text-align:center;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72782594239
+</td>
+<td style="text-align:center;">
+PANGBORN MEMORIAL AIRPORT
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+47.397
+</td>
+<td style="text-align:center;">
+-120.201
+</td>
+<td style="text-align:center;">
+20000101
+</td>
+<td style="text-align:center;">
+20250209
+</td>
+<td style="text-align:center;">
+91.58
+</td>
+<td style="text-align:center;">
+21.00
+</td>
+<td style="text-align:center;">
+68
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72782599999
+</td>
+<td style="text-align:center;">
+PANGBORN MEM
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+47.399
+</td>
+<td style="text-align:center;">
+-120.207
+</td>
+<td style="text-align:center;">
+19730101
+</td>
+<td style="text-align:center;">
+19971231
+</td>
+<td style="text-align:center;">
+91.69
+</td>
+<td style="text-align:center;">
+8.00
+</td>
+<td style="text-align:center;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72788499999
+</td>
+<td style="text-align:center;">
+RICHLAND AIRPORT
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+46.306
+</td>
+<td style="text-align:center;">
+-119.304
+</td>
+<td style="text-align:center;">
+19810203
+</td>
+<td style="text-align:center;">
+20250209
+</td>
+<td style="text-align:center;">
+97.39
+</td>
+<td style="text-align:center;">
+31.00
+</td>
+<td style="text-align:center;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781524237
+</td>
+<td style="text-align:center;">
+STAMPASS PASS FLTWO
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+47.277
+</td>
+<td style="text-align:center;">
+-121.337
+</td>
+<td style="text-align:center;">
+19730101
+</td>
+<td style="text-align:center;">
+20250210
+</td>
+<td style="text-align:center;">
+98.63
+</td>
+<td style="text-align:center;">
+31.00
+</td>
+<td style="text-align:center;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+99999924237
+</td>
+<td style="text-align:center;">
+STAMPEDE PASS
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+47.277
+</td>
+<td style="text-align:center;">
+-121.337
+</td>
+<td style="text-align:center;">
+19480101
+</td>
+<td style="text-align:center;">
+19721231
+</td>
+<td style="text-align:center;">
+98.63
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72790024141
+</td>
+<td style="text-align:center;">
+EPHRATA MUNICIPAL AIRPORT
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+47.308
+</td>
+<td style="text-align:center;">
+-119.516
+</td>
+<td style="text-align:center;">
+20050101
+</td>
+<td style="text-align:center;">
+20250209
+</td>
+<td style="text-align:center;">
+108.64
+</td>
+<td style="text-align:center;">
+16.00
+</td>
+<td style="text-align:center;">
+52
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72782624141
+</td>
+<td style="text-align:center;">
+EPHRATA MUNICIPAL
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+47.308
+</td>
+<td style="text-align:center;">
+-119.515
+</td>
+<td style="text-align:center;">
+19420101
+</td>
+<td style="text-align:center;">
+19971231
+</td>
+<td style="text-align:center;">
+108.69
+</td>
+<td style="text-align:center;">
+8.00
+</td>
+<td style="text-align:center;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+99999924141
+</td>
+<td style="text-align:center;">
+EPHRATA AP FCWOS
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+47.308
+</td>
+<td style="text-align:center;">
+-119.515
+</td>
+<td style="text-align:center;">
+19480101
+</td>
+<td style="text-align:center;">
+19550101
+</td>
+<td style="text-align:center;">
+108.69
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72782724110
+</td>
+<td style="text-align:center;">
+GRANT COUNTY INTL AIRPORT
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+47.193
+</td>
+<td style="text-align:center;">
+-119.315
+</td>
+<td style="text-align:center;">
+19430610
+</td>
+<td style="text-align:center;">
+20250209
+</td>
+<td style="text-align:center;">
+111.73
+</td>
+<td style="text-align:center;">
+31.00
+</td>
+<td style="text-align:center;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72782799999
+</td>
+<td style="text-align:center;">
+MOSES LAKE/GRANT CO
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+47.200
+</td>
+<td style="text-align:center;">
+-119.317
+</td>
+<td style="text-align:center;">
+20000101
+</td>
+<td style="text-align:center;">
+20031231
+</td>
+<td style="text-align:center;">
+112.06
+</td>
+<td style="text-align:center;">
+4.00
+</td>
+<td style="text-align:center;">
+13
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72784524163
+</td>
+<td style="text-align:center;">
+TRI-CITIES AIRPORT
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+46.270
+</td>
+<td style="text-align:center;">
+-119.118
+</td>
+<td style="text-align:center;">
+19730101
+</td>
+<td style="text-align:center;">
+20250210
+</td>
+<td style="text-align:center;">
+112.21
+</td>
+<td style="text-align:center;">
+31.00
+</td>
+<td style="text-align:center;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72784599999
+</td>
+<td style="text-align:center;">
+TRI CITIES
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+46.267
+</td>
+<td style="text-align:center;">
+-119.117
+</td>
+<td style="text-align:center;">
+20000101
+</td>
+<td style="text-align:center;">
+20031231
+</td>
+<td style="text-align:center;">
+112.40
+</td>
+<td style="text-align:center;">
+4.00
+</td>
+<td style="text-align:center;">
+13
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+99999924163
+</td>
+<td style="text-align:center;">
+PASCO NAS
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+46.267
+</td>
+<td style="text-align:center;">
+-119.117
+</td>
+<td style="text-align:center;">
+19450401
+</td>
+<td style="text-align:center;">
+19460601
+</td>
+<td style="text-align:center;">
+112.40
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72698824219
+</td>
+<td style="text-align:center;">
+MUNICIPAL AIRPORT
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+45.619
+</td>
+<td style="text-align:center;">
+-121.166
+</td>
+<td style="text-align:center;">
+19730101
+</td>
+<td style="text-align:center;">
+20250209
+</td>
+<td style="text-align:center;">
+120.70
+</td>
+<td style="text-align:center;">
+31.00
+</td>
+<td style="text-align:center;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+99999924219
+</td>
+<td style="text-align:center;">
+THE DALLES MUNICIPAL ARPT
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+45.619
+</td>
+<td style="text-align:center;">
+-121.166
+</td>
+<td style="text-align:center;">
+19480101
+</td>
+<td style="text-align:center;">
+19650101
+</td>
+<td style="text-align:center;">
+120.70
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72688399999
+</td>
+<td style="text-align:center;">
+HERMISTON MUNI
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+45.828
+</td>
+<td style="text-align:center;">
+-119.259
+</td>
+<td style="text-align:center;">
+19980514
+</td>
+<td style="text-align:center;">
+20051231
+</td>
+<td style="text-align:center;">
+128.55
+</td>
+<td style="text-align:center;">
+7.64
+</td>
+<td style="text-align:center;">
+25
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol start="2" style="list-style-type: decimal">
 <li>Download weather data for the most promising station on the list</li>
+</ol>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="get_temp_data.html#cb125-1" tabindex="-1"></a>weather_Yakima <span class="ot">&lt;-</span> <span class="fu">handle_gsod</span>(<span class="at">action =</span> <span class="st">&quot;download_weather&quot;</span>,</span>
+<span id="cb125-2"><a href="get_temp_data.html#cb125-2" tabindex="-1"></a>                              <span class="at">location =</span> station_list_Yakima<span class="sc">$</span>chillR_code[<span class="dv">1</span>],</span>
+<span id="cb125-3"><a href="get_temp_data.html#cb125-3" tabindex="-1"></a>                              <span class="at">time_interval =</span> <span class="fu">c</span>(<span class="dv">1990</span>, <span class="dv">2020</span>))</span></code></pre></div>
+<pre><code>## Loading data for 31 years from station &#39;YAKIMA AIR TERMINAL/MCALSR FIELD AP&#39;
+## ======================================================================================</code></pre>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="get_temp_data.html#cb127-1" tabindex="-1"></a>weather_Yakima[[<span class="dv">1</span>]][<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,]</span></code></pre></div>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped" style="font-size: 14px; color: black; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+STATION
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+DATE
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+LATITUDE
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+LONGITUDE
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+ELEVATION
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+NAME
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+TEMP
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+TEMP_ATTRIBUTES
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+DEWP
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+DEWP_ATTRIBUTES
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+SLP
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+SLP_ATTRIBUTES
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+STP
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+STP_ATTRIBUTES
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+VISIB
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+VISIB_ATTRIBUTES
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+WDSP
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+WDSP_ATTRIBUTES
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+MXSPD
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+GUST
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+MAX
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+MAX_ATTRIBUTES
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+MIN
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+MIN_ATTRIBUTES
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+PRCP
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+PRCP_ATTRIBUTES
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+SNDP
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+FRSHTT
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-01
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+31.1
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+30.2
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1014.9
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+975.3
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+2.3
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+4.1
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+7.0
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+35.1
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+<td style="text-align:center;">
+28.9
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+100000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-02
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+32.1
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+23.7
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1015.4
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+975.7
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+24.3
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+6.2
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+12.0
+</td>
+<td style="text-align:center;">
+18.1
+</td>
+<td style="text-align:center;">
+43.0
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+<td style="text-align:center;">
+21.9
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+100000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-03
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+32.1
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+24.9
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1023.5
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+983.6
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+21.3
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+3.7
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+8.0
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+46.0
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+<td style="text-align:center;">
+21.9
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-04
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+36.4
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+29.1
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1020.2
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+980.5
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+21.3
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+6.1
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+15.9
+</td>
+<td style="text-align:center;">
+24.1
+</td>
+<td style="text-align:center;">
+57.0
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+<td style="text-align:center;">
+26.1
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-05
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+36.6
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+27.5
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1022.7
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+983.1
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+21.3
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+5.8
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+18.1
+</td>
+<td style="text-align:center;">
+25.1
+</td>
+<td style="text-align:center;">
+57.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+26.1
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-06
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+43.2
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+34.6
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1016.9
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+977.7
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+25.1
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+6.8
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+22.9
+</td>
+<td style="text-align:center;">
+28.0
+</td>
+<td style="text-align:center;">
+53.1
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+26.1
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+10000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-07
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+48.2
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+39.5
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1005.8
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+967.2
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+27.5
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+9.6
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+15.9
+</td>
+<td style="text-align:center;">
+26.0
+</td>
+<td style="text-align:center;">
+53.1
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+<td style="text-align:center;">
+28.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.12
+</td>
+<td style="text-align:center;">
+G
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+10000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-08
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+44.1
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+37.4
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1005.4
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+966.8
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+27.5
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+7.6
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+18.1
+</td>
+<td style="text-align:center;">
+27.0
+</td>
+<td style="text-align:center;">
+54.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+37.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.38
+</td>
+<td style="text-align:center;">
+G
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+10000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-09
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+39.4
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+36.9
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1010.6
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+971.6
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+10.8
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+5.7
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+15.0
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+52.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+34.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.62
+</td>
+<td style="text-align:center;">
+G
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+110000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-10
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+44.9
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+29.3
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1019.1
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+980.0
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+29.6
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+8.5
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+18.1
+</td>
+<td style="text-align:center;">
+22.0
+</td>
+<td style="text-align:center;">
+54.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+34.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.11
+</td>
+<td style="text-align:center;">
+G
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+10000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-11
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+37.0
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+26.9
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1030.3
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+990.4
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+25.3
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+6.8
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+11.1
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+46.9
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+32.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+G
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+1000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-12
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+37.1
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+27.0
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1020.2
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+980.7
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+25.3
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+6.4
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+10.1
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+43.0
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+<td style="text-align:center;">
+32.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+<td style="text-align:center;">
+G
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+11000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-13
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+33.7
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+29.3
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1010.4
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+971.2
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+17.0
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+3.0
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+8.0
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+43.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+27.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+<td style="text-align:center;">
+G
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+10000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-14
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+31.8
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+28.4
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1015.3
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+975.7
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+16.4
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+3.9
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+8.0
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+41.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+25.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-15
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+33.6
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+30.9
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1021.3
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+981.5
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+2.5
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+3.1
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+7.0
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+39.9
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+25.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+100000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-16
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+38.4
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+33.4
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1016.9
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+977.5
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+11.1
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+5.2
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+8.9
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+45.0
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+<td style="text-align:center;">
+30.9
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+110000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-17
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+34.0
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+25.7
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1023.9
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+984.1
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+30.2
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+6.3
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+10.1
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+46.0
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+<td style="text-align:center;">
+24.1
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-18
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+27.2
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+21.6
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1028.8
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+988.5
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+26.1
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+5.2
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+8.9
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+46.9
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+18.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-19
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+32.7
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+27.4
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1024.2
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+984.2
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+21.7
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+5.4
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+8.9
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+37.9
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+18.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-20
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+33.4
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+26.4
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1027.7
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+987.7
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+14.3
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1.3
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+6.0
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+36.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+28.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+</div></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
 <li>Convert the weather data into <code>chillR</code> format</li>
 </ol>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="get_temp_data.html#cb128-1" tabindex="-1"></a>cleaned_weather_Yakima <span class="ot">&lt;-</span> <span class="fu">handle_gsod</span>(weather_Yakima) </span></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="get_temp_data.html#cb129-1" tabindex="-1"></a>cleaned_weather_Yakima[[<span class="dv">1</span>]][<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,]</span></code></pre></div>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; ">
+<table class="table table-striped" style="font-size: 14px; color: black; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+Date
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+Year
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+Month
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+Day
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+Tmin
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+Tmax
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+Tmean
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+Prec
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+1990-01-01
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+-1.722
+</td>
+<td style="text-align:center;">
+1.722
+</td>
+<td style="text-align:center;">
+-0.500
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-02
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+2
+</td>
+<td style="text-align:center;">
+-5.611
+</td>
+<td style="text-align:center;">
+6.111
+</td>
+<td style="text-align:center;">
+0.056
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-03
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+3
+</td>
+<td style="text-align:center;">
+-5.611
+</td>
+<td style="text-align:center;">
+7.778
+</td>
+<td style="text-align:center;">
+0.056
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-04
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+4
+</td>
+<td style="text-align:center;">
+-3.278
+</td>
+<td style="text-align:center;">
+13.889
+</td>
+<td style="text-align:center;">
+2.444
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-05
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+5
+</td>
+<td style="text-align:center;">
+-3.278
+</td>
+<td style="text-align:center;">
+13.889
+</td>
+<td style="text-align:center;">
+2.556
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-06
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+6
+</td>
+<td style="text-align:center;">
+-3.278
+</td>
+<td style="text-align:center;">
+11.722
+</td>
+<td style="text-align:center;">
+6.222
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-07
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+7
+</td>
+<td style="text-align:center;">
+-2.222
+</td>
+<td style="text-align:center;">
+11.722
+</td>
+<td style="text-align:center;">
+9.000
+</td>
+<td style="text-align:center;">
+3.048
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-08
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+8
+</td>
+<td style="text-align:center;">
+2.778
+</td>
+<td style="text-align:center;">
+12.222
+</td>
+<td style="text-align:center;">
+6.722
+</td>
+<td style="text-align:center;">
+9.652
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-09
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+9
+</td>
+<td style="text-align:center;">
+1.111
+</td>
+<td style="text-align:center;">
+11.111
+</td>
+<td style="text-align:center;">
+4.111
+</td>
+<td style="text-align:center;">
+15.748
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-10
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+10
+</td>
+<td style="text-align:center;">
+1.111
+</td>
+<td style="text-align:center;">
+12.222
+</td>
+<td style="text-align:center;">
+7.167
+</td>
+<td style="text-align:center;">
+2.794
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-11
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+11
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+<td style="text-align:center;">
+8.278
+</td>
+<td style="text-align:center;">
+2.778
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-12
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+12
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+<td style="text-align:center;">
+6.111
+</td>
+<td style="text-align:center;">
+2.833
+</td>
+<td style="text-align:center;">
+0.254
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-13
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+13
+</td>
+<td style="text-align:center;">
+-2.778
+</td>
+<td style="text-align:center;">
+6.111
+</td>
+<td style="text-align:center;">
+0.944
+</td>
+<td style="text-align:center;">
+0.254
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-14
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+14
+</td>
+<td style="text-align:center;">
+-3.889
+</td>
+<td style="text-align:center;">
+5.000
+</td>
+<td style="text-align:center;">
+-0.111
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-15
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+15
+</td>
+<td style="text-align:center;">
+-3.889
+</td>
+<td style="text-align:center;">
+4.389
+</td>
+<td style="text-align:center;">
+0.889
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-16
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+16
+</td>
+<td style="text-align:center;">
+-0.611
+</td>
+<td style="text-align:center;">
+7.222
+</td>
+<td style="text-align:center;">
+3.556
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-17
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+17
+</td>
+<td style="text-align:center;">
+-4.389
+</td>
+<td style="text-align:center;">
+7.778
+</td>
+<td style="text-align:center;">
+1.111
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-18
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+18
+</td>
+<td style="text-align:center;">
+-7.778
+</td>
+<td style="text-align:center;">
+8.278
+</td>
+<td style="text-align:center;">
+-2.667
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-19
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+19
+</td>
+<td style="text-align:center;">
+-7.778
+</td>
+<td style="text-align:center;">
+3.278
+</td>
+<td style="text-align:center;">
+0.389
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-20
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+20
+</td>
+<td style="text-align:center;">
+-2.222
+</td>
+<td style="text-align:center;">
+2.222
+</td>
+<td style="text-align:center;">
+0.778
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="get_temp_data.html#cb130-1" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">&quot;Yakima&quot;</span>)</span>
+<span id="cb130-2"><a href="get_temp_data.html#cb130-2" tabindex="-1"></a><span class="fu">write.csv</span>(station_list_Yakima,<span class="st">&quot;Yakima/station_list.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb130-3"><a href="get_temp_data.html#cb130-3" tabindex="-1"></a><span class="fu">write.csv</span>(weather_Yakima[[<span class="dv">1</span>]],<span class="st">&quot;Yakima/raw_weather.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb130-4"><a href="get_temp_data.html#cb130-4" tabindex="-1"></a><span class="fu">write.csv</span>(cleaned_weather_Yakima[[<span class="dv">1</span>]],<span class="st">&quot;Yakima/chillR_weather.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 
-</div>
-</div>
             </section>
 
           </div>

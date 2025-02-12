@@ -259,33 +259,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="get_temp_data.html"><a href="get_temp_data.html#exercises_getting"><i class="fa fa-check"></i><code>Exercises</code> on getting temperature data</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html"><i class="fa fa-check"></i><b>11</b> Filling gaps in temperature records</a>
-<ul>
-<li class="chapter" data-level="11.1" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html#learning-goals-7"><i class="fa fa-check"></i><b>11.1</b> Learning goals</a></li>
-<li class="chapter" data-level="11.2" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html#gaps"><i class="fa fa-check"></i><b>11.2</b> Gaps</a></li>
-<li class="chapter" data-level="11.3" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html#filling-short-gaps-in-daily-records"><i class="fa fa-check"></i><b>11.3</b> Filling short gaps in daily records</a></li>
-<li class="chapter" data-level="11.4" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html#filling-long-gaps-in-daily-records"><i class="fa fa-check"></i><b>11.4</b> Filling long gaps in daily records</a>
-<ul>
-<li class="chapter" data-level="11.4.1" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html#bias-correction-for-shorter-intervals"><i class="fa fa-check"></i><b>11.4.1</b> Bias-correction for shorter intervals</a></li>
-<li class="chapter" data-level="11.4.2" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html#saving-the-data-for-later"><i class="fa fa-check"></i><b>11.4.2</b> Saving the data for later</a></li>
-</ul></li>
-<li class="chapter" data-level="11.5" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html#exercises-on-filling-gaps"><i class="fa fa-check"></i><b>11.5</b> <code>Exercises</code> on filling gaps</a></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="generating-temperature-scenarios.html"><a href="generating-temperature-scenarios.html"><i class="fa fa-check"></i><b>12</b> Generating temperature scenarios</a>
-<ul>
-<li class="chapter" data-level="12.1" data-path="generating-temperature-scenarios.html"><a href="generating-temperature-scenarios.html#learning-goals-8"><i class="fa fa-check"></i><b>12.1</b> Learning goals</a></li>
-<li class="chapter" data-level="12.2" data-path="generating-temperature-scenarios.html"><a href="generating-temperature-scenarios.html#chill-scenarios"><i class="fa fa-check"></i><b>12.2</b> Chill scenarios</a></li>
-<li class="chapter" data-level="12.3" data-path="generating-temperature-scenarios.html"><a href="generating-temperature-scenarios.html#risk-assessment-in-orchard-planning"><i class="fa fa-check"></i><b>12.3</b> Risk assessment in orchard planning</a></li>
-<li class="chapter" data-level="12.4" data-path="generating-temperature-scenarios.html"><a href="generating-temperature-scenarios.html#weather-generators"><i class="fa fa-check"></i><b>12.4</b> Weather generators</a></li>
-<li class="chapter" data-level="12.5" data-path="generating-temperature-scenarios.html"><a href="generating-temperature-scenarios.html#weather-generation-in-chillr"><i class="fa fa-check"></i><b>12.5</b> Weather generation in <code>chillR</code></a></li>
-<li class="chapter" data-level="12.6" data-path="generating-temperature-scenarios.html"><a href="generating-temperature-scenarios.html#exercises-on-temperature-generation"><i class="fa fa-check"></i><b>12.6</b> <code>Exercises</code> on temperature generation</a></li>
-</ul></li>
-<li class="chapter" data-level="13" data-path="saving-and-loading-data-and-hiding-this-in-markdown.html"><a href="saving-and-loading-data-and-hiding-this-in-markdown.html"><i class="fa fa-check"></i><b>13</b> Saving and loading data (and hiding this in markdown)</a>
-<ul>
-<li class="chapter" data-level="13.1" data-path="saving-and-loading-data-and-hiding-this-in-markdown.html"><a href="saving-and-loading-data-and-hiding-this-in-markdown.html#learning-goals-9"><i class="fa fa-check"></i><b>13.1</b> Learning Goals</a></li>
-<li class="chapter" data-level="13.2" data-path="saving-and-loading-data-and-hiding-this-in-markdown.html"><a href="saving-and-loading-data-and-hiding-this-in-markdown.html#saving-and-loading-data"><i class="fa fa-check"></i><b>13.2</b> Saving and loading data</a></li>
-<li class="chapter" data-level="13.3" data-path="saving-and-loading-data-and-hiding-this-in-markdown.html"><a href="saving-and-loading-data-and-hiding-this-in-markdown.html#hiding-all-this-from-the-readers-of-our-markdown-file"><i class="fa fa-check"></i><b>13.3</b> Hiding all this from the readers of our markdown file</a></li>
-</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -323,41 +296,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="filling-short-gaps-in-daily-records" class="section level2 hasAnchor" number="11.3">
 <h2><span class="header-section-number">11.3</span> Filling short gaps in daily records<a href="filling-gaps-in-temperature-records.html#filling-short-gaps-in-daily-records" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Weather records are mostly complete, though some daily maximum or minimum temperatures may be missing. For short gaps, simple linear interpolation can estimate values by averaging the last known and first known measurements around the gap. This approach can work for gaps of 2-3 days, though accuracy declines with longer gaps. For extended absences of several weeks or more, linear interpolation may miss significant temperature trends, and for gaps as long as a year, it could entirely overlook seasonal patterns, leading to large errors. Nonetheless, the <code>chillR</code> package provides a function, <code>interpolate_gaps()</code>, to perform this basic interpolation:</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="filling-gaps-in-temperature-records.html#cb124-1" tabindex="-1"></a>weather <span class="ot">&lt;-</span> KA_weather <span class="sc">%&gt;%</span> <span class="fu">make_all_day_table</span>()</span>
-<span id="cb124-2"><a href="filling-gaps-in-temperature-records.html#cb124-2" tabindex="-1"></a></span>
-<span id="cb124-3"><a href="filling-gaps-in-temperature-records.html#cb124-3" tabindex="-1"></a>Tmin_int <span class="ot">&lt;-</span> <span class="fu">interpolate_gaps</span>(weather[,<span class="st">&quot;Tmin&quot;</span>])</span>
-<span id="cb124-4"><a href="filling-gaps-in-temperature-records.html#cb124-4" tabindex="-1"></a></span>
-<span id="cb124-5"><a href="filling-gaps-in-temperature-records.html#cb124-5" tabindex="-1"></a>weather <span class="ot">&lt;-</span> weather <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Tmin =</span> Tmin_int<span class="sc">$</span>interp,</span>
-<span id="cb124-6"><a href="filling-gaps-in-temperature-records.html#cb124-6" tabindex="-1"></a>                              <span class="at">Tmin_interpolated =</span> Tmin_int<span class="sc">$</span>missing)</span>
-<span id="cb124-7"><a href="filling-gaps-in-temperature-records.html#cb124-7" tabindex="-1"></a></span>
-<span id="cb124-8"><a href="filling-gaps-in-temperature-records.html#cb124-8" tabindex="-1"></a>Tmax_int <span class="ot">&lt;-</span> <span class="fu">interpolate_gaps</span>(weather[,<span class="st">&quot;Tmax&quot;</span>])</span>
-<span id="cb124-9"><a href="filling-gaps-in-temperature-records.html#cb124-9" tabindex="-1"></a></span>
-<span id="cb124-10"><a href="filling-gaps-in-temperature-records.html#cb124-10" tabindex="-1"></a>weather <span class="ot">&lt;-</span> weather <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Tmax =</span> Tmax_int<span class="sc">$</span>interp,</span>
-<span id="cb124-11"><a href="filling-gaps-in-temperature-records.html#cb124-11" tabindex="-1"></a>                              <span class="at">Tmax_interpolated =</span> Tmax_int<span class="sc">$</span>missing)</span></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="filling-gaps-in-temperature-records.html#cb131-1" tabindex="-1"></a>weather <span class="ot">&lt;-</span> KA_weather <span class="sc">%&gt;%</span> <span class="fu">make_all_day_table</span>()</span>
+<span id="cb131-2"><a href="filling-gaps-in-temperature-records.html#cb131-2" tabindex="-1"></a></span>
+<span id="cb131-3"><a href="filling-gaps-in-temperature-records.html#cb131-3" tabindex="-1"></a>Tmin_int <span class="ot">&lt;-</span> <span class="fu">interpolate_gaps</span>(weather[,<span class="st">&quot;Tmin&quot;</span>])</span>
+<span id="cb131-4"><a href="filling-gaps-in-temperature-records.html#cb131-4" tabindex="-1"></a></span>
+<span id="cb131-5"><a href="filling-gaps-in-temperature-records.html#cb131-5" tabindex="-1"></a>weather <span class="ot">&lt;-</span> weather <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Tmin =</span> Tmin_int<span class="sc">$</span>interp,</span>
+<span id="cb131-6"><a href="filling-gaps-in-temperature-records.html#cb131-6" tabindex="-1"></a>                              <span class="at">Tmin_interpolated =</span> Tmin_int<span class="sc">$</span>missing)</span>
+<span id="cb131-7"><a href="filling-gaps-in-temperature-records.html#cb131-7" tabindex="-1"></a></span>
+<span id="cb131-8"><a href="filling-gaps-in-temperature-records.html#cb131-8" tabindex="-1"></a>Tmax_int <span class="ot">&lt;-</span> <span class="fu">interpolate_gaps</span>(weather[,<span class="st">&quot;Tmax&quot;</span>])</span>
+<span id="cb131-9"><a href="filling-gaps-in-temperature-records.html#cb131-9" tabindex="-1"></a></span>
+<span id="cb131-10"><a href="filling-gaps-in-temperature-records.html#cb131-10" tabindex="-1"></a>weather <span class="ot">&lt;-</span> weather <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Tmax =</span> Tmax_int<span class="sc">$</span>interp,</span>
+<span id="cb131-11"><a href="filling-gaps-in-temperature-records.html#cb131-11" tabindex="-1"></a>                              <span class="at">Tmax_interpolated =</span> Tmax_int<span class="sc">$</span>missing)</span></code></pre></div>
 <p>The <code>fix_weather()</code> function in <code>chillR</code> uses linear interpolation to fill gaps in minimum and maximum temperature data by default. If any entire days are missing, it adds rows for these dates using <code>make_all_day_table()</code>. Users can also customize the function by setting the range of years (with <code>start_year</code> and <code>end_year</code>), specifying specific dates (using <code>start_date</code> and <code>end_date</code> in Julian days), and choosing column names if they differ from <code>Tmin</code> and <code>Tmax</code>.</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="filling-gaps-in-temperature-records.html#cb125-1" tabindex="-1"></a><span class="co"># add an extra day to the KA_weather dataset that is not connected to the days that are already there.</span></span>
-<span id="cb125-2"><a href="filling-gaps-in-temperature-records.html#cb125-2" tabindex="-1"></a><span class="co"># this creates a large gap, which we can then interpolate</span></span>
-<span id="cb125-3"><a href="filling-gaps-in-temperature-records.html#cb125-3" tabindex="-1"></a>KA_weather_gap <span class="ot">&lt;-</span> <span class="fu">rbind</span>(KA_weather, <span class="fu">c</span>(<span class="at">Year =</span> <span class="dv">2011</span>,</span>
-<span id="cb125-4"><a href="filling-gaps-in-temperature-records.html#cb125-4" tabindex="-1"></a>                                      <span class="at">Month =</span> <span class="dv">3</span>,</span>
-<span id="cb125-5"><a href="filling-gaps-in-temperature-records.html#cb125-5" tabindex="-1"></a>                                      <span class="at">Day =</span> <span class="dv">3</span>,</span>
-<span id="cb125-6"><a href="filling-gaps-in-temperature-records.html#cb125-6" tabindex="-1"></a>                                      <span class="at">Tmax =</span> <span class="dv">26</span>,</span>
-<span id="cb125-7"><a href="filling-gaps-in-temperature-records.html#cb125-7" tabindex="-1"></a>                                      <span class="at">Tmin =</span> <span class="dv">14</span>)) </span>
-<span id="cb125-8"><a href="filling-gaps-in-temperature-records.html#cb125-8" tabindex="-1"></a></span>
-<span id="cb125-9"><a href="filling-gaps-in-temperature-records.html#cb125-9" tabindex="-1"></a><span class="co"># fill in the gaps between Julian date 300 (late October) and 100 (early April), only returning data between 2000 and 2011</span></span>
-<span id="cb125-10"><a href="filling-gaps-in-temperature-records.html#cb125-10" tabindex="-1"></a>fixed_winter_days <span class="ot">&lt;-</span> KA_weather_gap <span class="sc">%&gt;%</span> <span class="fu">fix_weather</span>(<span class="at">start_year =</span> <span class="dv">2000</span>,</span>
-<span id="cb125-11"><a href="filling-gaps-in-temperature-records.html#cb125-11" tabindex="-1"></a>                                                    <span class="at">end_year =</span> <span class="dv">2011</span>,</span>
-<span id="cb125-12"><a href="filling-gaps-in-temperature-records.html#cb125-12" tabindex="-1"></a>                                                    <span class="at">start_date =</span> <span class="dv">300</span>,</span>
-<span id="cb125-13"><a href="filling-gaps-in-temperature-records.html#cb125-13" tabindex="-1"></a>                                                    <span class="at">end_date =</span> <span class="dv">100</span>)</span>
-<span id="cb125-14"><a href="filling-gaps-in-temperature-records.html#cb125-14" tabindex="-1"></a></span>
-<span id="cb125-15"><a href="filling-gaps-in-temperature-records.html#cb125-15" tabindex="-1"></a><span class="co"># fill in all gaps</span></span>
-<span id="cb125-16"><a href="filling-gaps-in-temperature-records.html#cb125-16" tabindex="-1"></a>fixed_all_days <span class="ot">&lt;-</span> KA_weather_gap <span class="sc">%&gt;%</span> <span class="fu">fix_weather</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="filling-gaps-in-temperature-records.html#cb132-1" tabindex="-1"></a><span class="co"># add an extra day to the KA_weather dataset that is not connected to the days that are already there.</span></span>
+<span id="cb132-2"><a href="filling-gaps-in-temperature-records.html#cb132-2" tabindex="-1"></a><span class="co"># this creates a large gap, which we can then interpolate</span></span>
+<span id="cb132-3"><a href="filling-gaps-in-temperature-records.html#cb132-3" tabindex="-1"></a>KA_weather_gap <span class="ot">&lt;-</span> <span class="fu">rbind</span>(KA_weather, <span class="fu">c</span>(<span class="at">Year =</span> <span class="dv">2011</span>,</span>
+<span id="cb132-4"><a href="filling-gaps-in-temperature-records.html#cb132-4" tabindex="-1"></a>                                      <span class="at">Month =</span> <span class="dv">3</span>,</span>
+<span id="cb132-5"><a href="filling-gaps-in-temperature-records.html#cb132-5" tabindex="-1"></a>                                      <span class="at">Day =</span> <span class="dv">3</span>,</span>
+<span id="cb132-6"><a href="filling-gaps-in-temperature-records.html#cb132-6" tabindex="-1"></a>                                      <span class="at">Tmax =</span> <span class="dv">26</span>,</span>
+<span id="cb132-7"><a href="filling-gaps-in-temperature-records.html#cb132-7" tabindex="-1"></a>                                      <span class="at">Tmin =</span> <span class="dv">14</span>)) </span>
+<span id="cb132-8"><a href="filling-gaps-in-temperature-records.html#cb132-8" tabindex="-1"></a></span>
+<span id="cb132-9"><a href="filling-gaps-in-temperature-records.html#cb132-9" tabindex="-1"></a><span class="co"># fill in the gaps between Julian date 300 (late October) and 100 (early April), only returning data between 2000 and 2011</span></span>
+<span id="cb132-10"><a href="filling-gaps-in-temperature-records.html#cb132-10" tabindex="-1"></a>fixed_winter_days <span class="ot">&lt;-</span> KA_weather_gap <span class="sc">%&gt;%</span> <span class="fu">fix_weather</span>(<span class="at">start_year =</span> <span class="dv">2000</span>,</span>
+<span id="cb132-11"><a href="filling-gaps-in-temperature-records.html#cb132-11" tabindex="-1"></a>                                                    <span class="at">end_year =</span> <span class="dv">2011</span>,</span>
+<span id="cb132-12"><a href="filling-gaps-in-temperature-records.html#cb132-12" tabindex="-1"></a>                                                    <span class="at">start_date =</span> <span class="dv">300</span>,</span>
+<span id="cb132-13"><a href="filling-gaps-in-temperature-records.html#cb132-13" tabindex="-1"></a>                                                    <span class="at">end_date =</span> <span class="dv">100</span>)</span>
+<span id="cb132-14"><a href="filling-gaps-in-temperature-records.html#cb132-14" tabindex="-1"></a></span>
+<span id="cb132-15"><a href="filling-gaps-in-temperature-records.html#cb132-15" tabindex="-1"></a><span class="co"># fill in all gaps</span></span>
+<span id="cb132-16"><a href="filling-gaps-in-temperature-records.html#cb132-16" tabindex="-1"></a>fixed_all_days <span class="ot">&lt;-</span> KA_weather_gap <span class="sc">%&gt;%</span> <span class="fu">fix_weather</span>()</span></code></pre></div>
 <p>The <code>fix_weather()</code> function returns a list with two components:</p>
 <ol style="list-style-type: decimal">
 <li><code>weather</code>: A <code>data.frame</code> containing the interpolated weather data. It includes two additional columns, <code>no_Tmin</code> and <code>no_Tmax</code>, which mark rows where minimum or maximum temperatures were originally missing (indicated as <code>TRUE</code>, otherwise <code>FALSE</code>).</li>
 <li><code>QC:</code> A quality control object that summarizes the number of interpolated values for each season.</li>
 </ol>
 <p>These QC elements provide an overview of the data quality and interpolation extent for each dataset processed:</p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="filling-gaps-in-temperature-records.html#cb126-1" tabindex="-1"></a>fixed_winter_days<span class="sc">$</span>QC</span></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="filling-gaps-in-temperature-records.html#cb133-1" tabindex="-1"></a>fixed_winter_days<span class="sc">$</span>QC</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped" style="font-size: 14px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
@@ -704,7 +677,7 @@ Perc_complete
 </tbody>
 </table>
 </div>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="filling-gaps-in-temperature-records.html#cb127-1" tabindex="-1"></a>fixed_all_days<span class="sc">$</span>QC</span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="filling-gaps-in-temperature-records.html#cb134-1" tabindex="-1"></a>fixed_all_days<span class="sc">$</span>QC</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped" style="font-size: 14px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
@@ -1104,30 +1077,30 @@ Perc_complete
 </table>
 </div>
 <p>As mentioned, linear interpolation works reasonably well for short gaps in data but becomes less reliable as the gaps lengthen. Below is a simple demonstration of this effect:</p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="filling-gaps-in-temperature-records.html#cb128-1" tabindex="-1"></a>gap_weather <span class="ot">&lt;-</span> KA_weather[<span class="dv">200</span><span class="sc">:</span><span class="dv">305</span>, ]</span>
-<span id="cb128-2"><a href="filling-gaps-in-temperature-records.html#cb128-2" tabindex="-1"></a>gap_weather[ ,<span class="st">&quot;Tmin_observed&quot;</span>] <span class="ot">&lt;-</span> gap_weather<span class="sc">$</span>Tmin</span>
-<span id="cb128-3"><a href="filling-gaps-in-temperature-records.html#cb128-3" tabindex="-1"></a>gap_weather<span class="sc">$</span>Tmin[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">7</span><span class="sc">:</span><span class="dv">9</span>, <span class="dv">11</span><span class="sc">:</span><span class="dv">14</span>, <span class="dv">16</span><span class="sc">:</span><span class="dv">20</span>, <span class="dv">22</span><span class="sc">:</span><span class="dv">27</span>, <span class="dv">29</span><span class="sc">:</span><span class="dv">35</span>, </span>
-<span id="cb128-4"><a href="filling-gaps-in-temperature-records.html#cb128-4" tabindex="-1"></a>                   <span class="dv">37</span><span class="sc">:</span><span class="dv">44</span>, <span class="dv">46</span><span class="sc">:</span><span class="dv">54</span>, <span class="dv">56</span><span class="sc">:</span><span class="dv">65</span>, <span class="dv">67</span><span class="sc">:</span><span class="dv">77</span>, <span class="dv">79</span><span class="sc">:</span><span class="dv">90</span>, <span class="dv">92</span><span class="sc">:</span><span class="dv">104</span>)] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb128-5"><a href="filling-gaps-in-temperature-records.html#cb128-5" tabindex="-1"></a>fixed_gaps <span class="ot">&lt;-</span> <span class="fu">fix_weather</span>(gap_weather)<span class="sc">$</span>weather</span>
-<span id="cb128-6"><a href="filling-gaps-in-temperature-records.html#cb128-6" tabindex="-1"></a></span>
-<span id="cb128-7"><a href="filling-gaps-in-temperature-records.html#cb128-7" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> fixed_gaps,</span>
-<span id="cb128-8"><a href="filling-gaps-in-temperature-records.html#cb128-8" tabindex="-1"></a>       <span class="fu">aes</span>(DATE, Tmin_observed)) <span class="sc">+</span></span>
-<span id="cb128-9"><a href="filling-gaps-in-temperature-records.html#cb128-9" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">lwd =</span> <span class="fl">1.3</span>) <span class="sc">+</span></span>
-<span id="cb128-10"><a href="filling-gaps-in-temperature-records.html#cb128-10" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Date&quot;</span>) <span class="sc">+</span></span>
-<span id="cb128-11"><a href="filling-gaps-in-temperature-records.html#cb128-11" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Daily minimum temperature (°C)&quot;</span>) <span class="sc">+</span></span>
-<span id="cb128-12"><a href="filling-gaps-in-temperature-records.html#cb128-12" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> fixed_gaps, <span class="fu">aes</span>(DATE, Tmin), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="fl">1.3</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-116-1.png" width="672" /></p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="filling-gaps-in-temperature-records.html#cb135-1" tabindex="-1"></a>gap_weather <span class="ot">&lt;-</span> KA_weather[<span class="dv">200</span><span class="sc">:</span><span class="dv">305</span>, ]</span>
+<span id="cb135-2"><a href="filling-gaps-in-temperature-records.html#cb135-2" tabindex="-1"></a>gap_weather[ ,<span class="st">&quot;Tmin_observed&quot;</span>] <span class="ot">&lt;-</span> gap_weather<span class="sc">$</span>Tmin</span>
+<span id="cb135-3"><a href="filling-gaps-in-temperature-records.html#cb135-3" tabindex="-1"></a>gap_weather<span class="sc">$</span>Tmin[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">7</span><span class="sc">:</span><span class="dv">9</span>, <span class="dv">11</span><span class="sc">:</span><span class="dv">14</span>, <span class="dv">16</span><span class="sc">:</span><span class="dv">20</span>, <span class="dv">22</span><span class="sc">:</span><span class="dv">27</span>, <span class="dv">29</span><span class="sc">:</span><span class="dv">35</span>, </span>
+<span id="cb135-4"><a href="filling-gaps-in-temperature-records.html#cb135-4" tabindex="-1"></a>                   <span class="dv">37</span><span class="sc">:</span><span class="dv">44</span>, <span class="dv">46</span><span class="sc">:</span><span class="dv">54</span>, <span class="dv">56</span><span class="sc">:</span><span class="dv">65</span>, <span class="dv">67</span><span class="sc">:</span><span class="dv">77</span>, <span class="dv">79</span><span class="sc">:</span><span class="dv">90</span>, <span class="dv">92</span><span class="sc">:</span><span class="dv">104</span>)] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb135-5"><a href="filling-gaps-in-temperature-records.html#cb135-5" tabindex="-1"></a>fixed_gaps <span class="ot">&lt;-</span> <span class="fu">fix_weather</span>(gap_weather)<span class="sc">$</span>weather</span>
+<span id="cb135-6"><a href="filling-gaps-in-temperature-records.html#cb135-6" tabindex="-1"></a></span>
+<span id="cb135-7"><a href="filling-gaps-in-temperature-records.html#cb135-7" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> fixed_gaps,</span>
+<span id="cb135-8"><a href="filling-gaps-in-temperature-records.html#cb135-8" tabindex="-1"></a>       <span class="fu">aes</span>(DATE, Tmin_observed)) <span class="sc">+</span></span>
+<span id="cb135-9"><a href="filling-gaps-in-temperature-records.html#cb135-9" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">lwd =</span> <span class="fl">1.3</span>) <span class="sc">+</span></span>
+<span id="cb135-10"><a href="filling-gaps-in-temperature-records.html#cb135-10" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Date&quot;</span>) <span class="sc">+</span></span>
+<span id="cb135-11"><a href="filling-gaps-in-temperature-records.html#cb135-11" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Daily minimum temperature (°C)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb135-12"><a href="filling-gaps-in-temperature-records.html#cb135-12" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> fixed_gaps, <span class="fu">aes</span>(DATE, Tmin), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="fl">1.3</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-126-1.png" width="672" /></p>
 <p>The plot illustrates original temperature measurements (in black) alongside interpolated values (in red). To simulate gaps, values were removed incrementally from the dataset - starting with single missing values on the left and increasing up to 13 consecutive missing values on the right. The results show that for shorter gaps (left side), interpolation closely follows the temperature trends. However, as gaps grow longer (right side), the interpolated values deviate more significantly, failing to capture the actual temperature dynamics accurately. This visual demonstrates the diminishing reliability of linear interpolation as gaps increase in size.</p>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="filling-gaps-in-temperature-records.html#cb129-1" tabindex="-1"></a>fixed_gaps[,<span class="st">&quot;error&quot;</span>] <span class="ot">&lt;-</span> <span class="fu">abs</span>(fixed_gaps<span class="sc">$</span>Tmin <span class="sc">-</span> fixed_gaps<span class="sc">$</span>Tmin_observed)</span>
-<span id="cb129-2"><a href="filling-gaps-in-temperature-records.html#cb129-2" tabindex="-1"></a></span>
-<span id="cb129-3"><a href="filling-gaps-in-temperature-records.html#cb129-3" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> fixed_gaps,</span>
-<span id="cb129-4"><a href="filling-gaps-in-temperature-records.html#cb129-4" tabindex="-1"></a>       <span class="fu">aes</span>(DATE, error)) <span class="sc">+</span></span>
-<span id="cb129-5"><a href="filling-gaps-in-temperature-records.html#cb129-5" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">lwd =</span> <span class="fl">1.3</span>) <span class="sc">+</span></span>
-<span id="cb129-6"><a href="filling-gaps-in-temperature-records.html#cb129-6" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Date&quot;</span>) <span class="sc">+</span></span>
-<span id="cb129-7"><a href="filling-gaps-in-temperature-records.html#cb129-7" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Error introduced by interpolation (°C)&quot;</span>) <span class="sc">+</span></span>
-<span id="cb129-8"><a href="filling-gaps-in-temperature-records.html#cb129-8" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> fixed_gaps[<span class="fu">which</span>(<span class="sc">!</span>fixed_gaps<span class="sc">$</span>no_Tmin),],</span>
-<span id="cb129-9"><a href="filling-gaps-in-temperature-records.html#cb129-9" tabindex="-1"></a>             <span class="fu">aes</span>(DATE, error),<span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">cex =</span> <span class="dv">3</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-117-1.png" width="672" /></p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="filling-gaps-in-temperature-records.html#cb136-1" tabindex="-1"></a>fixed_gaps[,<span class="st">&quot;error&quot;</span>] <span class="ot">&lt;-</span> <span class="fu">abs</span>(fixed_gaps<span class="sc">$</span>Tmin <span class="sc">-</span> fixed_gaps<span class="sc">$</span>Tmin_observed)</span>
+<span id="cb136-2"><a href="filling-gaps-in-temperature-records.html#cb136-2" tabindex="-1"></a></span>
+<span id="cb136-3"><a href="filling-gaps-in-temperature-records.html#cb136-3" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> fixed_gaps,</span>
+<span id="cb136-4"><a href="filling-gaps-in-temperature-records.html#cb136-4" tabindex="-1"></a>       <span class="fu">aes</span>(DATE, error)) <span class="sc">+</span></span>
+<span id="cb136-5"><a href="filling-gaps-in-temperature-records.html#cb136-5" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">lwd =</span> <span class="fl">1.3</span>) <span class="sc">+</span></span>
+<span id="cb136-6"><a href="filling-gaps-in-temperature-records.html#cb136-6" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Date&quot;</span>) <span class="sc">+</span></span>
+<span id="cb136-7"><a href="filling-gaps-in-temperature-records.html#cb136-7" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Error introduced by interpolation (°C)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb136-8"><a href="filling-gaps-in-temperature-records.html#cb136-8" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> fixed_gaps[<span class="fu">which</span>(<span class="sc">!</span>fixed_gaps<span class="sc">$</span>no_Tmin),],</span>
+<span id="cb136-9"><a href="filling-gaps-in-temperature-records.html#cb136-9" tabindex="-1"></a>             <span class="fu">aes</span>(DATE, error),<span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">cex =</span> <span class="dv">3</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-127-1.png" width="672" /></p>
 <p>The size of interpolation errors depends on temperature variation during the missing periods - high variation leads to larger errors. As gap sizes increase, errors tend to grow, especially in the middle of large gaps, where interpolated values can be far from actual conditions. While errors are zero at points where data exists, larger gaps clearly require a more advanced method for accurate estimation.</p>
 </div>
 <div id="filling-long-gaps-in-daily-records" class="section level2 hasAnchor" number="11.4">
@@ -1136,9 +1109,9 @@ Perc_complete
 <p>Typically, if another station close to the target site has a similar climate, its data can be used to fill in gaps. For example, this method is used in the <a href="https://cimis.water.ca.gov/">CIMIS</a> network in California, where data from nearby stations is often used to address missing values. However, this approach has limitations, as even small differences in elevation or unique landscape features (like lakes, forests, or coastlines) can lead to climate variations that make nearby stations less accurate proxies.</p>
 <p>In <code>chillR</code>, the <code>patch_weather()</code> function addresses these limitations by using data from auxiliary stations to fill gaps. It can detect certain biases, adjust for mean temperature biases, and apply the corrected data to the location of interest, thus providing a more refined way to handle missing temperature records.</p>
 <p>To fill gaps in the temperature dataset for Bonn, downloaded in the <em>Getting temperature data</em> lesson, the following steps should be taken:</p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="filling-gaps-in-temperature-records.html#cb130-1" tabindex="-1"></a>Bonn <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/Bonn_chillR_weather.csv&quot;</span>)</span>
-<span id="cb130-2"><a href="filling-gaps-in-temperature-records.html#cb130-2" tabindex="-1"></a>Bonn_QC <span class="ot">&lt;-</span> <span class="fu">fix_weather</span>(Bonn)<span class="sc">$</span>QC</span></code></pre></div>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="filling-gaps-in-temperature-records.html#cb131-1" tabindex="-1"></a>Bonn_QC</span></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="filling-gaps-in-temperature-records.html#cb137-1" tabindex="-1"></a>Bonn <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/Bonn_chillR_weather.csv&quot;</span>)</span>
+<span id="cb137-2"><a href="filling-gaps-in-temperature-records.html#cb137-2" tabindex="-1"></a>Bonn_QC <span class="ot">&lt;-</span> <span class="fu">fix_weather</span>(Bonn)<span class="sc">$</span>QC</span></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="filling-gaps-in-temperature-records.html#cb138-1" tabindex="-1"></a>Bonn_QC</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped" style="font-size: 14px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
@@ -1981,10 +1954,10 @@ Perc_complete
 </div>
 <p>The dataset for Bonn has significant gaps between 1998 and 2004, as well as in 2008 (where almost all values are missing), along with shorter gaps in 2015, 2018, and 2020.</p>
 <p>To address these gaps, data from nearby weather stations is required. The <code>handle_gsod()</code> function can be used to find relevant stations in the surrounding area.</p>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="filling-gaps-in-temperature-records.html#cb132-1" tabindex="-1"></a>station_list <span class="ot">&lt;-</span> <span class="fu">handle_gsod</span>(<span class="at">action =</span> <span class="st">&quot;list_stations&quot;</span>,</span>
-<span id="cb132-2"><a href="filling-gaps-in-temperature-records.html#cb132-2" tabindex="-1"></a>                            <span class="at">location =</span> <span class="fu">c</span>(<span class="fl">7.10</span>, <span class="fl">50.73</span>),</span>
-<span id="cb132-3"><a href="filling-gaps-in-temperature-records.html#cb132-3" tabindex="-1"></a>                            <span class="at">time_interval =</span> <span class="fu">c</span>(<span class="dv">1990</span>, <span class="dv">2020</span>))</span></code></pre></div>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="filling-gaps-in-temperature-records.html#cb133-1" tabindex="-1"></a>station_list</span></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="filling-gaps-in-temperature-records.html#cb139-1" tabindex="-1"></a>station_list <span class="ot">&lt;-</span> <span class="fu">handle_gsod</span>(<span class="at">action =</span> <span class="st">&quot;list_stations&quot;</span>,</span>
+<span id="cb139-2"><a href="filling-gaps-in-temperature-records.html#cb139-2" tabindex="-1"></a>                            <span class="at">location =</span> <span class="fu">c</span>(<span class="fl">7.10</span>, <span class="fl">50.73</span>),</span>
+<span id="cb139-3"><a href="filling-gaps-in-temperature-records.html#cb139-3" tabindex="-1"></a>                            <span class="at">time_interval =</span> <span class="fu">c</span>(<span class="dv">1990</span>, <span class="dv">2020</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="filling-gaps-in-temperature-records.html#cb140-1" tabindex="-1"></a>station_list</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped" style="font-size: 14px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
@@ -2827,25 +2800,25 @@ GM
 </div>
 <p>Many of the stations listed may not be useful, as they only overlap with the existing record for a few years, or not at all. As a result, it’s unlikely that any single station will be able to fill all the gaps in Bonn’s temperature data. However, by combining data from multiple auxiliary stations, it may be possible to fill in the missing values. Promising stations include <strong>BONN-HARDTHOEHE</strong>, <strong>BONN-ROLEBER</strong>, and <strong>NORVENICH</strong>. These stations will be downloaded and stored in a list.</p>
 <p>In <code>chillR</code> version 0.74 and later, the <code>handle_gsod()</code> function can download multiple station records at once, returning them as a named list. This function will be used to download the records for the selected stations (positions 2, 3, and 6 in the station list).</p>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="filling-gaps-in-temperature-records.html#cb134-1" tabindex="-1"></a>patch_weather <span class="ot">&lt;-</span></span>
-<span id="cb134-2"><a href="filling-gaps-in-temperature-records.html#cb134-2" tabindex="-1"></a>      <span class="fu">handle_gsod</span>(<span class="at">action =</span> <span class="st">&quot;download_weather&quot;</span>,</span>
-<span id="cb134-3"><a href="filling-gaps-in-temperature-records.html#cb134-3" tabindex="-1"></a>                  <span class="at">location =</span> <span class="fu">as.character</span>(station_list<span class="sc">$</span>chillR_code[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">6</span>)]),</span>
-<span id="cb134-4"><a href="filling-gaps-in-temperature-records.html#cb134-4" tabindex="-1"></a>                  <span class="at">time_interval =</span> <span class="fu">c</span>(<span class="dv">1990</span>, <span class="dv">2020</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb134-5"><a href="filling-gaps-in-temperature-records.html#cb134-5" tabindex="-1"></a>  <span class="fu">handle_gsod</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="filling-gaps-in-temperature-records.html#cb141-1" tabindex="-1"></a>patch_weather <span class="ot">&lt;-</span></span>
+<span id="cb141-2"><a href="filling-gaps-in-temperature-records.html#cb141-2" tabindex="-1"></a>      <span class="fu">handle_gsod</span>(<span class="at">action =</span> <span class="st">&quot;download_weather&quot;</span>,</span>
+<span id="cb141-3"><a href="filling-gaps-in-temperature-records.html#cb141-3" tabindex="-1"></a>                  <span class="at">location =</span> <span class="fu">as.character</span>(station_list<span class="sc">$</span>chillR_code[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">6</span>)]),</span>
+<span id="cb141-4"><a href="filling-gaps-in-temperature-records.html#cb141-4" tabindex="-1"></a>                  <span class="at">time_interval =</span> <span class="fu">c</span>(<span class="dv">1990</span>, <span class="dv">2020</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb141-5"><a href="filling-gaps-in-temperature-records.html#cb141-5" tabindex="-1"></a>  <span class="fu">handle_gsod</span>()</span></code></pre></div>
 <pre><code>## Loading data for 31 years from station &#39;NORVENICH&#39;
-## =====================================================================================================
+## ======================================================================================
 ## 
 ## Loading data for 31 years from station &#39;BONN-HARDTHOEHE&#39;
-## =====================================================================================================
+## ======================================================================================
 ## 
 ## Loading data for 31 years from station &#39;BONN-ROLEBER&#39;
-## =====================================================================================================</code></pre>
+## ======================================================================================</code></pre>
 <p>With the list of potentially useful weather records now available, the next step is to use the <code>patch_daily_temperatures()</code> function. This function will integrate the data from the selected auxiliary stations to fill the missing temperature values in the Bonn dataset:</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="filling-gaps-in-temperature-records.html#cb136-1" tabindex="-1"></a>patched <span class="ot">&lt;-</span> <span class="fu">patch_daily_temperatures</span>(<span class="at">weather =</span> Bonn,</span>
-<span id="cb136-2"><a href="filling-gaps-in-temperature-records.html#cb136-2" tabindex="-1"></a>                                    <span class="at">patch_weather =</span> patch_weather)</span></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="filling-gaps-in-temperature-records.html#cb143-1" tabindex="-1"></a>patched <span class="ot">&lt;-</span> <span class="fu">patch_daily_temperatures</span>(<span class="at">weather =</span> Bonn,</span>
+<span id="cb143-2"><a href="filling-gaps-in-temperature-records.html#cb143-2" tabindex="-1"></a>                                    <span class="at">patch_weather =</span> patch_weather)</span></code></pre></div>
 <p>The results can be reviewed by examining the statistics element of the patched object, accessed using <code>patched$statistics</code>. This will provide an overview of how the gaps were filled and the adjustments made using the auxiliary station data.</p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="filling-gaps-in-temperature-records.html#cb137-1" tabindex="-1"></a><span class="co"># Patch statistics for NORVENICH</span></span>
-<span id="cb137-2"><a href="filling-gaps-in-temperature-records.html#cb137-2" tabindex="-1"></a>patched<span class="sc">$</span>statistics[[<span class="dv">1</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="filling-gaps-in-temperature-records.html#cb144-1" tabindex="-1"></a><span class="co"># Patch statistics for NORVENICH</span></span>
+<span id="cb144-2"><a href="filling-gaps-in-temperature-records.html#cb144-2" tabindex="-1"></a>patched<span class="sc">$</span>statistics[[<span class="dv">1</span>]]</span></code></pre></div>
 <table class="table table-striped" style="font-size: 14px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -2902,8 +2875,8 @@ Tmax
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="filling-gaps-in-temperature-records.html#cb138-1" tabindex="-1"></a><span class="co"># Patch statistics for BONN-HARDTHOEHE</span></span>
-<span id="cb138-2"><a href="filling-gaps-in-temperature-records.html#cb138-2" tabindex="-1"></a>patched<span class="sc">$</span>statistics[[<span class="dv">2</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="filling-gaps-in-temperature-records.html#cb145-1" tabindex="-1"></a><span class="co"># Patch statistics for BONN-HARDTHOEHE</span></span>
+<span id="cb145-2"><a href="filling-gaps-in-temperature-records.html#cb145-2" tabindex="-1"></a>patched<span class="sc">$</span>statistics[[<span class="dv">2</span>]]</span></code></pre></div>
 <table class="table table-striped" style="font-size: 14px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -2960,8 +2933,8 @@ Tmax
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="filling-gaps-in-temperature-records.html#cb139-1" tabindex="-1"></a><span class="co"># Patch statistics for BONN-ROLEBER</span></span>
-<span id="cb139-2"><a href="filling-gaps-in-temperature-records.html#cb139-2" tabindex="-1"></a>patched<span class="sc">$</span>statistics[[<span class="dv">3</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="filling-gaps-in-temperature-records.html#cb146-1" tabindex="-1"></a><span class="co"># Patch statistics for BONN-ROLEBER</span></span>
+<span id="cb146-2"><a href="filling-gaps-in-temperature-records.html#cb146-2" tabindex="-1"></a>patched<span class="sc">$</span>statistics[[<span class="dv">3</span>]]</span></code></pre></div>
 <table class="table table-striped" style="font-size: 14px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -3029,12 +3002,12 @@ Tmax
 <li><p><strong>Standard Deviation of Daily Differences (</strong><code>stdev_bias</code><strong>)</strong>: This indicates the variability in the differences between the stations. A high stdev_bias suggests that the temperature differences are not systematic and may not be easily corrected. If the stdev_bias exceeds a certain threshold, it may be best to exclude that station from the data transfer.</p></li>
 </ul>
 <p>To address these metrics, limits can be set for both. The <code>mean_bias</code> can be capped at 1°C, and the <code>stdev_bias</code> can be capped at 2°C. These thresholds will be passed as parameters (<code>max_mean_bias</code> and <code>max_stdev_bias</code>) to the <code>patch_daily_temperatures()</code> function. After setting these limits, the statistics should be reviewed again to ensure the quality of the patching process.</p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="filling-gaps-in-temperature-records.html#cb140-1" tabindex="-1"></a>patched <span class="ot">&lt;-</span> <span class="fu">patch_daily_temperatures</span>(<span class="at">weather =</span> Bonn,</span>
-<span id="cb140-2"><a href="filling-gaps-in-temperature-records.html#cb140-2" tabindex="-1"></a>                                    <span class="at">patch_weather =</span> patch_weather,</span>
-<span id="cb140-3"><a href="filling-gaps-in-temperature-records.html#cb140-3" tabindex="-1"></a>                                    <span class="at">max_mean_bias =</span> <span class="dv">1</span>,</span>
-<span id="cb140-4"><a href="filling-gaps-in-temperature-records.html#cb140-4" tabindex="-1"></a>                                    <span class="at">max_stdev_bias =</span> <span class="dv">2</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="filling-gaps-in-temperature-records.html#cb141-1" tabindex="-1"></a><span class="co"># Patch statistics for NORVENICH</span></span>
-<span id="cb141-2"><a href="filling-gaps-in-temperature-records.html#cb141-2" tabindex="-1"></a>patched<span class="sc">$</span>statistics[[<span class="dv">1</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="filling-gaps-in-temperature-records.html#cb147-1" tabindex="-1"></a>patched <span class="ot">&lt;-</span> <span class="fu">patch_daily_temperatures</span>(<span class="at">weather =</span> Bonn,</span>
+<span id="cb147-2"><a href="filling-gaps-in-temperature-records.html#cb147-2" tabindex="-1"></a>                                    <span class="at">patch_weather =</span> patch_weather,</span>
+<span id="cb147-3"><a href="filling-gaps-in-temperature-records.html#cb147-3" tabindex="-1"></a>                                    <span class="at">max_mean_bias =</span> <span class="dv">1</span>,</span>
+<span id="cb147-4"><a href="filling-gaps-in-temperature-records.html#cb147-4" tabindex="-1"></a>                                    <span class="at">max_stdev_bias =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="filling-gaps-in-temperature-records.html#cb148-1" tabindex="-1"></a><span class="co"># Patch statistics for NORVENICH</span></span>
+<span id="cb148-2"><a href="filling-gaps-in-temperature-records.html#cb148-2" tabindex="-1"></a>patched<span class="sc">$</span>statistics[[<span class="dv">1</span>]]</span></code></pre></div>
 <table class="table table-striped" style="font-size: 14px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -3091,8 +3064,8 @@ Tmax
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="filling-gaps-in-temperature-records.html#cb142-1" tabindex="-1"></a><span class="co"># Patch statistics for BONN-HARDTHOEHE</span></span>
-<span id="cb142-2"><a href="filling-gaps-in-temperature-records.html#cb142-2" tabindex="-1"></a>patched<span class="sc">$</span>statistics[[<span class="dv">2</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="filling-gaps-in-temperature-records.html#cb149-1" tabindex="-1"></a><span class="co"># Patch statistics for BONN-HARDTHOEHE</span></span>
+<span id="cb149-2"><a href="filling-gaps-in-temperature-records.html#cb149-2" tabindex="-1"></a>patched<span class="sc">$</span>statistics[[<span class="dv">2</span>]]</span></code></pre></div>
 <table class="table table-striped" style="font-size: 14px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -3149,8 +3122,8 @@ Tmax
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="filling-gaps-in-temperature-records.html#cb143-1" tabindex="-1"></a><span class="co"># Patch statistics for BONN-ROLEBER</span></span>
-<span id="cb143-2"><a href="filling-gaps-in-temperature-records.html#cb143-2" tabindex="-1"></a>patched<span class="sc">$</span>statistics[[<span class="dv">3</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="filling-gaps-in-temperature-records.html#cb150-1" tabindex="-1"></a><span class="co"># Patch statistics for BONN-ROLEBER</span></span>
+<span id="cb150-2"><a href="filling-gaps-in-temperature-records.html#cb150-2" tabindex="-1"></a>patched<span class="sc">$</span>statistics[[<span class="dv">3</span>]]</span></code></pre></div>
 <table class="table table-striped" style="font-size: 14px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -3209,8 +3182,8 @@ Tmax
 </table>
 <p>After applying the filters, all records from <strong>BONN-HARDTHOEHE</strong> and the <code>Tmax</code> records from <strong>BONN-ROLEBER</strong> were rejected because they did not meet the mean_bias threshold. However, the data from <strong>NORVENICH</strong> were deemed suitable, allowing us to fill 2,146 gaps for both <code>Tmin</code> and <code>Tmax</code>, leaving just 1 gap remaining for each.</p>
 <p>To identify where the remaining gaps are, the next step is to use the <code>fix_weather()</code> function. This will allow us to examine the dataset and pinpoint the exact locations of the remaining gaps in both <code>Tmin</code> and <code>Tmax</code>.</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="filling-gaps-in-temperature-records.html#cb144-1" tabindex="-1"></a>post_patch_stats <span class="ot">&lt;-</span> <span class="fu">fix_weather</span>(patched)<span class="sc">$</span>QC</span></code></pre></div>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="filling-gaps-in-temperature-records.html#cb145-1" tabindex="-1"></a>post_patch_stats</span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="filling-gaps-in-temperature-records.html#cb151-1" tabindex="-1"></a>post_patch_stats <span class="ot">&lt;-</span> <span class="fu">fix_weather</span>(patched)<span class="sc">$</span>QC</span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="filling-gaps-in-temperature-records.html#cb152-1" tabindex="-1"></a>post_patch_stats</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped" style="font-size: 14px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
@@ -4052,18 +4025,18 @@ Perc_complete
 </table>
 </div>
 <p>After patching the dataset, only a single day’s data remains missing, which is a very short gap. Given its small size, it is reasonable to use linear interpolation to fill this remaining gap. The <code>fix_weather()</code> function can be used to interpolate this final missing value and complete the dataset.</p>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="filling-gaps-in-temperature-records.html#cb146-1" tabindex="-1"></a>Bonn_weather <span class="ot">&lt;-</span> <span class="fu">fix_weather</span>(patched)</span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="filling-gaps-in-temperature-records.html#cb153-1" tabindex="-1"></a>Bonn_weather <span class="ot">&lt;-</span> <span class="fu">fix_weather</span>(patched)</span></code></pre></div>
 <div id="bias-correction-for-shorter-intervals" class="section level3 hasAnchor" number="11.4.1">
 <h3><span class="header-section-number">11.4.1</span> Bias-correction for shorter intervals<a href="filling-gaps-in-temperature-records.html#bias-correction-for-shorter-intervals" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In the <code>patch_daily_temperatures()</code> function, the bias correction is typically based on the average temperature difference between two weather stations over the entire year. However, this approach assumes that the bias between stations is constant throughout the year, which may not be true. In reality, the bias can vary across different seasons, meaning a station might be a good proxy for temperature data during certain times of the year but not others.</p>
 <p>To address this, the <code>patch_daily_temps()</code> function (note the slight name difference) allows for seasonally adjusted bias correction. By default, this function evaluates temperature data on a monthly basis, making separate comparisons for each calendar month. It can then assess whether an auxiliary station is a reliable proxy for temperatures in each specific month and apply month-specific bias corrections, leading to more accurate estimations with smaller biases than if the entire year were used for comparison.</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="filling-gaps-in-temperature-records.html#cb147-1" tabindex="-1"></a>patched_monthly <span class="ot">&lt;-</span> <span class="fu">patch_daily_temps</span>(<span class="at">weather =</span> Bonn,</span>
-<span id="cb147-2"><a href="filling-gaps-in-temperature-records.html#cb147-2" tabindex="-1"></a>                                     <span class="at">patch_weather =</span> patch_weather,</span>
-<span id="cb147-3"><a href="filling-gaps-in-temperature-records.html#cb147-3" tabindex="-1"></a>                                     <span class="at">max_mean_bias =</span> <span class="dv">1</span>,</span>
-<span id="cb147-4"><a href="filling-gaps-in-temperature-records.html#cb147-4" tabindex="-1"></a>                                     <span class="at">max_stdev_bias =</span> <span class="dv">2</span>,</span>
-<span id="cb147-5"><a href="filling-gaps-in-temperature-records.html#cb147-5" tabindex="-1"></a>                                     <span class="at">time_interval =</span> <span class="st">&quot;month&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="filling-gaps-in-temperature-records.html#cb154-1" tabindex="-1"></a>patched_monthly <span class="ot">&lt;-</span> <span class="fu">patch_daily_temps</span>(<span class="at">weather =</span> Bonn,</span>
+<span id="cb154-2"><a href="filling-gaps-in-temperature-records.html#cb154-2" tabindex="-1"></a>                                     <span class="at">patch_weather =</span> patch_weather,</span>
+<span id="cb154-3"><a href="filling-gaps-in-temperature-records.html#cb154-3" tabindex="-1"></a>                                     <span class="at">max_mean_bias =</span> <span class="dv">1</span>,</span>
+<span id="cb154-4"><a href="filling-gaps-in-temperature-records.html#cb154-4" tabindex="-1"></a>                                     <span class="at">max_stdev_bias =</span> <span class="dv">2</span>,</span>
+<span id="cb154-5"><a href="filling-gaps-in-temperature-records.html#cb154-5" tabindex="-1"></a>                                     <span class="at">time_interval =</span> <span class="st">&quot;month&quot;</span>)</span></code></pre></div>
 <p>The findings for minimum temperatures from the <strong>NORVENICH</strong> station can be summarized as follows:</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="filling-gaps-in-temperature-records.html#cb148-1" tabindex="-1"></a>patched_monthly<span class="sc">$</span>statistics<span class="sc">$</span>Tmin<span class="sc">$</span>NORVENICH</span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="filling-gaps-in-temperature-records.html#cb155-1" tabindex="-1"></a>patched_monthly<span class="sc">$</span>statistics<span class="sc">$</span>Tmin<span class="sc">$</span>NORVENICH</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; ">
 <table class="table table-striped" style="font-size: 14px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
@@ -4413,72 +4386,72 @@ Gaps_remain
 <p>The analysis shows that the <strong>mean bias</strong> between the stations varies significantly throughout the year, indicating that a month-specific bias correction would likely improve the accuracy of the temperature data.</p>
 <p>To implement this, the <code>time_interval</code> parameter in the <code>patch_daily_temps()</code> function allows for flexibility in the interval used for bias correction. Intervals can be set to <code>month</code>, <code>week</code>, or even custom durations like <code>10 days</code> or <code>2 weeks</code>. The function will start counting these intervals from January 1st of each year, which might result in shorter intervals toward the end of the year. This can generate warnings if the final interval is smaller than the selected period.</p>
 <p>However, it’s important to keep in mind that using smaller intervals reduces the amount of data available for bias determination. For short time series, very short intervals may not provide enough data, which could reduce the reliability of the bias correction. Therefore, selecting an appropriate interval size is crucial to balancing accuracy and data availability.</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="filling-gaps-in-temperature-records.html#cb149-1" tabindex="-1"></a>patched_2weeks <span class="ot">&lt;-</span> <span class="fu">patch_daily_temps</span>(<span class="at">weather =</span> Bonn,</span>
-<span id="cb149-2"><a href="filling-gaps-in-temperature-records.html#cb149-2" tabindex="-1"></a>                                    <span class="at">patch_weather =</span> patch_weather,</span>
-<span id="cb149-3"><a href="filling-gaps-in-temperature-records.html#cb149-3" tabindex="-1"></a>                                    <span class="at">max_mean_bias =</span> <span class="dv">1</span>,</span>
-<span id="cb149-4"><a href="filling-gaps-in-temperature-records.html#cb149-4" tabindex="-1"></a>                                    <span class="at">max_stdev_bias =</span> <span class="dv">2</span>,</span>
-<span id="cb149-5"><a href="filling-gaps-in-temperature-records.html#cb149-5" tabindex="-1"></a>                                    <span class="at">time_interval =</span> <span class="st">&quot;2 weeks&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="filling-gaps-in-temperature-records.html#cb156-1" tabindex="-1"></a>patched_2weeks <span class="ot">&lt;-</span> <span class="fu">patch_daily_temps</span>(<span class="at">weather =</span> Bonn,</span>
+<span id="cb156-2"><a href="filling-gaps-in-temperature-records.html#cb156-2" tabindex="-1"></a>                                    <span class="at">patch_weather =</span> patch_weather,</span>
+<span id="cb156-3"><a href="filling-gaps-in-temperature-records.html#cb156-3" tabindex="-1"></a>                                    <span class="at">max_mean_bias =</span> <span class="dv">1</span>,</span>
+<span id="cb156-4"><a href="filling-gaps-in-temperature-records.html#cb156-4" tabindex="-1"></a>                                    <span class="at">max_stdev_bias =</span> <span class="dv">2</span>,</span>
+<span id="cb156-5"><a href="filling-gaps-in-temperature-records.html#cb156-5" tabindex="-1"></a>                                    <span class="at">time_interval =</span> <span class="st">&quot;2 weeks&quot;</span>)</span></code></pre></div>
 <p>To demonstrate the effects, 5000 gaps will be created in the Bonn weather record and filled with proxy data using annual, monthly, and bi-weekly intervals for bias evaluation. The resulting errors will be visualized with a violin plot using <code>ggplot2</code>.</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="filling-gaps-in-temperature-records.html#cb150-1" tabindex="-1"></a>Gaps <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">seq</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(Bonn)), <span class="at">size =</span> <span class="dv">5000</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb150-2"><a href="filling-gaps-in-temperature-records.html#cb150-2" tabindex="-1"></a></span>
-<span id="cb150-3"><a href="filling-gaps-in-temperature-records.html#cb150-3" tabindex="-1"></a>Bonn_gaps <span class="ot">&lt;-</span> Bonn <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">obs_Tmin=</span>Tmin,</span>
-<span id="cb150-4"><a href="filling-gaps-in-temperature-records.html#cb150-4" tabindex="-1"></a>                             <span class="at">obs_Tmax=</span>Tmax)</span>
-<span id="cb150-5"><a href="filling-gaps-in-temperature-records.html#cb150-5" tabindex="-1"></a>Bonn_gaps<span class="sc">$</span>Tmin[Gaps] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb150-6"><a href="filling-gaps-in-temperature-records.html#cb150-6" tabindex="-1"></a>Bonn_gaps<span class="sc">$</span>Tmax[Gaps] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb150-7"><a href="filling-gaps-in-temperature-records.html#cb150-7" tabindex="-1"></a></span>
-<span id="cb150-8"><a href="filling-gaps-in-temperature-records.html#cb150-8" tabindex="-1"></a>patch_annual <span class="ot">&lt;-</span> <span class="fu">patch_daily_temps</span>(<span class="at">weather =</span> Bonn_gaps,</span>
-<span id="cb150-9"><a href="filling-gaps-in-temperature-records.html#cb150-9" tabindex="-1"></a>                                  <span class="at">patch_weather =</span> patch_weather,</span>
-<span id="cb150-10"><a href="filling-gaps-in-temperature-records.html#cb150-10" tabindex="-1"></a>                                  <span class="at">max_mean_bias =</span> <span class="dv">1</span>,</span>
-<span id="cb150-11"><a href="filling-gaps-in-temperature-records.html#cb150-11" tabindex="-1"></a>                                  <span class="at">max_stdev_bias =</span> <span class="dv">2</span>,</span>
-<span id="cb150-12"><a href="filling-gaps-in-temperature-records.html#cb150-12" tabindex="-1"></a>                                  <span class="at">time_interval =</span> <span class="st">&quot;year&quot;</span>)</span>
-<span id="cb150-13"><a href="filling-gaps-in-temperature-records.html#cb150-13" tabindex="-1"></a>patch_month <span class="ot">&lt;-</span> <span class="fu">patch_daily_temps</span>(<span class="at">weather =</span> Bonn_gaps,</span>
-<span id="cb150-14"><a href="filling-gaps-in-temperature-records.html#cb150-14" tabindex="-1"></a>                                 <span class="at">patch_weather =</span> patch_weather,</span>
-<span id="cb150-15"><a href="filling-gaps-in-temperature-records.html#cb150-15" tabindex="-1"></a>                                 <span class="at">max_mean_bias =</span> <span class="dv">1</span>,</span>
-<span id="cb150-16"><a href="filling-gaps-in-temperature-records.html#cb150-16" tabindex="-1"></a>                                 <span class="at">max_stdev_bias =</span> <span class="dv">2</span>,</span>
-<span id="cb150-17"><a href="filling-gaps-in-temperature-records.html#cb150-17" tabindex="-1"></a>                                 <span class="at">time_interval =</span> <span class="st">&quot;month&quot;</span>)</span>
-<span id="cb150-18"><a href="filling-gaps-in-temperature-records.html#cb150-18" tabindex="-1"></a>patch_2weeks <span class="ot">&lt;-</span> <span class="fu">patch_daily_temps</span>(<span class="at">weather =</span> Bonn_gaps,</span>
-<span id="cb150-19"><a href="filling-gaps-in-temperature-records.html#cb150-19" tabindex="-1"></a>                                  <span class="at">patch_weather =</span> patch_weather,</span>
-<span id="cb150-20"><a href="filling-gaps-in-temperature-records.html#cb150-20" tabindex="-1"></a>                                  <span class="at">max_mean_bias =</span> <span class="dv">1</span>,</span>
-<span id="cb150-21"><a href="filling-gaps-in-temperature-records.html#cb150-21" tabindex="-1"></a>                                  <span class="at">max_stdev_bias =</span> <span class="dv">2</span>,</span>
-<span id="cb150-22"><a href="filling-gaps-in-temperature-records.html#cb150-22" tabindex="-1"></a>                                  <span class="at">time_interval =</span> <span class="st">&quot;2 weeks&quot;</span>)</span>
-<span id="cb150-23"><a href="filling-gaps-in-temperature-records.html#cb150-23" tabindex="-1"></a></span>
-<span id="cb150-24"><a href="filling-gaps-in-temperature-records.html#cb150-24" tabindex="-1"></a>Bonn_gaps[,<span class="st">&quot;Tmin_annual&quot;</span>] <span class="ot">&lt;-</span> Bonn_gaps<span class="sc">$</span>obs_Tmin <span class="sc">-</span> patch_annual<span class="sc">$</span>weather<span class="sc">$</span>Tmin</span>
-<span id="cb150-25"><a href="filling-gaps-in-temperature-records.html#cb150-25" tabindex="-1"></a>Bonn_gaps[,<span class="st">&quot;Tmax_annual&quot;</span>] <span class="ot">&lt;-</span> Bonn_gaps<span class="sc">$</span>obs_Tmax <span class="sc">-</span> patch_annual<span class="sc">$</span>weather<span class="sc">$</span>Tmax</span>
-<span id="cb150-26"><a href="filling-gaps-in-temperature-records.html#cb150-26" tabindex="-1"></a>Bonn_gaps[,<span class="st">&quot;Tmin_month&quot;</span>] <span class="ot">&lt;-</span> Bonn_gaps<span class="sc">$</span>obs_Tmin <span class="sc">-</span> patch_month<span class="sc">$</span>weather<span class="sc">$</span>Tmin</span>
-<span id="cb150-27"><a href="filling-gaps-in-temperature-records.html#cb150-27" tabindex="-1"></a>Bonn_gaps[,<span class="st">&quot;Tmax_month&quot;</span>] <span class="ot">&lt;-</span> Bonn_gaps<span class="sc">$</span>obs_Tmax <span class="sc">-</span> patch_month<span class="sc">$</span>weather<span class="sc">$</span>Tmax</span>
-<span id="cb150-28"><a href="filling-gaps-in-temperature-records.html#cb150-28" tabindex="-1"></a>Bonn_gaps[,<span class="st">&quot;Tmin_2weeks&quot;</span>] <span class="ot">&lt;-</span> Bonn_gaps<span class="sc">$</span>obs_Tmin <span class="sc">-</span> patch_2weeks<span class="sc">$</span>weather<span class="sc">$</span>Tmin</span>
-<span id="cb150-29"><a href="filling-gaps-in-temperature-records.html#cb150-29" tabindex="-1"></a>Bonn_gaps[,<span class="st">&quot;Tmax_2weeks&quot;</span>] <span class="ot">&lt;-</span> Bonn_gaps<span class="sc">$</span>obs_Tmax <span class="sc">-</span> patch_2weeks<span class="sc">$</span>weather<span class="sc">$</span>Tmax</span>
-<span id="cb150-30"><a href="filling-gaps-in-temperature-records.html#cb150-30" tabindex="-1"></a></span>
-<span id="cb150-31"><a href="filling-gaps-in-temperature-records.html#cb150-31" tabindex="-1"></a>Interval_eval <span class="ot">&lt;-</span> Bonn_gaps <span class="sc">%&gt;%</span></span>
-<span id="cb150-32"><a href="filling-gaps-in-temperature-records.html#cb150-32" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(Tmin)) <span class="sc">%&gt;%</span></span>
-<span id="cb150-33"><a href="filling-gaps-in-temperature-records.html#cb150-33" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(Tmin_annual<span class="sc">:</span>Tmax_2weeks) <span class="sc">%&gt;%</span></span>
-<span id="cb150-34"><a href="filling-gaps-in-temperature-records.html#cb150-34" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Type=</span><span class="fu">factor</span>(name,</span>
-<span id="cb150-35"><a href="filling-gaps-in-temperature-records.html#cb150-35" tabindex="-1"></a>                     <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Tmin_annual&quot;</span>,</span>
-<span id="cb150-36"><a href="filling-gaps-in-temperature-records.html#cb150-36" tabindex="-1"></a>                                <span class="st">&quot;Tmin_month&quot;</span>,</span>
-<span id="cb150-37"><a href="filling-gaps-in-temperature-records.html#cb150-37" tabindex="-1"></a>                                <span class="st">&quot;Tmin_2weeks&quot;</span>,</span>
-<span id="cb150-38"><a href="filling-gaps-in-temperature-records.html#cb150-38" tabindex="-1"></a>                                <span class="st">&quot;Tmax_annual&quot;</span>,</span>
-<span id="cb150-39"><a href="filling-gaps-in-temperature-records.html#cb150-39" tabindex="-1"></a>                                <span class="st">&quot;Tmax_month&quot;</span>,</span>
-<span id="cb150-40"><a href="filling-gaps-in-temperature-records.html#cb150-40" tabindex="-1"></a>                                <span class="st">&quot;Tmax_2weeks&quot;</span>)) )</span>
-<span id="cb150-41"><a href="filling-gaps-in-temperature-records.html#cb150-41" tabindex="-1"></a></span>
-<span id="cb150-42"><a href="filling-gaps-in-temperature-records.html#cb150-42" tabindex="-1"></a><span class="fu">ggplot</span>(Interval_eval,</span>
-<span id="cb150-43"><a href="filling-gaps-in-temperature-records.html#cb150-43" tabindex="-1"></a>       <span class="fu">aes</span>(Type,value)) <span class="sc">+</span></span>
-<span id="cb150-44"><a href="filling-gaps-in-temperature-records.html#cb150-44" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">draw_quantiles =</span> <span class="fu">c</span>(<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>)) <span class="sc">+</span></span>
-<span id="cb150-45"><a href="filling-gaps-in-temperature-records.html#cb150-45" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Variable and bias evaluation interval&quot;</span>) <span class="sc">+</span></span>
-<span id="cb150-46"><a href="filling-gaps-in-temperature-records.html#cb150-46" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Prediction error&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-147-1.png" width="672" /></p>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="filling-gaps-in-temperature-records.html#cb157-1" tabindex="-1"></a>Gaps <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">seq</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(Bonn)), <span class="at">size =</span> <span class="dv">5000</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb157-2"><a href="filling-gaps-in-temperature-records.html#cb157-2" tabindex="-1"></a></span>
+<span id="cb157-3"><a href="filling-gaps-in-temperature-records.html#cb157-3" tabindex="-1"></a>Bonn_gaps <span class="ot">&lt;-</span> Bonn <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">obs_Tmin=</span>Tmin,</span>
+<span id="cb157-4"><a href="filling-gaps-in-temperature-records.html#cb157-4" tabindex="-1"></a>                             <span class="at">obs_Tmax=</span>Tmax)</span>
+<span id="cb157-5"><a href="filling-gaps-in-temperature-records.html#cb157-5" tabindex="-1"></a>Bonn_gaps<span class="sc">$</span>Tmin[Gaps] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb157-6"><a href="filling-gaps-in-temperature-records.html#cb157-6" tabindex="-1"></a>Bonn_gaps<span class="sc">$</span>Tmax[Gaps] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb157-7"><a href="filling-gaps-in-temperature-records.html#cb157-7" tabindex="-1"></a></span>
+<span id="cb157-8"><a href="filling-gaps-in-temperature-records.html#cb157-8" tabindex="-1"></a>patch_annual <span class="ot">&lt;-</span> <span class="fu">patch_daily_temps</span>(<span class="at">weather =</span> Bonn_gaps,</span>
+<span id="cb157-9"><a href="filling-gaps-in-temperature-records.html#cb157-9" tabindex="-1"></a>                                  <span class="at">patch_weather =</span> patch_weather,</span>
+<span id="cb157-10"><a href="filling-gaps-in-temperature-records.html#cb157-10" tabindex="-1"></a>                                  <span class="at">max_mean_bias =</span> <span class="dv">1</span>,</span>
+<span id="cb157-11"><a href="filling-gaps-in-temperature-records.html#cb157-11" tabindex="-1"></a>                                  <span class="at">max_stdev_bias =</span> <span class="dv">2</span>,</span>
+<span id="cb157-12"><a href="filling-gaps-in-temperature-records.html#cb157-12" tabindex="-1"></a>                                  <span class="at">time_interval =</span> <span class="st">&quot;year&quot;</span>)</span>
+<span id="cb157-13"><a href="filling-gaps-in-temperature-records.html#cb157-13" tabindex="-1"></a>patch_month <span class="ot">&lt;-</span> <span class="fu">patch_daily_temps</span>(<span class="at">weather =</span> Bonn_gaps,</span>
+<span id="cb157-14"><a href="filling-gaps-in-temperature-records.html#cb157-14" tabindex="-1"></a>                                 <span class="at">patch_weather =</span> patch_weather,</span>
+<span id="cb157-15"><a href="filling-gaps-in-temperature-records.html#cb157-15" tabindex="-1"></a>                                 <span class="at">max_mean_bias =</span> <span class="dv">1</span>,</span>
+<span id="cb157-16"><a href="filling-gaps-in-temperature-records.html#cb157-16" tabindex="-1"></a>                                 <span class="at">max_stdev_bias =</span> <span class="dv">2</span>,</span>
+<span id="cb157-17"><a href="filling-gaps-in-temperature-records.html#cb157-17" tabindex="-1"></a>                                 <span class="at">time_interval =</span> <span class="st">&quot;month&quot;</span>)</span>
+<span id="cb157-18"><a href="filling-gaps-in-temperature-records.html#cb157-18" tabindex="-1"></a>patch_2weeks <span class="ot">&lt;-</span> <span class="fu">patch_daily_temps</span>(<span class="at">weather =</span> Bonn_gaps,</span>
+<span id="cb157-19"><a href="filling-gaps-in-temperature-records.html#cb157-19" tabindex="-1"></a>                                  <span class="at">patch_weather =</span> patch_weather,</span>
+<span id="cb157-20"><a href="filling-gaps-in-temperature-records.html#cb157-20" tabindex="-1"></a>                                  <span class="at">max_mean_bias =</span> <span class="dv">1</span>,</span>
+<span id="cb157-21"><a href="filling-gaps-in-temperature-records.html#cb157-21" tabindex="-1"></a>                                  <span class="at">max_stdev_bias =</span> <span class="dv">2</span>,</span>
+<span id="cb157-22"><a href="filling-gaps-in-temperature-records.html#cb157-22" tabindex="-1"></a>                                  <span class="at">time_interval =</span> <span class="st">&quot;2 weeks&quot;</span>)</span>
+<span id="cb157-23"><a href="filling-gaps-in-temperature-records.html#cb157-23" tabindex="-1"></a></span>
+<span id="cb157-24"><a href="filling-gaps-in-temperature-records.html#cb157-24" tabindex="-1"></a>Bonn_gaps[,<span class="st">&quot;Tmin_annual&quot;</span>] <span class="ot">&lt;-</span> Bonn_gaps<span class="sc">$</span>obs_Tmin <span class="sc">-</span> patch_annual<span class="sc">$</span>weather<span class="sc">$</span>Tmin</span>
+<span id="cb157-25"><a href="filling-gaps-in-temperature-records.html#cb157-25" tabindex="-1"></a>Bonn_gaps[,<span class="st">&quot;Tmax_annual&quot;</span>] <span class="ot">&lt;-</span> Bonn_gaps<span class="sc">$</span>obs_Tmax <span class="sc">-</span> patch_annual<span class="sc">$</span>weather<span class="sc">$</span>Tmax</span>
+<span id="cb157-26"><a href="filling-gaps-in-temperature-records.html#cb157-26" tabindex="-1"></a>Bonn_gaps[,<span class="st">&quot;Tmin_month&quot;</span>] <span class="ot">&lt;-</span> Bonn_gaps<span class="sc">$</span>obs_Tmin <span class="sc">-</span> patch_month<span class="sc">$</span>weather<span class="sc">$</span>Tmin</span>
+<span id="cb157-27"><a href="filling-gaps-in-temperature-records.html#cb157-27" tabindex="-1"></a>Bonn_gaps[,<span class="st">&quot;Tmax_month&quot;</span>] <span class="ot">&lt;-</span> Bonn_gaps<span class="sc">$</span>obs_Tmax <span class="sc">-</span> patch_month<span class="sc">$</span>weather<span class="sc">$</span>Tmax</span>
+<span id="cb157-28"><a href="filling-gaps-in-temperature-records.html#cb157-28" tabindex="-1"></a>Bonn_gaps[,<span class="st">&quot;Tmin_2weeks&quot;</span>] <span class="ot">&lt;-</span> Bonn_gaps<span class="sc">$</span>obs_Tmin <span class="sc">-</span> patch_2weeks<span class="sc">$</span>weather<span class="sc">$</span>Tmin</span>
+<span id="cb157-29"><a href="filling-gaps-in-temperature-records.html#cb157-29" tabindex="-1"></a>Bonn_gaps[,<span class="st">&quot;Tmax_2weeks&quot;</span>] <span class="ot">&lt;-</span> Bonn_gaps<span class="sc">$</span>obs_Tmax <span class="sc">-</span> patch_2weeks<span class="sc">$</span>weather<span class="sc">$</span>Tmax</span>
+<span id="cb157-30"><a href="filling-gaps-in-temperature-records.html#cb157-30" tabindex="-1"></a></span>
+<span id="cb157-31"><a href="filling-gaps-in-temperature-records.html#cb157-31" tabindex="-1"></a>Interval_eval <span class="ot">&lt;-</span> Bonn_gaps <span class="sc">%&gt;%</span></span>
+<span id="cb157-32"><a href="filling-gaps-in-temperature-records.html#cb157-32" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(Tmin)) <span class="sc">%&gt;%</span></span>
+<span id="cb157-33"><a href="filling-gaps-in-temperature-records.html#cb157-33" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(Tmin_annual<span class="sc">:</span>Tmax_2weeks) <span class="sc">%&gt;%</span></span>
+<span id="cb157-34"><a href="filling-gaps-in-temperature-records.html#cb157-34" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Type=</span><span class="fu">factor</span>(name,</span>
+<span id="cb157-35"><a href="filling-gaps-in-temperature-records.html#cb157-35" tabindex="-1"></a>                     <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Tmin_annual&quot;</span>,</span>
+<span id="cb157-36"><a href="filling-gaps-in-temperature-records.html#cb157-36" tabindex="-1"></a>                                <span class="st">&quot;Tmin_month&quot;</span>,</span>
+<span id="cb157-37"><a href="filling-gaps-in-temperature-records.html#cb157-37" tabindex="-1"></a>                                <span class="st">&quot;Tmin_2weeks&quot;</span>,</span>
+<span id="cb157-38"><a href="filling-gaps-in-temperature-records.html#cb157-38" tabindex="-1"></a>                                <span class="st">&quot;Tmax_annual&quot;</span>,</span>
+<span id="cb157-39"><a href="filling-gaps-in-temperature-records.html#cb157-39" tabindex="-1"></a>                                <span class="st">&quot;Tmax_month&quot;</span>,</span>
+<span id="cb157-40"><a href="filling-gaps-in-temperature-records.html#cb157-40" tabindex="-1"></a>                                <span class="st">&quot;Tmax_2weeks&quot;</span>)) )</span>
+<span id="cb157-41"><a href="filling-gaps-in-temperature-records.html#cb157-41" tabindex="-1"></a></span>
+<span id="cb157-42"><a href="filling-gaps-in-temperature-records.html#cb157-42" tabindex="-1"></a><span class="fu">ggplot</span>(Interval_eval,</span>
+<span id="cb157-43"><a href="filling-gaps-in-temperature-records.html#cb157-43" tabindex="-1"></a>       <span class="fu">aes</span>(Type,value)) <span class="sc">+</span></span>
+<span id="cb157-44"><a href="filling-gaps-in-temperature-records.html#cb157-44" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">draw_quantiles =</span> <span class="fu">c</span>(<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>)) <span class="sc">+</span></span>
+<span id="cb157-45"><a href="filling-gaps-in-temperature-records.html#cb157-45" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Variable and bias evaluation interval&quot;</span>) <span class="sc">+</span></span>
+<span id="cb157-46"><a href="filling-gaps-in-temperature-records.html#cb157-46" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Prediction error&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-157-1.png" width="672" /></p>
 <p>It is also possible to evaluate the mean daily error:</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="filling-gaps-in-temperature-records.html#cb151-1" tabindex="-1"></a>error_eval <span class="ot">&lt;-</span></span>
-<span id="cb151-2"><a href="filling-gaps-in-temperature-records.html#cb151-2" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">Variable =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;Tmin&quot;</span>,<span class="dv">3</span>),<span class="fu">rep</span>(<span class="st">&quot;Tmax&quot;</span>,<span class="dv">3</span>)),</span>
-<span id="cb151-3"><a href="filling-gaps-in-temperature-records.html#cb151-3" tabindex="-1"></a>             <span class="at">Interval =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Year&quot;</span>,<span class="st">&quot;Month&quot;</span>,<span class="st">&quot;Two weeks&quot;</span>),<span class="dv">2</span>),</span>
-<span id="cb151-4"><a href="filling-gaps-in-temperature-records.html#cb151-4" tabindex="-1"></a>             <span class="at">Error =</span> <span class="fu">c</span>(</span>
-<span id="cb151-5"><a href="filling-gaps-in-temperature-records.html#cb151-5" tabindex="-1"></a>             <span class="fu">mean</span>(<span class="fu">abs</span>(Bonn_gaps<span class="sc">$</span>Tmin_annual[<span class="fu">is.na</span>(Bonn_gaps<span class="sc">$</span>Tmin)]),<span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb151-6"><a href="filling-gaps-in-temperature-records.html#cb151-6" tabindex="-1"></a>             <span class="fu">mean</span>(<span class="fu">abs</span>(Bonn_gaps<span class="sc">$</span>Tmin_month[<span class="fu">is.na</span>(Bonn_gaps<span class="sc">$</span>Tmin)]),<span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb151-7"><a href="filling-gaps-in-temperature-records.html#cb151-7" tabindex="-1"></a>             <span class="fu">mean</span>(<span class="fu">abs</span>(Bonn_gaps<span class="sc">$</span>Tmin_2weeks[<span class="fu">is.na</span>(Bonn_gaps<span class="sc">$</span>Tmin)]),<span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb151-8"><a href="filling-gaps-in-temperature-records.html#cb151-8" tabindex="-1"></a>             <span class="fu">mean</span>(<span class="fu">abs</span>(Bonn_gaps<span class="sc">$</span>Tmax_annual[<span class="fu">is.na</span>(Bonn_gaps<span class="sc">$</span>Tmin)]),<span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb151-9"><a href="filling-gaps-in-temperature-records.html#cb151-9" tabindex="-1"></a>             <span class="fu">mean</span>(<span class="fu">abs</span>(Bonn_gaps<span class="sc">$</span>Tmax_month[<span class="fu">is.na</span>(Bonn_gaps<span class="sc">$</span>Tmin)]),<span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb151-10"><a href="filling-gaps-in-temperature-records.html#cb151-10" tabindex="-1"></a>             <span class="fu">mean</span>(<span class="fu">abs</span>(Bonn_gaps<span class="sc">$</span>Tmax_2weeks[<span class="fu">is.na</span>(Bonn_gaps<span class="sc">$</span>Tmin)]),<span class="at">na.rm=</span><span class="cn">TRUE</span>))</span>
-<span id="cb151-11"><a href="filling-gaps-in-temperature-records.html#cb151-11" tabindex="-1"></a>             )</span></code></pre></div>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="filling-gaps-in-temperature-records.html#cb152-1" tabindex="-1"></a>error_eval</span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="filling-gaps-in-temperature-records.html#cb158-1" tabindex="-1"></a>error_eval <span class="ot">&lt;-</span></span>
+<span id="cb158-2"><a href="filling-gaps-in-temperature-records.html#cb158-2" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">Variable =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;Tmin&quot;</span>,<span class="dv">3</span>),<span class="fu">rep</span>(<span class="st">&quot;Tmax&quot;</span>,<span class="dv">3</span>)),</span>
+<span id="cb158-3"><a href="filling-gaps-in-temperature-records.html#cb158-3" tabindex="-1"></a>             <span class="at">Interval =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Year&quot;</span>,<span class="st">&quot;Month&quot;</span>,<span class="st">&quot;Two weeks&quot;</span>),<span class="dv">2</span>),</span>
+<span id="cb158-4"><a href="filling-gaps-in-temperature-records.html#cb158-4" tabindex="-1"></a>             <span class="at">Error =</span> <span class="fu">c</span>(</span>
+<span id="cb158-5"><a href="filling-gaps-in-temperature-records.html#cb158-5" tabindex="-1"></a>             <span class="fu">mean</span>(<span class="fu">abs</span>(Bonn_gaps<span class="sc">$</span>Tmin_annual[<span class="fu">is.na</span>(Bonn_gaps<span class="sc">$</span>Tmin)]),<span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb158-6"><a href="filling-gaps-in-temperature-records.html#cb158-6" tabindex="-1"></a>             <span class="fu">mean</span>(<span class="fu">abs</span>(Bonn_gaps<span class="sc">$</span>Tmin_month[<span class="fu">is.na</span>(Bonn_gaps<span class="sc">$</span>Tmin)]),<span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb158-7"><a href="filling-gaps-in-temperature-records.html#cb158-7" tabindex="-1"></a>             <span class="fu">mean</span>(<span class="fu">abs</span>(Bonn_gaps<span class="sc">$</span>Tmin_2weeks[<span class="fu">is.na</span>(Bonn_gaps<span class="sc">$</span>Tmin)]),<span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb158-8"><a href="filling-gaps-in-temperature-records.html#cb158-8" tabindex="-1"></a>             <span class="fu">mean</span>(<span class="fu">abs</span>(Bonn_gaps<span class="sc">$</span>Tmax_annual[<span class="fu">is.na</span>(Bonn_gaps<span class="sc">$</span>Tmin)]),<span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb158-9"><a href="filling-gaps-in-temperature-records.html#cb158-9" tabindex="-1"></a>             <span class="fu">mean</span>(<span class="fu">abs</span>(Bonn_gaps<span class="sc">$</span>Tmax_month[<span class="fu">is.na</span>(Bonn_gaps<span class="sc">$</span>Tmin)]),<span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb158-10"><a href="filling-gaps-in-temperature-records.html#cb158-10" tabindex="-1"></a>             <span class="fu">mean</span>(<span class="fu">abs</span>(Bonn_gaps<span class="sc">$</span>Tmax_2weeks[<span class="fu">is.na</span>(Bonn_gaps<span class="sc">$</span>Tmin)]),<span class="at">na.rm=</span><span class="cn">TRUE</span>))</span>
+<span id="cb158-11"><a href="filling-gaps-in-temperature-records.html#cb158-11" tabindex="-1"></a>             )</span></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="filling-gaps-in-temperature-records.html#cb159-1" tabindex="-1"></a>error_eval</span></code></pre></div>
 <table class="table table-striped" style="font-size: 14px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -4567,10 +4540,10 @@ Two weeks
 <div id="saving-the-data-for-later" class="section level3 hasAnchor" number="11.4.2">
 <h3><span class="header-section-number">11.4.2</span> Saving the data for later<a href="filling-gaps-in-temperature-records.html#saving-the-data-for-later" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The dataset based on monthly intervals should be saved for later use. Before saving, the remaining missing day needs to be interpolated. Once this gap is filled, the dataset can be stored for future use.</p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="filling-gaps-in-temperature-records.html#cb153-1" tabindex="-1"></a>monthly_bias_fixed <span class="ot">&lt;-</span> <span class="fu">fix_weather</span>(patched_monthly)</span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="filling-gaps-in-temperature-records.html#cb160-1" tabindex="-1"></a>monthly_bias_fixed <span class="ot">&lt;-</span> <span class="fu">fix_weather</span>(patched_monthly)</span></code></pre></div>
 <p>The long-term record for Bonn, covering the period from 1990 to 2020, is now complete with no remaining gaps. This dataset can now be saved for future use.</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="filling-gaps-in-temperature-records.html#cb154-1" tabindex="-1"></a><span class="fu">write.csv</span>(monthly_bias_fixed<span class="sc">$</span>weather,</span>
-<span id="cb154-2"><a href="filling-gaps-in-temperature-records.html#cb154-2" tabindex="-1"></a>          <span class="st">&quot;data/Bonn_weather.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="filling-gaps-in-temperature-records.html#cb161-1" tabindex="-1"></a><span class="fu">write.csv</span>(monthly_bias_fixed<span class="sc">$</span>weather,</span>
+<span id="cb161-2"><a href="filling-gaps-in-temperature-records.html#cb161-2" tabindex="-1"></a>          <span class="st">&quot;data/Bonn_weather.csv&quot;</span>)</span></code></pre></div>
 <p>Only the weather element, a <code>data.frame</code>, was saved, as it can be easily exported as a spreadsheet (<code>.csv</code> file). While it is also possible to save lists, such as the <code>QC</code> element, this requires a more complex process, so it will be saved at a later time.</p>
 </div>
 </div>
@@ -4579,8 +4552,8 @@ Two weeks
 <ol style="list-style-type: decimal">
 <li>Use <code>chillR</code> functions to find out how many gaps you have in your dataset (even if you have none, please still follow all further steps)</li>
 </ol>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="filling-gaps-in-temperature-records.html#cb155-1" tabindex="-1"></a>Yakima <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Yakima/chillR_weather.csv&quot;</span>)</span>
-<span id="cb155-2"><a href="filling-gaps-in-temperature-records.html#cb155-2" tabindex="-1"></a>Yakima_QC <span class="ot">&lt;-</span> <span class="fu">fix_weather</span>(Yakima)<span class="sc">$</span>QC</span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="filling-gaps-in-temperature-records.html#cb162-1" tabindex="-1"></a>Yakima <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Yakima/chillR_weather.csv&quot;</span>)</span>
+<span id="cb162-2"><a href="filling-gaps-in-temperature-records.html#cb162-2" tabindex="-1"></a>Yakima_QC <span class="ot">&lt;-</span> <span class="fu">fix_weather</span>(Yakima)<span class="sc">$</span>QC</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped" style="font-size: 14px; color: black; ">
 <thead>
@@ -5424,9 +5397,9 @@ Perc_complete
 <ol start="2" style="list-style-type: decimal">
 <li>Create a list of the 25 closest weather stations using the <code>handle_gsod</code> function</li>
 </ol>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="filling-gaps-in-temperature-records.html#cb156-1" tabindex="-1"></a>station_list_Yakima <span class="ot">&lt;-</span> <span class="fu">handle_gsod</span>(<span class="at">action =</span> <span class="st">&quot;list_stations&quot;</span>,</span>
-<span id="cb156-2"><a href="filling-gaps-in-temperature-records.html#cb156-2" tabindex="-1"></a>                                   <span class="at">location =</span> <span class="fu">c</span>(<span class="at">long =</span> <span class="sc">-</span><span class="fl">120.50</span>, <span class="at">lat =</span> <span class="fl">46.60</span>),</span>
-<span id="cb156-3"><a href="filling-gaps-in-temperature-records.html#cb156-3" tabindex="-1"></a>                                   <span class="at">time_interval =</span> <span class="fu">c</span>(<span class="dv">1990</span>, <span class="dv">2020</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="filling-gaps-in-temperature-records.html#cb163-1" tabindex="-1"></a>station_list_Yakima <span class="ot">&lt;-</span> <span class="fu">handle_gsod</span>(<span class="at">action =</span> <span class="st">&quot;list_stations&quot;</span>,</span>
+<span id="cb163-2"><a href="filling-gaps-in-temperature-records.html#cb163-2" tabindex="-1"></a>                                   <span class="at">location =</span> <span class="fu">c</span>(<span class="at">long =</span> <span class="sc">-</span><span class="fl">120.50</span>, <span class="at">lat =</span> <span class="fl">46.60</span>),</span>
+<span id="cb163-3"><a href="filling-gaps-in-temperature-records.html#cb163-3" tabindex="-1"></a>                                   <span class="at">time_interval =</span> <span class="fu">c</span>(<span class="dv">1990</span>, <span class="dv">2020</span>))</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped" style="font-size: 14px; color: black; ">
 <thead>
@@ -6271,25 +6244,25 @@ US
 <li>Identify suitable weather stations for patching gaps</li>
 <li>Download weather data for promising stations, convert them to <code>chillR</code> format and compile them in a list</li>
 </ol>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="filling-gaps-in-temperature-records.html#cb157-1" tabindex="-1"></a>patch_weather <span class="ot">&lt;-</span></span>
-<span id="cb157-2"><a href="filling-gaps-in-temperature-records.html#cb157-2" tabindex="-1"></a>  <span class="fu">handle_gsod</span>(<span class="at">action =</span> <span class="st">&quot;download_weather&quot;</span>,</span>
-<span id="cb157-3"><a href="filling-gaps-in-temperature-records.html#cb157-3" tabindex="-1"></a>              <span class="at">location =</span> <span class="fu">as.character</span>(station_list_Yakima<span class="sc">$</span>chillR_code[<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>)]),</span>
-<span id="cb157-4"><a href="filling-gaps-in-temperature-records.html#cb157-4" tabindex="-1"></a>              <span class="at">time_interval =</span> <span class="fu">c</span>(<span class="dv">1990</span>, <span class="dv">2020</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb157-5"><a href="filling-gaps-in-temperature-records.html#cb157-5" tabindex="-1"></a>  <span class="fu">handle_gsod</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="filling-gaps-in-temperature-records.html#cb164-1" tabindex="-1"></a>patch_weather <span class="ot">&lt;-</span></span>
+<span id="cb164-2"><a href="filling-gaps-in-temperature-records.html#cb164-2" tabindex="-1"></a>  <span class="fu">handle_gsod</span>(<span class="at">action =</span> <span class="st">&quot;download_weather&quot;</span>,</span>
+<span id="cb164-3"><a href="filling-gaps-in-temperature-records.html#cb164-3" tabindex="-1"></a>              <span class="at">location =</span> <span class="fu">as.character</span>(station_list_Yakima<span class="sc">$</span>chillR_code[<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>)]),</span>
+<span id="cb164-4"><a href="filling-gaps-in-temperature-records.html#cb164-4" tabindex="-1"></a>              <span class="at">time_interval =</span> <span class="fu">c</span>(<span class="dv">1990</span>, <span class="dv">2020</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb164-5"><a href="filling-gaps-in-temperature-records.html#cb164-5" tabindex="-1"></a>  <span class="fu">handle_gsod</span>()</span></code></pre></div>
 <pre><code>## Loading data for 31 years from station &#39;RANGE OP 13 / YAKIMA TRAINING CENTER&#39;
-## =====================================================================================================
+## ======================================================================================
 ## 
 ## Loading data for 31 years from station &#39;HANFORD AIRPORT&#39;
-## =====================================================================================================
+## ======================================================================================
 ## 
 ## Loading data for 31 years from station &#39;BOWERS FIELD AIRPORT&#39;
-## =====================================================================================================</code></pre>
+## ======================================================================================</code></pre>
 <ol start="5" style="list-style-type: decimal">
 <li><p>Use the <code>patch_daily_temperatures</code> function to fill gaps</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="filling-gaps-in-temperature-records.html#cb159-1" tabindex="-1"></a>patched <span class="ot">&lt;-</span> <span class="fu">patch_daily_temperatures</span>(<span class="at">weather =</span> Yakima,</span>
-<span id="cb159-2"><a href="filling-gaps-in-temperature-records.html#cb159-2" tabindex="-1"></a>                                    <span class="at">patch_weather =</span> patch_weather)</span></code></pre></div>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="filling-gaps-in-temperature-records.html#cb160-1" tabindex="-1"></a><span class="co"># Patch statistics for YRANGE OP 13 /AKIMA TRAINING CENTER</span></span>
-<span id="cb160-2"><a href="filling-gaps-in-temperature-records.html#cb160-2" tabindex="-1"></a>patched<span class="sc">$</span>statistics[[<span class="dv">1</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="filling-gaps-in-temperature-records.html#cb166-1" tabindex="-1"></a>patched <span class="ot">&lt;-</span> <span class="fu">patch_daily_temperatures</span>(<span class="at">weather =</span> Yakima,</span>
+<span id="cb166-2"><a href="filling-gaps-in-temperature-records.html#cb166-2" tabindex="-1"></a>                                    <span class="at">patch_weather =</span> patch_weather)</span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="filling-gaps-in-temperature-records.html#cb167-1" tabindex="-1"></a><span class="co"># Patch statistics for YRANGE OP 13 /AKIMA TRAINING CENTER</span></span>
+<span id="cb167-2"><a href="filling-gaps-in-temperature-records.html#cb167-2" tabindex="-1"></a>patched<span class="sc">$</span>statistics[[<span class="dv">1</span>]]</span></code></pre></div>
 <table class="table table-striped" style="font-size: 14px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -6346,8 +6319,8 @@ US
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="filling-gaps-in-temperature-records.html#cb161-1" tabindex="-1"></a><span class="co"># Patch statistics for HANFORD AIRPORT</span></span>
-<span id="cb161-2"><a href="filling-gaps-in-temperature-records.html#cb161-2" tabindex="-1"></a>patched<span class="sc">$</span>statistics[[<span class="dv">2</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="filling-gaps-in-temperature-records.html#cb168-1" tabindex="-1"></a><span class="co"># Patch statistics for HANFORD AIRPORT</span></span>
+<span id="cb168-2"><a href="filling-gaps-in-temperature-records.html#cb168-2" tabindex="-1"></a>patched<span class="sc">$</span>statistics[[<span class="dv">2</span>]]</span></code></pre></div>
 <table class="table table-striped" style="font-size: 14px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -6404,8 +6377,8 @@ US
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="filling-gaps-in-temperature-records.html#cb162-1" tabindex="-1"></a><span class="co"># Patch statistics for BOWERS FIELD AIRPORT</span></span>
-<span id="cb162-2"><a href="filling-gaps-in-temperature-records.html#cb162-2" tabindex="-1"></a>patched<span class="sc">$</span>statistics[[<span class="dv">3</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="filling-gaps-in-temperature-records.html#cb169-1" tabindex="-1"></a><span class="co"># Patch statistics for BOWERS FIELD AIRPORT</span></span>
+<span id="cb169-2"><a href="filling-gaps-in-temperature-records.html#cb169-2" tabindex="-1"></a>patched<span class="sc">$</span>statistics[[<span class="dv">3</span>]]</span></code></pre></div>
 <table class="table table-striped" style="font-size: 14px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -6464,8 +6437,8 @@ US
 </table></li>
 <li><p>Investigate the results - have all gaps been filled?</p></li>
 </ol>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="filling-gaps-in-temperature-records.html#cb163-1" tabindex="-1"></a><span class="fu">write.csv</span>(patched<span class="sc">$</span>weather,</span>
-<span id="cb163-2"><a href="filling-gaps-in-temperature-records.html#cb163-2" tabindex="-1"></a>          <span class="st">&quot;Yakima/Yakima_weather.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="filling-gaps-in-temperature-records.html#cb170-1" tabindex="-1"></a><span class="fu">write.csv</span>(patched<span class="sc">$</span>weather,</span>
+<span id="cb170-2"><a href="filling-gaps-in-temperature-records.html#cb170-2" tabindex="-1"></a>          <span class="st">&quot;Yakima/Yakima_weather.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 
 </div>
 </div>
