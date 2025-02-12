@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="making-hourly-temperatures.html"/>
-
+<link rel="next" href="filling-gaps-in-temperature-records.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -246,6 +246,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.9.3" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#apply"><i class="fa fa-check"></i><b>9.9.3</b> <code>apply</code></a></li>
 </ul></li>
 <li class="chapter" data-level="9.10" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#exercises-on-useful-r-tools"><i class="fa fa-check"></i><b>9.10</b> <code>Exercises</code> on useful R tools</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html"><i class="fa fa-check"></i><b>10</b> Filling gaps in temperature records</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html#learning-goals-7"><i class="fa fa-check"></i><b>10.1</b> Learning goals</a></li>
+<li class="chapter" data-level="10.2" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html#gaps"><i class="fa fa-check"></i><b>10.2</b> Gaps</a></li>
+<li class="chapter" data-level="10.3" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html#filling-short-gaps-in-daily-records"><i class="fa fa-check"></i><b>10.3</b> Filling short gaps in daily records</a></li>
+<li class="chapter" data-level="10.4" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html#filling-long-gaps-in-daily-records"><i class="fa fa-check"></i><b>10.4</b> Filling long gaps in daily records</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html#bias-correction-for-shorter-intervals"><i class="fa fa-check"></i><b>10.4.1</b> Bias-correction for shorter intervals</a></li>
+<li class="chapter" data-level="10.4.2" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html#saving-the-data-for-later"><i class="fa fa-check"></i><b>10.4.2</b> Saving the data for later</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html#exercises-on-filling-gaps"><i class="fa fa-check"></i><b>10.5</b> <code>Exercises</code> on filling gaps</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -682,7 +694,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb104-3"><a href="some-useful-tools-in-r.html#cb104-3" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="at">cols =</span> <span class="fu">vars</span>(name)) <span class="sc">+</span></span>
 <span id="cb104-4"><a href="some-useful-tools-in-r.html#cb104-4" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Temperature (°C)&quot;</span>) <span class="sc">+</span></span>
 <span id="cb104-5"><a href="some-useful-tools-in-r.html#cb104-5" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">15</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-110-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-100-1.png" width="672" /></p>
 <ul>
 <li><ol start="5" style="list-style-type: lower-alpha">
 <li>Convert the dataset back to the <code>wide</code> format</li>
@@ -818,8 +830,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="making-hourly-temperatures.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="making-hourly-temperatures.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="filling-gaps-in-temperature-records.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
