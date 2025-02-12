@@ -77,6 +77,12 @@ sapply
 lapply
 apply
 exercises-on-useful-r-tools
+get_temp_data
+temperature-data-needs
+the-global-summary-of-the-day-database
+actionlist_stations
+actiondownload_weather
+downloaded-weather-as-action-argument
 filling-gaps-in-temperature-records
 learning-goals-7
 gaps
@@ -85,3 +91,10 @@ filling-long-gaps-in-daily-records
 bias-correction-for-shorter-intervals
 saving-the-data-for-later
 exercises-on-filling-gaps
+generating-temperature-scenarios
+learning-goals-8
+chill-scenarios
+risk-assessment-in-orchard-planning
+weather-generators
+weather-generation-in-chillr
+exercises-on-temperature-generation

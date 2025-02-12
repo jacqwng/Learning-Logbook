@@ -1,0 +1,2836 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 10 Getting temperature data | Tree phenology Analysis with R</title>
+  <meta name="description" content="Chapter 10 Getting temperature data | Tree phenology Analysis with R" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 10 Getting temperature data | Tree phenology Analysis with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 10 Getting temperature data | Tree phenology Analysis with R" />
+  
+  
+  
+
+<meta name="author" content="Jacqueline Wingen" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="some-useful-tools-in-r.html"/>
+<link rel="next" href="filling-gaps-in-temperature-records.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Tree phenology Analysis with R</a></li>
+<li><a href="index.html"><img src="images/chillR_hexSticker.png" width="75%"></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#learning-goals"><i class="fa fa-check"></i><b>1.1</b> Learning goals</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="tools.html"><a href="tools.html"><i class="fa fa-check"></i><b>2</b> Tools</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="tools.html"><a href="tools.html#r-and-rstudio"><i class="fa fa-check"></i><b>2.1</b> R and RStudio</a></li>
+<li class="chapter" data-level="2.2" data-path="tools.html"><a href="tools.html#git-and-github"><i class="fa fa-check"></i><b>2.2</b> Git and Github</a></li>
+<li class="chapter" data-level="2.3" data-path="tools.html"><a href="tools.html#rmarkdown"><i class="fa fa-check"></i><b>2.3</b> Rmarkdown</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="tree-dormancy.html"><a href="tree-dormancy.html"><i class="fa fa-check"></i><b>3</b> Tree dormancy</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="tree-dormancy.html"><a href="tree-dormancy.html#learning-goals-1"><i class="fa fa-check"></i><b>3.1</b> Learning goals</a></li>
+<li class="chapter" data-level="3.2" data-path="tree-dormancy.html"><a href="tree-dormancy.html#introduction-to-dormancy"><i class="fa fa-check"></i><b>3.2</b> Introduction to dormancy</a></li>
+<li class="chapter" data-level="3.3" data-path="tree-dormancy.html"><a href="tree-dormancy.html#dormancy-physiology"><i class="fa fa-check"></i><b>3.3</b> Dormancy physiology</a></li>
+<li class="chapter" data-level="3.4" data-path="tree-dormancy.html"><a href="tree-dormancy.html#experimental-and-statistical-determination-of-chilling-and-forcing-periods"><i class="fa fa-check"></i><b>3.4</b> Experimental and statistical determination of chilling and forcing periods</a></li>
+<li class="chapter" data-level="3.5" data-path="tree-dormancy.html"><a href="tree-dormancy.html#phenology-record-and-bbch-scale"><i class="fa fa-check"></i><b>3.5</b> Phenology record and BBCH scale</a></li>
+<li class="chapter" data-level="3.6" data-path="tree-dormancy.html"><a href="tree-dormancy.html#excercises-on-tree-dormancy"><i class="fa fa-check"></i><b>3.6</b> <code>Excercises</code> on tree dormancy</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="climate-change-and-impact-projection.html"><a href="climate-change-and-impact-projection.html"><i class="fa fa-check"></i><b>4</b> Climate change and impact projection</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="climate-change-and-impact-projection.html"><a href="climate-change-and-impact-projection.html#the-drivers-of-climate-change"><i class="fa fa-check"></i><b>4.1</b> The drivers of climate change</a></li>
+<li class="chapter" data-level="4.2" data-path="climate-change-and-impact-projection.html"><a href="climate-change-and-impact-projection.html#whats-already-known"><i class="fa fa-check"></i><b>4.2</b> What’s already known</a></li>
+<li class="chapter" data-level="4.3" data-path="climate-change-and-impact-projection.html"><a href="climate-change-and-impact-projection.html#future-scenarios"><i class="fa fa-check"></i><b>4.3</b> Future scenarios</a></li>
+<li class="chapter" data-level="4.4" data-path="climate-change-and-impact-projection.html"><a href="climate-change-and-impact-projection.html#impact-projections-approaches"><i class="fa fa-check"></i><b>4.4</b> Impact projections approaches</a></li>
+<li class="chapter" data-level="4.5" data-path="climate-change-and-impact-projection.html"><a href="climate-change-and-impact-projection.html#exercises-on-climate-change"><i class="fa fa-check"></i><b>4.5</b> <code>Exercises</code> on climate change</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html"><i class="fa fa-check"></i><b>5</b> Winter chill projections</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#learning-goals-2"><i class="fa fa-check"></i><b>5.1</b> Learning goals</a></li>
+<li class="chapter" data-level="5.2" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#winter-chill-in-oman"><i class="fa fa-check"></i><b>5.2</b> Winter chill in Oman</a></li>
+<li class="chapter" data-level="5.3" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#chill-model-sensitivity"><i class="fa fa-check"></i><b>5.3</b> Chill model sensitivity</a></li>
+<li class="chapter" data-level="5.4" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#winter-chill-in-california"><i class="fa fa-check"></i><b>5.4</b> Winter chill in California</a></li>
+<li class="chapter" data-level="5.5" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#winter-chill-ratios"><i class="fa fa-check"></i><b>5.5</b> Winter chill ratios</a></li>
+<li class="chapter" data-level="5.6" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#a-global-projection-of-future-winter-chill"><i class="fa fa-check"></i><b>5.6</b> A global projection of future winter chill</a></li>
+<li class="chapter" data-level="5.7" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#winter-chill-in-germany"><i class="fa fa-check"></i><b>5.7</b> Winter chill in Germany</a></li>
+<li class="chapter" data-level="5.8" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#winter-chill-in-tunisia"><i class="fa fa-check"></i><b>5.8</b> Winter chill in Tunisia</a></li>
+<li class="chapter" data-level="5.9" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#winter-chill-in-chile"><i class="fa fa-check"></i><b>5.9</b> Winter chill in Chile</a></li>
+<li class="chapter" data-level="5.10" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#chill-projection-for-patagonia"><i class="fa fa-check"></i><b>5.10</b> Chill projection for Patagonia</a></li>
+<li class="chapter" data-level="5.11" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#chill-model-comparison"><i class="fa fa-check"></i><b>5.11</b> Chill model comparison</a></li>
+<li class="chapter" data-level="5.12" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#chill-projection-for-all-of-tunisia"><i class="fa fa-check"></i><b>5.12</b> Chill projection for all of Tunisia</a></li>
+<li class="chapter" data-level="5.13" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#revisiting-chill-accumulation-in-oman"><i class="fa fa-check"></i><b>5.13</b> Revisiting chill accumulation in Oman</a></li>
+<li class="chapter" data-level="5.14" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#exercises-on-past-chill-projections"><i class="fa fa-check"></i><b>5.14</b> <code>Exercises</code> on past chill projections</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="manual-chill.html"><a href="manual-chill.html"><i class="fa fa-check"></i><b>6</b> Manual chill</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="manual-chill.html"><a href="manual-chill.html#learning-goals-3"><i class="fa fa-check"></i><b>6.1</b> Learning goals</a></li>
+<li class="chapter" data-level="6.2" data-path="manual-chill.html"><a href="manual-chill.html#chilling-hours-calculation-using-chillr"><i class="fa fa-check"></i><b>6.2</b> Chilling hours calculation using chillR</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="manual-chill.html"><a href="manual-chill.html#data-requirements"><i class="fa fa-check"></i><b>6.2.1</b> <strong>Data Requirements</strong></a></li>
+<li class="chapter" data-level="6.2.2" data-path="manual-chill.html"><a href="manual-chill.html#loading-and-preparing-data"><i class="fa fa-check"></i><b>6.2.2</b> Loading and Preparing Data</a></li>
+<li class="chapter" data-level="6.2.3" data-path="manual-chill.html"><a href="manual-chill.html#manual-calculation-of-chilling-hours"><i class="fa fa-check"></i><b>6.2.3</b> <strong>Manual Calculation of Chilling Hours</strong></a></li>
+<li class="chapter" data-level="6.2.4" data-path="manual-chill.html"><a href="manual-chill.html#automation-with-functions"><i class="fa fa-check"></i><b>6.2.4</b> Automation with Functions</a></li>
+<li class="chapter" data-level="6.2.5" data-path="manual-chill.html"><a href="manual-chill.html#application-example"><i class="fa fa-check"></i><b>6.2.5</b> Application Example</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="manual-chill.html"><a href="manual-chill.html#exercises-on-basic-chill-modeling"><i class="fa fa-check"></i><b>6.3</b> <code>Exercises</code> on basic chill modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chill.html"><a href="chill.html"><i class="fa fa-check"></i><b>7</b> Chill</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="chill.html"><a href="chill.html#learning-goals-4"><i class="fa fa-check"></i><b>7.1</b> Learning goals</a></li>
+<li class="chapter" data-level="7.2" data-path="chill.html"><a href="chill.html#chilling_hours-function"><i class="fa fa-check"></i><b>7.2</b> <code>Chilling_Hours()</code> function</a></li>
+<li class="chapter" data-level="7.3" data-path="chill.html"><a href="chill.html#utah-model"><i class="fa fa-check"></i><b>7.3</b> Utah Model</a></li>
+<li class="chapter" data-level="7.4" data-path="chill.html"><a href="chill.html#creating-custom-chill-models-with-step_model"><i class="fa fa-check"></i><b>7.4</b> Creating Custom Chill Models with <code>step_model()</code></a></li>
+<li class="chapter" data-level="7.5" data-path="chill.html"><a href="chill.html#dynamic-model"><i class="fa fa-check"></i><b>7.5</b> Dynamic model</a></li>
+<li class="chapter" data-level="7.6" data-path="chill.html"><a href="chill.html#chilling-and-tempresponse-functions"><i class="fa fa-check"></i><b>7.6</b> <code>Chilling</code> and <code>tempResponse</code> functions</a></li>
+<li class="chapter" data-level="7.7" data-path="chill.html"><a href="chill.html#exercises-on-chill-models"><i class="fa fa-check"></i><b>7.7</b> <code>Exercises</code> on chill models</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="making-hourly-temperatures.html"><a href="making-hourly-temperatures.html"><i class="fa fa-check"></i><b>8</b> Making hourly temperatures</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="making-hourly-temperatures.html"><a href="making-hourly-temperatures.html#learning-goals-5"><i class="fa fa-check"></i><b>8.1</b> Learning goals</a></li>
+<li class="chapter" data-level="8.2" data-path="making-hourly-temperatures.html"><a href="making-hourly-temperatures.html#generating-hourly-temperatures"><i class="fa fa-check"></i><b>8.2</b> Generating hourly temperatures</a></li>
+<li class="chapter" data-level="8.3" data-path="making-hourly-temperatures.html"><a href="making-hourly-temperatures.html#idealized-daily-temperature-curves"><i class="fa fa-check"></i><b>8.3</b> Idealized daily temperature curves</a></li>
+<li class="chapter" data-level="8.4" data-path="making-hourly-temperatures.html"><a href="making-hourly-temperatures.html#empirical-daily-temperature-curves"><i class="fa fa-check"></i><b>8.4</b> Empirical daily temperature curves</a></li>
+<li class="chapter" data-level="8.5" data-path="making-hourly-temperatures.html"><a href="making-hourly-temperatures.html#exercises-on-hourly-temperatures"><i class="fa fa-check"></i><b>8.5</b> <code>Exercises</code> on hourly temperatures</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html"><i class="fa fa-check"></i><b>9</b> Some useful tools in R</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#learning-goals-6"><i class="fa fa-check"></i><b>9.1</b> Learning goals</a></li>
+<li class="chapter" data-level="9.2" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#an-evolving-language---and-a-lifelong-learning-process"><i class="fa fa-check"></i><b>9.2</b> An evolving language - and a lifelong learning process</a></li>
+<li class="chapter" data-level="9.3" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#the-tidyverse"><i class="fa fa-check"></i><b>9.3</b> The <code>tidyverse</code></a></li>
+<li class="chapter" data-level="9.4" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#the-ggplot2-package"><i class="fa fa-check"></i><b>9.4</b> The <code>ggplot2</code> package</a></li>
+<li class="chapter" data-level="9.5" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#the-tibble-package"><i class="fa fa-check"></i><b>9.5</b> The <code>tibble</code> package</a></li>
+<li class="chapter" data-level="9.6" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#the-magrittr-package---pipes"><i class="fa fa-check"></i><b>9.6</b> The <code>magrittr</code> package - pipes</a></li>
+<li class="chapter" data-level="9.7" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#the-tidyr-package"><i class="fa fa-check"></i><b>9.7</b> The <code>tidyr</code> package</a>
+<ul>
+<li class="chapter" data-level="9.7.1" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#pivot_longer"><i class="fa fa-check"></i><b>9.7.1</b> <code>pivot_longer</code></a></li>
+<li class="chapter" data-level="9.7.2" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#pivot_wider"><i class="fa fa-check"></i><b>9.7.2</b> <code>pivot_wider</code></a></li>
+<li class="chapter" data-level="9.7.3" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#select"><i class="fa fa-check"></i><b>9.7.3</b> <code>select</code></a></li>
+<li class="chapter" data-level="9.7.4" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#filter"><i class="fa fa-check"></i><b>9.7.4</b> <code>filter</code></a></li>
+<li class="chapter" data-level="9.7.5" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#mutate"><i class="fa fa-check"></i><b>9.7.5</b> <code>mutate</code></a></li>
+<li class="chapter" data-level="9.7.6" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#arrange"><i class="fa fa-check"></i><b>9.7.6</b> <code>arrange</code></a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#loops"><i class="fa fa-check"></i><b>9.8</b> Loops</a>
+<ul>
+<li class="chapter" data-level="9.8.1" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#for-loops"><i class="fa fa-check"></i><b>9.8.1</b> <em>For</em> loops</a></li>
+<li class="chapter" data-level="9.8.2" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#while-loops"><i class="fa fa-check"></i><b>9.8.2</b> <em>While</em> loops</a></li>
+</ul></li>
+<li class="chapter" data-level="9.9" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#apply-functions"><i class="fa fa-check"></i><b>9.9</b> <code>apply</code> functions</a>
+<ul>
+<li class="chapter" data-level="9.9.1" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#sapply"><i class="fa fa-check"></i><b>9.9.1</b> <code>sapply</code></a></li>
+<li class="chapter" data-level="9.9.2" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#lapply"><i class="fa fa-check"></i><b>9.9.2</b> <code>lapply</code></a></li>
+<li class="chapter" data-level="9.9.3" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#apply"><i class="fa fa-check"></i><b>9.9.3</b> <code>apply</code></a></li>
+</ul></li>
+<li class="chapter" data-level="9.10" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#exercises-on-useful-r-tools"><i class="fa fa-check"></i><b>9.10</b> <code>Exercises</code> on useful R tools</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="get_temp_data.html"><a href="get_temp_data.html"><i class="fa fa-check"></i><b>10</b> Getting temperature data</a>
+<ul>
+<li class="chapter" data-level="" data-path="get_temp_data.html"><a href="get_temp_data.html#goals_get_temps"><i class="fa fa-check"></i>Learning goals for this lesson</a></li>
+<li class="chapter" data-level="10.1" data-path="get_temp_data.html"><a href="get_temp_data.html#temperature-data-needs"><i class="fa fa-check"></i><b>10.1</b> Temperature data needs</a></li>
+<li class="chapter" data-level="10.2" data-path="get_temp_data.html"><a href="get_temp_data.html#the-global-summary-of-the-day-database"><i class="fa fa-check"></i><b>10.2</b> The Global Summary of the Day database</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="get_temp_data.html"><a href="get_temp_data.html#actionlist_stations"><i class="fa fa-check"></i><b>10.2.1</b> <code>action=list_stations</code></a></li>
+<li class="chapter" data-level="10.2.2" data-path="get_temp_data.html"><a href="get_temp_data.html#actiondownload_weather"><i class="fa fa-check"></i><b>10.2.2</b> <code>action="download_weather"</code></a></li>
+<li class="chapter" data-level="10.2.3" data-path="get_temp_data.html"><a href="get_temp_data.html#downloaded-weather-as-action-argument"><i class="fa fa-check"></i><b>10.2.3</b> downloaded weather as <code>action</code> argument</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="get_temp_data.html"><a href="get_temp_data.html#exercises_getting"><i class="fa fa-check"></i><code>Exercises</code> on getting temperature data</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html"><i class="fa fa-check"></i><b>11</b> Filling gaps in temperature records</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html#learning-goals-7"><i class="fa fa-check"></i><b>11.1</b> Learning goals</a></li>
+<li class="chapter" data-level="11.2" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html#gaps"><i class="fa fa-check"></i><b>11.2</b> Gaps</a></li>
+<li class="chapter" data-level="11.3" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html#filling-short-gaps-in-daily-records"><i class="fa fa-check"></i><b>11.3</b> Filling short gaps in daily records</a></li>
+<li class="chapter" data-level="11.4" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html#filling-long-gaps-in-daily-records"><i class="fa fa-check"></i><b>11.4</b> Filling long gaps in daily records</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html#bias-correction-for-shorter-intervals"><i class="fa fa-check"></i><b>11.4.1</b> Bias-correction for shorter intervals</a></li>
+<li class="chapter" data-level="11.4.2" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html#saving-the-data-for-later"><i class="fa fa-check"></i><b>11.4.2</b> Saving the data for later</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="filling-gaps-in-temperature-records.html"><a href="filling-gaps-in-temperature-records.html#exercises-on-filling-gaps"><i class="fa fa-check"></i><b>11.5</b> <code>Exercises</code> on filling gaps</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="generating-temperature-scenarios.html"><a href="generating-temperature-scenarios.html"><i class="fa fa-check"></i><b>12</b> Generating temperature scenarios</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="generating-temperature-scenarios.html"><a href="generating-temperature-scenarios.html#learning-goals-8"><i class="fa fa-check"></i><b>12.1</b> Learning goals</a></li>
+<li class="chapter" data-level="12.2" data-path="generating-temperature-scenarios.html"><a href="generating-temperature-scenarios.html#chill-scenarios"><i class="fa fa-check"></i><b>12.2</b> Chill scenarios</a></li>
+<li class="chapter" data-level="12.3" data-path="generating-temperature-scenarios.html"><a href="generating-temperature-scenarios.html#risk-assessment-in-orchard-planning"><i class="fa fa-check"></i><b>12.3</b> Risk assessment in orchard planning</a></li>
+<li class="chapter" data-level="12.4" data-path="generating-temperature-scenarios.html"><a href="generating-temperature-scenarios.html#weather-generators"><i class="fa fa-check"></i><b>12.4</b> Weather generators</a></li>
+<li class="chapter" data-level="12.5" data-path="generating-temperature-scenarios.html"><a href="generating-temperature-scenarios.html#weather-generation-in-chillr"><i class="fa fa-check"></i><b>12.5</b> Weather generation in <code>chillR</code></a></li>
+<li class="chapter" data-level="12.6" data-path="generating-temperature-scenarios.html"><a href="generating-temperature-scenarios.html#exercises-on-temperature-generation"><i class="fa fa-check"></i><b>12.6</b> <code>Exercises</code> on temperature generation</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Tree phenology Analysis with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="get_temp_data" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">Chapter 10</span> Getting temperature data<a href="get_temp_data.html#get_temp_data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="goals_get_temps" class="section level2 unnumbered hasAnchor">
+<h2>Learning goals for this lesson<a href="get_temp_data.html#goals_get_temps" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Appreciate the need for daily temperature data</li>
+<li>Know how to get a list of promising weather stations contained in an international database</li>
+<li>Be able to download weather data using <code>chillR</code> functions</li>
+<li>Know how to convert downloaded data into <code>chillR</code> format</li>
+</ul>
+</div>
+<div id="temperature-data-needs" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> Temperature data needs<a href="get_temp_data.html#temperature-data-needs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Obviously, without temperature data we can’t do much phenology and chill modeling. This is a pretty critical input to all models we can make or may want to run. It also seems like an easy-to-find resource, doesn’t it? Well, you may be surprised by how difficult it is to get such data. While all countries in the world have official weather stations that record precisely the type of information we need, many are very protective of these data. Many national weather services sell such information (the collection of which was likely funded by taxpayer money) at rather high prices. If you only want to do a study on one location, you may be able to shell out that money, but this quickly becomes unrealistic, when you’re targeting a larger-scale analysis.</p>
+<p>On a personal note, I must say that I find it pretty outrageous that at a time where we should be making every effort to understand the impacts of climate change on our world and to find ways to adapt, weather services are putting up such access barriers. I really wonder how many climate-related studies that have been done turned out less useful than they could have been, had more data been easily and freely available. Well, back to the main story…</p>
+<p>To be clear, it’s of course preferable to have a high-quality dataset collected in the exact place that you want to analyze. If we don’t have such data, however, there are a few databases out there that we can draw on as an alternative option. <code>chillR</code> currently has the capability to access one global database, as well as one for California. There is certainly scope for expanding this capability, but let’s start working with what’s available now.</p>
+</div>
+<div id="the-global-summary-of-the-day-database" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> The Global Summary of the Day database<a href="get_temp_data.html#the-global-summary-of-the-day-database" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>An invaluable source of temperature data is the <a href="https://www.ncei.noaa.gov/">National Centers for Environmental Information (NCEI)</a>, formerly the National Climatic Data Center (NCDC) of the <a href="https://www.noaa.gov/">United States National Oceanic and Atmospheric Administration (NOAA)</a>, in particular their <a href="https://www.ncei.noaa.gov/access/search/data-search/global-summary-of-the-day">Global Summary of the Day (GSOD) database</a>. That was a pretty long name, so let’s stick with the abbreviation <code>GSOD</code>.</p>
+<p>Check out the <a href="https://www.ncei.noaa.gov/access/search/data-search/global-summary-of-the-day">GSOD website</a> to take a look at the interface: <a href="https://www.ncei.noaa.gov/access/search/data-search/global-summary-of-the-day" class="uri">https://www.ncei.noaa.gov/access/search/data-search/global-summary-of-the-day</a>. This interface used to be pretty confusing in the past - and I almost find it more confusing now. Fortunately, if you click on the <code>Bulk downloads</code> button, you can get to a place where you can directly access the weather data: <a href="https://www.ncei.noaa.gov/data/global-summary-of-the-day/access/" class="uri">https://www.ncei.noaa.gov/data/global-summary-of-the-day/access/</a>. What we find here is, at first glance, even more inaccessible than the web interface, but at least we can recognize some structure now: All records are stored in separate files for each station and year, with the files named according to a code assigned to the weather stations. You could now download these records by hand, if you wanted to, but this would take a long time (if you want data for many years), and you’d first have to find out what station is of interest to you.</p>
+<p>Fortunately, I found a list of all the weather stations somewhere on NOAA’s website: <a href="ftp://ftp.ncdc.noaa.gov/pub/data/noaa/isd-history.csv" class="uri">ftp://ftp.ncdc.noaa.gov/pub/data/noaa/isd-history.csv</a>, and I automated the tedious data download and assembling process in <code>chillR</code>. My attempt resulted in a reliable but fairly slow procedure, but a former participant of this module, Adrian Fülle, found a much more elegant - and much faster - way to achieve this.</p>
+<p>Let’s see how this works:</p>
+<p>There’s a single <code>chillR</code> function, <code>handle_gsod()</code>, that can take care of all data retrieval steps. Since there are multiple steps involved, we have to use the function’s <code>action</code> parameter to tell it what to do:</p>
+<div id="actionlist_stations" class="section level3 hasAnchor" number="10.2.1">
+<h3><span class="header-section-number">10.2.1</span> <code>action=list_stations</code><a href="get_temp_data.html#actionlist_stations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When used with this action, <code>handle_gsod()</code> retrieves the station list and sorts the stations based on their proximity to a set of coordinates we specify. Let’s look for stations around Bonn (Latitude= 50.73; Longitude= 7.10). I’ll also add a time interval of interest (1990-2020) to narrow the search.</p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="get_temp_data.html#cb117-1" tabindex="-1"></a><span class="fu">library</span>(chillR)</span>
+<span id="cb117-2"><a href="get_temp_data.html#cb117-2" tabindex="-1"></a>station_list<span class="ot">&lt;-</span><span class="fu">handle_gsod</span>(<span class="at">action=</span><span class="st">&quot;list_stations&quot;</span>,</span>
+<span id="cb117-3"><a href="get_temp_data.html#cb117-3" tabindex="-1"></a>                          <span class="at">location=</span><span class="fu">c</span>(<span class="fl">7.10</span>,<span class="fl">50.73</span>),</span>
+<span id="cb117-4"><a href="get_temp_data.html#cb117-4" tabindex="-1"></a>                          <span class="at">time_interval=</span><span class="fu">c</span>(<span class="dv">1990</span>,<span class="dv">2020</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="get_temp_data.html#cb118-1" tabindex="-1"></a><span class="fu">require</span>(kableExtra)</span>
+<span id="cb118-2"><a href="get_temp_data.html#cb118-2" tabindex="-1"></a></span>
+<span id="cb118-3"><a href="get_temp_data.html#cb118-3" tabindex="-1"></a><span class="fu">kable</span>(station_list) <span class="sc">%&gt;%</span></span>
+<span id="cb118-4"><a href="get_temp_data.html#cb118-4" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="st">&quot;striped&quot;</span>, <span class="at">position =</span> <span class="st">&quot;left&quot;</span>, <span class="at">font_size =</span> <span class="dv">8</span>)</span></code></pre></div>
+<table class="table table-striped" style="font-size: 8px; color: black; ">
+<thead>
+<tr>
+<th style="text-align:right;">
+chillR_code
+</th>
+<th style="text-align:left;">
+STATION.NAME
+</th>
+<th style="text-align:left;">
+CTRY
+</th>
+<th style="text-align:right;">
+Lat
+</th>
+<th style="text-align:right;">
+Long
+</th>
+<th style="text-align:right;">
+BEGIN
+</th>
+<th style="text-align:right;">
+END
+</th>
+<th style="text-align:right;">
+Distance
+</th>
+<th style="text-align:right;">
+Overlap_years
+</th>
+<th style="text-align:right;">
+Perc_interval_covered
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+10517099999
+</td>
+<td style="text-align:left;">
+BONN/FRIESDORF(AUT)
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+50.700
+</td>
+<td style="text-align:right;">
+7.150
+</td>
+<td style="text-align:right;">
+19360102
+</td>
+<td style="text-align:right;">
+19921231
+</td>
+<td style="text-align:right;">
+4.86
+</td>
+<td style="text-align:right;">
+3.00
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10518099999
+</td>
+<td style="text-align:left;">
+BONN-HARDTHOEHE
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+50.700
+</td>
+<td style="text-align:right;">
+7.033
+</td>
+<td style="text-align:right;">
+19750523
+</td>
+<td style="text-align:right;">
+19971223
+</td>
+<td style="text-align:right;">
+5.78
+</td>
+<td style="text-align:right;">
+7.98
+</td>
+<td style="text-align:right;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10519099999
+</td>
+<td style="text-align:left;">
+BONN-ROLEBER
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+50.733
+</td>
+<td style="text-align:right;">
+7.200
+</td>
+<td style="text-align:right;">
+20010705
+</td>
+<td style="text-align:right;">
+20081231
+</td>
+<td style="text-align:right;">
+7.05
+</td>
+<td style="text-align:right;">
+7.49
+</td>
+<td style="text-align:right;">
+24
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10513099999
+</td>
+<td style="text-align:left;">
+KOLN BONN
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+50.866
+</td>
+<td style="text-align:right;">
+7.143
+</td>
+<td style="text-align:right;">
+19310101
+</td>
+<td style="text-align:right;">
+20241102
+</td>
+<td style="text-align:right;">
+15.44
+</td>
+<td style="text-align:right;">
+31.00
+</td>
+<td style="text-align:right;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10509099999
+</td>
+<td style="text-align:left;">
+BUTZWEILERHOF(BAFB)
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+50.983
+</td>
+<td style="text-align:right;">
+6.900
+</td>
+<td style="text-align:right;">
+19780901
+</td>
+<td style="text-align:right;">
+19950823
+</td>
+<td style="text-align:right;">
+31.48
+</td>
+<td style="text-align:right;">
+5.64
+</td>
+<td style="text-align:right;">
+18
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10502099999
+</td>
+<td style="text-align:left;">
+NORVENICH
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+50.831
+</td>
+<td style="text-align:right;">
+6.658
+</td>
+<td style="text-align:right;">
+19730101
+</td>
+<td style="text-align:right;">
+20241102
+</td>
+<td style="text-align:right;">
+33.08
+</td>
+<td style="text-align:right;">
+31.00
+</td>
+<td style="text-align:right;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10514099999
+</td>
+<td style="text-align:left;">
+MENDIG
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+50.366
+</td>
+<td style="text-align:right;">
+7.315
+</td>
+<td style="text-align:right;">
+19730102
+</td>
+<td style="text-align:right;">
+19971231
+</td>
+<td style="text-align:right;">
+43.28
+</td>
+<td style="text-align:right;">
+8.00
+</td>
+<td style="text-align:right;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10506099999
+</td>
+<td style="text-align:left;">
+NUERBURG-BARWEILER
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+50.367
+</td>
+<td style="text-align:right;">
+6.867
+</td>
+<td style="text-align:right;">
+19950401
+</td>
+<td style="text-align:right;">
+19971231
+</td>
+<td style="text-align:right;">
+43.64
+</td>
+<td style="text-align:right;">
+2.75
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10508099999
+</td>
+<td style="text-align:left;">
+BLANKENHEIM
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+50.450
+</td>
+<td style="text-align:right;">
+6.650
+</td>
+<td style="text-align:right;">
+19781002
+</td>
+<td style="text-align:right;">
+19840504
+</td>
+<td style="text-align:right;">
+44.53
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10510099999
+</td>
+<td style="text-align:left;">
+NUERBURG
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+50.333
+</td>
+<td style="text-align:right;">
+6.950
+</td>
+<td style="text-align:right;">
+19300901
+</td>
+<td style="text-align:right;">
+19921231
+</td>
+<td style="text-align:right;">
+45.45
+</td>
+<td style="text-align:right;">
+3.00
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10515099999
+</td>
+<td style="text-align:left;">
+BENDORF
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+50.417
+</td>
+<td style="text-align:right;">
+7.583
+</td>
+<td style="text-align:right;">
+19310102
+</td>
+<td style="text-align:right;">
+20030816
+</td>
+<td style="text-align:right;">
+48.79
+</td>
+<td style="text-align:right;">
+13.62
+</td>
+<td style="text-align:right;">
+44
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10504099999
+</td>
+<td style="text-align:left;">
+EIFEL
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+50.650
+</td>
+<td style="text-align:right;">
+6.283
+</td>
+<td style="text-align:right;">
+20040501
+</td>
+<td style="text-align:right;">
+20040501
+</td>
+<td style="text-align:right;">
+58.30
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10526099999
+</td>
+<td style="text-align:left;">
+BAD MARIENBERG
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+50.667
+</td>
+<td style="text-align:right;">
+7.967
+</td>
+<td style="text-align:right;">
+19730101
+</td>
+<td style="text-align:right;">
+20030816
+</td>
+<td style="text-align:right;">
+61.54
+</td>
+<td style="text-align:right;">
+13.62
+</td>
+<td style="text-align:right;">
+44
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10613099999
+</td>
+<td style="text-align:left;">
+BUCHEL
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+50.174
+</td>
+<td style="text-align:right;">
+7.063
+</td>
+<td style="text-align:right;">
+19730101
+</td>
+<td style="text-align:right;">
+20241102
+</td>
+<td style="text-align:right;">
+61.95
+</td>
+<td style="text-align:right;">
+31.00
+</td>
+<td style="text-align:right;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10503099999
+</td>
+<td style="text-align:left;">
+AACHEN/MERZBRUCK
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+50.817
+</td>
+<td style="text-align:right;">
+6.183
+</td>
+<td style="text-align:right;">
+19780901
+</td>
+<td style="text-align:right;">
+19971212
+</td>
+<td style="text-align:right;">
+65.28
+</td>
+<td style="text-align:right;">
+7.95
+</td>
+<td style="text-align:right;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10419099999
+</td>
+<td style="text-align:left;">
+LUDENSCHEID &amp;
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+51.233
+</td>
+<td style="text-align:right;">
+7.600
+</td>
+<td style="text-align:right;">
+19270906
+</td>
+<td style="text-align:right;">
+20030306
+</td>
+<td style="text-align:right;">
+66.06
+</td>
+<td style="text-align:right;">
+13.18
+</td>
+<td style="text-align:right;">
+43
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10400099999
+</td>
+<td style="text-align:left;">
+DUSSELDORF
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+51.289
+</td>
+<td style="text-align:right;">
+6.767
+</td>
+<td style="text-align:right;">
+19310102
+</td>
+<td style="text-align:right;">
+20241102
+</td>
+<td style="text-align:right;">
+66.46
+</td>
+<td style="text-align:right;">
+31.00
+</td>
+<td style="text-align:right;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10616299999
+</td>
+<td style="text-align:left;">
+SIEGERLAND
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+50.708
+</td>
+<td style="text-align:right;">
+8.083
+</td>
+<td style="text-align:right;">
+20040510
+</td>
+<td style="text-align:right;">
+20241102
+</td>
+<td style="text-align:right;">
+69.33
+</td>
+<td style="text-align:right;">
+16.65
+</td>
+<td style="text-align:right;">
+54
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10418099999
+</td>
+<td style="text-align:left;">
+LUEDENSCHEID
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+51.250
+</td>
+<td style="text-align:right;">
+7.650
+</td>
+<td style="text-align:right;">
+19940301
+</td>
+<td style="text-align:right;">
+19971231
+</td>
+<td style="text-align:right;">
+69.54
+</td>
+<td style="text-align:right;">
+3.84
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10437499999
+</td>
+<td style="text-align:left;">
+MONCHENGLADBACH
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+51.230
+</td>
+<td style="text-align:right;">
+6.504
+</td>
+<td style="text-align:right;">
+19960715
+</td>
+<td style="text-align:right;">
+20241102
+</td>
+<td style="text-align:right;">
+69.59
+</td>
+<td style="text-align:right;">
+24.47
+</td>
+<td style="text-align:right;">
+79
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10403099999
+</td>
+<td style="text-align:left;">
+MOENCHENGLADBACH
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+51.233
+</td>
+<td style="text-align:right;">
+6.500
+</td>
+<td style="text-align:right;">
+19381001
+</td>
+<td style="text-align:right;">
+19421031
+</td>
+<td style="text-align:right;">
+70.03
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10501099999
+</td>
+<td style="text-align:left;">
+AACHEN
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+50.783
+</td>
+<td style="text-align:right;">
+6.100
+</td>
+<td style="text-align:right;">
+19280101
+</td>
+<td style="text-align:right;">
+20030816
+</td>
+<td style="text-align:right;">
+70.67
+</td>
+<td style="text-align:right;">
+13.62
+</td>
+<td style="text-align:right;">
+44
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6496099999
+</td>
+<td style="text-align:left;">
+ELSENBORN (MIL)
+</td>
+<td style="text-align:left;">
+BE
+</td>
+<td style="text-align:right;">
+50.467
+</td>
+<td style="text-align:right;">
+6.183
+</td>
+<td style="text-align:right;">
+19840501
+</td>
+<td style="text-align:right;">
+20241102
+</td>
+<td style="text-align:right;">
+71.10
+</td>
+<td style="text-align:right;">
+31.00
+</td>
+<td style="text-align:right;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6495099999
+</td>
+<td style="text-align:left;">
+BOTRANGE (MOUNT)
+</td>
+<td style="text-align:left;">
+BE
+</td>
+<td style="text-align:right;">
+50.500
+</td>
+<td style="text-align:right;">
+6.100
+</td>
+<td style="text-align:right;">
+19510201
+</td>
+<td style="text-align:right;">
+20011015
+</td>
+<td style="text-align:right;">
+75.13
+</td>
+<td style="text-align:right;">
+11.79
+</td>
+<td style="text-align:right;">
+38
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10409099999
+</td>
+<td style="text-align:left;">
+ESSEN/MUELHEIM
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+51.400
+</td>
+<td style="text-align:right;">
+6.967
+</td>
+<td style="text-align:right;">
+19300414
+</td>
+<td style="text-align:right;">
+19431231
+</td>
+<td style="text-align:right;">
+75.17
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+<p>This list contains the 25 closest stations to the location we entered, ordered by their distance to the target coordinates. This distance is shown in the <code>distance</code> column. The <code>Overlap_years</code> column shows the number of years that are available, and the <code>Perc_interval_covered</code> column the percentage of the target interval that is covered. Note that this is only based on the <code>BEGIN</code> and <code>END</code> dates in the table - it’s quite possible (and usually the case) that the dataset contains gaps, which sometimes cover almost the entire record.</p>
+</div>
+<div id="actiondownload_weather" class="section level3 hasAnchor" number="10.2.2">
+<h3><span class="header-section-number">10.2.2</span> <code>action="download_weather"</code><a href="get_temp_data.html#actiondownload_weather" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When used with this option, the <code>handle_gsod()</code> function downloads the weather data for a particular station, based on a station-specific <code>chillR_code</code> (shown in the respective column of the table above). Rather than typing the code manually, we can refer to the code in the station_list. Let’s download the data for the 4<sup>th</sup> entry in the list, which looks like it covers most of the period we’re interested in.</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="get_temp_data.html#cb119-1" tabindex="-1"></a>weather<span class="ot">&lt;-</span><span class="fu">handle_gsod</span>(<span class="at">action=</span><span class="st">&quot;download_weather&quot;</span>,</span>
+<span id="cb119-2"><a href="get_temp_data.html#cb119-2" tabindex="-1"></a>                     <span class="at">location=</span>station_list<span class="sc">$</span>chillR_code[<span class="dv">4</span>],</span>
+<span id="cb119-3"><a href="get_temp_data.html#cb119-3" tabindex="-1"></a>                     <span class="at">time_interval=</span><span class="fu">c</span>(<span class="dv">1990</span>,<span class="dv">2020</span>))</span></code></pre></div>
+<p>The result of this operation is a list with two elements. Element 1 (<code>weather[[1]]</code>) is an indication of the database the data come from. Element 2 (<code>weather[[2]]</code>) is the actual dataset, which we can see here:</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="get_temp_data.html#cb120-1" tabindex="-1"></a>weather[[<span class="dv">1</span>]][<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,]</span></code></pre></div>
+<table class="table table-striped" style="font-size: 8px; color: black; ">
+<thead>
+<tr>
+<th style="text-align:right;">
+X
+</th>
+<th style="text-align:left;">
+DATE
+</th>
+<th style="text-align:left;">
+Date
+</th>
+<th style="text-align:right;">
+Year
+</th>
+<th style="text-align:right;">
+Month
+</th>
+<th style="text-align:right;">
+Day
+</th>
+<th style="text-align:right;">
+Tmin
+</th>
+<th style="text-align:right;">
+Tmax
+</th>
+<th style="text-align:right;">
+Tmean
+</th>
+<th style="text-align:right;">
+Prec
+</th>
+<th style="text-align:right;">
+YEARMODA
+</th>
+<th style="text-align:left;">
+Tmin_source
+</th>
+<th style="text-align:left;">
+Tmax_source
+</th>
+<th style="text-align:left;">
+no_Tmin
+</th>
+<th style="text-align:left;">
+no_Tmax
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+1990-01-01 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-01 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1.000
+</td>
+<td style="text-align:right;">
+1.000
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+19900101
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+1990-01-02 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-02 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+2.000
+</td>
+<td style="text-align:right;">
+1.000
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+19900102
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+1990-01-03 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-03 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+-0.389
+</td>
+<td style="text-align:right;">
+2.000
+</td>
+<td style="text-align:right;">
+0.722
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+19900103
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+1990-01-04 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-04 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+-1.111
+</td>
+<td style="text-align:right;">
+2.000
+</td>
+<td style="text-align:right;">
+-0.056
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+19900104
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+1990-01-05 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-05 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+-1.111
+</td>
+<td style="text-align:right;">
+3.111
+</td>
+<td style="text-align:right;">
+1.556
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+19900105
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+1990-01-06 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-06 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+2.389
+</td>
+<td style="text-align:right;">
+1.333
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+19900106
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+1990-01-07 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-07 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+-0.111
+</td>
+<td style="text-align:right;">
+4.278
+</td>
+<td style="text-align:right;">
+1.056
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+19900107
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+1990-01-08 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-08 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+-0.111
+</td>
+<td style="text-align:right;">
+7.000
+</td>
+<td style="text-align:right;">
+3.278
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+19900108
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+1990-01-09 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-09 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+3.778
+</td>
+<td style="text-align:right;">
+8.000
+</td>
+<td style="text-align:right;">
+5.333
+</td>
+<td style="text-align:right;">
+0.508
+</td>
+<td style="text-align:right;">
+19900109
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+1990-01-10 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-10 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+3.000
+</td>
+<td style="text-align:right;">
+6.000
+</td>
+<td style="text-align:right;">
+4.556
+</td>
+<td style="text-align:right;">
+1.016
+</td>
+<td style="text-align:right;">
+19900110
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+1990-01-11 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-11 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+3.278
+</td>
+<td style="text-align:right;">
+7.000
+</td>
+<td style="text-align:right;">
+5.167
+</td>
+<td style="text-align:right;">
+0.254
+</td>
+<td style="text-align:right;">
+19900111
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+1990-01-12 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-12 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+-1.000
+</td>
+<td style="text-align:right;">
+5.222
+</td>
+<td style="text-align:right;">
+1.778
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+19900112
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+1990-01-13 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-13 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+-1.278
+</td>
+<td style="text-align:right;">
+4.000
+</td>
+<td style="text-align:right;">
+1.389
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+19900113
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+1990-01-14 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-14 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+-0.222
+</td>
+<td style="text-align:right;">
+5.000
+</td>
+<td style="text-align:right;">
+3.167
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+19900114
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+1990-01-15 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-15 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+0.889
+</td>
+<td style="text-align:right;">
+9.000
+</td>
+<td style="text-align:right;">
+4.556
+</td>
+<td style="text-align:right;">
+1.016
+</td>
+<td style="text-align:right;">
+19900115
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+1990-01-16 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-16 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+6.222
+</td>
+<td style="text-align:right;">
+11.000
+</td>
+<td style="text-align:right;">
+9.944
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+19900116
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+1990-01-17 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-17 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+1.000
+</td>
+<td style="text-align:right;">
+11.000
+</td>
+<td style="text-align:right;">
+8.500
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+19900117
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+1990-01-18 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-18 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+-1.000
+</td>
+<td style="text-align:right;">
+7.000
+</td>
+<td style="text-align:right;">
+2.722
+</td>
+<td style="text-align:right;">
+0.254
+</td>
+<td style="text-align:right;">
+19900118
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+1990-01-19 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-19 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+2.000
+</td>
+<td style="text-align:right;">
+7.111
+</td>
+<td style="text-align:right;">
+4.611
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+19900119
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+1990-01-20 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-20 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+4.000
+</td>
+<td style="text-align:right;">
+8.500
+</td>
+<td style="text-align:right;">
+6.056
+</td>
+<td style="text-align:right;">
+2.286
+</td>
+<td style="text-align:right;">
+19900120
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+</tbody>
+</table>
+<p>This still looks pretty complicated, and it contains a lot of information we don’t need. <code>chillR</code> therefore contains a function to simplify this record. Note, however, that this removes a lot of variables you may be interested in. More importantly, this also removes quality flags, which may indicate that particular records aren’t reliable. I’ve generously ignored this so far, but there’s room for improvement here.</p>
+</div>
+<div id="downloaded-weather-as-action-argument" class="section level3 hasAnchor" number="10.2.3">
+<h3><span class="header-section-number">10.2.3</span> downloaded weather as <code>action</code> argument<a href="get_temp_data.html#downloaded-weather-as-action-argument" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This way of calling <code>handle_gsod()</code> serves to clean the dataset and convert it into a format that <code>chillR</code> can easily handle</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="get_temp_data.html#cb121-1" tabindex="-1"></a>cleaned_weather<span class="ot">&lt;-</span><span class="fu">handle_gsod</span>(weather)</span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="get_temp_data.html#cb122-1" tabindex="-1"></a>cleaned_weather[[<span class="dv">1</span>]][<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,]</span></code></pre></div>
+<table class="table table-striped" style="font-size: 8px; color: black; ">
+<thead>
+<tr>
+<th style="text-align:left;">
+Date
+</th>
+<th style="text-align:right;">
+Year
+</th>
+<th style="text-align:right;">
+Month
+</th>
+<th style="text-align:right;">
+Day
+</th>
+<th style="text-align:right;">
+Tmin
+</th>
+<th style="text-align:right;">
+Tmax
+</th>
+<th style="text-align:right;">
+Tmean
+</th>
+<th style="text-align:right;">
+Prec
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1990-01-01 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1.000
+</td>
+<td style="text-align:right;">
+1.000
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-02 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+2.000
+</td>
+<td style="text-align:right;">
+1.000
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-03 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+-0.389
+</td>
+<td style="text-align:right;">
+2.000
+</td>
+<td style="text-align:right;">
+0.722
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-04 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+-1.111
+</td>
+<td style="text-align:right;">
+2.000
+</td>
+<td style="text-align:right;">
+-0.056
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-05 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+-1.111
+</td>
+<td style="text-align:right;">
+3.111
+</td>
+<td style="text-align:right;">
+1.556
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-06 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+2.389
+</td>
+<td style="text-align:right;">
+1.333
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-07 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+-0.111
+</td>
+<td style="text-align:right;">
+4.278
+</td>
+<td style="text-align:right;">
+1.056
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-08 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+-0.111
+</td>
+<td style="text-align:right;">
+7.000
+</td>
+<td style="text-align:right;">
+3.278
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-09 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+3.778
+</td>
+<td style="text-align:right;">
+8.000
+</td>
+<td style="text-align:right;">
+5.333
+</td>
+<td style="text-align:right;">
+0.508
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-10 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+3.000
+</td>
+<td style="text-align:right;">
+6.000
+</td>
+<td style="text-align:right;">
+4.556
+</td>
+<td style="text-align:right;">
+1.016
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-11 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+3.278
+</td>
+<td style="text-align:right;">
+7.000
+</td>
+<td style="text-align:right;">
+5.167
+</td>
+<td style="text-align:right;">
+0.254
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-12 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+-1.000
+</td>
+<td style="text-align:right;">
+5.222
+</td>
+<td style="text-align:right;">
+1.778
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-13 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+-1.278
+</td>
+<td style="text-align:right;">
+4.000
+</td>
+<td style="text-align:right;">
+1.389
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-14 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+-0.222
+</td>
+<td style="text-align:right;">
+5.000
+</td>
+<td style="text-align:right;">
+3.167
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-15 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+0.889
+</td>
+<td style="text-align:right;">
+9.000
+</td>
+<td style="text-align:right;">
+4.556
+</td>
+<td style="text-align:right;">
+1.016
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-16 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+6.222
+</td>
+<td style="text-align:right;">
+11.000
+</td>
+<td style="text-align:right;">
+9.944
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-17 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+1.000
+</td>
+<td style="text-align:right;">
+11.000
+</td>
+<td style="text-align:right;">
+8.500
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-18 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+-1.000
+</td>
+<td style="text-align:right;">
+7.000
+</td>
+<td style="text-align:right;">
+2.722
+</td>
+<td style="text-align:right;">
+0.254
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-19 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+2.000
+</td>
+<td style="text-align:right;">
+7.111
+</td>
+<td style="text-align:right;">
+4.611
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-20 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+4.000
+</td>
+<td style="text-align:right;">
+8.500
+</td>
+<td style="text-align:right;">
+6.056
+</td>
+<td style="text-align:right;">
+2.286
+</td>
+</tr>
+</tbody>
+</table>
+<p>Note that the reason for many of the strange numbers in these records is that the original database stores them in degrees Fahrenheit, so that they had to be converted to degrees Celsius. That often creates ugly numbers, but it’s not hard:</p>
+<p><span class="math inline">\(Temperature[°C]=(Temperature[°F]-32)\cdot\frac{5}{9}\)</span></p>
+<p>We now have a temperature record in a format that we can easily work with in <code>chillR</code>.</p>
+<p>Upon closer inspection, however, you’ll notice that this dataset has pretty substantial gaps, including several entire years of missing data. How can we deal with this? Let’s find out in the lesson on <a href="filling-gaps-in-temperature-records.html#filling-gaps-in-temperature-records">Filling gaps in temperature records</a>.</p>
+<p>Note that <code>chillR</code> has a pretty similar function to download data from the <a href="https://cimis.water.ca.gov/">California Irrigation Management Information System (CIMIS)</a>.</p>
+<p>There’s surely room for improvement here. There’s a lot more data out there that <code>chillR</code> could have a download function for.</p>
+<p>Now let’s save the files we generated here, so that we can use them in the upcoming chapters:</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="get_temp_data.html#cb123-1" tabindex="-1"></a><span class="fu">write.csv</span>(station_list,<span class="st">&quot;data/station_list.csv&quot;</span>,<span class="at">row.names=</span><span class="cn">FALSE</span>)</span>
+<span id="cb123-2"><a href="get_temp_data.html#cb123-2" tabindex="-1"></a><span class="fu">write.csv</span>(weather[[<span class="dv">1</span>]],<span class="st">&quot;data/Bonn_raw_weather.csv&quot;</span>,<span class="at">row.names=</span><span class="cn">FALSE</span>)</span>
+<span id="cb123-3"><a href="get_temp_data.html#cb123-3" tabindex="-1"></a><span class="fu">write.csv</span>(cleaned_weather[[<span class="dv">1</span>]],<span class="st">&quot;data/Bonn_chillR_weather.csv&quot;</span>,<span class="at">row.names=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="exercises_getting" class="section level2 unnumbered hasAnchor">
+<h2><code>Exercises</code> on getting temperature data<a href="get_temp_data.html#exercises_getting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Please document all results of the following assignments in your <code>learning logbook</code>.</p>
+<ol style="list-style-type: decimal">
+<li>Choose a location of interest and find the 25 closest weather stations using the <code>handle_gsod</code> function</li>
+<li>Download weather data for the most promising station on the list</li>
+<li>Convert the weather data into <code>chillR</code> format</li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="some-useful-tools-in-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="filling-gaps-in-temperature-records.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/jacqwng/Logbook/edit/main/10-temp-data.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/jacqwng/Logbook/blob/main/10-temp-data.Rmd",
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
