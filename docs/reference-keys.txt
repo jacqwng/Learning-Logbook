@@ -98,3 +98,7 @@ risk-assessment-in-orchard-planning
 weather-generators
 weather-generation-in-chillr
 exercises-on-temperature-generation
+saving-and-loading-data-and-hiding-this-in-markdown
+learning-goals-9
+saving-and-loading-data
+hiding-all-this-from-the-readers-of-our-markdown-file

@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="filling-gaps-in-temperature-records.html"/>
-
+<link rel="next" href="saving-and-loading-data-and-hiding-this-in-markdown.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -280,6 +280,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.5" data-path="generating-temperature-scenarios.html"><a href="generating-temperature-scenarios.html#weather-generation-in-chillr"><i class="fa fa-check"></i><b>12.5</b> Weather generation in <code>chillR</code></a></li>
 <li class="chapter" data-level="12.6" data-path="generating-temperature-scenarios.html"><a href="generating-temperature-scenarios.html#exercises-on-temperature-generation"><i class="fa fa-check"></i><b>12.6</b> <code>Exercises</code> on temperature generation</a></li>
 </ul></li>
+<li class="chapter" data-level="13" data-path="saving-and-loading-data-and-hiding-this-in-markdown.html"><a href="saving-and-loading-data-and-hiding-this-in-markdown.html"><i class="fa fa-check"></i><b>13</b> Saving and loading data (and hiding this in markdown)</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="saving-and-loading-data-and-hiding-this-in-markdown.html"><a href="saving-and-loading-data-and-hiding-this-in-markdown.html#learning-goals-9"><i class="fa fa-check"></i><b>13.1</b> Learning Goals</a></li>
+<li class="chapter" data-level="13.2" data-path="saving-and-loading-data-and-hiding-this-in-markdown.html"><a href="saving-and-loading-data-and-hiding-this-in-markdown.html#saving-and-loading-data"><i class="fa fa-check"></i><b>13.2</b> Saving and loading data</a></li>
+<li class="chapter" data-level="13.3" data-path="saving-and-loading-data-and-hiding-this-in-markdown.html"><a href="saving-and-loading-data-and-hiding-this-in-markdown.html#hiding-all-this-from-the-readers-of-our-markdown-file"><i class="fa fa-check"></i><b>13.3</b> Hiding all this from the readers of our markdown file</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -359,7 +365,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb165-5"><a href="generating-temperature-scenarios.html#cb165-5" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>) <span class="sc">+</span></span>
 <span id="cb165-6"><a href="generating-temperature-scenarios.html#cb165-6" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
 <span id="cb165-7"><a href="generating-temperature-scenarios.html#cb165-7" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_labels =</span> <span class="st">&quot;%b&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-171-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-168-1.png" width="672" /></p>
 <div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="generating-temperature-scenarios.html#cb166-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>Temperatures,</span>
 <span id="cb166-2"><a href="generating-temperature-scenarios.html#cb166-2" tabindex="-1"></a>       <span class="fu">aes</span>(Date,Tmax)) <span class="sc">+</span></span>
 <span id="cb166-3"><a href="generating-temperature-scenarios.html#cb166-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">colour =</span> <span class="fu">factor</span>(Year))) <span class="sc">+</span></span>
@@ -367,7 +373,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb166-5"><a href="generating-temperature-scenarios.html#cb166-5" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>) <span class="sc">+</span></span>
 <span id="cb166-6"><a href="generating-temperature-scenarios.html#cb166-6" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
 <span id="cb166-7"><a href="generating-temperature-scenarios.html#cb166-7" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_labels =</span> <span class="st">&quot;%b&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-172-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-169-1.png" width="672" /></p>
 <p>The previous plot was created using <code>geom_smooth</code> in <code>ggplot</code>, rather than <code>geom_line</code>, which reduced noise in the dataset and made the figure easier to interpret.</p>
 <p>Overall, the temperature trends were captured well, though some local weather nuances may have been missed. The simulated dataset now contains 100 years of data, even though only 8 years were used for calibration. This expanded dataset allows for a clearer understanding of the frequency of specific temperature-related events. Next, the distribution of winter chill for Klein-Altendorf will be examined based on this analysis.</p>
 <div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="generating-temperature-scenarios.html#cb167-1" tabindex="-1"></a>chill_observed <span class="ot">&lt;-</span> Temperatures <span class="sc">%&gt;%</span></span>
@@ -400,7 +406,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb168-6"><a href="generating-temperature-scenarios.html#cb168-6" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">&quot;Data source&quot;</span>) <span class="sc">+</span></span>
 <span id="cb168-7"><a href="generating-temperature-scenarios.html#cb168-7" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Chill accumulation (Chill Portions)&quot;</span>) <span class="sc">+</span></span>
 <span id="cb168-8"><a href="generating-temperature-scenarios.html#cb168-8" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Frequency&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-174-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-171-1.png" width="672" /></p>
 <p>In the previous code, incomplete winter seasons were manually removed. The resulting histogram shows the distribution of chill that would have been reasonable to expect in Klein-Altendorf between 1998 and 2005. With more observations, these distributions would improve.</p>
 <p>These data can also be plotted as a cumulative distribution function, which helps assess the risk of falling below a certain level of chill accumulation. This can also be directly calculated using the <code>quantile</code> function.</p>
 <div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="generating-temperature-scenarios.html#cb169-1" tabindex="-1"></a>chill_simulations <span class="ot">&lt;-</span></span>
@@ -415,7 +421,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb169-10"><a href="generating-temperature-scenarios.html#cb169-10" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Cumulative probability&quot;</span>) <span class="sc">+</span></span>
 <span id="cb169-11"><a href="generating-temperature-scenarios.html#cb169-11" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Chill accumulation (in Chill Portions)&quot;</span>) <span class="sc">+</span></span>
 <span id="cb169-12"><a href="generating-temperature-scenarios.html#cb169-12" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-175-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-172-1.png" width="672" /></p>
 <div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="generating-temperature-scenarios.html#cb170-1" tabindex="-1"></a><span class="co"># Here&#39;s the amount of chill that is exceeded in 90% of all years.</span></span>
 <span id="cb170-2"><a href="generating-temperature-scenarios.html#cb170-2" tabindex="-1"></a><span class="fu">quantile</span>(chill_simulations<span class="sc">$</span>Chill_portions,<span class="fl">0.1</span>)</span></code></pre></div>
 <pre><code>##      10% 
@@ -457,7 +463,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb175-6"><a href="generating-temperature-scenarios.html#cb175-6" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>) <span class="sc">+</span></span>
 <span id="cb175-7"><a href="generating-temperature-scenarios.html#cb175-7" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
 <span id="cb175-8"><a href="generating-temperature-scenarios.html#cb175-8" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_labels =</span> <span class="st">&quot;%b&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-179-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-176-1.png" width="672" /></p>
 <div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="generating-temperature-scenarios.html#cb176-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Temperatures,</span>
 <span id="cb176-2"><a href="generating-temperature-scenarios.html#cb176-2" tabindex="-1"></a>       <span class="fu">aes</span>(Date,</span>
 <span id="cb176-3"><a href="generating-temperature-scenarios.html#cb176-3" tabindex="-1"></a>           Tmax)) <span class="sc">+</span></span>
@@ -466,7 +472,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb176-6"><a href="generating-temperature-scenarios.html#cb176-6" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>) <span class="sc">+</span></span>
 <span id="cb176-7"><a href="generating-temperature-scenarios.html#cb176-7" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
 <span id="cb176-8"><a href="generating-temperature-scenarios.html#cb176-8" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_labels =</span> <span class="st">&quot;%b&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-180-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-177-1.png" width="672" /></p>
 <ol start="2" style="list-style-type: decimal">
 <li>Calculate winter chill (in Chill Portions) for your synthetic weather, and illustrate your results as histograms and cumulative distributions.</li>
 </ol>
@@ -499,7 +505,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb178-6"><a href="generating-temperature-scenarios.html#cb178-6" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">&quot;Data source&quot;</span>) <span class="sc">+</span></span>
 <span id="cb178-7"><a href="generating-temperature-scenarios.html#cb178-7" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Chill accumulation (Chill Portions)&quot;</span>) <span class="sc">+</span></span>
 <span id="cb178-8"><a href="generating-temperature-scenarios.html#cb178-8" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Frequency&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-182-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-179-1.png" width="672" /></p>
 <div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="generating-temperature-scenarios.html#cb179-1" tabindex="-1"></a>chill_simulations <span class="ot">&lt;-</span></span>
 <span id="cb179-2"><a href="generating-temperature-scenarios.html#cb179-2" tabindex="-1"></a>  chill_comparison_full_seasons <span class="sc">%&gt;%</span></span>
 <span id="cb179-3"><a href="generating-temperature-scenarios.html#cb179-3" tabindex="-1"></a>  <span class="fu">filter</span>(Data_source <span class="sc">==</span> <span class="st">&quot;simulated&quot;</span>)</span>
@@ -512,7 +518,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb179-10"><a href="generating-temperature-scenarios.html#cb179-10" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Cumulative probability&quot;</span>) <span class="sc">+</span></span>
 <span id="cb179-11"><a href="generating-temperature-scenarios.html#cb179-11" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Chill accumulation (in Chill Portions)&quot;</span>) <span class="sc">+</span></span>
 <span id="cb179-12"><a href="generating-temperature-scenarios.html#cb179-12" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-183-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-180-1.png" width="672" /></p>
 <ol start="3" style="list-style-type: decimal">
 <li>Produce similar plots for the number of freezing hours (&lt;0°C) in April (or October, if your site is in the Southern Hemisphere) for your location of interest</li>
 </ol>
@@ -558,7 +564,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb181-6"><a href="generating-temperature-scenarios.html#cb181-6" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">&quot;Data source&quot;</span>) <span class="sc">+</span></span>
 <span id="cb181-7"><a href="generating-temperature-scenarios.html#cb181-7" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Frost incidence during April (hours)&quot;</span>) <span class="sc">+</span></span>
 <span id="cb181-8"><a href="generating-temperature-scenarios.html#cb181-8" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Frequency&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-185-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-182-1.png" width="672" /></p>
 <div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="generating-temperature-scenarios.html#cb182-1" tabindex="-1"></a>chill_simulations <span class="ot">&lt;-</span></span>
 <span id="cb182-2"><a href="generating-temperature-scenarios.html#cb182-2" tabindex="-1"></a>  chill_comparison_full_seasons <span class="sc">%&gt;%</span></span>
 <span id="cb182-3"><a href="generating-temperature-scenarios.html#cb182-3" tabindex="-1"></a>  <span class="fu">filter</span>(Data_source <span class="sc">==</span> <span class="st">&quot;simulated&quot;</span>)</span>
@@ -571,7 +577,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb182-10"><a href="generating-temperature-scenarios.html#cb182-10" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Cumulative probability&quot;</span>) <span class="sc">+</span></span>
 <span id="cb182-11"><a href="generating-temperature-scenarios.html#cb182-11" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Frost incidence during April (hours)&quot;</span>) <span class="sc">+</span></span>
 <span id="cb182-12"><a href="generating-temperature-scenarios.html#cb182-12" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-186-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-183-1.png" width="672" /></p>
 
 </div>
 </div>
@@ -580,8 +586,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="filling-gaps-in-temperature-records.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="filling-gaps-in-temperature-records.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="saving-and-loading-data-and-hiding-this-in-markdown.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
