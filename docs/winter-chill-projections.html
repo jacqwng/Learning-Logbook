@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 Winter chill projections | Tree phenology Analysis with R</title>
+  <meta name="description" content="Chapter 5 Winter chill projections | Tree phenology Analysis with R" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 Winter chill projections | Tree phenology Analysis with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 Winter chill projections | Tree phenology Analysis with R" />
+  
+  
+  
+
+<meta name="author" content="Jacqueline Wingen" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="climate-change-and-impact-projection.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Tree phenology Analysis with R</a></li>
+<li><a href="index.html"><img src="images/chillR_hexSticker.png" width="75%"></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#learning-goals"><i class="fa fa-check"></i><b>1.1</b> Learning goals</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="tools.html"><a href="tools.html"><i class="fa fa-check"></i><b>2</b> Tools</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="tools.html"><a href="tools.html#r-and-rstudio"><i class="fa fa-check"></i><b>2.1</b> R and RStudio</a></li>
+<li class="chapter" data-level="2.2" data-path="tools.html"><a href="tools.html#git-and-github"><i class="fa fa-check"></i><b>2.2</b> Git and Github</a></li>
+<li class="chapter" data-level="2.3" data-path="tools.html"><a href="tools.html#rmarkdown"><i class="fa fa-check"></i><b>2.3</b> Rmarkdown</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="tree-dormancy.html"><a href="tree-dormancy.html"><i class="fa fa-check"></i><b>3</b> Tree dormancy</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="tree-dormancy.html"><a href="tree-dormancy.html#learning-goals-1"><i class="fa fa-check"></i><b>3.1</b> Learning goals</a></li>
+<li class="chapter" data-level="3.2" data-path="tree-dormancy.html"><a href="tree-dormancy.html#introduction-to-dormancy"><i class="fa fa-check"></i><b>3.2</b> Introduction to dormancy</a></li>
+<li class="chapter" data-level="3.3" data-path="tree-dormancy.html"><a href="tree-dormancy.html#dormancy-physiology"><i class="fa fa-check"></i><b>3.3</b> Dormancy physiology</a></li>
+<li class="chapter" data-level="3.4" data-path="tree-dormancy.html"><a href="tree-dormancy.html#experimental-and-statistical-determination-of-chilling-and-forcing-periods"><i class="fa fa-check"></i><b>3.4</b> Experimental and statistical determination of chilling and forcing periods</a></li>
+<li class="chapter" data-level="3.5" data-path="tree-dormancy.html"><a href="tree-dormancy.html#phenology-record-and-bbch-scale"><i class="fa fa-check"></i><b>3.5</b> Phenology record and BBCH scale</a></li>
+<li class="chapter" data-level="3.6" data-path="tree-dormancy.html"><a href="tree-dormancy.html#excercises-on-tree-dormancy"><i class="fa fa-check"></i><b>3.6</b> <code>Excercises</code> on tree dormancy</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="climate-change-and-impact-projection.html"><a href="climate-change-and-impact-projection.html"><i class="fa fa-check"></i><b>4</b> Climate change and impact projection</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="climate-change-and-impact-projection.html"><a href="climate-change-and-impact-projection.html#the-drivers-of-climate-change"><i class="fa fa-check"></i><b>4.1</b> The drivers of climate change</a></li>
+<li class="chapter" data-level="4.2" data-path="climate-change-and-impact-projection.html"><a href="climate-change-and-impact-projection.html#whats-already-known"><i class="fa fa-check"></i><b>4.2</b> What’s already known</a></li>
+<li class="chapter" data-level="4.3" data-path="climate-change-and-impact-projection.html"><a href="climate-change-and-impact-projection.html#future-scenarios"><i class="fa fa-check"></i><b>4.3</b> Future scenarios</a></li>
+<li class="chapter" data-level="4.4" data-path="climate-change-and-impact-projection.html"><a href="climate-change-and-impact-projection.html#impact-projections-approaches"><i class="fa fa-check"></i><b>4.4</b> Impact projections approaches</a></li>
+<li class="chapter" data-level="4.5" data-path="climate-change-and-impact-projection.html"><a href="climate-change-and-impact-projection.html#exercises-on-climate-change"><i class="fa fa-check"></i><b>4.5</b> <code>Exercises</code> on climate change</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html"><i class="fa fa-check"></i><b>5</b> Winter chill projections</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#learning-goals-2"><i class="fa fa-check"></i><b>5.1</b> Learning goals</a></li>
+<li class="chapter" data-level="5.2" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#winter-chill-in-oman"><i class="fa fa-check"></i><b>5.2</b> Winter chill in Oman</a></li>
+<li class="chapter" data-level="5.3" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#chill-model-sensitivity"><i class="fa fa-check"></i><b>5.3</b> Chill model sensitivity</a></li>
+<li class="chapter" data-level="5.4" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#winter-chill-in-california"><i class="fa fa-check"></i><b>5.4</b> Winter chill in California</a></li>
+<li class="chapter" data-level="5.5" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#winter-chill-ratios"><i class="fa fa-check"></i><b>5.5</b> Winter chill ratios</a></li>
+<li class="chapter" data-level="5.6" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#a-global-projection-of-future-winter-chill"><i class="fa fa-check"></i><b>5.6</b> A global projection of future winter chill</a></li>
+<li class="chapter" data-level="5.7" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#winter-chill-in-germany"><i class="fa fa-check"></i><b>5.7</b> Winter chill in Germany</a></li>
+<li class="chapter" data-level="5.8" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#winter-chill-in-tunisia"><i class="fa fa-check"></i><b>5.8</b> Winter chill in Tunisia</a></li>
+<li class="chapter" data-level="5.9" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#winter-chill-in-chile"><i class="fa fa-check"></i><b>5.9</b> Winter chill in Chile</a></li>
+<li class="chapter" data-level="5.10" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#chill-projection-for-patagonia"><i class="fa fa-check"></i><b>5.10</b> Chill projection for Patagonia</a></li>
+<li class="chapter" data-level="5.11" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#chill-model-comparison"><i class="fa fa-check"></i><b>5.11</b> Chill model comparison</a></li>
+<li class="chapter" data-level="5.12" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#chill-projection-for-all-of-tunisia"><i class="fa fa-check"></i><b>5.12</b> Chill projection for all of Tunisia</a></li>
+<li class="chapter" data-level="5.13" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#revisiting-chill-accumulation-in-oman"><i class="fa fa-check"></i><b>5.13</b> Revisiting chill accumulation in Oman</a></li>
+<li class="chapter" data-level="5.14" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#exercises-on-past-chill-projections"><i class="fa fa-check"></i><b>5.14</b> <code>Exercises</code> on past chill projections</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Tree phenology Analysis with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="winter-chill-projections" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Winter chill projections<a href="winter-chill-projections.html#winter-chill-projections" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This section provides an overview of how winter chill can be modeled. It summarizes past studies on this topic, aiming to clarify the methodological aspects that lead to the analyses conducted. By the end of this lesson, most of the analyses presented in the discussed papers should be understandable.</p>
+<div id="learning-goals-2" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Learning goals<a href="winter-chill-projections.html#learning-goals-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Be aware of past studies that have projected climate change impacts on winter chill</li>
+<li>Get a rough idea of how such studies are done</li>
+<li>Get curious about how to do such studies</li>
+</ul>
+</div>
+<div id="winter-chill-in-oman" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Winter chill in Oman<a href="winter-chill-projections.html#winter-chill-in-oman" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>During his doctoral studies at the University of Kassel, <a href="https://www.gartenbauwissenschaft.uni-bonn.de/author/prof.-dr.-eike-luedeling/">Prof. Dr. Eike Lüdeling</a> became interested in winter chill while participating in research on mountain oases in Oman. Initially focused on calculating nutrient budgets for the oases, particularly in the “Hanging Gardens” of Ash Sharayjah, the study shifted when many fruit trees failed to bear fruit. This led to the hypothesis that insufficient winter chill might be the issue, especially since the oases hosted temperate species such as pomegranates (<em>Punica granatum</em>), walnuts (<em>Juglans regia</em>), and apricots (<em>Prunus armeniaca</em>).</p>
+<p>To investigate this, temperature loggers were placed in three oases at different levels of elevation, allowing for the study of chill accumulation along an elevation gradient. A map of the study area illustrates the locations of the oases:</p>
+<div class="float">
+<img src="images/Fig_01_gradient_map.jpg" alt="Map of oasis systems in Al Jabal Al Akhdar, Oman" />
+<div class="figcaption"><strong><em>Map of oasis systems in Al Jabal Al Akhdar, Oman</em></strong></div>
+</div>
+<p>A nearby long-term weather station provided valuable data, although its location - 1000 meters above the lowest oasis - limited its representativeness. Since records were available from the oases, transfer functions were defined to derive oasis temperatures from the long-term data. These transfer functions were set up using PLS regression, which, in hindsight, wasn’t a very good idea, to directly calculate hourly temperatures in the oases from the daily records of the official station at Saiq.</p>
+<div class="float">
+<img src="images/Luedeling_JPG_Figure_02_Hourly_regressions.jpg" alt="Regression between temperature at Saiq and temperature in three oases, Al Jabal Al Akhdar, Oman" />
+<div class="figcaption"><strong>Regression between temperature at Saiq and temperature in three oases, Al Jabal Al Akhdar, Oman</strong></div>
+</div>
+<p>This approach facilitated the calculation of hourly temperatures, which were essential for assessing winter chill dynamics over several years.</p>
+<div class="float">
+<img src="images/Luedeling_JPG_Figure_09_chilling_hours.jpg" alt="Chill dynamics between 1983 and 2007, Al Jabal Al Akhdar, Oman" />
+<div class="figcaption"><strong>Chill dynamics between 1983 and 2007, Al Jabal Al Akhdar, Oman</strong></div>
+</div>
+<p>The findings were submitted to the journal Climatic Change (<a href="https://link.springer.com/article/10.1007/s10584-009-9581-7">Luedeling et al., 2009b</a>), where reviewers suggested incorporating future climate scenarios. To address this, the LARS-WG weather generator was employed to simulate plausible weather conditions for the oases under scenarios of 1°C and 2°C warming.</p>
+<div class="float">
+<img src="images/Luedeling_JPG_Figure_10_Future_chilling.jpg" alt="Chill prospects for 1°C and 2°C warming scenarios in Al Jabal Al Akhdar, Oman" />
+<div class="figcaption"><strong>Chill prospects for 1°C and 2°C warming scenarios in Al Jabal Al Akhdar, Oman</strong></div>
+</div>
+<p>The results illustrated the potential impacts of climate change on winter chill, marking the beginning of a career focused on chill modeling.</p>
+</div>
+<div id="chill-model-sensitivity" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Chill model sensitivity<a href="winter-chill-projections.html#chill-model-sensitivity" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>After completing a PhD at the University of Kassel, <a href="https://www.gartenbauwissenschaft.uni-bonn.de/author/prof.-dr.-eike-luedeling/">Prof. Dr. Eike Lüdeling</a> became a Postdoctoral Scholar at the University of California at Davis, where his research focused on climate change impacts on winter chill in California’s Central Valley, a key region for temperate fruit tree production.</p>
+<p>Upon arriving in California, it became evident that the choice of chill model significantly impacts winter chill quantification. Initially, the simplest model was chosen due to a lack of programming skills, but further investigation highlighted the importance of model selection. Extensive library research revealed the need for a thorough examination of various chill models. Knowledge gained in Oman was utilized to create temperature scenarios for multiple locations, allowing for the analysis of how chill accumulation would likely change in the future.</p>
+<p>The analysis focused on changes predicted by various models for the same locations and future scenarios. Here are the locations examined:</p>
+<div class="float">
+<img src="images/Luedeling_Figure_1.jpg" alt="Weather station locations in California" />
+<div class="figcaption"><strong>Weather station locations in California</strong></div>
+</div>
+<p>The results revealed considerable variation in chill projections for these locations. The analysis illustrated significant differences in estimates of chill losses by 2050, indicating that not all models could accurately represent winter chill dynamics. Ultimately, the Dynamic Model emerged as the most reliable option, prompting its primary use in subsequent research.</p>
+<div class="float">
+<img src="images/Luedeling_Figure_2.jpg" alt="Sensitivity of chill projections to model choice (CH - Chilling Hours; Utah - Utah Model; Utah+ - Positive Utah Model; Port. - Dynamic Model)" />
+<div class="figcaption"><strong>Sensitivity of chill projections to model choice (CH - Chilling Hours; Utah - Utah Model; Utah+ - Positive Utah Model; Port. - Dynamic Model)</strong></div>
+</div>
+<p>However, challenges arose with the complexity of the Dynamic Model, which required outdated Excel software for calculations. Additionally, the data processing steps necessary to generate credible temperature scenarios proved cumbersome and error-prone, highlighting the need to develop programming skills for more efficient analysis.</p>
+</div>
+<div id="winter-chill-in-california" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Winter chill in California<a href="winter-chill-projections.html#winter-chill-in-california" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The primary goal during the time in California was to create a winter chill projection for the Central Valley, an important region for fruit and nut production. Utilizing California’s extensive network of weather stations, the plan involved using data from over 100 stations and generating multiple climate scenarios. To manage this complex task efficiently, a decision was made to automate most processes, leading to an exploration of programming.</p>
+<p>The automation was implemented using JSL, a programming language associated with the statistics software JMP, which facilitated the handling of the data. Despite some challenges, the automation was largely successful, though running the weather generator manually for each station remained tedious. Ultimately, projections were generated for all stations, illustrating chill accumulation over 100 plausible winter seasons for each climate scenario.</p>
+<p>To present the results effectively, a metric called ‘Safe Winter Chill’ was developed, defined as the 10th percentile of the chill distribution, indicating the minimum chill amount that would be exceeded in 90% of the years. Here’s an illustration of the Safe Winter Chill metric:</p>
+<div class="float">
+<img src="images/Figure_2_Boxplots_Davis_chilling_hours_a2.jpg" alt="Illustration of the Safe Winter Chill concept" />
+<div class="figcaption"><strong>Illustration of the Safe Winter Chill concept</strong></div>
+</div>
+<p>A method for spatially interpolating the station results was also established, leading to the creation of maps that depicted winter chill prospects for the Central Valley. Here’s one of the maps that resulted from this:</p>
+<div class="float">
+<img src="images/Figure_4_Chill_Portions_Central_Valley_absolute.jpg" alt="Winter chill prospects for California’s Central Valley" />
+<div class="figcaption"><strong>Winter chill prospects for California’s Central Valley</strong></div>
+</div>
+<p>This analysis was published in the journal PLOS ONE (<a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0006166">Luedeling et al., 2009d</a>).</p>
+</div>
+<div id="winter-chill-ratios" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> Winter chill ratios<a href="winter-chill-projections.html#winter-chill-ratios" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Following the automation of processing steps in JSL, attention turned to creating a global winter chill projection. The Global Summary of the Day database was identified as a valuable data source, featuring records from thousands of weather stations. The project proved challenging due to limited programming skills. Data processing was carried out on six computers operating around the clock for several weeks, likely a result of initial setup difficulties rather than the complexity of the analyses. In the end, data for about 5,000 weather stations were processed, generating multiple chill metrics.</p>
+<p>This extensive dataset allowed for a comparison of chill models by calculating the ratios between various chill metrics at each station. If these ratios had been consistent worldwide (e.g., one Chill Portion always equating to ten Chilling Hours), any chill model could have been reliably used. However, significant variations in chill metric ratios were observed globally.</p>
+<div class="float">
+<img src="images/Luedeling_Fig_4_all_ratios_map.jpg" alt="Chill metric ratios around the world" />
+<div class="figcaption"><strong>Chill metric ratios around the world</strong></div>
+</div>
+<p>This study was published in the International Journal of Biometeorology (<a href="https://link.springer.com/article/10.1007/s00484-010-0352-y">Luedeling &amp; Brown, 2011a</a>).</p>
+</div>
+<div id="a-global-projection-of-future-winter-chill" class="section level2 hasAnchor" number="5.6">
+<h2><span class="header-section-number">5.6</span> A global projection of future winter chill<a href="winter-chill-projections.html#a-global-projection-of-future-winter-chill" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Using the same analytical methods, a global projection of the potential impacts of climate change on winter chill was also generated:</p>
+<div class="float">
+<img src="images/Figure_5_Time_Comp.jpg" alt="Projected decline in available winter chill around the world" />
+<div class="figcaption"><strong>Projected decline in available winter chill around the world</strong></div>
+</div>
+<p>The regions marked in red and orange on the lower two maps may experience significant impacts on fruit and nut production due to decreasing winter chill. With substantial chill losses, it is unlikely that growers will be able to sustain their current tree cultivars. Notably, the Mediterranean region is expected to be particularly affected.</p>
+<div class="float">
+<img src="images/Figure_6_regional_grids_Mediterranean.jpg" alt="Winter chill projection for the Mediterranean region" />
+<div class="figcaption"><strong>Winter chill projection for the Mediterranean region</strong></div>
+</div>
+<p>This prompted collaboration with partners in the Mediterranean region and other countries with similar climates, such as South Africa and Chile.</p>
+</div>
+<div id="winter-chill-in-germany" class="section level2 hasAnchor" number="5.7">
+<h2><span class="header-section-number">5.7</span> Winter chill in Germany<a href="winter-chill-projections.html#winter-chill-in-germany" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Germany is not highlighted as particularly vulnerable to chill losses, and an analysis of historical chilling trends from 1950 supports this observation:</p>
+<div class="float">
+<img src="images/Chilling_Germany.png" alt="Winter chill in Germany in 2010, and changes between 1950 and 2010" />
+<div class="figcaption"><strong>Winter chill in Germany in 2010, and changes between 1950 and 2010</strong></div>
+</div>
+</div>
+<div id="winter-chill-in-tunisia" class="section level2 hasAnchor" number="5.8">
+<h2><span class="header-section-number">5.8</span> Winter chill in Tunisia<a href="winter-chill-projections.html#winter-chill-in-tunisia" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Prospects for orchards in Tunisia are particularly challenging due to the region being close to the warmest limits for many fruit and nut tree species. An assessment published in 2018 examined past and future trends in winter chill for an orchard in Central Tunisia, following a seven-year gap from earlier studies. This delay stemmed from other professional commitments and the difficulty of obtaining suitable future climate data for chill modeling.</p>
+<p>While climate change data is widely available, much of it is presented as spatial grids, making it cumbersome to work with. Each climate scenario requires numerous grids for temperature and rainfall, leading to substantial data storage needs, sometimes exceeding 700 GB. Soon after establishing a processing structure for these datasets, the IPCC introduced the Representative Concentration Pathways (RCPs), rendering earlier scenarios outdated and complicating the analysis further, especially given the limited data transfer capabilities while based in Kenya.</p>
+<p>Collaboration with colleagues in Tunisia, particularly <a href="https://scholar.google.de/citations?hl=de&amp;user=DdV9jsAAAAAJ">Haifa Benmoussa</a>, revealed that tree crops like almonds and pistachios are highly vulnerable to climate change impacts. Fortunately, a new climate database specifically for Africa, called AFRICLIM, was developed, facilitating the acquisition and processing of relevant climate scenarios. This allowed for the incorporation of new functions in <code>chillR</code> to sample from AFRICLIM grids and produce the necessary climate projections.</p>
+<div class="float">
+<img src="images/Tunisia_2018_Fig_1.jpg" alt="Winter chill analysis for an orchard near Sfax in Central Tunisia (blue bars indicate approximate chilling requirements of pistachios and two types of almonds)" />
+<div class="figcaption"><strong>Winter chill analysis for an orchard near Sfax in Central Tunisia (blue bars indicate approximate chilling requirements of pistachios and two types of almonds)</strong></div>
+</div>
+<p>The figure, which is to be created by the end of the semester, illustrates the historical development of chill accumulation at a specific location, with observed values represented by red dots and typical chill distributions shown as boxplots. These data were generated using a weather generator that is calibrated with historical weather data and produces artificial annual weather records. The generator was also used to create future scenarios based on the AFRICLIM database.</p>
+<p>The analysis indicates that in none of the future scenarios does the cultivation of pistachios or high-chill almonds remain viable. This conclusion is supported by observations in Tunisia, where, after the warm winter of 2015/16, many pistachio trees barely developed any flowers, leading to crop failures.</p>
+<div class="float">
+<img src="images/Tunisia_pistachios.png" alt="Pistachio tree near Sfax, Central Tunisia, in April of 2016" />
+<div class="figcaption"><strong>Pistachio tree near Sfax, Central Tunisia, in April of 2016</strong></div>
+</div>
+</div>
+<div id="winter-chill-in-chile" class="section level2 hasAnchor" number="5.9">
+<h2><span class="header-section-number">5.9</span> Winter chill in Chile<a href="winter-chill-projections.html#winter-chill-in-chile" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>AFRICLIM addressed the challenge of obtaining future climate data for Africa but did not fully meet the needs for integrating climate change projections into <code>chillR</code>. It was limited to African data, and users seeking information for single locations had to download large datasets, which was inefficient. A more effective solution was needed to access data quickly for individual weather stations globally.</p>
+<p>An early resource was ClimateWizard, developed by <a href="https://scholar.google.de/citations?user=Yh2sQY4AAAAJ&amp;hl=de">Evan Girvetz</a>, which initially provided gridded data but later included a script for extracting information for specific locations. This functionality was eventually made available through an API at CIAT, allowing access to outputs from 15 climate models for the latest RCP scenarios. This advancement enabled <a href="https://scholar.google.de/citations?hl=de&amp;user=ibSma_AAAAAJ">Eduardo Fernández</a> to analyze past and future chill development across nine locations in Chile, expanding the geographic scope of the research.</p>
+<div class="float">
+<img src="images/Chile_chill_map.png" alt="Map of fruit growing locations in Chile" />
+<div class="figcaption"><strong>Map of fruit growing locations in Chile</strong></div>
+</div>
+<p>The following diagram illustrates the assessment of past and future winter chill across nine locations in Chile:</p>
+<div class="float">
+<img src="images/Chile_chill_all.png" alt="Assessment of past and future winter chill for 9 locations across Chile" />
+<div class="figcaption"><strong>Assessment of past and future winter chill for 9 locations across Chile</strong></div>
+</div>
+<p>Eduardo preferred a different plot design and utilized the <code>ggplot2</code> package, a robust plotting tool for R, to redesign it. The complexity of having data from multiple sites made interpretation challenging, prompting Eduardo to creatively summarize key information for each scenario. He presented this information as a heat map, simplifying the visualization.</p>
+<div class="float">
+<img src="images/Chile_chill_heatmap.png" alt="Heatmap showing Safe Winter Chill (10% quantile of chill distribution) for nine locations in Chile" />
+<div class="figcaption"><strong>Heatmap showing Safe Winter Chill (10% quantile of chill distribution) for nine locations in Chile</strong></div>
+</div>
+</div>
+<div id="chill-projection-for-patagonia" class="section level2 hasAnchor" number="5.10">
+<h2><span class="header-section-number">5.10</span> Chill projection for Patagonia<a href="winter-chill-projections.html#chill-projection-for-patagonia" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Certain regions may become more suitable for agriculture as the climate changes. An analysis was conducted to assess the climatic suitability for fruit and nut trees in Patagonia, southern Argentina, which is located at the southern frontier of agriculture:</p>
+<div class="float">
+<img src="images/Patagonia_map.png" alt="Map of parts of Patagonia in Argentina, showing locations that were analyzed in this study" />
+<div class="figcaption"><strong>Map of parts of Patagonia in Argentina, showing locations that were analyzed in this study</strong></div>
+</div>
+<p>Weather station records for all locations on the map were obtained, enabling the calibration of a weather generator and the download of climate projections from the ClimateWizard database. This facilitated the creation of past and future temperature scenarios for all stations, as well as the computation of winter chill and other agroclimatic metrics. However, the results of the winter chill calculations were not particularly noteworthy, as minimal changes were projected.</p>
+<div class="float">
+<img src="images/Patagonia_heatmap.png" alt="Heatmap showing Safe Winter Chill (10% quantile of chill distribution) for eleven locations in Patagonia" />
+<div class="figcaption"><strong>Heatmap showing Safe Winter Chill (10% quantile of chill distribution) for eleven locations in Patagonia</strong></div>
+</div>
+<p>Climate change could potentially enhance land suitability for fruit trees by providing increased summer heat:</p>
+<div class="float">
+<img src="images/Patagonia_heat.png" alt="Past and projected future heat availability for four exemplary locations in Patagonia" />
+<div class="figcaption"><strong>Past and projected future heat availability for four exemplary locations in Patagonia</strong></div>
+</div>
+<p>A further beneficial development is a likely reduction in the number of frost hours:</p>
+<div class="float">
+<img src="images/Patagonia_frost.png" alt="Past and projected frost risk for four exemplary locations in Patagonia" />
+<div class="figcaption"><strong>Past and projected frost risk for four exemplary locations in Patagonia</strong></div>
+</div>
+<p>While the changes observed may appear minor, they are likely to shift many locations from a climate that is too cool for agriculture, particularly for fruit trees, to a more optimal situation. This presents a rare instance of potentially positive news related to climate change, though it is important to acknowledge that these changes could have negative consequences for natural ecosystems and other agricultural systems.</p>
+</div>
+<div id="chill-model-comparison" class="section level2 hasAnchor" number="5.11">
+<h2><span class="header-section-number">5.11</span> Chill model comparison<a href="winter-chill-projections.html#chill-model-comparison" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Eduardo Fernandez recently utilized the climate change analysis framework to enhance previous chill model comparisons, significantly building on earlier work. He compiled a collection of 13 methods for quantifying chill accumulation from existing literature and applied these models to datasets from several locations in Germany, Tunisia, and Chile, which are part of the PASIT project. A map illustrates the locations included in this analysis.</p>
+<div class="float">
+<img src="images/Model_comp_map.png" alt="Locations used for comparing predictions by a total of 13 chill models across different climates" />
+<div class="figcaption"><strong>Locations used for comparing predictions by a total of 13 chill models across different climates</strong></div>
+</div>
+<p>The expectation was that the models would show significant differences in the extent of changes they predicted, and this anticipation was indeed fulfilled:</p>
+<div class="float">
+<img src="images/Model_comp_results.png" alt="Chill change projections by a total of 13 chill models across different climate scenarios" />
+<div class="figcaption"><strong>Chill change projections by a total of 13 chill models across different climate scenarios</strong></div>
+</div>
+<p>The figure illustrates the changes predicted by 13 different models across various sites and climate scenarios, categorized into three groups: warm, moderate, and cool. Eduardo’s analysis reveals significant discrepancies among the models, highlighting the risks of selecting the most convenient model for predictions. The variation in predictions is evident in the color distribution across the rows of the panels, with a uniform color indicating consistency among models—something that is not observed here.</p>
+<p>For locations in Tunisia and Chile, the predictions mainly concern the extent of chill losses, ranging from mild to alarming. In Germany, the situation is even less clear, with some models predicting increases in chill and others predicting decreases.</p>
+<p>These findings underscore the importance of model choice, as many models may be arbitrary and can be disregarded, yet uncertainties remain regarding which models accurately represent future conditions. This area of research offers opportunities for further exploration and innovation.</p>
+</div>
+<div id="chill-projection-for-all-of-tunisia" class="section level2 hasAnchor" number="5.12">
+<h2><span class="header-section-number">5.12</span> Chill projection for all of Tunisia<a href="winter-chill-projections.html#chill-projection-for-all-of-tunisia" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The study projected climate change impacts on winter chill for an orchard near Sfax in Central Tunisia, but the region is not the most favorable for temperate fruit and nut tree cultivation. Tunisia is climatically diverse, featuring mountains, plains, coastal areas, and interior deserts, leading to significant variation in historical and future chill availability across the country.</p>
+<p>Under the leadership of <a href="https://scholar.google.de/citations?hl=de&amp;user=DdV9jsAAAAAJ">Haifa Benmoussa</a>, the team mapped chill accumulation throughout Tunisia using a framework previously developed. This analysis utilized data from 20 weather stations in Tunisia and neighboring countries. By applying the established analytical framework to each location, they were able to interpolate results and create chill maps that illustrate the trends in chill availability in Tunisia over the past few decades:</p>
+<div class="float">
+<img src="images/Figure_1_Tunisia_historic.png" alt="Chill availability maps for Tunisia for several past scenarios" />
+<div class="figcaption"><strong>Chill availability maps for Tunisia for several past scenarios</strong></div>
+</div>
+<p>The process of interpolating site-specific results into a comprehensive map for Tunisia involves some areas for improvement. Currently, the methodology uses site-specific predictions of Safe Winter Chill, defined as the 10th percentile of the chill distribution derived from annual temperature dynamics generated by the weather model. This information is then interpolated using the Kriging technique.</p>
+<p>In addition, the elevations of the locations where chill was modeled are also considered. A linear model is fitted to establish a relationship between chill accumulation and elevation. Using a Digital Elevation Model (DEM), the differences between the model-derived elevations from weather stations and the actual elevations of each location are calculated. This difference, not accounted for in the initial chill surface derived from weather station data, is corrected using the established elevation-chill relationship.</p>
+<p>While this method seems reasonable for Tunisia, it may not be suitable for cooler regions like Germany, where the relationship between elevation and chill availability may not be linear. The resulting projection of future chill for Tunisia is displayed in the following map:</p>
+<div class="float">
+<img src="images/Figure_2_Tunisia_all_scenarios.png" alt="Chill availability for Tunisia for various plausible scenarios of future climate" />
+<div class="figcaption"><strong>Chill availability for Tunisia for various plausible scenarios of future climate</strong></div>
+</div>
+<p>The projections reveal significant concern regarding winter chill in Tunisia. The Dynamic Model, which is regarded as a reliable predictor, indicates substantial decreases in Chill Portions, the units used by the model. This trend poses serious challenges for much of the country. Even in areas where some winter chill is expected to persist, farmers will need to adapt their practices, as the tree species currently cultivated are suited to past climate conditions. Adaptation strategies may include shifting to tree cultivars with lower chilling requirements, provided such options are available.</p>
+</div>
+<div id="revisiting-chill-accumulation-in-oman" class="section level2 hasAnchor" number="5.13">
+<h2><span class="header-section-number">5.13</span> Revisiting chill accumulation in Oman<a href="winter-chill-projections.html#revisiting-chill-accumulation-in-oman" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>After a decade of exploration in other regions, the analysis turned back to Oman, where there was a desire to enhance the initial study of chill accumulation. The first assessment had limitations, particularly concerning model selection and a lack of adequate future climate data. With encouragement from <a href="https://scholar.google.de/citations?user=ZNvcJJ8AAAAJ&amp;hl=de">Prof. Dr. Andreas Bürkert</a>, a more robust evaluation became possible using the climate change analysis framework. This involved incorporating new methods to convert daily temperatures into hourly data. Updated assessments of past winter chill and future forecasts for the oases of Al Jabal Al Akhdar were produced, with the findings published in <em>Climatic Change</em> (<a href="https://link.springer.com/article/10.1007/s10584-020-02862-8">Buerkert et al., 2020</a>).</p>
+</div>
+<div id="exercises-on-past-chill-projections" class="section level2 hasAnchor" number="5.14">
+<h2><span class="header-section-number">5.14</span> <code>Exercises</code> on past chill projections<a href="winter-chill-projections.html#exercises-on-past-chill-projections" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li><em>Sketch out three data access and processing challenges that had to be overcome in order to produce chill projections with state-of-the-art methodology.</em></li>
+</ol>
+<ul>
+<li><p><strong>Accessing Climate Data for Specific Locations</strong>:<br />
+Previous climate datasets like AFRICLIM and ClimateWizard only provided large-scale data. To get weather data for specific locations without downloading too much extra information, an API was created to quickly access data for single sites</p></li>
+<li><p><strong>Converting Daily to Hourly Temperature Data</strong>:<br />
+Chill models need hourly temperature data, but many databases only give daily averages. Early methods for converting daily to hourly data weren’t very good, especially in areas with unique temperatures. Improved algorithms were developed to estimate hourly temperatures more accurately from daily data</p></li>
+<li><p><strong>Handling Large Volumes of Climate Model Outputs</strong>:<br />
+Studying different climate futures involves dealing with a lot of data from many climate models, which can be hard to manage. To handle this large amount of data effectively, workflows were streamlined and selective processing techniques were used</p></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li><em>Outline, in your understanding, the basic steps that are necessary to make such projections.</em></li>
+</ol>
+<p>To make climate-based chill projections for specific regions, here are the essential steps typically involved:</p>
+<ul>
+<li><p><strong>Data Collection and Calibration:</strong> collect historical weather data and use it to calibrate a weather generator for realistic temperature simulations</p></li>
+<li><p><strong>Model Selection and Scenario Setup:</strong> choose relevant climate models and emission scenarios to explore various future climates</p></li>
+<li><p><strong>Generate Temperature Projections:</strong> downscale climate data, converting it to daily or hourly temperatures as needed for chill calculations</p></li>
+<li><p><strong>Chill Calculation:</strong> apply chill models to estimate chill accumulation across different climate scenarios</p></li>
+<li><p><strong>Analysis and Visualization:</strong> compare chill projections across models and scenarios and visualize the findings</p></li>
+<li><p><strong>Interpretation:</strong> validate projections with observed data where possible and assess agricultural impacts and adaptation needs</p></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="climate-change-and-impact-projection.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/jacqwng/Logbook/edit/main/05-winter-chill.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/jacqwng/Logbook/blob/main/05-winter-chill.Rmd",
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

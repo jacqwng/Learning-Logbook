@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Tree dormancy | Tree phenology Analysis with R</title>
+  <meta name="description" content="Chapter 3 Tree dormancy | Tree phenology Analysis with R" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Tree dormancy | Tree phenology Analysis with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Tree dormancy | Tree phenology Analysis with R" />
+  
+  
+  
+
+<meta name="author" content="Jacqueline Wingen" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="tools.html"/>
+<link rel="next" href="climate-change-and-impact-projection.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Tree phenology Analysis with R</a></li>
+<li><a href="index.html"><img src="images/chillR_hexSticker.png" width="75%"></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#learning-goals"><i class="fa fa-check"></i><b>1.1</b> Learning goals</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="tools.html"><a href="tools.html"><i class="fa fa-check"></i><b>2</b> Tools</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="tools.html"><a href="tools.html#r-and-rstudio"><i class="fa fa-check"></i><b>2.1</b> R and RStudio</a></li>
+<li class="chapter" data-level="2.2" data-path="tools.html"><a href="tools.html#git-and-github"><i class="fa fa-check"></i><b>2.2</b> Git and Github</a></li>
+<li class="chapter" data-level="2.3" data-path="tools.html"><a href="tools.html#rmarkdown"><i class="fa fa-check"></i><b>2.3</b> Rmarkdown</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="tree-dormancy.html"><a href="tree-dormancy.html"><i class="fa fa-check"></i><b>3</b> Tree dormancy</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="tree-dormancy.html"><a href="tree-dormancy.html#learning-goals-1"><i class="fa fa-check"></i><b>3.1</b> Learning goals</a></li>
+<li class="chapter" data-level="3.2" data-path="tree-dormancy.html"><a href="tree-dormancy.html#introduction-to-dormancy"><i class="fa fa-check"></i><b>3.2</b> Introduction to dormancy</a></li>
+<li class="chapter" data-level="3.3" data-path="tree-dormancy.html"><a href="tree-dormancy.html#dormancy-physiology"><i class="fa fa-check"></i><b>3.3</b> Dormancy physiology</a></li>
+<li class="chapter" data-level="3.4" data-path="tree-dormancy.html"><a href="tree-dormancy.html#experimental-and-statistical-determination-of-chilling-and-forcing-periods"><i class="fa fa-check"></i><b>3.4</b> Experimental and statistical determination of chilling and forcing periods</a></li>
+<li class="chapter" data-level="3.5" data-path="tree-dormancy.html"><a href="tree-dormancy.html#phenology-record-and-bbch-scale"><i class="fa fa-check"></i><b>3.5</b> Phenology record and BBCH scale</a></li>
+<li class="chapter" data-level="3.6" data-path="tree-dormancy.html"><a href="tree-dormancy.html#excercises-on-tree-dormancy"><i class="fa fa-check"></i><b>3.6</b> <code>Excercises</code> on tree dormancy</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="climate-change-and-impact-projection.html"><a href="climate-change-and-impact-projection.html"><i class="fa fa-check"></i><b>4</b> Climate change and impact projection</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="climate-change-and-impact-projection.html"><a href="climate-change-and-impact-projection.html#the-drivers-of-climate-change"><i class="fa fa-check"></i><b>4.1</b> The drivers of climate change</a></li>
+<li class="chapter" data-level="4.2" data-path="climate-change-and-impact-projection.html"><a href="climate-change-and-impact-projection.html#whats-already-known"><i class="fa fa-check"></i><b>4.2</b> What’s already known</a></li>
+<li class="chapter" data-level="4.3" data-path="climate-change-and-impact-projection.html"><a href="climate-change-and-impact-projection.html#future-scenarios"><i class="fa fa-check"></i><b>4.3</b> Future scenarios</a></li>
+<li class="chapter" data-level="4.4" data-path="climate-change-and-impact-projection.html"><a href="climate-change-and-impact-projection.html#impact-projections-approaches"><i class="fa fa-check"></i><b>4.4</b> Impact projections approaches</a></li>
+<li class="chapter" data-level="4.5" data-path="climate-change-and-impact-projection.html"><a href="climate-change-and-impact-projection.html#exercises-on-climate-change"><i class="fa fa-check"></i><b>4.5</b> <code>Exercises</code> on climate change</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html"><i class="fa fa-check"></i><b>5</b> Winter chill projections</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#learning-goals-2"><i class="fa fa-check"></i><b>5.1</b> Learning goals</a></li>
+<li class="chapter" data-level="5.2" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#winter-chill-in-oman"><i class="fa fa-check"></i><b>5.2</b> Winter chill in Oman</a></li>
+<li class="chapter" data-level="5.3" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#chill-model-sensitivity"><i class="fa fa-check"></i><b>5.3</b> Chill model sensitivity</a></li>
+<li class="chapter" data-level="5.4" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#winter-chill-in-california"><i class="fa fa-check"></i><b>5.4</b> Winter chill in California</a></li>
+<li class="chapter" data-level="5.5" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#winter-chill-ratios"><i class="fa fa-check"></i><b>5.5</b> Winter chill ratios</a></li>
+<li class="chapter" data-level="5.6" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#a-global-projection-of-future-winter-chill"><i class="fa fa-check"></i><b>5.6</b> A global projection of future winter chill</a></li>
+<li class="chapter" data-level="5.7" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#winter-chill-in-germany"><i class="fa fa-check"></i><b>5.7</b> Winter chill in Germany</a></li>
+<li class="chapter" data-level="5.8" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#winter-chill-in-tunisia"><i class="fa fa-check"></i><b>5.8</b> Winter chill in Tunisia</a></li>
+<li class="chapter" data-level="5.9" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#winter-chill-in-chile"><i class="fa fa-check"></i><b>5.9</b> Winter chill in Chile</a></li>
+<li class="chapter" data-level="5.10" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#chill-projection-for-patagonia"><i class="fa fa-check"></i><b>5.10</b> Chill projection for Patagonia</a></li>
+<li class="chapter" data-level="5.11" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#chill-model-comparison"><i class="fa fa-check"></i><b>5.11</b> Chill model comparison</a></li>
+<li class="chapter" data-level="5.12" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#chill-projection-for-all-of-tunisia"><i class="fa fa-check"></i><b>5.12</b> Chill projection for all of Tunisia</a></li>
+<li class="chapter" data-level="5.13" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#revisiting-chill-accumulation-in-oman"><i class="fa fa-check"></i><b>5.13</b> Revisiting chill accumulation in Oman</a></li>
+<li class="chapter" data-level="5.14" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#exercises-on-past-chill-projections"><i class="fa fa-check"></i><b>5.14</b> <code>Exercises</code> on past chill projections</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Tree phenology Analysis with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="tree-dormancy" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Tree dormancy<a href="tree-dormancy.html#tree-dormancy" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This chapter is presented by <a href="https://scholar.google.de/citations?hl=de&amp;user=MTmTnnsAAAAJ">Dr. Erica Fadón</a>, a researcher at <a href="https://inresgb-lehre.iaas.uni-bonn.de/author/dr.-erica-fadon-adrian/">HortiBonn from 2018 to 2021</a>, who explores dormancy in temperate fruit trees. This topic remains complex and has many unanswered questions. A central question for researchers is, “How do trees know when to flower?” Although it seems clear that trees bloom in spring, the reality is more complicated. This chapter provides a better understanding of dormancy and demonstrates how to use the <code>chillR</code> tool to predict flowering times, even in the face of challenges posed by global warming.</p>
+<div id="learning-goals-1" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Learning goals<a href="tree-dormancy.html#learning-goals-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Learn about dormancy in temperate fruit trees</li>
+<li>Be able to identify the phenological stages of a fruit tree and understand phenology data sets</li>
+<li>Describe and compare the two methodologies (empirical and statistical) to identify the chilling and forcing periods of a certain cultivar</li>
+</ul>
+</div>
+<div id="introduction-to-dormancy" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Introduction to dormancy<a href="tree-dormancy.html#introduction-to-dormancy" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Tree dormancy is a state of reduced activity that occurs when environmental conditions are unfavorable, especially during winter. This state acts as a survival strategy, helping trees withstand extreme temperatures, water shortages, and other stress factors. During dormancy, trees slow down or stop their growth to conserve energy and avoid damage. Dormancy is a continuous process divided into three phases:</p>
+<ul>
+<li><strong>Dormancy Establishment</strong></li>
+<li><strong>Endo-Dormancy</strong></li>
+<li><strong>Eco-Dormancy</strong></li>
+</ul>
+<p>Dormancy establishment is the process where temperate trees transition from active growth in summer to a dormant state in autumn. This shift is mainly triggered by shorter daylight hours and decreasing temperatures, causing buds to form, growth to stop, and leaves to fall. The importance of these factors varies by species, with some trees responding more to day length and others to temperature.</p>
+<p>Endo-dormancy is a phase of dormancy controlled by the plant’s internal factors, where growth is suppressed even under favorable conditions. It requires a period of cold exposure (chilling) to release the buds from this state, preventing premature growth during temporary warm spells in winter. Low temperatures are the main trigger for breaking endo-dormancy, while the role of light (photoperiod) is still uncertain.</p>
+<p>Eco-dormancy is the phase after endo-dormancy, where buds have regained their ability to grow but remain inactive due to unfavorable environmental conditions, mainly low temperatures. During this phase, growth is on hold until warmer temperatures trigger it. Heat accumulation is needed to resume growth. Eco-dormancy ends when enough heat has been accumulated, leading to visible growth changes, typically in late winter or early spring.</p>
+<p>The below video <em>Introduction to dormancy</em> by <a href="https://scholar.google.de/citations?hl=de&amp;user=MTmTnnsAAAAJ">Dr. Erica Fadón</a> gives the basic knowledge of this dormancy phases and processes that regulate dormancy.</p>
+<iframe src="https://www.youtube.com/embed/qh9AZDmOm3o" width="672" height="400px" data-external="1">
+</iframe>
+</div>
+<div id="dormancy-physiology" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Dormancy physiology<a href="tree-dormancy.html#dormancy-physiology" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Dormancy as a whole is the result of complex interactions between numerous physiological processes that occur in different parts of the tree, such as buds, twigs, meristems, and vascular tissues. We divide these processes into four main themes:</p>
+<ul>
+<li><strong>Transport:</strong> occurs at both the whole-plant and cellular levels</li>
+<li><strong>Phytohormone Dynamics:</strong> behavior and levels of plant hormones during dormancy</li>
+<li><strong>Genetic and Epigenetic Regulation:</strong> how genetic factors and their modifications influence dormancy</li>
+<li><strong>Dynamics of Nonstructural Carbohydrates:</strong> changes in carbohydrate levels that affect dormancy</li>
+</ul>
+<p>The following figure from the study <a href="https://www.mdpi.com/2073-4395/10/2/241#">“A conceptual framework for Winter Dormancy in Deciduous Trees”</a> by Fadón et al. (2015) presents a conceptual framework of winter dormancy in deciduous trees and summarizes the three dormancy phases along with their respective physiological processes.</p>
+<div class="float">
+<img src="images/framework.png" alt="Conceptual framework of winter dormancy in deciduous trees. The dormancy framework (gray background) indicates three main phases: (a) dormancy establishment (light gray), (b) endo-dormancy (dark gray), and (c) eco-dormancy (medium gray). For each phase (a–c), the dormancy-related physiological processes are represented by colored shapes and numbers (0 to 4)." />
+<div class="figcaption">Conceptual framework of winter dormancy in deciduous trees. The dormancy framework (gray background) indicates three main phases: (a) dormancy establishment (light gray), (b) endo-dormancy (dark gray), and (c) eco-dormancy (medium gray). For each phase (a–c), the dormancy-related physiological processes are represented by colored shapes and numbers (0 to 4).</div>
+</div>
+<p>All the processes depicted are explained in detail in the video below, <em>Dormancy Physiology</em> by <a href="https://scholar.google.de/citations?hl=de&amp;user=MTmTnnsAAAAJ">Dr. Erica Fadón</a>.</p>
+<iframe src="https://www.youtube.com/embed/HriLSz77QEQ" width="672" height="400px" data-external="1">
+</iframe>
+</div>
+<div id="experimental-and-statistical-determination-of-chilling-and-forcing-periods" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Experimental and statistical determination of chilling and forcing periods<a href="tree-dormancy.html#experimental-and-statistical-determination-of-chilling-and-forcing-periods" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Dormancy consists of two phases where temperatures have opposite effects on flowering. During endodormancy, higher chill accumulation leads to earlier flowering, whereas similar cool temperatures during ecodormancy can delay flowering. The challenge lies in differentiating between these two phases, as the tree buds appear to be in the same developmental stage throughout. To address this, there are two methods available:</p>
+<ul>
+<li><p><strong>Experimental method:</strong> collecting buds periodically during winter, exposing them to favorable growth conditions, and evaluating bud break to determine when dormancy is overcome</p></li>
+<li><p><strong>Statistical method:</strong> uses long-term phenological data and temperature records to estimate the dates of chilling fulfillment and heat accumulation through partial least squares (PLS) regression analysis</p></li>
+</ul>
+<p>The video <em>Dormancy determination</em> covers the experimental and statistical methods to determine the chilling and forcing periods for temperate fruit trees to overcome dormancy and initiate growth. It explains the concept of dormancy, its phases (endodormancy and ecodormancy), and the temperature requirements for breaking dormancy.</p>
+<iframe src="https://www.youtube.com/embed/hMM27ktlzBM" width="672" height="400px" data-external="1">
+</iframe>
+</div>
+<div id="phenology-record-and-bbch-scale" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Phenology record and BBCH scale<a href="tree-dormancy.html#phenology-record-and-bbch-scale" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Phenology is the study of periodic events in biological life cycles and how these are influenced by seasonal and interannual variations in climate. This module will involve working with phenology data sets, primarily focusing on a specific stage, usually budbreak, even though trees pass through various developmental stages during the year. These stages are typically identified by numerical codes.</p>
+<p>To describe these growth stages systematically, the BBCH scale is employed. This internationally standardized system outlines the growth and developmental phases of plants. The BBCH scale consists of ten main stages, known as principal growth stages, which are numbered from 0 to 9. Each of these main stages is further divided into substages, enabling a more detailed description of a plant’s development.</p>
+<p>Principal growth stages:</p>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Stage</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>Germination / sprouting / bud development</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>Leaf development (main shoot)</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>Formation of side shoots / tillering</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>Stem elongation or rosette growth / shoot development (main shoot)</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>Development of harvestable vegetative plant parts or vegetatively propagated organs / booting (main shoot)</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>Inflorescence emergence</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>Flowering (main shoot)</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td>Development of fruit</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td>Ripening or maturity of fruit and seed</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td>Senescence, beginning of dormancy</td>
+</tr>
+</tbody>
+</table>
+<p>For a comprehensive overview of phenology and the BBCH scale, the video <em>Phenology</em> by <a href="https://scholar.google.de/citations?hl=de&amp;user=MTmTnnsAAAAJ">Dr. Erica Fadón</a> is recommended. In this video, Dr. Fadón explains the concept of phenology and how the BBCH scale uses numerical codes to represent the different developmental stages of trees, from budding and flowering to fruit ripening and leaf fall.</p>
+<iframe src="https://www.youtube.com/embed/Ssoe6Ahv88Y" width="672" height="400px" data-external="1">
+</iframe>
+</div>
+<div id="excercises-on-tree-dormancy" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> <code>Excercises</code> on tree dormancy<a href="tree-dormancy.html#excercises-on-tree-dormancy" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li><em>Put yourself in the place of a breeder who wants to calculate the temperature requirements of a newly released cultivar. Which method will you use to calculate the chilling and forcing periods? Please justify your answer.</em></li>
+</ol>
+<p>As a breeder aiming to calculate the temperature requirements for the chilling and forcing periods of a newly released cultivar, I would use the experimental method to determine the chilling and forcing periods. Here’s my justification:</p>
+<ul>
+<li><p><strong>Direct measurement of bud response:</strong> The experimental method allows me to directly observe when buds break under controlled temperature conditions. By regularly collecting buds during winter and placing them in ideal growth conditions, I can determine exactly when dormancy ends. This practical approach gives me quick and useful information about the specific cultivar</p></li>
+<li><p><strong>Specific to the cultivar:</strong> Each cultivar has its own unique chilling and forcing needs. The experimental method looks at the specific traits of the new cultivar, making sure the results are relevant and applicable to that variety</p></li>
+<li><p><strong>Immediate results for breeding decisions:</strong> The experimental method provides quick evaluations of bud break, allowing me to make faster decisions about breeding and managing the new cultivar</p></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li><em>Which are the advantages (2) of the BBCH scale compared with earlier scales?</em></li>
+</ol>
+<ul>
+<li><strong>Standardization:</strong> The BBCH scale provides a standardized framework for describing plant growth stages, enabling consistent communication and comparisons across studies</li>
+<li><strong>Detailed Staging</strong>: It offers a more granular categorization of developmental stages using a two-digit system, allowing for a better understanding of plant development and environmental impacts.</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li><em>Classify the following phenological stages of sweet cherry according to the BBCH scale:</em></li>
+</ol>
+<p><img src="images/pheno_stages.png" /></p>
+<ul>
+<li><strong>left image:</strong> BBCH stage 55 (single flower buds visible (still closed), green scales slightly open)</li>
+<li><strong>middle image:</strong> BBCH stage 65 (full flowering: at least 50% of flowers open, first petals falling)</li>
+<li><strong>right image:</strong> BBCH stage 89 (fruit ripe for harvesting)</li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="tools.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="climate-change-and-impact-projection.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/jacqwng/Logbook/edit/main/03-tree-dormancy.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/jacqwng/Logbook/blob/main/03-tree-dormancy.Rmd",
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
