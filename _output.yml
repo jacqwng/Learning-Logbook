@@ -1,6 +1,7 @@
 bookdown::gitbook:
   css: style.css
   config:
+    toc_float: true
     toc:
       before: |
         <li><a href="./">Tree phenology Analysis with R</a></li>
