@@ -423,6 +423,15 @@ Please document all results of the following assignments in your `learning logbo
 
 1)  *For the location you chose for previous exercises, produce historic temperature scenarios representing several years of the historic record (your choice).*
 
+```{r load_packages, echo=FALSE, message=FALSE}
+require(chillR)
+require(tidyverse)
+require(kableExtra)
+  read_tab("Yakima/Yakima_temps.csv")
+chill_hist_scenario_list <- 
+  load_temperature_scenarios("Yakima","Yakima_hist_chill_305_59")
+```
+
 ```{r message=FALSE}
 #get a list of close-by weather stations
 station_list <- handle_gsod(action = "list_stations",
@@ -637,6 +646,6 @@ ggplot(data = all_scenarios,
                       breaks = unique(all_scenarios$scenario)) 
 ```
 
-```{r}
+```{r, saving_observed_chill}
 write.csv(actual_chill,"Yakima/Yakima_observed_chill_305_59.csv", row.names = FALSE)
 ```
