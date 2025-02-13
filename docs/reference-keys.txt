@@ -105,3 +105,4 @@ hiding-all-this-from-the-readers-of-our-markdown-file
 historic-temperature-scenarios
 climate-change-scenarios
 making-historic-temperature-scenarios
+exercises-on-generating-historic-temperature-scenarios

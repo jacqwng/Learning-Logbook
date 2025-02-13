@@ -16,7 +16,7 @@ rmd_files:
 - 07-chill.Rmd
 - 08-making-temp.Rmd
 - 09-tools-in-R.Rmd
-- 10.temp-data.Rmd
+- 10-temp-data.Rmd
 - 11-gaps.Rmd
 - 12-generate-temp.Rmd
 - 13-saving.Rmd
