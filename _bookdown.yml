@@ -21,3 +21,4 @@ rmd_files:
 - 12-generate-temp.Rmd
 - 13-saving.Rmd
 - 14-historic.Rmd
+- 15-future.Rmd

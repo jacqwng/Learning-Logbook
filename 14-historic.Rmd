@@ -15,7 +15,7 @@ chill_hist_scenario_list <-
 
 ```
 
-## Learning goals for this lesson {#goals_hist_temp_scen .unnumbered}
+## Learning goals for this lesson
 
 -   Understand how we can include temperature scenarios while generating synthetic weather
 -   Be able to produce temperature scenarios with arbitrary change scenarios imposed
@@ -51,7 +51,7 @@ change_scenario
 change_scenario <- data.frame(Tmin = rep(2,12),
                               Tmax = rep(2,12))
 
-kable(change_scenario)  %>%
+kable(change_scenario, align = c("c"))  %>%
   kable_styling("striped", position = "left",font_size = 14)
 ```
 
@@ -133,9 +133,9 @@ fix_weather(Bonn_patched)$QC
 # There are still 4 days missing here, out of 47 years -
 # let's simply interpolate these gaps now
 
-Bonn<-fix_weather(Bonn_patched)
+Bonn <- fix_weather(Bonn_patched)
 
-Bonn_temps<-Bonn$weather
+Bonn_temps <- Bonn$weather
 
 ```
 
@@ -166,7 +166,7 @@ scenario_1980$'1980'$data
 ```
 
 ```{r , echo=FALSE}
-kable(scenario_1980$'1980'$data) %>%
+kable(scenario_1980$'1980'$data, align = c("c")) %>%
   kable_styling("striped", position = "left",font_size = 14)
 
 ```
@@ -423,7 +423,7 @@ Please document all results of the following assignments in your `learning logbo
 
 1)  *For the location you chose for previous exercises, produce historic temperature scenarios representing several years of the historic record (your choice).*
 
-```{r load_packages, echo=FALSE, message=FALSE}
+```{r load_packages, echo=FALSE, message=FALSE, warning=FALSE}
 require(chillR)
 require(tidyverse)
 require(kableExtra)
@@ -432,7 +432,7 @@ chill_hist_scenario_list <-
   load_temperature_scenarios("Yakima","Yakima_hist_chill_305_59")
 ```
 
-```{r message=FALSE}
+```{r message=FALSE, warning=FALSE}
 #get a list of close-by weather stations
 station_list <- handle_gsod(action = "list_stations",
                             location = c(long = -120.5, lat = 46.6),

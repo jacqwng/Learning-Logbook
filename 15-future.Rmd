@@ -1,0 +1,59 @@
+# Future temperature scenarios
+
+## Learning goals for this lesson
+
+-   Acquire background knowledge on some important concepts in climate change analysis
+-   Understand how future climate projections are generated
+-   Learn about the "generations" of climate models and greenhouse gas concentration scenarios
+-   Appreciate that it's important to use up-to-date scenarios when you're working in this space
+
+## Impacts of future climate change
+
+Human-induced climate change has already left significant impacts on the climate, ecosystems, and agriculture, as confirmed by numerous studies. The situation is expected to worsen due to historically high greenhouse gas levels and ongoing emissions of about 40 Gt CO2-equivalents annually, with little sign of decline. Widespread ecosystem degradation further erodes the planet's resilience. While the future remains uncertain, including the success of mitigation efforts and ecosystems' capacity to adapt, climate change adaptation research seeks to address these uncertainties by focusing on exposure, sensitivity, and adaptive capacity.
+
+![**Conceptual framework for evaluating vulnerability and adaptation to climate change (Luedeling, 2020)**](images/adaptation_challenge.png)
+
+The framework for assessing climate change vulnerability and adaptation (Luedeling, 2020) includes **exposure** (expected future conditions), **sensitivity** (how the system responds), and **adaptive capacity** (the system's ability to adapt). Combining exposure and sensitivity helps estimate potential impacts, while adaptation aims to reduce sensitivity (e.g., selecting resilient cultivars) or increase adaptive capacity (e.g., implementing flexible management strategies).
+
+Current work focuses mainly on **exposure**, as it develops future scenarios for orchards. While chill models incorporate aspects of tree sensitivity, this is only partial, so the analyses primarily align with exposure.
+
+## Future climate scenarios
+
+Future climate scenarios and methods for creating historical chill scenarios, including relevant technical details, have been covered. The next step involves accessing climate model predictions for the desired location.
+
+Running climate models is a complex process, requiring precise setup of global climate models (GCMs), regional models (RCMs), and downscaling, with no consensus on a single correct approach. `chillR` functions are compatible with both high-quality and less precise scenarios. While advanced climate data or collaboration with experts is ideal, \`chillR\` includes tools to facilitate access to reliable climate databases.
+
+### Some background on climate models and warming pathways
+
+Until November 2023, the `ClimateWizard` database, maintained by Center for Tropical Agriculture (CIAT), was the best source of climate data available in `chillR`. Its main advantage over other sources is the ability to provide point-specific data for climate scenarios from multiple models, avoiding the need to process large-scale gridded datasets. This reduces data transfer bottlenecks, especially when dealing with Tmin and Tmax data for multiple months, models, scenarios, and downscaling methods. `ClimateWizard` simplifies this by delivering data for specified coordinates, making it a practical tool despite its limitations.Originally developed as a web tool by Dr. Evan Girvetz, `ClimateWizard` can also be accessed via an API, streamlining data retrieval without navigating through a web interface. However, the database does not include the latest climate scenarios, such as those from CMIP6, which represents the current state of climate science and incorporates updated Shared Socioeconomic Pathways (SSPs). These SSPs, released in 2021, are now the recommended scenarios for generating state-of-the-art projections. `ClimateWizard` remains based on the older CMIP5 models and the outdated Representative Concentration Pathways (RCPs), offering only two RCP scenarios that fail to encompass the full range of plausible future climates. While these RCP scenarios were useful initially, they are increasingly unsuitable for publishing credible results. Instructions for using `ClimateWizard` with CMIP5 data are still provided, but transitioning to CMIP6 data and SSP scenarios is strongly recommended for up-to-date analyses.
+
+## `Exercises` on future temperature scenarios
+
+Please document all results of the following assignments in your `learning logbook`.
+
+1)  *Briefly describe the differences between the RCPs and the SSPs (you may have to follow some of the links provided above).*
+
+The Representative Concentration Pathways (RCPs) and the Shared Socioeconomic Pathways (SSPs) are both scenario frameworks used for modeling future climate developments, but they differ in their methodology and focus.
+
+-   **RCPs (Representative Concentration Pathways)**:
+
+    -   Developed for the IPCC's 5th Assessment Report (AR5, published in 2014).
+
+    -   Describe different possible levels of radiative forcing (W/m²) by 2100, meaning the direct effect of greenhouse gas emissions on the climate.
+
+    -   Four main pathways: RCP2.6 (strong emissions reduction), RCP4.5 and RCP6.0 (moderate emissions), RCP8.5 (very high emissions, often referred to as "business as usual").
+
+    -   A purely climate-science-based approach without considering socioeconomic developments.
+
+-   **SSPs (Shared Socioeconomic Pathways)**:
+
+    -   Developed for the IPCC's 6th Assessment Report (AR6, published in 2021).
+
+    -   Combine socioeconomic developments with emission pathways to create different future scenarios.
+
+    -   Five main scenarios (SSP1 to SSP5), representing various societal, economic, and political trajectories, such as sustainable development (SSP1) or continued reliance on fossil fuels (SSP5).
+
+    -   Can be combined with different radiative forcing levels (e.g., SSP1-2.6 for sustainable development with low emissions or SSP5-8.5 for high emissions and fossil fuel dependence).
+
+**Summary**:\
+RCPs focus solely on emissions and their impact on radiative forcing, while SSPs incorporate socioeconomic factors, making them more comprehensive and flexible for climate projections. SSPs are considered more modern and detailed in representing possible climate futures.

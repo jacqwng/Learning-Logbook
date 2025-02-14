@@ -1,8 +1,9 @@
 bookdown::gitbook:
   css: style.css
   config:
-    toc_float: true
     toc:
+      collapse: section
+      scroll_highlight: yes
       before: |
         <li><a href="./">Tree phenology Analysis with R</a></li>
         <li><a href="index.html"><img src="images/chillR_hexSticker.png" width="75%"></a></li>

@@ -184,7 +184,7 @@ Many of the stations listed may not be useful, as they only overlap with the exi
 
 In `chillR` version 0.74 and later, the `handle_gsod()` function can download multiple station records at once, returning them as a named list. This function will be used to download the records for the selected stations (positions 2, 3, and 6 in the station list).
 
-```{r message=FALSE}
+```{r message=FALSE, warning=FALSE}
 patch_weather <-
       handle_gsod(action = "download_weather",
                   location = as.character(station_list$chillR_code[c(2, 3, 6)]),
@@ -468,7 +468,7 @@ Only the weather element, a `data.frame`, was saved, as it can be easily exporte
 
 ## `Exercises` on filling gaps
 
-1.  Use `chillR` functions to find out how many gaps you have in your dataset (even if you have none, please still follow all further steps)
+1.  *Use* `chillR` *functions to find out how many gaps you have in your dataset (even if you have none, please still follow all further steps)*
 
 ```{r}
 Yakima <- read.csv("Yakima/chillR_weather.csv")
@@ -485,7 +485,7 @@ kable(Yakima_QC, align = c("c")) %>%
              fixed_thead = TRUE)
 ```
 
-2.  Create a list of the 25 closest weather stations using the `handle_gsod` function
+2.  *Create a list of the 25 closest weather stations using the* `handle_gsod` *function*
 
 ```{r}
 station_list_Yakima <- handle_gsod(action = "list_stations",
@@ -502,10 +502,10 @@ kable(station_list_Yakima, align = c("c")) %>%
              fixed_thead = TRUE)
 ```
 
-3.  Identify suitable weather stations for patching gaps
-4.  Download weather data for promising stations, convert them to `chillR` format and compile them in a list
+3.  *Identify suitable weather stations for patching gaps*
+4.  *Download weather data for promising stations, convert them to* `chillR` *format and compile them in a list*
 
-```{r message=FALSE}
+```{r message=FALSE, warning=FALSE}
 patch_weather <-
   handle_gsod(action = "download_weather",
               location = as.character(station_list_Yakima$chillR_code[c(4, 6, 8)]),
@@ -513,7 +513,7 @@ patch_weather <-
   handle_gsod()
 ```
 
-5.  Use the `patch_daily_temperatures` function to fill gaps
+5.  *Use the* `patch_daily_temperatures` *function to fill gaps*
 
     ```{r}
     patched <- patch_daily_temperatures(weather = Yakima,
@@ -556,7 +556,7 @@ patch_weather <-
                     font_size = 14) 
     ```
 
-6.  Investigate the results - have all gaps been filled?
+6.  *Investigate the results - have all gaps been filled?*
 
 ```{r}
 write.csv(patched$weather,

@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="making-hourly-temperatures.html"/>
-<link rel="next" href="get_temp_data.html"/>
+<link rel="next" href="getting-temperature-data.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -247,17 +247,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9.10" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#exercises-on-useful-r-tools"><i class="fa fa-check"></i><b>9.10</b> <code>Exercises</code> on useful R tools</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="get_temp_data.html"><a href="get_temp_data.html"><i class="fa fa-check"></i><b>10</b> Getting temperature data</a>
+<li class="chapter" data-level="10" data-path="getting-temperature-data.html"><a href="getting-temperature-data.html"><i class="fa fa-check"></i><b>10</b> Getting temperature data</a>
 <ul>
-<li class="chapter" data-level="" data-path="get_temp_data.html"><a href="get_temp_data.html#goals_get_temps"><i class="fa fa-check"></i>Learning goals for this lesson</a></li>
-<li class="chapter" data-level="10.1" data-path="get_temp_data.html"><a href="get_temp_data.html#temperature-data-needs"><i class="fa fa-check"></i><b>10.1</b> Temperature data needs</a></li>
-<li class="chapter" data-level="10.2" data-path="get_temp_data.html"><a href="get_temp_data.html#the-global-summary-of-the-day-database"><i class="fa fa-check"></i><b>10.2</b> The Global Summary of the Day database</a>
+<li class="chapter" data-level="10.1" data-path="getting-temperature-data.html"><a href="getting-temperature-data.html#learning-goals-for-this-lesson"><i class="fa fa-check"></i><b>10.1</b> Learning goals for this lesson</a></li>
+<li class="chapter" data-level="10.2" data-path="getting-temperature-data.html"><a href="getting-temperature-data.html#temperature-data-needs"><i class="fa fa-check"></i><b>10.2</b> Temperature data needs</a></li>
+<li class="chapter" data-level="10.3" data-path="getting-temperature-data.html"><a href="getting-temperature-data.html#the-global-summary-of-the-day-database"><i class="fa fa-check"></i><b>10.3</b> The Global Summary of the Day database</a>
 <ul>
-<li class="chapter" data-level="10.2.1" data-path="get_temp_data.html"><a href="get_temp_data.html#actionlist_stations"><i class="fa fa-check"></i><b>10.2.1</b> <code>action=list_stations</code></a></li>
-<li class="chapter" data-level="10.2.2" data-path="get_temp_data.html"><a href="get_temp_data.html#actiondownload_weather"><i class="fa fa-check"></i><b>10.2.2</b> <code>action="download_weather"</code></a></li>
-<li class="chapter" data-level="10.2.3" data-path="get_temp_data.html"><a href="get_temp_data.html#downloaded-weather-as-action-argument"><i class="fa fa-check"></i><b>10.2.3</b> downloaded weather as <code>action</code> argument</a></li>
+<li class="chapter" data-level="10.3.1" data-path="getting-temperature-data.html"><a href="getting-temperature-data.html#actionlist_stations"><i class="fa fa-check"></i><b>10.3.1</b> <code>action=list_stations</code></a></li>
+<li class="chapter" data-level="10.3.2" data-path="getting-temperature-data.html"><a href="getting-temperature-data.html#actiondownload_weather"><i class="fa fa-check"></i><b>10.3.2</b> <code>action="download_weather"</code></a></li>
+<li class="chapter" data-level="10.3.3" data-path="getting-temperature-data.html"><a href="getting-temperature-data.html#downloaded-weather-as-action-argument"><i class="fa fa-check"></i><b>10.3.3</b> downloaded weather as <code>action</code> argument</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="get_temp_data.html"><a href="get_temp_data.html#exercises_getting"><i class="fa fa-check"></i><code>Exercises</code> on getting temperature data</a></li>
+<li class="chapter" data-level="10.4" data-path="getting-temperature-data.html"><a href="getting-temperature-data.html#exercises-on-getting-temperature-data"><i class="fa fa-check"></i><b>10.4</b> <code>Exercises</code> on getting temperature data</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -636,14 +636,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="exercises-on-useful-r-tools" class="section level2 hasAnchor" number="9.10">
 <h2><span class="header-section-number">9.10</span> <code>Exercises</code> on useful R tools<a href="some-useful-tools-in-r.html#exercises-on-useful-r-tools" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
-<li>Based on the <code>Winters_hours_gaps</code> dataset, use <code>magrittr</code> pipes and functions of the <code>tidyverse</code> to accomplish the following:</li>
+<li><em>Based on the</em> <code>Winters_hours_gaps</code> <em>dataset, use</em> <code>magrittr</code> <em>pipes and functions of the</em> <code>tidyverse</code> <em>to accomplish the following:</em></li>
 </ol>
 <ul>
 <li><ol style="list-style-type: lower-alpha">
-<li>Convert the dataset into a <code>tibble</code></li>
+<li><em>Convert the dataset into a</em> <code>tibble</code></li>
 </ol></li>
 <li><ol start="2" style="list-style-type: lower-alpha">
-<li>Select only the top 10 rows of the dataset</li>
+<li><em>Select only the top 10 rows of the dataset</em></li>
 </ol></li>
 </ul>
 <div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="some-useful-tools-in-r.html#cb100-1" tabindex="-1"></a>WHG <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(Winters_hours_gaps[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, ])</span>
@@ -663,7 +663,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10  2008     3     3    19      12.7  12.7</code></pre>
 <ul>
 <li><ol start="3" style="list-style-type: lower-alpha">
-<li>Convert the <code>tibble</code> to a <code>long</code> format, with separate rows for <code>Temp_gaps</code> and <code>Temp</code></li>
+<li><em>Convert the</em> <code>tibble</code> <em>to a</em> <code>long</code> <em>format, with separate rows for</em> <code>Temp_gaps</code> <em>and</em> <code>Temp</code></li>
 </ol></li>
 </ul>
 <p>To see the difference between the columns <code>Temp_gaps</code> and <code>Temp</code>, rows 279 to 302 (Julian Day 15) are used below:</p>
@@ -686,7 +686,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## # ℹ 38 more rows</code></pre>
 <ul>
 <li><ol start="4" style="list-style-type: lower-alpha">
-<li>Use <code>ggplot2</code> to plot <code>Temp_gaps</code> and <code>Temp</code> as facets (point or line plot)</li>
+<li><em>Use</em> <code>ggplot2</code> <em>to plot</em> <code>Temp_gaps</code> <em>and</em> <code>Temp</code> <em>as facets (point or line plot)</em></li>
 </ol></li>
 </ul>
 <div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="some-useful-tools-in-r.html#cb104-1" tabindex="-1"></a><span class="fu">ggplot</span>(WHGlong, <span class="fu">aes</span>(Hour, value)) <span class="sc">+</span></span>
@@ -697,7 +697,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-100-1.png" width="672" /></p>
 <ul>
 <li><ol start="5" style="list-style-type: lower-alpha">
-<li>Convert the dataset back to the <code>wide</code> format</li>
+<li><em>Convert the dataset back to the</em> <code>wide</code> <em>format</em></li>
 </ol></li>
 </ul>
 <div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="some-useful-tools-in-r.html#cb105-1" tabindex="-1"></a>WHGwide <span class="ot">&lt;-</span> WHGlong <span class="sc">%&gt;%</span> <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> name)</span>
@@ -718,7 +718,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## # ℹ 14 more rows</code></pre>
 <ul>
 <li><ol start="6" style="list-style-type: lower-alpha">
-<li>Select only the following columns: <code>Year</code>, <code>Month</code>, <code>Day</code> and <code>Temp</code></li>
+<li><em>Select only the following columns:</em> <code>Year</code>, <code>Month</code>, <code>Day</code> <em>and</em> <code>Temp</code></li>
 </ol></li>
 </ul>
 <div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="some-useful-tools-in-r.html#cb107-1" tabindex="-1"></a>WHG <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">c</span>(Year, Month, Day, Temp))</span></code></pre></div>
@@ -738,7 +738,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## # ℹ 14 more rows</code></pre>
 <ul>
 <li><ol start="7" style="list-style-type: lower-alpha">
-<li>Sort the dataset by the <code>Temp</code> column, in descending order</li>
+<li><em>Sort the dataset by the</em> <code>Temp</code> <em>column, in descending order</em></li>
 </ol></li>
 </ul>
 <div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="some-useful-tools-in-r.html#cb109-1" tabindex="-1"></a>WHG <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(Temp))</span></code></pre></div>
@@ -757,7 +757,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10  2008     3    15     9      10.8  10.8
 ## # ℹ 14 more rows</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li>For the <code>Winter_hours_gaps</code> dataset, write a <code>for</code> <em>l</em>oop to convert all temperatures (<code>Temp</code> column) to degrees Fahrenheit</li>
+<li><em>For the</em> <code>Winter_hours_gaps</code> <em>dataset, write a</em> <code>for</code> <em>loop to convert all temperatures</em> <em>(</em><code>Temp</code> <em>column) to degrees Fahrenheit</em></li>
 </ol>
 <p>So that the execution of the following code does not take too long, only Julian Day 15 (rows 279 to 302) is used here. To convert the entire <code>Temp</code> column to Fahrenheit, just omit <code>[279:302]</code></p>
 <div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="some-useful-tools-in-r.html#cb111-1" tabindex="-1"></a>Temp <span class="ot">&lt;-</span> Winters_hours_gaps<span class="sc">$</span>Temp[<span class="dv">279</span><span class="sc">:</span><span class="dv">302</span>]</span>
@@ -792,7 +792,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [1] 48.182
 ## [1] 47.7806</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li>Execute the same operation with a function from the <code>apply</code> family</li>
+<li><em>Execute the same operation with a function from the</em> <code>apply</code> <em>family</em></li>
 </ol>
 <p>Here it is the same as in 2, just omit <code>[279:302]</code> to convert the entire <code>Temp</code> column</p>
 <div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="some-useful-tools-in-r.html#cb113-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> Winters_hours_gaps<span class="sc">$</span>Temp</span>
@@ -801,11 +801,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb113-4"><a href="some-useful-tools-in-r.html#cb113-4" tabindex="-1"></a>  x <span class="sc">*</span> <span class="fl">1.8</span> <span class="sc">+</span> <span class="dv">32</span></span>
 <span id="cb113-5"><a href="some-useful-tools-in-r.html#cb113-5" tabindex="-1"></a></span>
 <span id="cb113-6"><a href="some-useful-tools-in-r.html#cb113-6" tabindex="-1"></a><span class="fu">sapply</span>(x[<span class="dv">279</span><span class="sc">:</span><span class="dv">302</span>], fahrenheit)</span></code></pre></div>
-<pre><code>##  [1] 44.1734 43.6712 41.9252 44.4002 42.9836 44.4452 42.9836 42.7550 48.1820 51.3698
-## [11] 53.6900 56.4692 57.5060 59.4446 57.5492 57.3332 58.1522 55.9058 53.8196 49.4708
-## [21] 47.6474 47.3342 48.1820 47.7806</code></pre>
+<pre><code>##  [1] 44.1734 43.6712 41.9252 44.4002 42.9836 44.4452 42.9836 42.7550 48.1820 51.3698 53.6900 56.4692
+## [13] 57.5060 59.4446 57.5492 57.3332 58.1522 55.9058 53.8196 49.4708 47.6474 47.3342 48.1820 47.7806</code></pre>
 <ol start="4" style="list-style-type: decimal">
-<li>Now use the <code>tidyverse</code> function <code>mutate</code> to achieve the same outcome</li>
+<li><em>Now use the</em> <code>tidyverse</code> <em>function</em> <code>mutate</code> <em>to achieve the same outcome</em></li>
 </ol>
 <div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="some-useful-tools-in-r.html#cb115-1" tabindex="-1"></a>WHG_F <span class="ot">&lt;-</span> WHG <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Temp_F =</span> Temp <span class="sc">*</span> <span class="fl">1.8</span> <span class="sc">+</span> <span class="dv">32</span>)</span>
 <span id="cb115-2"><a href="some-useful-tools-in-r.html#cb115-2" tabindex="-1"></a>WHG_F</span></code></pre></div>
@@ -832,7 +831,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="making-hourly-temperatures.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="get_temp_data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="getting-temperature-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -880,9 +879,9 @@ gitbook.start({
 "options": null
 },
 "toc": {
-"collapse": "subsection"
-},
-"toc_float": true
+"collapse": "section",
+"scroll_highlight": true
+}
 });
 });
 </script>

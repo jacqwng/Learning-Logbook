@@ -247,17 +247,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9.10" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#exercises-on-useful-r-tools"><i class="fa fa-check"></i><b>9.10</b> <code>Exercises</code> on useful R tools</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="get_temp_data.html"><a href="get_temp_data.html"><i class="fa fa-check"></i><b>10</b> Getting temperature data</a>
+<li class="chapter" data-level="10" data-path="getting-temperature-data.html"><a href="getting-temperature-data.html"><i class="fa fa-check"></i><b>10</b> Getting temperature data</a>
 <ul>
-<li class="chapter" data-level="" data-path="get_temp_data.html"><a href="get_temp_data.html#goals_get_temps"><i class="fa fa-check"></i>Learning goals for this lesson</a></li>
-<li class="chapter" data-level="10.1" data-path="get_temp_data.html"><a href="get_temp_data.html#temperature-data-needs"><i class="fa fa-check"></i><b>10.1</b> Temperature data needs</a></li>
-<li class="chapter" data-level="10.2" data-path="get_temp_data.html"><a href="get_temp_data.html#the-global-summary-of-the-day-database"><i class="fa fa-check"></i><b>10.2</b> The Global Summary of the Day database</a>
+<li class="chapter" data-level="10.1" data-path="getting-temperature-data.html"><a href="getting-temperature-data.html#learning-goals-for-this-lesson"><i class="fa fa-check"></i><b>10.1</b> Learning goals for this lesson</a></li>
+<li class="chapter" data-level="10.2" data-path="getting-temperature-data.html"><a href="getting-temperature-data.html#temperature-data-needs"><i class="fa fa-check"></i><b>10.2</b> Temperature data needs</a></li>
+<li class="chapter" data-level="10.3" data-path="getting-temperature-data.html"><a href="getting-temperature-data.html#the-global-summary-of-the-day-database"><i class="fa fa-check"></i><b>10.3</b> The Global Summary of the Day database</a>
 <ul>
-<li class="chapter" data-level="10.2.1" data-path="get_temp_data.html"><a href="get_temp_data.html#actionlist_stations"><i class="fa fa-check"></i><b>10.2.1</b> <code>action=list_stations</code></a></li>
-<li class="chapter" data-level="10.2.2" data-path="get_temp_data.html"><a href="get_temp_data.html#actiondownload_weather"><i class="fa fa-check"></i><b>10.2.2</b> <code>action="download_weather"</code></a></li>
-<li class="chapter" data-level="10.2.3" data-path="get_temp_data.html"><a href="get_temp_data.html#downloaded-weather-as-action-argument"><i class="fa fa-check"></i><b>10.2.3</b> downloaded weather as <code>action</code> argument</a></li>
+<li class="chapter" data-level="10.3.1" data-path="getting-temperature-data.html"><a href="getting-temperature-data.html#actionlist_stations"><i class="fa fa-check"></i><b>10.3.1</b> <code>action=list_stations</code></a></li>
+<li class="chapter" data-level="10.3.2" data-path="getting-temperature-data.html"><a href="getting-temperature-data.html#actiondownload_weather"><i class="fa fa-check"></i><b>10.3.2</b> <code>action="download_weather"</code></a></li>
+<li class="chapter" data-level="10.3.3" data-path="getting-temperature-data.html"><a href="getting-temperature-data.html#downloaded-weather-as-action-argument"><i class="fa fa-check"></i><b>10.3.3</b> downloaded weather as <code>action</code> argument</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="get_temp_data.html"><a href="get_temp_data.html#exercises_getting"><i class="fa fa-check"></i><code>Exercises</code> on getting temperature data</a></li>
+<li class="chapter" data-level="10.4" data-path="getting-temperature-data.html"><a href="getting-temperature-data.html#exercises-on-getting-temperature-data"><i class="fa fa-check"></i><b>10.4</b> <code>Exercises</code> on getting temperature data</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -410,7 +410,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="exercises-on-temperature-generation" class="section level2 hasAnchor" number="12.6">
 <h2><span class="header-section-number">12.6</span> <code>Exercises</code> on temperature generation<a href="generating-temperature-scenarios.html#exercises-on-temperature-generation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
-<li>For the location you chose for your earlier analyses, use chillR’s weather generator to produce 100 years of synthetic temperature data.</li>
+<li><em>For the location you chose for your earlier analyses, use chillR’s weather generator to produce 100 years of synthetic temperature data.</em></li>
 </ol>
 <div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="generating-temperature-scenarios.html#cb181-1" tabindex="-1"></a>Yakima <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Yakima/Yakima_weather.csv&quot;</span>)</span>
 <span id="cb181-2"><a href="generating-temperature-scenarios.html#cb181-2" tabindex="-1"></a></span>
@@ -447,7 +447,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb183-8"><a href="generating-temperature-scenarios.html#cb183-8" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_labels =</span> <span class="st">&quot;%b&quot;</span>)</span></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-187-1.png" width="672" /></p>
 <ol start="2" style="list-style-type: decimal">
-<li>Calculate winter chill (in Chill Portions) for your synthetic weather, and illustrate your results as histograms and cumulative distributions.</li>
+<li><em>Calculate winter chill (in Chill Portions) for your synthetic weather, and illustrate your results as histograms and cumulative distributions.</em></li>
 </ol>
 <div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="generating-temperature-scenarios.html#cb184-1" tabindex="-1"></a>chill_observed <span class="ot">&lt;-</span> Temperatures <span class="sc">%&gt;%</span></span>
 <span id="cb184-2"><a href="generating-temperature-scenarios.html#cb184-2" tabindex="-1"></a>  <span class="fu">filter</span>(Data_source <span class="sc">==</span> <span class="st">&quot;observed&quot;</span>) <span class="sc">%&gt;%</span></span>
@@ -493,7 +493,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb186-12"><a href="generating-temperature-scenarios.html#cb186-12" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-190-1.png" width="672" /></p>
 <ol start="3" style="list-style-type: decimal">
-<li>Produce similar plots for the number of freezing hours (&lt;0°C) in April (or October, if your site is in the Southern Hemisphere) for your location of interest</li>
+<li><em>Produce similar plots for the number of freezing hours (&lt;0°C) in April (or October, if your site is in the Southern Hemisphere) for your location of interest</em></li>
 </ol>
 <div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="generating-temperature-scenarios.html#cb187-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb187-2"><a href="generating-temperature-scenarios.html#cb187-2" tabindex="-1"></a>  <span class="at">lower =</span>  <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1000</span>,    <span class="dv">0</span>),</span>
@@ -608,9 +608,9 @@ gitbook.start({
 "options": null
 },
 "toc": {
-"collapse": "subsection"
-},
-"toc_float": true
+"collapse": "section",
+"scroll_highlight": true
+}
 });
 });
 </script>

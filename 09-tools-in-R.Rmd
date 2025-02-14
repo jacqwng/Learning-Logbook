@@ -261,15 +261,15 @@ apply(mat, MARGIN = 2, sum) # adding up all the data in each column
 
 ## `Exercises` on useful R tools
 
-1.  Based on the `Winters_hours_gaps` dataset, use `magrittr` pipes and functions of the `tidyverse` to accomplish the following:
+1.  *Based on the* `Winters_hours_gaps` *dataset, use* `magrittr` *pipes and functions of the* `tidyverse` *to accomplish the following:*
 
 -   
 
-    a)  Convert the dataset into a `tibble`
+    a)  *Convert the dataset into a* `tibble`
 
 -   
 
-    b)  Select only the top 10 rows of the dataset
+    b)  *Select only the top 10 rows of the dataset*
 
 ```{r, include = FALSE}
 library(tidyverse)
@@ -284,7 +284,7 @@ WHG
 
 -   
 
-    c)  Convert the `tibble` to a `long` format, with separate rows for `Temp_gaps` and `Temp`
+    c)  *Convert the* `tibble` *to a* `long` *format, with separate rows for* `Temp_gaps` *and* `Temp`
 
 To see the difference between the columns `Temp_gaps` and `Temp`, rows 279 to 302 (Julian Day 15) are used below:
 
@@ -296,7 +296,7 @@ WHGlong
 
 -   
 
-    d)  Use `ggplot2` to plot `Temp_gaps` and `Temp` as facets (point or line plot)
+    d)  *Use* `ggplot2` *to plot* `Temp_gaps` *and* `Temp` *as facets (point or line plot)*
 
 ```{r, warning = FALSE}
 ggplot(WHGlong, aes(Hour, value)) +
@@ -308,7 +308,7 @@ ggplot(WHGlong, aes(Hour, value)) +
 
 -   
 
-    e)  Convert the dataset back to the `wide` format
+    e)  *Convert the dataset back to the* `wide` *format*
 
 ```{r}
 WHGwide <- WHGlong %>% pivot_wider(names_from = name)
@@ -317,7 +317,7 @@ WHGwide
 
 -   
 
-    f)  Select only the following columns: `Year`, `Month`, `Day` and `Temp`
+    f)  *Select only the following columns:* `Year`, `Month`, `Day` *and* `Temp`
 
 ```{r}
 WHG %>% select(c(Year, Month, Day, Temp))
@@ -325,13 +325,13 @@ WHG %>% select(c(Year, Month, Day, Temp))
 
 -   
 
-    g)  Sort the dataset by the `Temp` column, in descending order
+    g)  *Sort the dataset by the* `Temp` *column, in descending order*
 
 ```{r}
 WHG %>% arrange(desc(Temp))
 ```
 
-2.  For the `Winter_hours_gaps` dataset, write a `for` *l*oop to convert all temperatures (`Temp` column) to degrees Fahrenheit
+2.  *For the* `Winter_hours_gaps` *dataset, write a* `for` *loop to convert all temperatures* *(*`Temp` *column) to degrees Fahrenheit*
 
 So that the execution of the following code does not take too long, only Julian Day 15 (rows 279 to 302) is used here. To convert the entire `Temp` column to Fahrenheit, just omit `[279:302]`
 
@@ -345,7 +345,7 @@ for (i in Temp)
 }
 ```
 
-3.  Execute the same operation with a function from the `apply` family
+3.  *Execute the same operation with a function from the* `apply` *family*
 
 Here it is the same as in 2, just omit `[279:302]` to convert the entire `Temp` column
 
@@ -359,7 +359,7 @@ fahrenheit <- function(x)
 sapply(x[279:302], fahrenheit)
 ```
 
-4.  Now use the `tidyverse` function `mutate` to achieve the same outcome
+4.  *Now use the* `tidyverse` *function* `mutate` *to achieve the same outcome*
 
 ```{r}
 WHG_F <- WHG %>% mutate(Temp_F = Temp * 1.8 + 32)

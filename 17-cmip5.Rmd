@@ -1,0 +1,586 @@
+# Making CMIP5 scenarios with the `ClimateWizard`
+
+```{r load_packages_ClimateWizard, echo=FALSE, message=FALSE, warning=FALSE}
+require(chillR)
+require(kableExtra)
+require(tidyverse)
+
+Bonn_temps<-read_tab("data/Bonn_temps.csv")
+chill_hist_scenario_list<-load_temperature_scenarios("data","Bonn_hist_chill_305_59")
+
+```
+
+***Note that this chapter only deals with CMIP5 climate scenarios. For methods to produce CMIP6 scenarios refer to the chapter on [Making CMIP6 scenarios]***
+
+## Learning goals for this lesson {#goals_ClimateWizard .unnumbered}
+
+-   Learn how to download future temperature projections from the ClimateWizard database
+-   Be able to produce synthetic temperature scenarios for an ensemble of future climate scenarios
+-   Transfer knowledge you gained earlier to compute temperature-based agroclimatic metrics for all the historic temperature records, as well as for past and future temperature scenarios
+-   Learn how to plot all your results in a concise manner
+
+## Using the `ClimateWizard`
+
+The ClimateWizard tool provides future climate data from CMIP5 models for RCPs 4.5 and 8.5. Since the service can sometimes be unavailable, the code may not always function as expected. A simple example is used to demonstrate its functionality:
+
+```{r getClimateWizard, eval=FALSE}
+getClimateWizardData(coordinates = c(longitude = 10.61,
+                                     latitude = 34.93),
+                     scenario = "rcp45",
+                     start_year = 2020,
+                     end_year = 2050,
+                     metric = c("CD18", "R02"),
+                     GCMs = c("bcc-csm1-1", "BNU-ESM"))
+
+```
+
+The code initially downloads data for two GCMs, one RCP scenario, and two climate metrics: cooling degree days above 18°C ("CD18") and annual wet days exceeding 0.2 mm/day ("R02"). It calculates mean values from 2020 to 2050 for a location in Tunisia (longitude 10.61, latitude 34.93).
+
+However, the goal is to use data from Bonn instead of Tunisia, include all climate models and both RCPs (4.5 and 8.5), and focus on future minimum and maximum temperature values (`monthly_min_max_temps`) for generating weather scenarios. Since downloading multiple RCPs or time points isn’t automated, this can be handled with loops.
+
+The baseline period required by the `ClimateWizard` database must be a 20-year interval between 1950 and 2005. Given Bonn's weather data from 1973 to 2019, the 31-year period from 1975 to 2005 is selected to center the median year at 1990. This choice reflects recent climate trends while satisfying database requirements.
+
+Temperature scenarios will be saved after download to avoid repeating the time-consuming process.
+
+```{r download_climate,eval=FALSE}
+
+RCPs <- c("rcp45",
+          "rcp85")
+Times <- c(2050,
+           2085)
+
+for(RCP in RCPs)
+  for(Time in Times)
+  {start_year <- Time - 15
+  end_year <- Time + 15
+  clim_scen <-
+    getClimateWizardData(
+      c(longitude = 7.143,
+        latitude = 50.866),
+      RCP,
+      start_year,
+      end_year,
+      temperature_generation_scenarios = TRUE,
+      baseline =c(1975, 2005),
+      metric = "monthly_min_max_temps",
+      GCMs = "all")
+  save_temperature_scenarios(clim_scen,
+                             "data/ClimateWizard",
+                             paste0("Bonn_futures_",Time,"_",RCP))}
+
+```
+
+The baseline for future climate data was set to the period from 1975 to 2005. While it could be logical to limit the observed weather data for calibrating the weather generator to the same interval, the decision is made to use the full observed dataset from 1973 to 2019. This introduces a discrepancy, as the median year for the observed data is 1996, compared to 1990 for the baseline. To address this difference, a baseline adjustment is required.
+
+```{r baseline_adjustment_future}
+scenario_1990 <- Bonn_temps %>%
+  temperature_scenario_from_records(1990)
+scenario_1996 <- Bonn_temps %>%
+  temperature_scenario_from_records(1996)
+adjustment_scenario <-
+  temperature_scenario_baseline_adjustment(scenario_1996,
+                                           scenario_1990)
+
+print(adjustment_scenario)
+
+```
+
+The reference year has been set to 1996, aligning with the full observed record used for temperature generation and calibration. This adjustment must be applied consistently across all downloaded weather scenarios. The next step involves selecting the RCPs and scenario years for analysis.
+
+```{r RCP_Times}
+RCPs <- c("rcp45",
+          "rcp85")
+Times <- c(2050,
+           2085)
+```
+
+The saved scenarios are loaded again as a backup in case of crashes or accidental closure of RStudio. The `load_ClimateWizard_scenarios` function is used for this. The baseline adjustment and temperature generation are then applied, and the generated weather data is saved.
+
+```{r future_temperature_generation, eval=FALSE}
+
+for(RCP in RCPs)
+  for(Time in Times)
+  {
+    clim_scen <- load_ClimateWizard_scenarios(
+      "data/climateWizard",
+      paste0("Bonn_futures_",
+             Time,
+             "_",
+             RCP))
+    
+    clim_scen_adjusted <-
+      temperature_scenario_baseline_adjustment(
+        baseline_temperature_scenario = adjustment_scenario,
+        temperature_scenario = clim_scen)
+    
+    Temps <- temperature_generation(
+      weather = Bonn_temps, 
+      years = c(1973,
+                2019),
+      sim_years = c(2001,
+                    2101),
+      temperature_scenario = clim_scen_adjusted)
+    
+    save_temperature_scenarios(
+      Temps,
+      "data/Weather_ClimateWizard",
+      paste0("Bonn_",
+             Time,
+             "_",
+             RCP))
+  }
+
+
+```
+
+The process took some time, but all the future temperature data needed for scenario analysis is now prepared and saved to disk, eliminating the need to rerun the code. Next, historical scenarios will be added, similar to the previous steps, corresponding to the years 1980, 1990, 2000, and 2010.
+
+```{r future_scenarios_for_simulation, eval=FALSE}
+all_past_scenarios <- temperature_scenario_from_records(
+  weather = Bonn_temps,
+  year = c(1980,
+           1990,
+           2000,
+           2010))
+
+adjusted_scenarios <- temperature_scenario_baseline_adjustment(
+  baseline = scenario_1996,
+  temperature_scenario = all_past_scenarios)
+
+all_past_scenario_temps <- temperature_generation(
+  weather = Bonn_temps,
+  years = c(1973,
+            2019),
+  sim_years = c(2001,
+                2101),
+  temperature_scenario = adjusted_scenarios)
+
+save_temperature_scenarios(
+  all_past_scenario_temps,
+  "data/Weather_ClimateWizard",
+  "Bonn_historic")
+
+```
+
+The process follows the same steps used for creating historical scenarios. The `tempResponse_daily_list` function simplifies this. A list of models is prepared, including the Dynamic Model for chill, the Growing Degree Hours model for heat, and a frost model.
+
+```{r}
+
+frost_model <- function(x)
+  step_model(x,
+             data.frame(
+               lower=c(-1000,0),
+               upper=c(0,1000),
+               weight=c(1,0)))
+
+models <- list(Chill_Portions = Dynamic_Model,
+               GDH = GDH,
+               Frost_H = frost_model)
+
+```
+
+The models are first applied to the historical data, including both the scenarios and observed temperatures.
+
+```{r make_historic_chill_scenarios, eval=FALSE}
+
+Temps <- load_temperature_scenarios("data/Weather_ClimateWizard",
+                                    "Bonn_historic")
+
+chill_past_scenarios <-
+  Temps %>%
+  tempResponse_daily_list(
+    latitude = 50.866,
+    Start_JDay = 305,
+    End_JDay = 59,
+    models = models,
+    misstolerance = 10)
+chill_observed <- 
+  Bonn_temps %>%
+  tempResponse_daily_list(
+    latitude = 50.866,
+    Start_JDay = 305,
+    End_JDay = 59,
+    models = models,
+    misstolerance = 10)
+
+save_temperature_scenarios(chill_past_scenarios,
+                           "data/chill_ClimateWizard",
+                           "Bonn_historic")
+save_temperature_scenarios(chill_observed,
+                           "data/chill_ClimateWizard",
+                           "Bonn_observed")
+
+```
+
+To prepare for plotting, climate scenarios are created using the `make_climate_scenario` function, which simplifies processing with the plotting function. A historic scenario is first generated, including distributions for historic years and observed chill.
+
+```{r load_and_plot_chill_scens}
+chill_past_scenarios <- load_temperature_scenarios(
+  "data/chill_ClimateWizard",
+  "Bonn_historic")
+chill_observed <- load_temperature_scenarios(
+  "data/chill_ClimateWizard",
+  "Bonn_observed")
+
+chills <- make_climate_scenario(
+  chill_past_scenarios,
+  caption = "Historic",
+  historic_data = chill_observed,
+  time_series = TRUE)
+
+plot_climate_scenarios(
+  climate_scenario_list = chills,
+  metric = "Chill_Portions",
+  metric_label = "Chill (Chill Portions)")
+
+```
+
+The `make_climate_scenario` function both generates a plot and returns a short list with the message "time series labels," which will hold more content later. To store this information without displaying it immediately, the plotting command can be assigned to an object (e.g., `info <- plot_climate_scenarios(...)`), while the plot is still produced as a side effect. The same process is then applied to all future climate scenarios, adding each scenario to the `chills` object using the `add_to` argument of `make_climate_scenario`.
+
+```{r calculate_future_temp_responses, eval=FALSE}
+for(RCP in RCPs)
+  for(Time in Times)
+    {
+    Temps <- load_temperature_scenarios(
+      "data/Weather_ClimateWizard",
+      paste0("Bonn_",
+             Time,
+             "_",
+             RCP))
+    chill <- Temps %>% 
+      tempResponse_daily_list(
+        latitude = 50.866,
+        Start_JDay = 305,
+        End_JDay = 59,
+        models = models,
+        misstolerance = 10)
+    save_temperature_scenarios(
+      chill,
+      "data/chill_ClimateWizard",
+      paste0("Bonn_",
+             Time,
+             "_",
+             RCP))
+}
+
+
+
+```
+
+The future climate scenarios are reloaded, processed into climate scenarios using the same method as for the historic data, and added to the `chills` list to facilitate plotting.
+
+```{r}
+for(RCP in RCPs)
+  for(Time in Times)
+    {
+    chill <- load_temperature_scenarios(
+      "data/chill_ClimateWizard",
+      paste0("Bonn_",
+             Time,
+             "_",
+             RCP))
+    if(RCP == "rcp45") RCPcaption <- "RCP4.5"
+    if(RCP == "rcp85") RCPcaption <- "RCP8.5"
+    if(Time == "2050") Time_caption <- "2050"
+    if(Time == "2085") Time_caption <- "2085"
+    chills <- chill %>% 
+      make_climate_scenario(
+        caption = c(RCPcaption,
+                    Time_caption),
+        add_to = chills)
+}
+
+```
+
+All necessary data is now prepared to plot the results of the climate change analysis.
+
+```{r plot_full_climate_scenario_analysis}
+
+info_chill <-
+  plot_climate_scenarios(
+    climate_scenario_list = chills,
+    metric = "Chill_Portions",
+    metric_label = "Chill (Chill Portions)",
+    texcex = 1.5)
+
+```
+
+```{r}
+info_heat <-
+  plot_climate_scenarios(
+    climate_scenario_list = chills,
+    metric = "GDH",
+    metric_label = "Heat (Growing Degree Hours)",
+    texcex = 1.5)
+```
+
+```{r}
+info_frost <- 
+  plot_climate_scenarios(  
+    climate_scenario_list=chills,
+    metric="Frost_H",
+    metric_label="Frost hours",
+    texcex=1.5)
+```
+
+
+The results show trends in chill and heat accumulation, as well as frost hours for Klein-Altendorf. Along with the plot, supplementary information was returned and stored in the `info...` objects. These objects include the names of the climate models for each subplot and time series labels for the historic plot. Since the same models were used throughout, the information is repeated. To simplify, this will be inspected for just one plot.
+
+```{r , eval=FALSE}
+info_chill[[2]]
+```
+
+The plot uses numbers to represent each model, with the corresponding codes provided in a separate table to save space. If the figure design is unsatisfactory, a custom version will be created soon, and a more modern version available in `chillR` will also be explored later.
+
+## `Exercises` on generating CMIP5 temperature scenarios
+
+Please document all results of the following assignments in your `learning logbook`.
+
+1)  *Analyze the historic and future impact of climate change on three agroclimatic metrics of your choice, for the location you've chosen for your earlier analyses.*
+
+```{r}
+# Set baseline period and save temperature scenarios 
+RCPs <- c("rcp45",
+          "rcp85")
+Times <- c(2050,
+           2085)
+
+for(RCP in RCPs)
+  for(Time in Times)
+  {start_year <- Time - 15
+  end_year <- Time + 15
+  clim_scen <-
+    getClimateWizardData(
+      c(longitude = -120.539,
+        latitude = 46.569),
+      RCP,
+      start_year,
+      end_year,
+      temperature_generation_scenarios = TRUE,
+      baseline =c(1975, 2005),
+      metric = "monthly_min_max_temps",
+      GCMs = "all")
+  save_temperature_scenarios(clim_scen,
+                             "Yakima/ClimateWizard",
+                             paste0("Yakima_futures_",Time,"_",RCP))}
+```
+
+```{r}
+# Baseline adjustment
+scenario_1990 <- Yakima_temps %>%
+  temperature_scenario_from_records(1990)
+scenario_1998 <- Yakima_temps %>%
+  temperature_scenario_from_records(1998)
+adjustment_scenario <-
+  temperature_scenario_baseline_adjustment(scenario_1998,
+                                           scenario_1990)
+
+print(adjustment_scenario)
+```
+
+```{r}
+# Selecting RCPs and scenario years 
+RCPs <- c("rcp45",
+          "rcp85")
+Times <- c(2050,
+           2085)
+```
+
+```{r}
+# Temperature generation for future scenarios 
+for(RCP in RCPs)
+  for(Time in Times)
+  {
+    clim_scen <- load_ClimateWizard_scenarios(
+      "Yakima/climateWizard",
+      paste0("Yakima_futures_",
+             Time,
+             "_",
+             RCP))
+    
+    clim_scen_adjusted <-
+      temperature_scenario_baseline_adjustment(
+        baseline_temperature_scenario = adjustment_scenario,
+        temperature_scenario = clim_scen)
+    
+    Temps <- temperature_generation(
+      weather = Yakima_temps, 
+      years = c(1973,
+                2023),
+      sim_years = c(2001,
+                    2101),
+      temperature_scenario = clim_scen_adjusted)
+    
+    save_temperature_scenarios(
+      Temps,
+      "Yakima/Weather_ClimateWizard",
+      paste0("Yakima_",
+             Time,
+             "_",
+             RCP))
+  }
+```
+
+```{r}
+all_past_scenarios <- temperature_scenario_from_records(
+  weather = Yakima_temps,
+  year = c(1980,
+           1990,
+           2000,
+           2010))
+
+adjusted_scenarios <- temperature_scenario_baseline_adjustment(
+  baseline = scenario_1998,
+  temperature_scenario = all_past_scenarios)
+
+all_past_scenario_temps <- temperature_generation(
+  weather = Yakima_temps,
+  years = c(1973,
+            2023),
+  sim_years = c(2001,
+                2101),
+  temperature_scenario = adjusted_scenarios)
+
+save_temperature_scenarios(
+  all_past_scenario_temps,
+  "Yakima/Weather_ClimateWizard",
+  "Yakima_historic")
+```
+
+```{r}
+frost_model <- function(x)
+  step_model(x,
+             data.frame(
+               lower=c(-1000,0),
+               upper=c(0,1000),
+               weight=c(1,0)))
+
+models <- list(Chill_Portions = Dynamic_Model,
+               GDH = GDH,
+               Frost_H = frost_model)
+```
+
+```{r}
+Temps <- load_temperature_scenarios("Yakima/Weather_ClimateWizard",
+                                    "Yakima_historic")
+
+chill_past_scenarios <-
+  Temps %>%
+  tempResponse_daily_list(
+    latitude = 46.569,
+    Start_JDay = 305,
+    End_JDay = 59,
+    models = models,
+    misstolerance = 10)
+chill_observed <- 
+  Yakima_temps %>%
+  tempResponse_daily_list(
+    latitude = 46.569,
+    Start_JDay = 305,
+    End_JDay = 59,
+    models = models,
+    misstolerance = 10)
+
+save_temperature_scenarios(chill_past_scenarios,
+                           "Yakima/chill_ClimateWizard",
+                           "Yakima_historic")
+save_temperature_scenarios(chill_observed,
+                           "Yakima/chill_ClimateWizard",
+                           "Yakima_observed")
+```
+
+```{r}
+chill_past_scenarios <- load_temperature_scenarios(
+  "Yakima/chill_ClimateWizard",
+  "Yakima_historic")
+chill_observed <- load_temperature_scenarios(
+  "Yakima/chill_ClimateWizard",
+  "Yakima_observed")
+
+chills <- make_climate_scenario(
+  chill_past_scenarios,
+  caption = "Historic",
+  historic_data = chill_observed,
+  time_series = TRUE)
+
+plot_climate_scenarios(
+  climate_scenario_list = chills,
+  metric = "Chill_Portions",
+  metric_label = "Chill (Chill Portions)")
+```
+
+```{r}
+for(RCP in RCPs)
+  for(Time in Times)
+    {
+    Temps <- load_temperature_scenarios(
+      "Yakima/Weather_ClimateWizard",
+      paste0("Yakima_",
+             Time,
+             "_",
+             RCP))
+    chill <- Temps %>% 
+      tempResponse_daily_list(
+        latitude = 46.569,
+        Start_JDay = 305,
+        End_JDay = 59,
+        models = models,
+        misstolerance = 10)
+    save_temperature_scenarios(
+      chill,
+      "Yakima/chill_ClimateWizard",
+      paste0("Yakima_",
+             Time,
+             "_",
+             RCP))
+}
+```
+
+```{r}
+for(RCP in RCPs)
+  for(Time in Times)
+    {
+    chill <- load_temperature_scenarios(
+      "Yakima/chill_ClimateWizard",
+      paste0("Yakima_",
+             Time,
+             "_",
+             RCP))
+    if(RCP == "rcp45") RCPcaption <- "RCP4.5"
+    if(RCP == "rcp85") RCPcaption <- "RCP8.5"
+    if(Time == "2050") Time_caption <- "2050"
+    if(Time == "2085") Time_caption <- "2085"
+    chills <- chill %>% 
+      make_climate_scenario(
+        caption = c(RCPcaption,
+                    Time_caption),
+        add_to = chills)
+}
+```
+
+```{r}
+info_chill <-
+  plot_climate_scenarios(
+    climate_scenario_list = chills,
+    metric = "Chill_Portions",
+    metric_label = "Chill (Chill Portions)",
+    texcex = 1.5)
+```
+
+```{r}
+info_heat <-
+  plot_climate_scenarios(
+    climate_scenario_list = chills,
+    metric = "GDH",
+    metric_label = "Heat (Growing Degree Hours)",
+    texcex = 1.5)
+```
+
+```{r}
+info_frost <- 
+  plot_climate_scenarios(  
+    climate_scenario_list=chills,
+    metric="Frost_H",
+    metric_label="Frost hours",
+    texcex=1.5)
+```

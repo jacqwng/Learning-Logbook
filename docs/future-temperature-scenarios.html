@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 15 Future temperature scenarios | Tree phenology Analysis with R</title>
+  <meta name="description" content="Chapter 15 Future temperature scenarios | Tree phenology Analysis with R" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 15 Future temperature scenarios | Tree phenology Analysis with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 15 Future temperature scenarios | Tree phenology Analysis with R" />
+  
+  
+  
+
+<meta name="author" content="Jacqueline Wingen" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="historic-temperature-scenarios.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Tree phenology Analysis with R</a></li>
+<li><a href="index.html"><img src="images/chillR_hexSticker.png" width="75%"></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#learning-goals"><i class="fa fa-check"></i><b>1.1</b> Learning goals</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="tools.html"><a href="tools.html"><i class="fa fa-check"></i><b>2</b> Tools</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="tools.html"><a href="tools.html#r-and-rstudio"><i class="fa fa-check"></i><b>2.1</b> R and RStudio</a></li>
+<li class="chapter" data-level="2.2" data-path="tools.html"><a href="tools.html#git-and-github"><i class="fa fa-check"></i><b>2.2</b> Git and Github</a></li>
+<li class="chapter" data-level="2.3" data-path="tools.html"><a href="tools.html#rmarkdown"><i class="fa fa-check"></i><b>2.3</b> Rmarkdown</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="tree-dormancy.html"><a href="tree-dormancy.html"><i class="fa fa-check"></i><b>3</b> Tree dormancy</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="tree-dormancy.html"><a href="tree-dormancy.html#learning-goals-1"><i class="fa fa-check"></i><b>3.1</b> Learning goals</a></li>
+<li class="chapter" data-level="3.2" data-path="tree-dormancy.html"><a href="tree-dormancy.html#introduction-to-dormancy"><i class="fa fa-check"></i><b>3.2</b> Introduction to dormancy</a></li>
+<li class="chapter" data-level="3.3" data-path="tree-dormancy.html"><a href="tree-dormancy.html#dormancy-physiology"><i class="fa fa-check"></i><b>3.3</b> Dormancy physiology</a></li>
+<li class="chapter" data-level="3.4" data-path="tree-dormancy.html"><a href="tree-dormancy.html#experimental-and-statistical-determination-of-chilling-and-forcing-periods"><i class="fa fa-check"></i><b>3.4</b> Experimental and statistical determination of chilling and forcing periods</a></li>
+<li class="chapter" data-level="3.5" data-path="tree-dormancy.html"><a href="tree-dormancy.html#phenology-record-and-bbch-scale"><i class="fa fa-check"></i><b>3.5</b> Phenology record and BBCH scale</a></li>
+<li class="chapter" data-level="3.6" data-path="tree-dormancy.html"><a href="tree-dormancy.html#excercises-on-tree-dormancy"><i class="fa fa-check"></i><b>3.6</b> <code>Excercises</code> on tree dormancy</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="climate-change-and-impact-projection.html"><a href="climate-change-and-impact-projection.html"><i class="fa fa-check"></i><b>4</b> Climate change and impact projection</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="climate-change-and-impact-projection.html"><a href="climate-change-and-impact-projection.html#the-drivers-of-climate-change"><i class="fa fa-check"></i><b>4.1</b> The drivers of climate change</a></li>
+<li class="chapter" data-level="4.2" data-path="climate-change-and-impact-projection.html"><a href="climate-change-and-impact-projection.html#whats-already-known"><i class="fa fa-check"></i><b>4.2</b> What’s already known</a></li>
+<li class="chapter" data-level="4.3" data-path="climate-change-and-impact-projection.html"><a href="climate-change-and-impact-projection.html#future-scenarios"><i class="fa fa-check"></i><b>4.3</b> Future scenarios</a></li>
+<li class="chapter" data-level="4.4" data-path="climate-change-and-impact-projection.html"><a href="climate-change-and-impact-projection.html#impact-projections-approaches"><i class="fa fa-check"></i><b>4.4</b> Impact projections approaches</a></li>
+<li class="chapter" data-level="4.5" data-path="climate-change-and-impact-projection.html"><a href="climate-change-and-impact-projection.html#exercises-on-climate-change"><i class="fa fa-check"></i><b>4.5</b> <code>Exercises</code> on climate change</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html"><i class="fa fa-check"></i><b>5</b> Winter chill projections</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#learning-goals-2"><i class="fa fa-check"></i><b>5.1</b> Learning goals</a></li>
+<li class="chapter" data-level="5.2" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#winter-chill-in-oman"><i class="fa fa-check"></i><b>5.2</b> Winter chill in Oman</a></li>
+<li class="chapter" data-level="5.3" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#chill-model-sensitivity"><i class="fa fa-check"></i><b>5.3</b> Chill model sensitivity</a></li>
+<li class="chapter" data-level="5.4" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#winter-chill-in-california"><i class="fa fa-check"></i><b>5.4</b> Winter chill in California</a></li>
+<li class="chapter" data-level="5.5" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#winter-chill-ratios"><i class="fa fa-check"></i><b>5.5</b> Winter chill ratios</a></li>
+<li class="chapter" data-level="5.6" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#a-global-projection-of-future-winter-chill"><i class="fa fa-check"></i><b>5.6</b> A global projection of future winter chill</a></li>
+<li class="chapter" data-level="5.7" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#winter-chill-in-germany"><i class="fa fa-check"></i><b>5.7</b> Winter chill in Germany</a></li>
+<li class="chapter" data-level="5.8" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#winter-chill-in-tunisia"><i class="fa fa-check"></i><b>5.8</b> Winter chill in Tunisia</a></li>
+<li class="chapter" data-level="5.9" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#winter-chill-in-chile"><i class="fa fa-check"></i><b>5.9</b> Winter chill in Chile</a></li>
+<li class="chapter" data-level="5.10" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#chill-projection-for-patagonia"><i class="fa fa-check"></i><b>5.10</b> Chill projection for Patagonia</a></li>
+<li class="chapter" data-level="5.11" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#chill-model-comparison"><i class="fa fa-check"></i><b>5.11</b> Chill model comparison</a></li>
+<li class="chapter" data-level="5.12" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#chill-projection-for-all-of-tunisia"><i class="fa fa-check"></i><b>5.12</b> Chill projection for all of Tunisia</a></li>
+<li class="chapter" data-level="5.13" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#revisiting-chill-accumulation-in-oman"><i class="fa fa-check"></i><b>5.13</b> Revisiting chill accumulation in Oman</a></li>
+<li class="chapter" data-level="5.14" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#exercises-on-past-chill-projections"><i class="fa fa-check"></i><b>5.14</b> <code>Exercises</code> on past chill projections</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="manual-chill.html"><a href="manual-chill.html"><i class="fa fa-check"></i><b>6</b> Manual chill</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="manual-chill.html"><a href="manual-chill.html#learning-goals-3"><i class="fa fa-check"></i><b>6.1</b> Learning goals</a></li>
+<li class="chapter" data-level="6.2" data-path="manual-chill.html"><a href="manual-chill.html#chilling-hours-calculation-using-chillr"><i class="fa fa-check"></i><b>6.2</b> Chilling hours calculation using chillR</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="manual-chill.html"><a href="manual-chill.html#data-requirements"><i class="fa fa-check"></i><b>6.2.1</b> <strong>Data Requirements</strong></a></li>
+<li class="chapter" data-level="6.2.2" data-path="manual-chill.html"><a href="manual-chill.html#loading-and-preparing-data"><i class="fa fa-check"></i><b>6.2.2</b> Loading and Preparing Data</a></li>
+<li class="chapter" data-level="6.2.3" data-path="manual-chill.html"><a href="manual-chill.html#manual-calculation-of-chilling-hours"><i class="fa fa-check"></i><b>6.2.3</b> <strong>Manual Calculation of Chilling Hours</strong></a></li>
+<li class="chapter" data-level="6.2.4" data-path="manual-chill.html"><a href="manual-chill.html#automation-with-functions"><i class="fa fa-check"></i><b>6.2.4</b> Automation with Functions</a></li>
+<li class="chapter" data-level="6.2.5" data-path="manual-chill.html"><a href="manual-chill.html#application-example"><i class="fa fa-check"></i><b>6.2.5</b> Application Example</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="manual-chill.html"><a href="manual-chill.html#exercises-on-basic-chill-modeling"><i class="fa fa-check"></i><b>6.3</b> <code>Exercises</code> on basic chill modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chill.html"><a href="chill.html"><i class="fa fa-check"></i><b>7</b> Chill</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="chill.html"><a href="chill.html#learning-goals-4"><i class="fa fa-check"></i><b>7.1</b> Learning goals</a></li>
+<li class="chapter" data-level="7.2" data-path="chill.html"><a href="chill.html#chilling_hours-function"><i class="fa fa-check"></i><b>7.2</b> <code>Chilling_Hours()</code> function</a></li>
+<li class="chapter" data-level="7.3" data-path="chill.html"><a href="chill.html#utah-model"><i class="fa fa-check"></i><b>7.3</b> Utah Model</a></li>
+<li class="chapter" data-level="7.4" data-path="chill.html"><a href="chill.html#creating-custom-chill-models-with-step_model"><i class="fa fa-check"></i><b>7.4</b> Creating Custom Chill Models with <code>step_model()</code></a></li>
+<li class="chapter" data-level="7.5" data-path="chill.html"><a href="chill.html#dynamic-model"><i class="fa fa-check"></i><b>7.5</b> Dynamic model</a></li>
+<li class="chapter" data-level="7.6" data-path="chill.html"><a href="chill.html#chilling-and-tempresponse-functions"><i class="fa fa-check"></i><b>7.6</b> <code>Chilling</code> and <code>tempResponse</code> functions</a></li>
+<li class="chapter" data-level="7.7" data-path="chill.html"><a href="chill.html#exercises-on-chill-models"><i class="fa fa-check"></i><b>7.7</b> <code>Exercises</code> on chill models</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="making-hourly-temperatures.html"><a href="making-hourly-temperatures.html"><i class="fa fa-check"></i><b>8</b> Making hourly temperatures</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="making-hourly-temperatures.html"><a href="making-hourly-temperatures.html#learning-goals-5"><i class="fa fa-check"></i><b>8.1</b> Learning goals</a></li>
+<li class="chapter" data-level="8.2" data-path="making-hourly-temperatures.html"><a href="making-hourly-temperatures.html#generating-hourly-temperatures"><i class="fa fa-check"></i><b>8.2</b> Generating hourly temperatures</a></li>
+<li class="chapter" data-level="8.3" data-path="making-hourly-temperatures.html"><a href="making-hourly-temperatures.html#idealized-daily-temperature-curves"><i class="fa fa-check"></i><b>8.3</b> Idealized daily temperature curves</a></li>
+<li class="chapter" data-level="8.4" data-path="making-hourly-temperatures.html"><a href="making-hourly-temperatures.html#empirical-daily-temperature-curves"><i class="fa fa-check"></i><b>8.4</b> Empirical daily temperature curves</a></li>
+<li class="chapter" data-level="8.5" data-path="making-hourly-temperatures.html"><a href="making-hourly-temperatures.html#exercises-on-hourly-temperatures"><i class="fa fa-check"></i><b>8.5</b> <code>Exercises</code> on hourly temperatures</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html"><i class="fa fa-check"></i><b>9</b> Some useful tools in R</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#learning-goals-6"><i class="fa fa-check"></i><b>9.1</b> Learning goals</a></li>
+<li class="chapter" data-level="9.2" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#an-evolving-language---and-a-lifelong-learning-process"><i class="fa fa-check"></i><b>9.2</b> An evolving language - and a lifelong learning process</a></li>
+<li class="chapter" data-level="9.3" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#the-tidyverse"><i class="fa fa-check"></i><b>9.3</b> The <code>tidyverse</code></a></li>
+<li class="chapter" data-level="9.4" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#the-ggplot2-package"><i class="fa fa-check"></i><b>9.4</b> The <code>ggplot2</code> package</a></li>
+<li class="chapter" data-level="9.5" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#the-tibble-package"><i class="fa fa-check"></i><b>9.5</b> The <code>tibble</code> package</a></li>
+<li class="chapter" data-level="9.6" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#the-magrittr-package---pipes"><i class="fa fa-check"></i><b>9.6</b> The <code>magrittr</code> package - pipes</a></li>
+<li class="chapter" data-level="9.7" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#the-tidyr-package"><i class="fa fa-check"></i><b>9.7</b> The <code>tidyr</code> package</a>
+<ul>
+<li class="chapter" data-level="9.7.1" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#pivot_longer"><i class="fa fa-check"></i><b>9.7.1</b> <code>pivot_longer</code></a></li>
+<li class="chapter" data-level="9.7.2" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#pivot_wider"><i class="fa fa-check"></i><b>9.7.2</b> <code>pivot_wider</code></a></li>
+<li class="chapter" data-level="9.7.3" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#select"><i class="fa fa-check"></i><b>9.7.3</b> <code>select</code></a></li>
+<li class="chapter" data-level="9.7.4" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#filter"><i class="fa fa-check"></i><b>9.7.4</b> <code>filter</code></a></li>
+<li class="chapter" data-level="9.7.5" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#mutate"><i class="fa fa-check"></i><b>9.7.5</b> <code>mutate</code></a></li>
+<li class="chapter" data-level="9.7.6" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#arrange"><i class="fa fa-check"></i><b>9.7.6</b> <code>arrange</code></a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#loops"><i class="fa fa-check"></i><b>9.8</b> Loops</a>
+<ul>
+<li class="chapter" data-level="9.8.1" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#for-loops"><i class="fa fa-check"></i><b>9.8.1</b> <em>For</em> loops</a></li>
+<li class="chapter" data-level="9.8.2" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#while-loops"><i class="fa fa-check"></i><b>9.8.2</b> <em>While</em> loops</a></li>
+</ul></li>
+<li class="chapter" data-level="9.9" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#apply-functions"><i class="fa fa-check"></i><b>9.9</b> <code>apply</code> functions</a>
+<ul>
+<li class="chapter" data-level="9.9.1" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#sapply"><i class="fa fa-check"></i><b>9.9.1</b> <code>sapply</code></a></li>
+<li class="chapter" data-level="9.9.2" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#lapply"><i class="fa fa-check"></i><b>9.9.2</b> <code>lapply</code></a></li>
+<li class="chapter" data-level="9.9.3" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#apply"><i class="fa fa-check"></i><b>9.9.3</b> <code>apply</code></a></li>
+</ul></li>
+<li class="chapter" data-level="9.10" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#exercises-on-useful-r-tools"><i class="fa fa-check"></i><b>9.10</b> <code>Exercises</code> on useful R tools</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="getting-temperature-data.html"><a href="getting-temperature-data.html"><i class="fa fa-check"></i><b>10</b> Getting temperature data</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="getting-temperature-data.html"><a href="getting-temperature-data.html#learning-goals-for-this-lesson"><i class="fa fa-check"></i><b>10.1</b> Learning goals for this lesson</a></li>
+<li class="chapter" data-level="10.2" data-path="getting-temperature-data.html"><a href="getting-temperature-data.html#temperature-data-needs"><i class="fa fa-check"></i><b>10.2</b> Temperature data needs</a></li>
+<li class="chapter" data-level="10.3" data-path="getting-temperature-data.html"><a href="getting-temperature-data.html#the-global-summary-of-the-day-database"><i class="fa fa-check"></i><b>10.3</b> The Global Summary of the Day database</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="getting-temperature-data.html"><a href="getting-temperature-data.html#actionlist_stations"><i class="fa fa-check"></i><b>10.3.1</b> <code>action=list_stations</code></a></li>
+<li class="chapter" data-level="10.3.2" data-path="getting-temperature-data.html"><a href="getting-temperature-data.html#actiondownload_weather"><i class="fa fa-check"></i><b>10.3.2</b> <code>action="download_weather"</code></a></li>
+<li class="chapter" data-level="10.3.3" data-path="getting-temperature-data.html"><a href="getting-temperature-data.html#downloaded-weather-as-action-argument"><i class="fa fa-check"></i><b>10.3.3</b> downloaded weather as <code>action</code> argument</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="getting-temperature-data.html"><a href="getting-temperature-data.html#exercises-on-getting-temperature-data"><i class="fa fa-check"></i><b>10.4</b> <code>Exercises</code> on getting temperature data</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Tree phenology Analysis with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="future-temperature-scenarios" class="section level1 hasAnchor" number="15">
+<h1><span class="header-section-number">Chapter 15</span> Future temperature scenarios<a href="future-temperature-scenarios.html#future-temperature-scenarios" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="learning-goals-for-this-lesson-2" class="section level2 hasAnchor" number="15.1">
+<h2><span class="header-section-number">15.1</span> Learning goals for this lesson<a href="future-temperature-scenarios.html#learning-goals-for-this-lesson-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Acquire background knowledge on some important concepts in climate change analysis</li>
+<li>Understand how future climate projections are generated</li>
+<li>Learn about the “generations” of climate models and greenhouse gas concentration scenarios</li>
+<li>Appreciate that it’s important to use up-to-date scenarios when you’re working in this space</li>
+</ul>
+</div>
+<div id="impacts-of-future-climate-change" class="section level2 hasAnchor" number="15.2">
+<h2><span class="header-section-number">15.2</span> Impacts of future climate change<a href="future-temperature-scenarios.html#impacts-of-future-climate-change" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Human-induced climate change has already left significant impacts on the climate, ecosystems, and agriculture, as confirmed by numerous studies. The situation is expected to worsen due to historically high greenhouse gas levels and ongoing emissions of about 40 Gt CO2-equivalents annually, with little sign of decline. Widespread ecosystem degradation further erodes the planet’s resilience. While the future remains uncertain, including the success of mitigation efforts and ecosystems’ capacity to adapt, climate change adaptation research seeks to address these uncertainties by focusing on exposure, sensitivity, and adaptive capacity.</p>
+<div class="float">
+<img src="images/adaptation_challenge.png" alt="Conceptual framework for evaluating vulnerability and adaptation to climate change (Luedeling, 2020)" />
+<div class="figcaption"><strong>Conceptual framework for evaluating vulnerability and adaptation to climate change (Luedeling, 2020)</strong></div>
+</div>
+<p>The framework for assessing climate change vulnerability and adaptation (Luedeling, 2020) includes <strong>exposure</strong> (expected future conditions), <strong>sensitivity</strong> (how the system responds), and <strong>adaptive capacity</strong> (the system’s ability to adapt). Combining exposure and sensitivity helps estimate potential impacts, while adaptation aims to reduce sensitivity (e.g., selecting resilient cultivars) or increase adaptive capacity (e.g., implementing flexible management strategies).</p>
+<p>Current work focuses mainly on <strong>exposure</strong>, as it develops future scenarios for orchards. While chill models incorporate aspects of tree sensitivity, this is only partial, so the analyses primarily align with exposure.</p>
+</div>
+<div id="future-climate-scenarios" class="section level2 hasAnchor" number="15.3">
+<h2><span class="header-section-number">15.3</span> Future climate scenarios<a href="future-temperature-scenarios.html#future-climate-scenarios" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Future climate scenarios and methods for creating historical chill scenarios, including relevant technical details, have been covered. The next step involves accessing climate model predictions for the desired location.</p>
+<p>Running climate models is a complex process, requiring precise setup of global climate models (GCMs), regional models (RCMs), and downscaling, with no consensus on a single correct approach. <code>chillR</code> functions are compatible with both high-quality and less precise scenarios. While advanced climate data or collaboration with experts is ideal, `chillR` includes tools to facilitate access to reliable climate databases.</p>
+<div id="some-background-on-climate-models-and-warming-pathways" class="section level3 hasAnchor" number="15.3.1">
+<h3><span class="header-section-number">15.3.1</span> Some background on climate models and warming pathways<a href="future-temperature-scenarios.html#some-background-on-climate-models-and-warming-pathways" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Until November 2023, the <code>ClimateWizard</code> database, maintained by Center for Tropical Agriculture (CIAT), was the best source of climate data available in <code>chillR</code>. Its main advantage over other sources is the ability to provide point-specific data for climate scenarios from multiple models, avoiding the need to process large-scale gridded datasets. This reduces data transfer bottlenecks, especially when dealing with Tmin and Tmax data for multiple months, models, scenarios, and downscaling methods. <code>ClimateWizard</code> simplifies this by delivering data for specified coordinates, making it a practical tool despite its limitations.Originally developed as a web tool by Dr. Evan Girvetz, <code>ClimateWizard</code> can also be accessed via an API, streamlining data retrieval without navigating through a web interface. However, the database does not include the latest climate scenarios, such as those from CMIP6, which represents the current state of climate science and incorporates updated Shared Socioeconomic Pathways (SSPs). These SSPs, released in 2021, are now the recommended scenarios for generating state-of-the-art projections. <code>ClimateWizard</code> remains based on the older CMIP5 models and the outdated Representative Concentration Pathways (RCPs), offering only two RCP scenarios that fail to encompass the full range of plausible future climates. While these RCP scenarios were useful initially, they are increasingly unsuitable for publishing credible results. Instructions for using <code>ClimateWizard</code> with CMIP5 data are still provided, but transitioning to CMIP6 data and SSP scenarios is strongly recommended for up-to-date analyses.</p>
+</div>
+</div>
+<div id="exercises-on-future-temperature-scenarios" class="section level2 hasAnchor" number="15.4">
+<h2><span class="header-section-number">15.4</span> <code>Exercises</code> on future temperature scenarios<a href="future-temperature-scenarios.html#exercises-on-future-temperature-scenarios" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Please document all results of the following assignments in your <code>learning logbook</code>.</p>
+<ol style="list-style-type: decimal">
+<li><em>Briefly describe the differences between the RCPs and the SSPs (you may have to follow some of the links provided above).</em></li>
+</ol>
+<p>The Representative Concentration Pathways (RCPs) and the Shared Socioeconomic Pathways (SSPs) are both scenario frameworks used for modeling future climate developments, but they differ in their methodology and focus.</p>
+<ul>
+<li><p><strong>RCPs (Representative Concentration Pathways)</strong>:</p>
+<ul>
+<li><p>Developed for the IPCC’s 5th Assessment Report (AR5, published in 2014).</p></li>
+<li><p>Describe different possible levels of radiative forcing (W/m²) by 2100, meaning the direct effect of greenhouse gas emissions on the climate.</p></li>
+<li><p>Four main pathways: RCP2.6 (strong emissions reduction), RCP4.5 and RCP6.0 (moderate emissions), RCP8.5 (very high emissions, often referred to as “business as usual”).</p></li>
+<li><p>A purely climate-science-based approach without considering socioeconomic developments.</p></li>
+</ul></li>
+<li><p><strong>SSPs (Shared Socioeconomic Pathways)</strong>:</p>
+<ul>
+<li><p>Developed for the IPCC’s 6th Assessment Report (AR6, published in 2021).</p></li>
+<li><p>Combine socioeconomic developments with emission pathways to create different future scenarios.</p></li>
+<li><p>Five main scenarios (SSP1 to SSP5), representing various societal, economic, and political trajectories, such as sustainable development (SSP1) or continued reliance on fossil fuels (SSP5).</p></li>
+<li><p>Can be combined with different radiative forcing levels (e.g., SSP1-2.6 for sustainable development with low emissions or SSP5-8.5 for high emissions and fossil fuel dependence).</p></li>
+</ul></li>
+</ul>
+<p><strong>Summary</strong>:<br />
+RCPs focus solely on emissions and their impact on radiative forcing, while SSPs incorporate socioeconomic factors, making them more comprehensive and flexible for climate projections. SSPs are considered more modern and detailed in representing possible climate futures.</p>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="historic-temperature-scenarios.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/jacqwng/Logbook/edit/main/15-future.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/jacqwng/Logbook/blob/main/15-future.Rmd",
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

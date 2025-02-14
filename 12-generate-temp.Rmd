@@ -162,7 +162,7 @@ The process for generating the data for this figure is similar to the one used p
 
 ## `Exercises` on temperature generation
 
-1.  For the location you chose for your earlier analyses, use chillR’s weather generator to produce 100 years of synthetic temperature data.
+1.  *For the location you chose for your earlier analyses, use chillR’s weather generator to produce 100 years of synthetic temperature data.*
 
 ```{r warning=FALSE}
 Yakima <- read.csv("Yakima/Yakima_weather.csv")
@@ -205,7 +205,7 @@ ggplot(data = Temperatures,
   scale_x_date(date_labels = "%b")
 ```
 
-2.  Calculate winter chill (in Chill Portions) for your synthetic weather, and illustrate your results as histograms and cumulative distributions.
+2.  *Calculate winter chill (in Chill Portions) for your synthetic weather, and illustrate your results as histograms and cumulative distributions.*
 
 ```{r}
 chill_observed <- Temperatures %>%
@@ -257,7 +257,7 @@ ggplot(chill_simulations,
   theme_bw(base_size = 20)
 ```
 
-3.  Produce similar plots for the number of freezing hours (\<0°C) in April (or October, if your site is in the Southern Hemisphere) for your location of interest
+3.  *Produce similar plots for the number of freezing hours (\<0°C) in April (or October, if your site is in the Southern Hemisphere) for your location of interest*
 
 ```{r}
 df <- data.frame(

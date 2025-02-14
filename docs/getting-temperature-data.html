@@ -1,0 +1,6012 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 10 Getting temperature data | Tree phenology Analysis with R</title>
+  <meta name="description" content="Chapter 10 Getting temperature data | Tree phenology Analysis with R" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 10 Getting temperature data | Tree phenology Analysis with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 10 Getting temperature data | Tree phenology Analysis with R" />
+  
+  
+  
+
+<meta name="author" content="Jacqueline Wingen" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="some-useful-tools-in-r.html"/>
+<link rel="next" href="filling-gaps-in-temperature-records.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Tree phenology Analysis with R</a></li>
+<li><a href="index.html"><img src="images/chillR_hexSticker.png" width="75%"></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#learning-goals"><i class="fa fa-check"></i><b>1.1</b> Learning goals</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="tools.html"><a href="tools.html"><i class="fa fa-check"></i><b>2</b> Tools</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="tools.html"><a href="tools.html#r-and-rstudio"><i class="fa fa-check"></i><b>2.1</b> R and RStudio</a></li>
+<li class="chapter" data-level="2.2" data-path="tools.html"><a href="tools.html#git-and-github"><i class="fa fa-check"></i><b>2.2</b> Git and Github</a></li>
+<li class="chapter" data-level="2.3" data-path="tools.html"><a href="tools.html#rmarkdown"><i class="fa fa-check"></i><b>2.3</b> Rmarkdown</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="tree-dormancy.html"><a href="tree-dormancy.html"><i class="fa fa-check"></i><b>3</b> Tree dormancy</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="tree-dormancy.html"><a href="tree-dormancy.html#learning-goals-1"><i class="fa fa-check"></i><b>3.1</b> Learning goals</a></li>
+<li class="chapter" data-level="3.2" data-path="tree-dormancy.html"><a href="tree-dormancy.html#introduction-to-dormancy"><i class="fa fa-check"></i><b>3.2</b> Introduction to dormancy</a></li>
+<li class="chapter" data-level="3.3" data-path="tree-dormancy.html"><a href="tree-dormancy.html#dormancy-physiology"><i class="fa fa-check"></i><b>3.3</b> Dormancy physiology</a></li>
+<li class="chapter" data-level="3.4" data-path="tree-dormancy.html"><a href="tree-dormancy.html#experimental-and-statistical-determination-of-chilling-and-forcing-periods"><i class="fa fa-check"></i><b>3.4</b> Experimental and statistical determination of chilling and forcing periods</a></li>
+<li class="chapter" data-level="3.5" data-path="tree-dormancy.html"><a href="tree-dormancy.html#phenology-record-and-bbch-scale"><i class="fa fa-check"></i><b>3.5</b> Phenology record and BBCH scale</a></li>
+<li class="chapter" data-level="3.6" data-path="tree-dormancy.html"><a href="tree-dormancy.html#excercises-on-tree-dormancy"><i class="fa fa-check"></i><b>3.6</b> <code>Excercises</code> on tree dormancy</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="climate-change-and-impact-projection.html"><a href="climate-change-and-impact-projection.html"><i class="fa fa-check"></i><b>4</b> Climate change and impact projection</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="climate-change-and-impact-projection.html"><a href="climate-change-and-impact-projection.html#the-drivers-of-climate-change"><i class="fa fa-check"></i><b>4.1</b> The drivers of climate change</a></li>
+<li class="chapter" data-level="4.2" data-path="climate-change-and-impact-projection.html"><a href="climate-change-and-impact-projection.html#whats-already-known"><i class="fa fa-check"></i><b>4.2</b> What’s already known</a></li>
+<li class="chapter" data-level="4.3" data-path="climate-change-and-impact-projection.html"><a href="climate-change-and-impact-projection.html#future-scenarios"><i class="fa fa-check"></i><b>4.3</b> Future scenarios</a></li>
+<li class="chapter" data-level="4.4" data-path="climate-change-and-impact-projection.html"><a href="climate-change-and-impact-projection.html#impact-projections-approaches"><i class="fa fa-check"></i><b>4.4</b> Impact projections approaches</a></li>
+<li class="chapter" data-level="4.5" data-path="climate-change-and-impact-projection.html"><a href="climate-change-and-impact-projection.html#exercises-on-climate-change"><i class="fa fa-check"></i><b>4.5</b> <code>Exercises</code> on climate change</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html"><i class="fa fa-check"></i><b>5</b> Winter chill projections</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#learning-goals-2"><i class="fa fa-check"></i><b>5.1</b> Learning goals</a></li>
+<li class="chapter" data-level="5.2" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#winter-chill-in-oman"><i class="fa fa-check"></i><b>5.2</b> Winter chill in Oman</a></li>
+<li class="chapter" data-level="5.3" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#chill-model-sensitivity"><i class="fa fa-check"></i><b>5.3</b> Chill model sensitivity</a></li>
+<li class="chapter" data-level="5.4" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#winter-chill-in-california"><i class="fa fa-check"></i><b>5.4</b> Winter chill in California</a></li>
+<li class="chapter" data-level="5.5" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#winter-chill-ratios"><i class="fa fa-check"></i><b>5.5</b> Winter chill ratios</a></li>
+<li class="chapter" data-level="5.6" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#a-global-projection-of-future-winter-chill"><i class="fa fa-check"></i><b>5.6</b> A global projection of future winter chill</a></li>
+<li class="chapter" data-level="5.7" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#winter-chill-in-germany"><i class="fa fa-check"></i><b>5.7</b> Winter chill in Germany</a></li>
+<li class="chapter" data-level="5.8" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#winter-chill-in-tunisia"><i class="fa fa-check"></i><b>5.8</b> Winter chill in Tunisia</a></li>
+<li class="chapter" data-level="5.9" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#winter-chill-in-chile"><i class="fa fa-check"></i><b>5.9</b> Winter chill in Chile</a></li>
+<li class="chapter" data-level="5.10" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#chill-projection-for-patagonia"><i class="fa fa-check"></i><b>5.10</b> Chill projection for Patagonia</a></li>
+<li class="chapter" data-level="5.11" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#chill-model-comparison"><i class="fa fa-check"></i><b>5.11</b> Chill model comparison</a></li>
+<li class="chapter" data-level="5.12" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#chill-projection-for-all-of-tunisia"><i class="fa fa-check"></i><b>5.12</b> Chill projection for all of Tunisia</a></li>
+<li class="chapter" data-level="5.13" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#revisiting-chill-accumulation-in-oman"><i class="fa fa-check"></i><b>5.13</b> Revisiting chill accumulation in Oman</a></li>
+<li class="chapter" data-level="5.14" data-path="winter-chill-projections.html"><a href="winter-chill-projections.html#exercises-on-past-chill-projections"><i class="fa fa-check"></i><b>5.14</b> <code>Exercises</code> on past chill projections</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="manual-chill.html"><a href="manual-chill.html"><i class="fa fa-check"></i><b>6</b> Manual chill</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="manual-chill.html"><a href="manual-chill.html#learning-goals-3"><i class="fa fa-check"></i><b>6.1</b> Learning goals</a></li>
+<li class="chapter" data-level="6.2" data-path="manual-chill.html"><a href="manual-chill.html#chilling-hours-calculation-using-chillr"><i class="fa fa-check"></i><b>6.2</b> Chilling hours calculation using chillR</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="manual-chill.html"><a href="manual-chill.html#data-requirements"><i class="fa fa-check"></i><b>6.2.1</b> <strong>Data Requirements</strong></a></li>
+<li class="chapter" data-level="6.2.2" data-path="manual-chill.html"><a href="manual-chill.html#loading-and-preparing-data"><i class="fa fa-check"></i><b>6.2.2</b> Loading and Preparing Data</a></li>
+<li class="chapter" data-level="6.2.3" data-path="manual-chill.html"><a href="manual-chill.html#manual-calculation-of-chilling-hours"><i class="fa fa-check"></i><b>6.2.3</b> <strong>Manual Calculation of Chilling Hours</strong></a></li>
+<li class="chapter" data-level="6.2.4" data-path="manual-chill.html"><a href="manual-chill.html#automation-with-functions"><i class="fa fa-check"></i><b>6.2.4</b> Automation with Functions</a></li>
+<li class="chapter" data-level="6.2.5" data-path="manual-chill.html"><a href="manual-chill.html#application-example"><i class="fa fa-check"></i><b>6.2.5</b> Application Example</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="manual-chill.html"><a href="manual-chill.html#exercises-on-basic-chill-modeling"><i class="fa fa-check"></i><b>6.3</b> <code>Exercises</code> on basic chill modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chill.html"><a href="chill.html"><i class="fa fa-check"></i><b>7</b> Chill</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="chill.html"><a href="chill.html#learning-goals-4"><i class="fa fa-check"></i><b>7.1</b> Learning goals</a></li>
+<li class="chapter" data-level="7.2" data-path="chill.html"><a href="chill.html#chilling_hours-function"><i class="fa fa-check"></i><b>7.2</b> <code>Chilling_Hours()</code> function</a></li>
+<li class="chapter" data-level="7.3" data-path="chill.html"><a href="chill.html#utah-model"><i class="fa fa-check"></i><b>7.3</b> Utah Model</a></li>
+<li class="chapter" data-level="7.4" data-path="chill.html"><a href="chill.html#creating-custom-chill-models-with-step_model"><i class="fa fa-check"></i><b>7.4</b> Creating Custom Chill Models with <code>step_model()</code></a></li>
+<li class="chapter" data-level="7.5" data-path="chill.html"><a href="chill.html#dynamic-model"><i class="fa fa-check"></i><b>7.5</b> Dynamic model</a></li>
+<li class="chapter" data-level="7.6" data-path="chill.html"><a href="chill.html#chilling-and-tempresponse-functions"><i class="fa fa-check"></i><b>7.6</b> <code>Chilling</code> and <code>tempResponse</code> functions</a></li>
+<li class="chapter" data-level="7.7" data-path="chill.html"><a href="chill.html#exercises-on-chill-models"><i class="fa fa-check"></i><b>7.7</b> <code>Exercises</code> on chill models</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="making-hourly-temperatures.html"><a href="making-hourly-temperatures.html"><i class="fa fa-check"></i><b>8</b> Making hourly temperatures</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="making-hourly-temperatures.html"><a href="making-hourly-temperatures.html#learning-goals-5"><i class="fa fa-check"></i><b>8.1</b> Learning goals</a></li>
+<li class="chapter" data-level="8.2" data-path="making-hourly-temperatures.html"><a href="making-hourly-temperatures.html#generating-hourly-temperatures"><i class="fa fa-check"></i><b>8.2</b> Generating hourly temperatures</a></li>
+<li class="chapter" data-level="8.3" data-path="making-hourly-temperatures.html"><a href="making-hourly-temperatures.html#idealized-daily-temperature-curves"><i class="fa fa-check"></i><b>8.3</b> Idealized daily temperature curves</a></li>
+<li class="chapter" data-level="8.4" data-path="making-hourly-temperatures.html"><a href="making-hourly-temperatures.html#empirical-daily-temperature-curves"><i class="fa fa-check"></i><b>8.4</b> Empirical daily temperature curves</a></li>
+<li class="chapter" data-level="8.5" data-path="making-hourly-temperatures.html"><a href="making-hourly-temperatures.html#exercises-on-hourly-temperatures"><i class="fa fa-check"></i><b>8.5</b> <code>Exercises</code> on hourly temperatures</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html"><i class="fa fa-check"></i><b>9</b> Some useful tools in R</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#learning-goals-6"><i class="fa fa-check"></i><b>9.1</b> Learning goals</a></li>
+<li class="chapter" data-level="9.2" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#an-evolving-language---and-a-lifelong-learning-process"><i class="fa fa-check"></i><b>9.2</b> An evolving language - and a lifelong learning process</a></li>
+<li class="chapter" data-level="9.3" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#the-tidyverse"><i class="fa fa-check"></i><b>9.3</b> The <code>tidyverse</code></a></li>
+<li class="chapter" data-level="9.4" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#the-ggplot2-package"><i class="fa fa-check"></i><b>9.4</b> The <code>ggplot2</code> package</a></li>
+<li class="chapter" data-level="9.5" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#the-tibble-package"><i class="fa fa-check"></i><b>9.5</b> The <code>tibble</code> package</a></li>
+<li class="chapter" data-level="9.6" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#the-magrittr-package---pipes"><i class="fa fa-check"></i><b>9.6</b> The <code>magrittr</code> package - pipes</a></li>
+<li class="chapter" data-level="9.7" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#the-tidyr-package"><i class="fa fa-check"></i><b>9.7</b> The <code>tidyr</code> package</a>
+<ul>
+<li class="chapter" data-level="9.7.1" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#pivot_longer"><i class="fa fa-check"></i><b>9.7.1</b> <code>pivot_longer</code></a></li>
+<li class="chapter" data-level="9.7.2" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#pivot_wider"><i class="fa fa-check"></i><b>9.7.2</b> <code>pivot_wider</code></a></li>
+<li class="chapter" data-level="9.7.3" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#select"><i class="fa fa-check"></i><b>9.7.3</b> <code>select</code></a></li>
+<li class="chapter" data-level="9.7.4" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#filter"><i class="fa fa-check"></i><b>9.7.4</b> <code>filter</code></a></li>
+<li class="chapter" data-level="9.7.5" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#mutate"><i class="fa fa-check"></i><b>9.7.5</b> <code>mutate</code></a></li>
+<li class="chapter" data-level="9.7.6" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#arrange"><i class="fa fa-check"></i><b>9.7.6</b> <code>arrange</code></a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#loops"><i class="fa fa-check"></i><b>9.8</b> Loops</a>
+<ul>
+<li class="chapter" data-level="9.8.1" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#for-loops"><i class="fa fa-check"></i><b>9.8.1</b> <em>For</em> loops</a></li>
+<li class="chapter" data-level="9.8.2" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#while-loops"><i class="fa fa-check"></i><b>9.8.2</b> <em>While</em> loops</a></li>
+</ul></li>
+<li class="chapter" data-level="9.9" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#apply-functions"><i class="fa fa-check"></i><b>9.9</b> <code>apply</code> functions</a>
+<ul>
+<li class="chapter" data-level="9.9.1" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#sapply"><i class="fa fa-check"></i><b>9.9.1</b> <code>sapply</code></a></li>
+<li class="chapter" data-level="9.9.2" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#lapply"><i class="fa fa-check"></i><b>9.9.2</b> <code>lapply</code></a></li>
+<li class="chapter" data-level="9.9.3" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#apply"><i class="fa fa-check"></i><b>9.9.3</b> <code>apply</code></a></li>
+</ul></li>
+<li class="chapter" data-level="9.10" data-path="some-useful-tools-in-r.html"><a href="some-useful-tools-in-r.html#exercises-on-useful-r-tools"><i class="fa fa-check"></i><b>9.10</b> <code>Exercises</code> on useful R tools</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="getting-temperature-data.html"><a href="getting-temperature-data.html"><i class="fa fa-check"></i><b>10</b> Getting temperature data</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="getting-temperature-data.html"><a href="getting-temperature-data.html#learning-goals-for-this-lesson"><i class="fa fa-check"></i><b>10.1</b> Learning goals for this lesson</a></li>
+<li class="chapter" data-level="10.2" data-path="getting-temperature-data.html"><a href="getting-temperature-data.html#temperature-data-needs"><i class="fa fa-check"></i><b>10.2</b> Temperature data needs</a></li>
+<li class="chapter" data-level="10.3" data-path="getting-temperature-data.html"><a href="getting-temperature-data.html#the-global-summary-of-the-day-database"><i class="fa fa-check"></i><b>10.3</b> The Global Summary of the Day database</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="getting-temperature-data.html"><a href="getting-temperature-data.html#actionlist_stations"><i class="fa fa-check"></i><b>10.3.1</b> <code>action=list_stations</code></a></li>
+<li class="chapter" data-level="10.3.2" data-path="getting-temperature-data.html"><a href="getting-temperature-data.html#actiondownload_weather"><i class="fa fa-check"></i><b>10.3.2</b> <code>action="download_weather"</code></a></li>
+<li class="chapter" data-level="10.3.3" data-path="getting-temperature-data.html"><a href="getting-temperature-data.html#downloaded-weather-as-action-argument"><i class="fa fa-check"></i><b>10.3.3</b> downloaded weather as <code>action</code> argument</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="getting-temperature-data.html"><a href="getting-temperature-data.html#exercises-on-getting-temperature-data"><i class="fa fa-check"></i><b>10.4</b> <code>Exercises</code> on getting temperature data</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Tree phenology Analysis with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="getting-temperature-data" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">Chapter 10</span> Getting temperature data<a href="getting-temperature-data.html#getting-temperature-data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="learning-goals-for-this-lesson" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> Learning goals for this lesson<a href="getting-temperature-data.html#learning-goals-for-this-lesson" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Appreciate the need for daily temperature data</li>
+<li>Know how to get a list of promising weather stations contained in an international database</li>
+<li>Be able to download weather data using <code>chillR</code> functions</li>
+<li>Know how to convert downloaded data into <code>chillR</code> format</li>
+</ul>
+</div>
+<div id="temperature-data-needs" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> Temperature data needs<a href="getting-temperature-data.html#temperature-data-needs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Temperature data is essential for phenology and chill modeling, as it serves as a key input for these models. Although weather data might seem easily accessible, it is often challenging to obtain. Many countries have official weather stations that record the necessary information, but access to these data is frequently restricted and expensive, despite likely being funded by taxpayers. While such costs may be manageable for small-scale studies, they quickly become prohibitive for larger analyses.</p>
+<p>Given the urgent need to understand climate change impacts, these access limitations are a barrier to effective climate research. Such restrictions may also reduce the quality of studies that rely on comprehensive data. Ideally, high-quality, localized datasets would be available, but in their absence, some alternative databases can be used. Currently, <code>chillR</code> connects to one global and one California-specific database, with the potential to expand as more data sources become accessible.</p>
+</div>
+<div id="the-global-summary-of-the-day-database" class="section level2 hasAnchor" number="10.3">
+<h2><span class="header-section-number">10.3</span> The Global Summary of the Day database<a href="getting-temperature-data.html#the-global-summary-of-the-day-database" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <a href="https://www.ncei.noaa.gov/">National Centers for Environmental Information (NCEI)</a>, formerly known as the National Climatic Data Center (NCDC), offers valuable temperature data through its <a href="https://www.ncei.noaa.gov/access/search/data-search/global-summary-of-the-day">Global Summary of the Day (GSOD) database</a>. While accessing this data can be challenging, the bulk download section provides weather records for each station and year. However, finding specific stations can be time-consuming.</p>
+<p>A list of weather stations is available on NOAA’s website, and the process of downloading and organizing the data can be automated using the <code>chillR</code> tool. A previous user, <a href="https://www.gartenbauwissenschaft.uni-bonn.de/author/adrian-fulle/">Adrian Fülle</a>, developed a faster and more efficient method for this task. The <code>chillR</code> function <code>handle_gsod()</code> simplifies the process by guiding users through the necessary steps.</p>
+<div id="actionlist_stations" class="section level3 hasAnchor" number="10.3.1">
+<h3><span class="header-section-number">10.3.1</span> <code>action=list_stations</code><a href="getting-temperature-data.html#actionlist_stations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When used with this action, the <code>handle_gsod()</code> function retrieves a list of weather stations and sorts them by their proximity to specified coordinates. For example, stations near Bonn (Latitude: 50.73, Longitude: 7.10) can be identified. Additionally, a time interval, such as 1990-2020, can be set to limit the search to data from those specific years:</p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="getting-temperature-data.html#cb117-1" tabindex="-1"></a><span class="fu">library</span>(chillR)</span>
+<span id="cb117-2"><a href="getting-temperature-data.html#cb117-2" tabindex="-1"></a>station_list<span class="ot">&lt;-</span><span class="fu">handle_gsod</span>(<span class="at">action=</span><span class="st">&quot;list_stations&quot;</span>,</span>
+<span id="cb117-3"><a href="getting-temperature-data.html#cb117-3" tabindex="-1"></a>                          <span class="at">location=</span><span class="fu">c</span>(<span class="fl">7.10</span>,<span class="fl">50.73</span>),</span>
+<span id="cb117-4"><a href="getting-temperature-data.html#cb117-4" tabindex="-1"></a>                          <span class="at">time_interval=</span><span class="fu">c</span>(<span class="dv">1990</span>,<span class="dv">2020</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="getting-temperature-data.html#cb118-1" tabindex="-1"></a><span class="fu">require</span>(kableExtra)</span>
+<span id="cb118-2"><a href="getting-temperature-data.html#cb118-2" tabindex="-1"></a></span>
+<span id="cb118-3"><a href="getting-temperature-data.html#cb118-3" tabindex="-1"></a><span class="fu">kable</span>(station_list) <span class="sc">%&gt;%</span></span>
+<span id="cb118-4"><a href="getting-temperature-data.html#cb118-4" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="st">&quot;striped&quot;</span>, <span class="at">position =</span> <span class="st">&quot;left&quot;</span>, <span class="at">font_size =</span> <span class="dv">8</span>)</span></code></pre></div>
+<table class="table table-striped" style="font-size: 8px; color: black; ">
+<thead>
+<tr>
+<th style="text-align:right;">
+chillR_code
+</th>
+<th style="text-align:left;">
+STATION.NAME
+</th>
+<th style="text-align:left;">
+CTRY
+</th>
+<th style="text-align:right;">
+Lat
+</th>
+<th style="text-align:right;">
+Long
+</th>
+<th style="text-align:right;">
+BEGIN
+</th>
+<th style="text-align:right;">
+END
+</th>
+<th style="text-align:right;">
+Distance
+</th>
+<th style="text-align:right;">
+Overlap_years
+</th>
+<th style="text-align:right;">
+Perc_interval_covered
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+10517099999
+</td>
+<td style="text-align:left;">
+BONN/FRIESDORF(AUT)
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+50.700
+</td>
+<td style="text-align:right;">
+7.150
+</td>
+<td style="text-align:right;">
+19360102
+</td>
+<td style="text-align:right;">
+19921231
+</td>
+<td style="text-align:right;">
+4.86
+</td>
+<td style="text-align:right;">
+3.00
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10518099999
+</td>
+<td style="text-align:left;">
+BONN-HARDTHOEHE
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+50.700
+</td>
+<td style="text-align:right;">
+7.033
+</td>
+<td style="text-align:right;">
+19750523
+</td>
+<td style="text-align:right;">
+19971223
+</td>
+<td style="text-align:right;">
+5.78
+</td>
+<td style="text-align:right;">
+7.98
+</td>
+<td style="text-align:right;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10519099999
+</td>
+<td style="text-align:left;">
+BONN-ROLEBER
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+50.733
+</td>
+<td style="text-align:right;">
+7.200
+</td>
+<td style="text-align:right;">
+20010705
+</td>
+<td style="text-align:right;">
+20081231
+</td>
+<td style="text-align:right;">
+7.05
+</td>
+<td style="text-align:right;">
+7.49
+</td>
+<td style="text-align:right;">
+24
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10513099999
+</td>
+<td style="text-align:left;">
+KOLN BONN
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+50.866
+</td>
+<td style="text-align:right;">
+7.143
+</td>
+<td style="text-align:right;">
+19310101
+</td>
+<td style="text-align:right;">
+20241102
+</td>
+<td style="text-align:right;">
+15.44
+</td>
+<td style="text-align:right;">
+31.00
+</td>
+<td style="text-align:right;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10509099999
+</td>
+<td style="text-align:left;">
+BUTZWEILERHOF(BAFB)
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+50.983
+</td>
+<td style="text-align:right;">
+6.900
+</td>
+<td style="text-align:right;">
+19780901
+</td>
+<td style="text-align:right;">
+19950823
+</td>
+<td style="text-align:right;">
+31.48
+</td>
+<td style="text-align:right;">
+5.64
+</td>
+<td style="text-align:right;">
+18
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10502099999
+</td>
+<td style="text-align:left;">
+NORVENICH
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+50.831
+</td>
+<td style="text-align:right;">
+6.658
+</td>
+<td style="text-align:right;">
+19730101
+</td>
+<td style="text-align:right;">
+20241102
+</td>
+<td style="text-align:right;">
+33.08
+</td>
+<td style="text-align:right;">
+31.00
+</td>
+<td style="text-align:right;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10514099999
+</td>
+<td style="text-align:left;">
+MENDIG
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+50.366
+</td>
+<td style="text-align:right;">
+7.315
+</td>
+<td style="text-align:right;">
+19730102
+</td>
+<td style="text-align:right;">
+19971231
+</td>
+<td style="text-align:right;">
+43.28
+</td>
+<td style="text-align:right;">
+8.00
+</td>
+<td style="text-align:right;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10506099999
+</td>
+<td style="text-align:left;">
+NUERBURG-BARWEILER
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+50.367
+</td>
+<td style="text-align:right;">
+6.867
+</td>
+<td style="text-align:right;">
+19950401
+</td>
+<td style="text-align:right;">
+19971231
+</td>
+<td style="text-align:right;">
+43.64
+</td>
+<td style="text-align:right;">
+2.75
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10508099999
+</td>
+<td style="text-align:left;">
+BLANKENHEIM
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+50.450
+</td>
+<td style="text-align:right;">
+6.650
+</td>
+<td style="text-align:right;">
+19781002
+</td>
+<td style="text-align:right;">
+19840504
+</td>
+<td style="text-align:right;">
+44.53
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10510099999
+</td>
+<td style="text-align:left;">
+NUERBURG
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+50.333
+</td>
+<td style="text-align:right;">
+6.950
+</td>
+<td style="text-align:right;">
+19300901
+</td>
+<td style="text-align:right;">
+19921231
+</td>
+<td style="text-align:right;">
+45.45
+</td>
+<td style="text-align:right;">
+3.00
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10515099999
+</td>
+<td style="text-align:left;">
+BENDORF
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+50.417
+</td>
+<td style="text-align:right;">
+7.583
+</td>
+<td style="text-align:right;">
+19310102
+</td>
+<td style="text-align:right;">
+20030816
+</td>
+<td style="text-align:right;">
+48.79
+</td>
+<td style="text-align:right;">
+13.62
+</td>
+<td style="text-align:right;">
+44
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10504099999
+</td>
+<td style="text-align:left;">
+EIFEL
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+50.650
+</td>
+<td style="text-align:right;">
+6.283
+</td>
+<td style="text-align:right;">
+20040501
+</td>
+<td style="text-align:right;">
+20040501
+</td>
+<td style="text-align:right;">
+58.30
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10526099999
+</td>
+<td style="text-align:left;">
+BAD MARIENBERG
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+50.667
+</td>
+<td style="text-align:right;">
+7.967
+</td>
+<td style="text-align:right;">
+19730101
+</td>
+<td style="text-align:right;">
+20030816
+</td>
+<td style="text-align:right;">
+61.54
+</td>
+<td style="text-align:right;">
+13.62
+</td>
+<td style="text-align:right;">
+44
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10613099999
+</td>
+<td style="text-align:left;">
+BUCHEL
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+50.174
+</td>
+<td style="text-align:right;">
+7.063
+</td>
+<td style="text-align:right;">
+19730101
+</td>
+<td style="text-align:right;">
+20241102
+</td>
+<td style="text-align:right;">
+61.95
+</td>
+<td style="text-align:right;">
+31.00
+</td>
+<td style="text-align:right;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10503099999
+</td>
+<td style="text-align:left;">
+AACHEN/MERZBRUCK
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+50.817
+</td>
+<td style="text-align:right;">
+6.183
+</td>
+<td style="text-align:right;">
+19780901
+</td>
+<td style="text-align:right;">
+19971212
+</td>
+<td style="text-align:right;">
+65.28
+</td>
+<td style="text-align:right;">
+7.95
+</td>
+<td style="text-align:right;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10419099999
+</td>
+<td style="text-align:left;">
+LUDENSCHEID &amp;
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+51.233
+</td>
+<td style="text-align:right;">
+7.600
+</td>
+<td style="text-align:right;">
+19270906
+</td>
+<td style="text-align:right;">
+20030306
+</td>
+<td style="text-align:right;">
+66.06
+</td>
+<td style="text-align:right;">
+13.18
+</td>
+<td style="text-align:right;">
+43
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10400099999
+</td>
+<td style="text-align:left;">
+DUSSELDORF
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+51.289
+</td>
+<td style="text-align:right;">
+6.767
+</td>
+<td style="text-align:right;">
+19310102
+</td>
+<td style="text-align:right;">
+20241102
+</td>
+<td style="text-align:right;">
+66.46
+</td>
+<td style="text-align:right;">
+31.00
+</td>
+<td style="text-align:right;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10616299999
+</td>
+<td style="text-align:left;">
+SIEGERLAND
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+50.708
+</td>
+<td style="text-align:right;">
+8.083
+</td>
+<td style="text-align:right;">
+20040510
+</td>
+<td style="text-align:right;">
+20241102
+</td>
+<td style="text-align:right;">
+69.33
+</td>
+<td style="text-align:right;">
+16.65
+</td>
+<td style="text-align:right;">
+54
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10418099999
+</td>
+<td style="text-align:left;">
+LUEDENSCHEID
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+51.250
+</td>
+<td style="text-align:right;">
+7.650
+</td>
+<td style="text-align:right;">
+19940301
+</td>
+<td style="text-align:right;">
+19971231
+</td>
+<td style="text-align:right;">
+69.54
+</td>
+<td style="text-align:right;">
+3.84
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10437499999
+</td>
+<td style="text-align:left;">
+MONCHENGLADBACH
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+51.230
+</td>
+<td style="text-align:right;">
+6.504
+</td>
+<td style="text-align:right;">
+19960715
+</td>
+<td style="text-align:right;">
+20241102
+</td>
+<td style="text-align:right;">
+69.59
+</td>
+<td style="text-align:right;">
+24.47
+</td>
+<td style="text-align:right;">
+79
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10403099999
+</td>
+<td style="text-align:left;">
+MOENCHENGLADBACH
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+51.233
+</td>
+<td style="text-align:right;">
+6.500
+</td>
+<td style="text-align:right;">
+19381001
+</td>
+<td style="text-align:right;">
+19421031
+</td>
+<td style="text-align:right;">
+70.03
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10501099999
+</td>
+<td style="text-align:left;">
+AACHEN
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+50.783
+</td>
+<td style="text-align:right;">
+6.100
+</td>
+<td style="text-align:right;">
+19280101
+</td>
+<td style="text-align:right;">
+20030816
+</td>
+<td style="text-align:right;">
+70.67
+</td>
+<td style="text-align:right;">
+13.62
+</td>
+<td style="text-align:right;">
+44
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6496099999
+</td>
+<td style="text-align:left;">
+ELSENBORN (MIL)
+</td>
+<td style="text-align:left;">
+BE
+</td>
+<td style="text-align:right;">
+50.467
+</td>
+<td style="text-align:right;">
+6.183
+</td>
+<td style="text-align:right;">
+19840501
+</td>
+<td style="text-align:right;">
+20241102
+</td>
+<td style="text-align:right;">
+71.10
+</td>
+<td style="text-align:right;">
+31.00
+</td>
+<td style="text-align:right;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6495099999
+</td>
+<td style="text-align:left;">
+BOTRANGE (MOUNT)
+</td>
+<td style="text-align:left;">
+BE
+</td>
+<td style="text-align:right;">
+50.500
+</td>
+<td style="text-align:right;">
+6.100
+</td>
+<td style="text-align:right;">
+19510201
+</td>
+<td style="text-align:right;">
+20011015
+</td>
+<td style="text-align:right;">
+75.13
+</td>
+<td style="text-align:right;">
+11.79
+</td>
+<td style="text-align:right;">
+38
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10409099999
+</td>
+<td style="text-align:left;">
+ESSEN/MUELHEIM
+</td>
+<td style="text-align:left;">
+GM
+</td>
+<td style="text-align:right;">
+51.400
+</td>
+<td style="text-align:right;">
+6.967
+</td>
+<td style="text-align:right;">
+19300414
+</td>
+<td style="text-align:right;">
+19431231
+</td>
+<td style="text-align:right;">
+75.17
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+<p>The list provided contains the 25 closest weather stations to the specified location, ordered by their distance to the target coordinates, which is shown in the <code>distance</code> column. The <code>Overlap_years</code> column indicates the number of years for which data is available, while the <code>Perc_interval_covered</code> column shows the percentage of the target time period that is covered by the data. It’s important to note that this is based solely on the start and end dates in the table. The dataset may have gaps, and these gaps can sometimes cover almost the entire record.</p>
+</div>
+<div id="actiondownload_weather" class="section level3 hasAnchor" number="10.3.2">
+<h3><span class="header-section-number">10.3.2</span> <code>action="download_weather"</code><a href="getting-temperature-data.html#actiondownload_weather" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When used with this option, the <code>handle_gsod()</code> function downloads the weather data for a specific station, using its unique <code>chillR_code</code>, which is displayed in the respective column of the station list. Instead of manually entering the code, the function can reference the code from the station list. To download the data, the code for the 4th station in the list can be used, as it appears to cover most of the desired time period.</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="getting-temperature-data.html#cb119-1" tabindex="-1"></a>weather<span class="ot">&lt;-</span><span class="fu">handle_gsod</span>(<span class="at">action=</span><span class="st">&quot;download_weather&quot;</span>,</span>
+<span id="cb119-2"><a href="getting-temperature-data.html#cb119-2" tabindex="-1"></a>                     <span class="at">location=</span>station_list<span class="sc">$</span>chillR_code[<span class="dv">4</span>],</span>
+<span id="cb119-3"><a href="getting-temperature-data.html#cb119-3" tabindex="-1"></a>                     <span class="at">time_interval=</span><span class="fu">c</span>(<span class="dv">1990</span>,<span class="dv">2020</span>))</span></code></pre></div>
+<p>The result of this operation is a list with two elements. The first element (<code>weather[[1]]</code>) indicates the source of the database from which the data was retrieved. The second element (<code>weather[[2]]</code>) contains the actual weather dataset, which can be viewed here.</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="getting-temperature-data.html#cb120-1" tabindex="-1"></a>weather[[<span class="dv">1</span>]][<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,]</span></code></pre></div>
+<table class="table table-striped" style="font-size: 14px; color: black; ">
+<thead>
+<tr>
+<th style="text-align:right;">
+X
+</th>
+<th style="text-align:left;">
+DATE
+</th>
+<th style="text-align:left;">
+Date
+</th>
+<th style="text-align:right;">
+Year
+</th>
+<th style="text-align:right;">
+Month
+</th>
+<th style="text-align:right;">
+Day
+</th>
+<th style="text-align:right;">
+Tmin
+</th>
+<th style="text-align:right;">
+Tmax
+</th>
+<th style="text-align:right;">
+Tmean
+</th>
+<th style="text-align:right;">
+Prec
+</th>
+<th style="text-align:right;">
+YEARMODA
+</th>
+<th style="text-align:left;">
+Tmin_source
+</th>
+<th style="text-align:left;">
+Tmax_source
+</th>
+<th style="text-align:left;">
+no_Tmin
+</th>
+<th style="text-align:left;">
+no_Tmax
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+1990-01-01 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-01 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1.000
+</td>
+<td style="text-align:right;">
+1.000
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+19900101
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+1990-01-02 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-02 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+2.000
+</td>
+<td style="text-align:right;">
+1.000
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+19900102
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+1990-01-03 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-03 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+-0.389
+</td>
+<td style="text-align:right;">
+2.000
+</td>
+<td style="text-align:right;">
+0.722
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+19900103
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+1990-01-04 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-04 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+-1.111
+</td>
+<td style="text-align:right;">
+2.000
+</td>
+<td style="text-align:right;">
+-0.056
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+19900104
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+1990-01-05 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-05 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+-1.111
+</td>
+<td style="text-align:right;">
+3.111
+</td>
+<td style="text-align:right;">
+1.556
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+19900105
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+1990-01-06 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-06 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+2.389
+</td>
+<td style="text-align:right;">
+1.333
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+19900106
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+1990-01-07 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-07 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+-0.111
+</td>
+<td style="text-align:right;">
+4.278
+</td>
+<td style="text-align:right;">
+1.056
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+19900107
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+1990-01-08 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-08 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+-0.111
+</td>
+<td style="text-align:right;">
+7.000
+</td>
+<td style="text-align:right;">
+3.278
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+19900108
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+1990-01-09 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-09 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+3.778
+</td>
+<td style="text-align:right;">
+8.000
+</td>
+<td style="text-align:right;">
+5.333
+</td>
+<td style="text-align:right;">
+0.508
+</td>
+<td style="text-align:right;">
+19900109
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+1990-01-10 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-10 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+3.000
+</td>
+<td style="text-align:right;">
+6.000
+</td>
+<td style="text-align:right;">
+4.556
+</td>
+<td style="text-align:right;">
+1.016
+</td>
+<td style="text-align:right;">
+19900110
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+1990-01-11 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-11 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+3.278
+</td>
+<td style="text-align:right;">
+7.000
+</td>
+<td style="text-align:right;">
+5.167
+</td>
+<td style="text-align:right;">
+0.254
+</td>
+<td style="text-align:right;">
+19900111
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+1990-01-12 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-12 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+-1.000
+</td>
+<td style="text-align:right;">
+5.222
+</td>
+<td style="text-align:right;">
+1.778
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+19900112
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+1990-01-13 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-13 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+-1.278
+</td>
+<td style="text-align:right;">
+4.000
+</td>
+<td style="text-align:right;">
+1.389
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+19900113
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+1990-01-14 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-14 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+-0.222
+</td>
+<td style="text-align:right;">
+5.000
+</td>
+<td style="text-align:right;">
+3.167
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+19900114
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+1990-01-15 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-15 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+0.889
+</td>
+<td style="text-align:right;">
+9.000
+</td>
+<td style="text-align:right;">
+4.556
+</td>
+<td style="text-align:right;">
+1.016
+</td>
+<td style="text-align:right;">
+19900115
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+1990-01-16 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-16 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+6.222
+</td>
+<td style="text-align:right;">
+11.000
+</td>
+<td style="text-align:right;">
+9.944
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+19900116
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+1990-01-17 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-17 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+1.000
+</td>
+<td style="text-align:right;">
+11.000
+</td>
+<td style="text-align:right;">
+8.500
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+19900117
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+1990-01-18 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-18 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+-1.000
+</td>
+<td style="text-align:right;">
+7.000
+</td>
+<td style="text-align:right;">
+2.722
+</td>
+<td style="text-align:right;">
+0.254
+</td>
+<td style="text-align:right;">
+19900118
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+1990-01-19 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-19 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+2.000
+</td>
+<td style="text-align:right;">
+7.111
+</td>
+<td style="text-align:right;">
+4.611
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+19900119
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+1990-01-20 12:00:00
+</td>
+<td style="text-align:left;">
+1990-01-20 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+4.000
+</td>
+<td style="text-align:right;">
+8.500
+</td>
+<td style="text-align:right;">
+6.056
+</td>
+<td style="text-align:right;">
+2.286
+</td>
+<td style="text-align:right;">
+19900120
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+</tbody>
+</table>
+<p>The data appears complicated and includes unnecessary information. To simplify this, <code>chillR</code> provides a function that streamlines the record. However, this process removes several variables, including quality flags, which may indicate unreliable data. While these have been overlooked so far, there is potential for improvement.</p>
+</div>
+<div id="downloaded-weather-as-action-argument" class="section level3 hasAnchor" number="10.3.3">
+<h3><span class="header-section-number">10.3.3</span> downloaded weather as <code>action</code> argument<a href="getting-temperature-data.html#downloaded-weather-as-action-argument" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This method of calling <code>handle_gsod()</code> cleans the dataset and converts it into a format that <code>chillR</code> can easily process.</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="getting-temperature-data.html#cb121-1" tabindex="-1"></a>cleaned_weather<span class="ot">&lt;-</span><span class="fu">handle_gsod</span>(weather)</span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="getting-temperature-data.html#cb122-1" tabindex="-1"></a>cleaned_weather[[<span class="dv">1</span>]][<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,]</span></code></pre></div>
+<table class="table table-striped" style="font-size: 14px; color: black; ">
+<thead>
+<tr>
+<th style="text-align:left;">
+Date
+</th>
+<th style="text-align:right;">
+Year
+</th>
+<th style="text-align:right;">
+Month
+</th>
+<th style="text-align:right;">
+Day
+</th>
+<th style="text-align:right;">
+Tmin
+</th>
+<th style="text-align:right;">
+Tmax
+</th>
+<th style="text-align:right;">
+Tmean
+</th>
+<th style="text-align:right;">
+Prec
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1990-01-01 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1.000
+</td>
+<td style="text-align:right;">
+1.000
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-02 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+2.000
+</td>
+<td style="text-align:right;">
+1.000
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-03 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+-0.389
+</td>
+<td style="text-align:right;">
+2.000
+</td>
+<td style="text-align:right;">
+0.722
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-04 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+-1.111
+</td>
+<td style="text-align:right;">
+2.000
+</td>
+<td style="text-align:right;">
+-0.056
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-05 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+-1.111
+</td>
+<td style="text-align:right;">
+3.111
+</td>
+<td style="text-align:right;">
+1.556
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-06 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+2.389
+</td>
+<td style="text-align:right;">
+1.333
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-07 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+-0.111
+</td>
+<td style="text-align:right;">
+4.278
+</td>
+<td style="text-align:right;">
+1.056
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-08 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+-0.111
+</td>
+<td style="text-align:right;">
+7.000
+</td>
+<td style="text-align:right;">
+3.278
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-09 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+3.778
+</td>
+<td style="text-align:right;">
+8.000
+</td>
+<td style="text-align:right;">
+5.333
+</td>
+<td style="text-align:right;">
+0.508
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-10 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+3.000
+</td>
+<td style="text-align:right;">
+6.000
+</td>
+<td style="text-align:right;">
+4.556
+</td>
+<td style="text-align:right;">
+1.016
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-11 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+3.278
+</td>
+<td style="text-align:right;">
+7.000
+</td>
+<td style="text-align:right;">
+5.167
+</td>
+<td style="text-align:right;">
+0.254
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-12 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+-1.000
+</td>
+<td style="text-align:right;">
+5.222
+</td>
+<td style="text-align:right;">
+1.778
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-13 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+-1.278
+</td>
+<td style="text-align:right;">
+4.000
+</td>
+<td style="text-align:right;">
+1.389
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-14 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+-0.222
+</td>
+<td style="text-align:right;">
+5.000
+</td>
+<td style="text-align:right;">
+3.167
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-15 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+0.889
+</td>
+<td style="text-align:right;">
+9.000
+</td>
+<td style="text-align:right;">
+4.556
+</td>
+<td style="text-align:right;">
+1.016
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-16 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+6.222
+</td>
+<td style="text-align:right;">
+11.000
+</td>
+<td style="text-align:right;">
+9.944
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-17 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+1.000
+</td>
+<td style="text-align:right;">
+11.000
+</td>
+<td style="text-align:right;">
+8.500
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-18 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+-1.000
+</td>
+<td style="text-align:right;">
+7.000
+</td>
+<td style="text-align:right;">
+2.722
+</td>
+<td style="text-align:right;">
+0.254
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-19 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+2.000
+</td>
+<td style="text-align:right;">
+7.111
+</td>
+<td style="text-align:right;">
+4.611
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1990-01-20 12:00:00
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+4.000
+</td>
+<td style="text-align:right;">
+8.500
+</td>
+<td style="text-align:right;">
+6.056
+</td>
+<td style="text-align:right;">
+2.286
+</td>
+</tr>
+</tbody>
+</table>
+<p>The strange numbers in the dataset are due to the original database storing temperatures in degrees Fahrenheit. These values were then converted to degrees Celsius using the formula:</p>
+<p><span class="math inline">\(Temperature[°C]=(Temperature[°F]-32)\cdot\frac{5}{9}\)</span></p>
+<p>This conversion process can result in awkward numbers, but it’s straightforward to apply. After this conversion, the temperature records are now in a more usable format for working with <code>chillR</code>.</p>
+<p>However, upon closer inspection, the dataset reveals significant gaps, including entire years with missing data. This issue will be addressed in the lesson on filling gaps in temperature records.</p>
+<p>Additionally, <code>chillR</code> has a similar function for downloading data from the <a href="https://cimis.water.ca.gov/">California Irrigation Management Information System (CIMIS)</a>, and there is potential for more data sources to be integrated into <code>chillR</code>.</p>
+<p>Finally, the files generated in this process will be saved for use in upcoming chapters:</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="getting-temperature-data.html#cb123-1" tabindex="-1"></a><span class="fu">write.csv</span>(station_list,<span class="st">&quot;data/station_list.csv&quot;</span>,<span class="at">row.names=</span><span class="cn">FALSE</span>)</span>
+<span id="cb123-2"><a href="getting-temperature-data.html#cb123-2" tabindex="-1"></a><span class="fu">write.csv</span>(weather[[<span class="dv">1</span>]],<span class="st">&quot;data/Bonn_raw_weather.csv&quot;</span>,<span class="at">row.names=</span><span class="cn">FALSE</span>)</span>
+<span id="cb123-3"><a href="getting-temperature-data.html#cb123-3" tabindex="-1"></a><span class="fu">write.csv</span>(cleaned_weather[[<span class="dv">1</span>]],<span class="st">&quot;data/Bonn_chillR_weather.csv&quot;</span>,<span class="at">row.names=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="exercises-on-getting-temperature-data" class="section level2 hasAnchor" number="10.4">
+<h2><span class="header-section-number">10.4</span> <code>Exercises</code> on getting temperature data<a href="getting-temperature-data.html#exercises-on-getting-temperature-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Please document all results of the following assignments in your <code>learning logbook</code>.</p>
+<ol style="list-style-type: decimal">
+<li><em>Choose a location of interest and find the 25 closest weather stations using the</em> <code>handle_gsod</code> <em>function</em></li>
+</ol>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="getting-temperature-data.html#cb124-1" tabindex="-1"></a>station_list_Yakima <span class="ot">&lt;-</span> <span class="fu">handle_gsod</span>(<span class="at">action =</span> <span class="st">&quot;list_stations&quot;</span>,</span>
+<span id="cb124-2"><a href="getting-temperature-data.html#cb124-2" tabindex="-1"></a>                                   <span class="at">location =</span> <span class="fu">c</span>(<span class="at">long =</span> <span class="sc">-</span><span class="fl">120.50</span>, <span class="at">lat =</span> <span class="fl">46.60</span>), </span>
+<span id="cb124-3"><a href="getting-temperature-data.html#cb124-3" tabindex="-1"></a>                                   <span class="at">time_interval =</span> <span class="fu">c</span>(<span class="dv">1990</span>, <span class="dv">2020</span>))</span></code></pre></div>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped" style="font-size: 14px; color: black; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+chillR_code
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+STATION.NAME
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+CTRY
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+Lat
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+Long
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+BEGIN
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+END
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+Distance
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+Overlap_years
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+Perc_interval_covered
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+YAKIMA AIR TERMINAL/MCALSR FIELD AP
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+46.564
+</td>
+<td style="text-align:center;">
+-120.535
+</td>
+<td style="text-align:center;">
+19730101
+</td>
+<td style="text-align:center;">
+20250210
+</td>
+<td style="text-align:center;">
+4.82
+</td>
+<td style="text-align:center;">
+31.00
+</td>
+<td style="text-align:center;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+99999924243
+</td>
+<td style="text-align:center;">
+YAKIMA AIR TERMINAL
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+46.568
+</td>
+<td style="text-align:center;">
+-120.543
+</td>
+<td style="text-align:center;">
+19480101
+</td>
+<td style="text-align:center;">
+19721231
+</td>
+<td style="text-align:center;">
+4.85
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781399999
+</td>
+<td style="text-align:center;">
+VAGABOND AAF / YAKIMA TRAINING CENTER WASHINGTON USA
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+46.667
+</td>
+<td style="text-align:center;">
+-120.454
+</td>
+<td style="text-align:center;">
+20030617
+</td>
+<td style="text-align:center;">
+20081110
+</td>
+<td style="text-align:center;">
+8.25
+</td>
+<td style="text-align:center;">
+5.40
+</td>
+<td style="text-align:center;">
+17
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72056299999
+</td>
+<td style="text-align:center;">
+RANGE OP 13 / YAKIMA TRAINING CENTER
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+46.800
+</td>
+<td style="text-align:center;">
+-120.167
+</td>
+<td style="text-align:center;">
+20080530
+</td>
+<td style="text-align:center;">
+20170920
+</td>
+<td style="text-align:center;">
+33.79
+</td>
+<td style="text-align:center;">
+9.31
+</td>
+<td style="text-align:center;">
+30
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72788399999
+</td>
+<td style="text-align:center;">
+BOWERS FLD
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+47.033
+</td>
+<td style="text-align:center;">
+-120.531
+</td>
+<td style="text-align:center;">
+20000101
+</td>
+<td style="text-align:center;">
+20031231
+</td>
+<td style="text-align:center;">
+48.26
+</td>
+<td style="text-align:center;">
+4.00
+</td>
+<td style="text-align:center;">
+13
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72788324220
+</td>
+<td style="text-align:center;">
+BOWERS FIELD AIRPORT
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+47.034
+</td>
+<td style="text-align:center;">
+-120.531
+</td>
+<td style="text-align:center;">
+19880106
+</td>
+<td style="text-align:center;">
+20250209
+</td>
+<td style="text-align:center;">
+48.37
+</td>
+<td style="text-align:center;">
+31.00
+</td>
+<td style="text-align:center;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+99999924220
+</td>
+<td style="text-align:center;">
+ELLENSBURG BOWERS FI
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+47.034
+</td>
+<td style="text-align:center;">
+-120.530
+</td>
+<td style="text-align:center;">
+19480601
+</td>
+<td style="text-align:center;">
+19550101
+</td>
+<td style="text-align:center;">
+48.37
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72784094187
+</td>
+<td style="text-align:center;">
+HANFORD AIRPORT
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+46.567
+</td>
+<td style="text-align:center;">
+-119.600
+</td>
+<td style="text-align:center;">
+20060101
+</td>
+<td style="text-align:center;">
+20130326
+</td>
+<td style="text-align:center;">
+68.96
+</td>
+<td style="text-align:center;">
+7.23
+</td>
+<td style="text-align:center;">
+23
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72784099999
+</td>
+<td style="text-align:center;">
+HANFORD
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+46.567
+</td>
+<td style="text-align:center;">
+-119.600
+</td>
+<td style="text-align:center;">
+19730101
+</td>
+<td style="text-align:center;">
+19971231
+</td>
+<td style="text-align:center;">
+68.96
+</td>
+<td style="text-align:center;">
+8.00
+</td>
+<td style="text-align:center;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72782594239
+</td>
+<td style="text-align:center;">
+PANGBORN MEMORIAL AIRPORT
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+47.397
+</td>
+<td style="text-align:center;">
+-120.201
+</td>
+<td style="text-align:center;">
+20000101
+</td>
+<td style="text-align:center;">
+20250209
+</td>
+<td style="text-align:center;">
+91.58
+</td>
+<td style="text-align:center;">
+21.00
+</td>
+<td style="text-align:center;">
+68
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72782599999
+</td>
+<td style="text-align:center;">
+PANGBORN MEM
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+47.399
+</td>
+<td style="text-align:center;">
+-120.207
+</td>
+<td style="text-align:center;">
+19730101
+</td>
+<td style="text-align:center;">
+19971231
+</td>
+<td style="text-align:center;">
+91.69
+</td>
+<td style="text-align:center;">
+8.00
+</td>
+<td style="text-align:center;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72788499999
+</td>
+<td style="text-align:center;">
+RICHLAND AIRPORT
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+46.306
+</td>
+<td style="text-align:center;">
+-119.304
+</td>
+<td style="text-align:center;">
+19810203
+</td>
+<td style="text-align:center;">
+20250209
+</td>
+<td style="text-align:center;">
+97.39
+</td>
+<td style="text-align:center;">
+31.00
+</td>
+<td style="text-align:center;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781524237
+</td>
+<td style="text-align:center;">
+STAMPASS PASS FLTWO
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+47.277
+</td>
+<td style="text-align:center;">
+-121.337
+</td>
+<td style="text-align:center;">
+19730101
+</td>
+<td style="text-align:center;">
+20250210
+</td>
+<td style="text-align:center;">
+98.63
+</td>
+<td style="text-align:center;">
+31.00
+</td>
+<td style="text-align:center;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+99999924237
+</td>
+<td style="text-align:center;">
+STAMPEDE PASS
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+47.277
+</td>
+<td style="text-align:center;">
+-121.337
+</td>
+<td style="text-align:center;">
+19480101
+</td>
+<td style="text-align:center;">
+19721231
+</td>
+<td style="text-align:center;">
+98.63
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72790024141
+</td>
+<td style="text-align:center;">
+EPHRATA MUNICIPAL AIRPORT
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+47.308
+</td>
+<td style="text-align:center;">
+-119.516
+</td>
+<td style="text-align:center;">
+20050101
+</td>
+<td style="text-align:center;">
+20250209
+</td>
+<td style="text-align:center;">
+108.64
+</td>
+<td style="text-align:center;">
+16.00
+</td>
+<td style="text-align:center;">
+52
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72782624141
+</td>
+<td style="text-align:center;">
+EPHRATA MUNICIPAL
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+47.308
+</td>
+<td style="text-align:center;">
+-119.515
+</td>
+<td style="text-align:center;">
+19420101
+</td>
+<td style="text-align:center;">
+19971231
+</td>
+<td style="text-align:center;">
+108.69
+</td>
+<td style="text-align:center;">
+8.00
+</td>
+<td style="text-align:center;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+99999924141
+</td>
+<td style="text-align:center;">
+EPHRATA AP FCWOS
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+47.308
+</td>
+<td style="text-align:center;">
+-119.515
+</td>
+<td style="text-align:center;">
+19480101
+</td>
+<td style="text-align:center;">
+19550101
+</td>
+<td style="text-align:center;">
+108.69
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72782724110
+</td>
+<td style="text-align:center;">
+GRANT COUNTY INTL AIRPORT
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+47.193
+</td>
+<td style="text-align:center;">
+-119.315
+</td>
+<td style="text-align:center;">
+19430610
+</td>
+<td style="text-align:center;">
+20250209
+</td>
+<td style="text-align:center;">
+111.73
+</td>
+<td style="text-align:center;">
+31.00
+</td>
+<td style="text-align:center;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72782799999
+</td>
+<td style="text-align:center;">
+MOSES LAKE/GRANT CO
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+47.200
+</td>
+<td style="text-align:center;">
+-119.317
+</td>
+<td style="text-align:center;">
+20000101
+</td>
+<td style="text-align:center;">
+20031231
+</td>
+<td style="text-align:center;">
+112.06
+</td>
+<td style="text-align:center;">
+4.00
+</td>
+<td style="text-align:center;">
+13
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72784524163
+</td>
+<td style="text-align:center;">
+TRI-CITIES AIRPORT
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+46.270
+</td>
+<td style="text-align:center;">
+-119.118
+</td>
+<td style="text-align:center;">
+19730101
+</td>
+<td style="text-align:center;">
+20250210
+</td>
+<td style="text-align:center;">
+112.21
+</td>
+<td style="text-align:center;">
+31.00
+</td>
+<td style="text-align:center;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72784599999
+</td>
+<td style="text-align:center;">
+TRI CITIES
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+46.267
+</td>
+<td style="text-align:center;">
+-119.117
+</td>
+<td style="text-align:center;">
+20000101
+</td>
+<td style="text-align:center;">
+20031231
+</td>
+<td style="text-align:center;">
+112.40
+</td>
+<td style="text-align:center;">
+4.00
+</td>
+<td style="text-align:center;">
+13
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+99999924163
+</td>
+<td style="text-align:center;">
+PASCO NAS
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+46.267
+</td>
+<td style="text-align:center;">
+-119.117
+</td>
+<td style="text-align:center;">
+19450401
+</td>
+<td style="text-align:center;">
+19460601
+</td>
+<td style="text-align:center;">
+112.40
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72698824219
+</td>
+<td style="text-align:center;">
+MUNICIPAL AIRPORT
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+45.619
+</td>
+<td style="text-align:center;">
+-121.166
+</td>
+<td style="text-align:center;">
+19730101
+</td>
+<td style="text-align:center;">
+20250209
+</td>
+<td style="text-align:center;">
+120.70
+</td>
+<td style="text-align:center;">
+31.00
+</td>
+<td style="text-align:center;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+99999924219
+</td>
+<td style="text-align:center;">
+THE DALLES MUNICIPAL ARPT
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+45.619
+</td>
+<td style="text-align:center;">
+-121.166
+</td>
+<td style="text-align:center;">
+19480101
+</td>
+<td style="text-align:center;">
+19650101
+</td>
+<td style="text-align:center;">
+120.70
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72688399999
+</td>
+<td style="text-align:center;">
+HERMISTON MUNI
+</td>
+<td style="text-align:center;">
+US
+</td>
+<td style="text-align:center;">
+45.828
+</td>
+<td style="text-align:center;">
+-119.259
+</td>
+<td style="text-align:center;">
+19980514
+</td>
+<td style="text-align:center;">
+20051231
+</td>
+<td style="text-align:center;">
+128.55
+</td>
+<td style="text-align:center;">
+7.64
+</td>
+<td style="text-align:center;">
+25
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol start="2" style="list-style-type: decimal">
+<li><em>Download weather data for the most promising station on the list</em></li>
+</ol>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="getting-temperature-data.html#cb125-1" tabindex="-1"></a>weather_Yakima <span class="ot">&lt;-</span> <span class="fu">handle_gsod</span>(<span class="at">action =</span> <span class="st">&quot;download_weather&quot;</span>,</span>
+<span id="cb125-2"><a href="getting-temperature-data.html#cb125-2" tabindex="-1"></a>                              <span class="at">location =</span> station_list_Yakima<span class="sc">$</span>chillR_code[<span class="dv">1</span>],</span>
+<span id="cb125-3"><a href="getting-temperature-data.html#cb125-3" tabindex="-1"></a>                              <span class="at">time_interval =</span> <span class="fu">c</span>(<span class="dv">1990</span>, <span class="dv">2020</span>))</span></code></pre></div>
+<pre><code>## Loading data for 31 years from station &#39;YAKIMA AIR TERMINAL/MCALSR FIELD AP&#39;
+## ========================================================================================================</code></pre>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="getting-temperature-data.html#cb127-1" tabindex="-1"></a>weather_Yakima[[<span class="dv">1</span>]][<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,]</span></code></pre></div>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped" style="font-size: 14px; color: black; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+STATION
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+DATE
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+LATITUDE
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+LONGITUDE
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+ELEVATION
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+NAME
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+TEMP
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+TEMP_ATTRIBUTES
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+DEWP
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+DEWP_ATTRIBUTES
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+SLP
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+SLP_ATTRIBUTES
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+STP
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+STP_ATTRIBUTES
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+VISIB
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+VISIB_ATTRIBUTES
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+WDSP
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+WDSP_ATTRIBUTES
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+MXSPD
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+GUST
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+MAX
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+MAX_ATTRIBUTES
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+MIN
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+MIN_ATTRIBUTES
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+PRCP
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+PRCP_ATTRIBUTES
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+SNDP
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+FRSHTT
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-01
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+31.1
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+30.2
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1014.9
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+975.3
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+2.3
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+4.1
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+7.0
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+35.1
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+<td style="text-align:center;">
+28.9
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+100000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-02
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+32.1
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+23.7
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1015.4
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+975.7
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+24.3
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+6.2
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+12.0
+</td>
+<td style="text-align:center;">
+18.1
+</td>
+<td style="text-align:center;">
+43.0
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+<td style="text-align:center;">
+21.9
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+100000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-03
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+32.1
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+24.9
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1023.5
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+983.6
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+21.3
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+3.7
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+8.0
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+46.0
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+<td style="text-align:center;">
+21.9
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-04
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+36.4
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+29.1
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1020.2
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+980.5
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+21.3
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+6.1
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+15.9
+</td>
+<td style="text-align:center;">
+24.1
+</td>
+<td style="text-align:center;">
+57.0
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+<td style="text-align:center;">
+26.1
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-05
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+36.6
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+27.5
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1022.7
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+983.1
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+21.3
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+5.8
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+18.1
+</td>
+<td style="text-align:center;">
+25.1
+</td>
+<td style="text-align:center;">
+57.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+26.1
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-06
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+43.2
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+34.6
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1016.9
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+977.7
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+25.1
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+6.8
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+22.9
+</td>
+<td style="text-align:center;">
+28.0
+</td>
+<td style="text-align:center;">
+53.1
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+26.1
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+10000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-07
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+48.2
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+39.5
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1005.8
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+967.2
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+27.5
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+9.6
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+15.9
+</td>
+<td style="text-align:center;">
+26.0
+</td>
+<td style="text-align:center;">
+53.1
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+<td style="text-align:center;">
+28.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.12
+</td>
+<td style="text-align:center;">
+G
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+10000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-08
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+44.1
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+37.4
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1005.4
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+966.8
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+27.5
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+7.6
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+18.1
+</td>
+<td style="text-align:center;">
+27.0
+</td>
+<td style="text-align:center;">
+54.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+37.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.38
+</td>
+<td style="text-align:center;">
+G
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+10000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-09
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+39.4
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+36.9
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1010.6
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+971.6
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+10.8
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+5.7
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+15.0
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+52.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+34.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.62
+</td>
+<td style="text-align:center;">
+G
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+110000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-10
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+44.9
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+29.3
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1019.1
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+980.0
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+29.6
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+8.5
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+18.1
+</td>
+<td style="text-align:center;">
+22.0
+</td>
+<td style="text-align:center;">
+54.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+34.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.11
+</td>
+<td style="text-align:center;">
+G
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+10000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-11
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+37.0
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+26.9
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1030.3
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+990.4
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+25.3
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+6.8
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+11.1
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+46.9
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+32.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+G
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+1000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-12
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+37.1
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+27.0
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1020.2
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+980.7
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+25.3
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+6.4
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+10.1
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+43.0
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+<td style="text-align:center;">
+32.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+<td style="text-align:center;">
+G
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+11000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-13
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+33.7
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+29.3
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1010.4
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+971.2
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+17.0
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+3.0
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+8.0
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+43.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+27.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+<td style="text-align:center;">
+G
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+10000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-14
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+31.8
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+28.4
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1015.3
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+975.7
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+16.4
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+3.9
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+8.0
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+41.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+25.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-15
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+33.6
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+30.9
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1021.3
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+981.5
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+2.5
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+3.1
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+7.0
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+39.9
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+25.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+100000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-16
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+38.4
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+33.4
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1016.9
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+977.5
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+11.1
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+5.2
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+8.9
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+45.0
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+<td style="text-align:center;">
+30.9
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+110000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-17
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+34.0
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+25.7
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1023.9
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+984.1
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+30.2
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+6.3
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+10.1
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+46.0
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+<td style="text-align:center;">
+24.1
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-18
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+27.2
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+21.6
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1028.8
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+988.5
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+26.1
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+5.2
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+8.9
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+46.9
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+18.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-19
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+32.7
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+27.4
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1024.2
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+984.2
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+21.7
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+5.4
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+8.9
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+37.9
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+18.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+72781024243
+</td>
+<td style="text-align:center;">
+1990-01-20
+</td>
+<td style="text-align:center;">
+46.56398
+</td>
+<td style="text-align:center;">
+-120.5349
+</td>
+<td style="text-align:center;">
+321
+</td>
+<td style="text-align:center;">
+YAKIMA AIRPORT, WA US
+</td>
+<td style="text-align:center;">
+33.4
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+26.4
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1027.7
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+987.7
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+14.3
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+1.3
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+6.0
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+36.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+28.0
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+999.9
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+</div></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li><em>Convert the weather data into</em> <code>chillR</code> <em>format</em></li>
+</ol>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="getting-temperature-data.html#cb128-1" tabindex="-1"></a>cleaned_weather_Yakima <span class="ot">&lt;-</span> <span class="fu">handle_gsod</span>(weather_Yakima) </span></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="getting-temperature-data.html#cb129-1" tabindex="-1"></a>cleaned_weather_Yakima[[<span class="dv">1</span>]][<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,]</span></code></pre></div>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; ">
+<table class="table table-striped" style="font-size: 14px; color: black; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+Date
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+Year
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+Month
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+Day
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+Tmin
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+Tmax
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+Tmean
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+Prec
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+1990-01-01
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+-1.722
+</td>
+<td style="text-align:center;">
+1.722
+</td>
+<td style="text-align:center;">
+-0.500
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-02
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+2
+</td>
+<td style="text-align:center;">
+-5.611
+</td>
+<td style="text-align:center;">
+6.111
+</td>
+<td style="text-align:center;">
+0.056
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-03
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+3
+</td>
+<td style="text-align:center;">
+-5.611
+</td>
+<td style="text-align:center;">
+7.778
+</td>
+<td style="text-align:center;">
+0.056
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-04
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+4
+</td>
+<td style="text-align:center;">
+-3.278
+</td>
+<td style="text-align:center;">
+13.889
+</td>
+<td style="text-align:center;">
+2.444
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-05
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+5
+</td>
+<td style="text-align:center;">
+-3.278
+</td>
+<td style="text-align:center;">
+13.889
+</td>
+<td style="text-align:center;">
+2.556
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-06
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+6
+</td>
+<td style="text-align:center;">
+-3.278
+</td>
+<td style="text-align:center;">
+11.722
+</td>
+<td style="text-align:center;">
+6.222
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-07
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+7
+</td>
+<td style="text-align:center;">
+-2.222
+</td>
+<td style="text-align:center;">
+11.722
+</td>
+<td style="text-align:center;">
+9.000
+</td>
+<td style="text-align:center;">
+3.048
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-08
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+8
+</td>
+<td style="text-align:center;">
+2.778
+</td>
+<td style="text-align:center;">
+12.222
+</td>
+<td style="text-align:center;">
+6.722
+</td>
+<td style="text-align:center;">
+9.652
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-09
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+9
+</td>
+<td style="text-align:center;">
+1.111
+</td>
+<td style="text-align:center;">
+11.111
+</td>
+<td style="text-align:center;">
+4.111
+</td>
+<td style="text-align:center;">
+15.748
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-10
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+10
+</td>
+<td style="text-align:center;">
+1.111
+</td>
+<td style="text-align:center;">
+12.222
+</td>
+<td style="text-align:center;">
+7.167
+</td>
+<td style="text-align:center;">
+2.794
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-11
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+11
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+<td style="text-align:center;">
+8.278
+</td>
+<td style="text-align:center;">
+2.778
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-12
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+12
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+<td style="text-align:center;">
+6.111
+</td>
+<td style="text-align:center;">
+2.833
+</td>
+<td style="text-align:center;">
+0.254
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-13
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+13
+</td>
+<td style="text-align:center;">
+-2.778
+</td>
+<td style="text-align:center;">
+6.111
+</td>
+<td style="text-align:center;">
+0.944
+</td>
+<td style="text-align:center;">
+0.254
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-14
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+14
+</td>
+<td style="text-align:center;">
+-3.889
+</td>
+<td style="text-align:center;">
+5.000
+</td>
+<td style="text-align:center;">
+-0.111
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-15
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+15
+</td>
+<td style="text-align:center;">
+-3.889
+</td>
+<td style="text-align:center;">
+4.389
+</td>
+<td style="text-align:center;">
+0.889
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-16
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+16
+</td>
+<td style="text-align:center;">
+-0.611
+</td>
+<td style="text-align:center;">
+7.222
+</td>
+<td style="text-align:center;">
+3.556
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-17
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+17
+</td>
+<td style="text-align:center;">
+-4.389
+</td>
+<td style="text-align:center;">
+7.778
+</td>
+<td style="text-align:center;">
+1.111
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-18
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+18
+</td>
+<td style="text-align:center;">
+-7.778
+</td>
+<td style="text-align:center;">
+8.278
+</td>
+<td style="text-align:center;">
+-2.667
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-19
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+19
+</td>
+<td style="text-align:center;">
+-7.778
+</td>
+<td style="text-align:center;">
+3.278
+</td>
+<td style="text-align:center;">
+0.389
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990-01-20
+</td>
+<td style="text-align:center;">
+1990
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+20
+</td>
+<td style="text-align:center;">
+-2.222
+</td>
+<td style="text-align:center;">
+2.222
+</td>
+<td style="text-align:center;">
+0.778
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="getting-temperature-data.html#cb130-1" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">&quot;Yakima&quot;</span>)</span>
+<span id="cb130-2"><a href="getting-temperature-data.html#cb130-2" tabindex="-1"></a><span class="fu">write.csv</span>(station_list_Yakima,<span class="st">&quot;Yakima/station_list.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb130-3"><a href="getting-temperature-data.html#cb130-3" tabindex="-1"></a><span class="fu">write.csv</span>(weather_Yakima[[<span class="dv">1</span>]],<span class="st">&quot;Yakima/raw_weather.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb130-4"><a href="getting-temperature-data.html#cb130-4" tabindex="-1"></a><span class="fu">write.csv</span>(cleaned_weather_Yakima[[<span class="dv">1</span>]],<span class="st">&quot;Yakima/chillR_weather.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="some-useful-tools-in-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="filling-gaps-in-temperature-records.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/jacqwng/Logbook/edit/main/10-temp-data.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/jacqwng/Logbook/blob/main/10-temp-data.Rmd",
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
