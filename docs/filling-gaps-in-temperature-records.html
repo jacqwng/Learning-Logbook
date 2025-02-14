@@ -2806,13 +2806,13 @@ GM
 <span id="cb141-4"><a href="filling-gaps-in-temperature-records.html#cb141-4" tabindex="-1"></a>                  <span class="at">time_interval =</span> <span class="fu">c</span>(<span class="dv">1990</span>, <span class="dv">2020</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb141-5"><a href="filling-gaps-in-temperature-records.html#cb141-5" tabindex="-1"></a>  <span class="fu">handle_gsod</span>()</span></code></pre></div>
 <pre><code>## Loading data for 31 years from station &#39;NORVENICH&#39;
-## ========================================================================================================
+## ===============================================================================================
 ## 
 ## Loading data for 31 years from station &#39;BONN-HARDTHOEHE&#39;
-## ========================================================================================================
+## ===============================================================================================
 ## 
 ## Loading data for 31 years from station &#39;BONN-ROLEBER&#39;
-## ========================================================================================================</code></pre>
+## ===============================================================================================</code></pre>
 <p>With the list of potentially useful weather records now available, the next step is to use the <code>patch_daily_temperatures()</code> function. This function will integrate the data from the selected auxiliary stations to fill the missing temperature values in the Bonn dataset:</p>
 <div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="filling-gaps-in-temperature-records.html#cb143-1" tabindex="-1"></a>patched <span class="ot">&lt;-</span> <span class="fu">patch_daily_temperatures</span>(<span class="at">weather =</span> Bonn,</span>
 <span id="cb143-2"><a href="filling-gaps-in-temperature-records.html#cb143-2" tabindex="-1"></a>                                    <span class="at">patch_weather =</span> patch_weather)</span></code></pre></div>
@@ -6250,13 +6250,13 @@ US
 <span id="cb164-4"><a href="filling-gaps-in-temperature-records.html#cb164-4" tabindex="-1"></a>              <span class="at">time_interval =</span> <span class="fu">c</span>(<span class="dv">1990</span>, <span class="dv">2020</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb164-5"><a href="filling-gaps-in-temperature-records.html#cb164-5" tabindex="-1"></a>  <span class="fu">handle_gsod</span>()</span></code></pre></div>
 <pre><code>## Loading data for 31 years from station &#39;RANGE OP 13 / YAKIMA TRAINING CENTER&#39;
-## ========================================================================================================
+## ===============================================================================================
 ## 
 ## Loading data for 31 years from station &#39;HANFORD AIRPORT&#39;
-## ========================================================================================================
+## ===============================================================================================
 ## 
 ## Loading data for 31 years from station &#39;BOWERS FIELD AIRPORT&#39;
-## ========================================================================================================</code></pre>
+## ===============================================================================================</code></pre>
 <ol start="5" style="list-style-type: decimal">
 <li><p><em>Use the</em> <code>patch_daily_temperatures</code> <em>function to fill gaps</em></p>
 <div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="filling-gaps-in-temperature-records.html#cb166-1" tabindex="-1"></a>patched <span class="ot">&lt;-</span> <span class="fu">patch_daily_temperatures</span>(<span class="at">weather =</span> Yakima,</span>
