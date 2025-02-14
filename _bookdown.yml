@@ -22,3 +22,5 @@ rmd_files:
 - 13-saving.Rmd
 - 14-historic.Rmd
 - 15-future.Rmd
+- 16-cmip6.Rmd
+- 17-cmip5.Rmd
