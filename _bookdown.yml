@@ -24,3 +24,4 @@ rmd_files:
 - 15-future.Rmd
 - 16-cmip6.Rmd
 - 17-cmip5.Rmd
+- 18-plotting.Rmd

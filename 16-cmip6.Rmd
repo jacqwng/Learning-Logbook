@@ -11,7 +11,7 @@ chill_hist_scenario_list<-load_temperature_scenarios("data","Bonn_hist_chill_305
 
 Running this code requires `chillR` version \>= 0.76, which is available on CRAN. Earlier versions should not be used for CMIP6 projections.
 
-## Learning goals for this lesson {#goals_CMIP6 .unnumbered}
+## Learning goals for this lesson
 
 -   Learn how to download future temperature projections for a CMIP6 ensemble from the Copernicus database
 -   Be able to produce synthetic temperature scenarios for an ensemble of future climate scenarios
