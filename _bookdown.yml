@@ -25,3 +25,4 @@ rmd_files:
 - 16-cmip6.Rmd
 - 17-cmip5.Rmd
 - 18-plotting.Rmd
+- 25-PLS_not_work.Rmd

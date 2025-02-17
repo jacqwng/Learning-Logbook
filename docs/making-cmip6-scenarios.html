@@ -1073,7 +1073,7 @@ ACCESS-CM2
 <span id="cb256-14"><a href="making-cmip6-scenarios.html#cb256-14" tabindex="-1"></a>  <span class="at">climate_scenario_list =</span> chills,</span>
 <span id="cb256-15"><a href="making-cmip6-scenarios.html#cb256-15" tabindex="-1"></a>  <span class="at">metric =</span> <span class="st">&quot;Chill_Portions&quot;</span>,</span>
 <span id="cb256-16"><a href="making-cmip6-scenarios.html#cb256-16" tabindex="-1"></a>  <span class="at">metric_label =</span> <span class="st">&quot;Chill (Chill Portions)&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-240-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-289-1.png" width="672" /></p>
 <pre><code>## [[1]]
 ## [1] &quot;time series labels&quot;</code></pre>
 <p>The function had two outcomes: it generated a plot and returned a brief list with the message “time series labels.” While this message may not be of immediate interest, it will contain more relevant content later. To store the information without displaying the plot, the plotting command can be assigned to a new object (e.g., <code>info &lt;- plot_climate_scenarios(...)</code>), allowing the function to produce the plot as a side effect.</p>
@@ -1123,21 +1123,21 @@ ACCESS-CM2
 <span id="cb259-4"><a href="making-cmip6-scenarios.html#cb259-4" tabindex="-1"></a>    <span class="at">metric =</span> <span class="st">&quot;Chill_Portions&quot;</span>,</span>
 <span id="cb259-5"><a href="making-cmip6-scenarios.html#cb259-5" tabindex="-1"></a>    <span class="at">metric_label =</span> <span class="st">&quot;Chill (Chill Portions)&quot;</span>,</span>
 <span id="cb259-6"><a href="making-cmip6-scenarios.html#cb259-6" tabindex="-1"></a>    <span class="at">texcex =</span> <span class="fl">1.5</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-242-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-291-1.png" width="672" /></p>
 <div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="making-cmip6-scenarios.html#cb260-1" tabindex="-1"></a>info_heat <span class="ot">&lt;-</span></span>
 <span id="cb260-2"><a href="making-cmip6-scenarios.html#cb260-2" tabindex="-1"></a>  <span class="fu">plot_climate_scenarios</span>(</span>
 <span id="cb260-3"><a href="making-cmip6-scenarios.html#cb260-3" tabindex="-1"></a>    <span class="at">climate_scenario_list =</span> chills,</span>
 <span id="cb260-4"><a href="making-cmip6-scenarios.html#cb260-4" tabindex="-1"></a>    <span class="at">metric =</span> <span class="st">&quot;GDH&quot;</span>,</span>
 <span id="cb260-5"><a href="making-cmip6-scenarios.html#cb260-5" tabindex="-1"></a>    <span class="at">metric_label =</span> <span class="st">&quot;Heat (Growing Degree Hours)&quot;</span>,</span>
 <span id="cb260-6"><a href="making-cmip6-scenarios.html#cb260-6" tabindex="-1"></a>    <span class="at">texcex =</span> <span class="fl">1.5</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-243-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-292-1.png" width="672" /></p>
 <div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="making-cmip6-scenarios.html#cb261-1" tabindex="-1"></a>info_frost <span class="ot">&lt;-</span></span>
 <span id="cb261-2"><a href="making-cmip6-scenarios.html#cb261-2" tabindex="-1"></a> <span class="fu">plot_climate_scenarios</span>(</span>
 <span id="cb261-3"><a href="making-cmip6-scenarios.html#cb261-3" tabindex="-1"></a>   <span class="at">climate_scenario_list=</span>chills,</span>
 <span id="cb261-4"><a href="making-cmip6-scenarios.html#cb261-4" tabindex="-1"></a>   <span class="at">metric=</span><span class="st">&quot;Frost_H&quot;</span>,</span>
 <span id="cb261-5"><a href="making-cmip6-scenarios.html#cb261-5" tabindex="-1"></a>   <span class="at">metric_label=</span><span class="st">&quot;Frost hours&quot;</span>,</span>
 <span id="cb261-6"><a href="making-cmip6-scenarios.html#cb261-6" tabindex="-1"></a>   <span class="at">texcex=</span><span class="fl">1.5</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-244-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-293-1.png" width="672" /></p>
 <p>Now that everything is set up, the trends in chill and heat accumulation, as well as in frost hours for Klein-Altendorf, can be visualized. The function not only produces the plot but also returns supplementary information, which was stored in the <code>info</code> objects. By inspecting these objects, it is possible to see the names of the climate models for each subplot, along with the time series labels for the historic plot. Since the same models were used for each scenario, this information is repeated multiple times. To avoid redundancy, it’s best to review this data once, focusing on just one of the plots.</p>
 <div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="making-cmip6-scenarios.html#cb262-1" tabindex="-1"></a>info_chill[[<span class="dv">2</span>]]</span></code></pre></div>
 <table class="table table-striped" style="font-size: 14px; color: black; ">
