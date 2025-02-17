@@ -318,6 +318,6 @@ In the following chapter, a solution to address this issue will be explored.
 
 PLS regression works well for detecting the chilling phase in climates where temperatures stay within the effective chill range, allowing for a clear relationship between temperature and chill accumulation. However, in areas with fluctuating or excessively warm temperatures (like Davis, California), the relationship becomes non-monotonic, making PLS less effective.
 
-2.  `How could we overcome this problem?`
+2.  *How could we overcome this problem?*
 
 To improve chill detection, we could use models that account for non-monotonic relationships, such as the Dynamic Model. Additionally, incorporating environmental factors and refining chill models to better reflect temperature thresholds can help overcome the limitations of PLS regression.

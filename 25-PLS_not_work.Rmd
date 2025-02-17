@@ -539,7 +539,7 @@ Although chill model sensitivity is influenced by hourly temperatures, which dep
 
 What does vary, however, is how observed hourly temperatures align with the sensitive periods for chill accumulation. This alignment shifts not only between locations but also across different months, highlighting the importance of local climatic conditions in determining the effectiveness of chill accumulation.
 
-###  Beijing, China
+### Beijing, China
 
 In Beijing, the relationship between observed temperatures and effective chill accumulation varies significantly across months:
 
@@ -625,6 +625,8 @@ write.csv(Model_sensitivities_Sfax,
 
 ```{r warning=FALSE}
 # Chill sensitivity model for Yakima
+Yakima_weather <- read.csv("Yakima/Yakima_weather.csv")
+Model_sensitivities_Yakima <- read.csv("Yakima/Model_sensitivities_Yakima.csv")
 
 Chill_sensitivity_temps(Model_sensitivities_Yakima,
                         Yakima_weather,

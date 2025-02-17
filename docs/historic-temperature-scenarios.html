@@ -53,6 +53,7 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<script src="libs/font-awesome-6.5.2/js/script.js"></script>
 
 
 <style type="text/css">
@@ -1244,7 +1245,7 @@ Tmax
 <span id="cb227-15"><a href="historic-temperature-scenarios.html#cb227-15" tabindex="-1"></a>            <span class="at">col =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
 <span id="cb227-16"><a href="historic-temperature-scenarios.html#cb227-16" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">15</span>) <span class="sc">+</span></span>
 <span id="cb227-17"><a href="historic-temperature-scenarios.html#cb227-17" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Mean monthly minimum temperature (°C)&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-258-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-218-1.png" width="672" /></p>
 <div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="historic-temperature-scenarios.html#cb228-1" tabindex="-1"></a><span class="co"># plot mean monthly maximum temperature of 1973 to 2023</span></span>
 <span id="cb228-2"><a href="historic-temperature-scenarios.html#cb228-2" tabindex="-1"></a><span class="fu">ggplot</span>(temperature_means,</span>
 <span id="cb228-3"><a href="historic-temperature-scenarios.html#cb228-3" tabindex="-1"></a>       <span class="fu">aes</span>(Year,</span>
@@ -1262,7 +1263,7 @@ Tmax
 <span id="cb228-15"><a href="historic-temperature-scenarios.html#cb228-15" tabindex="-1"></a>            <span class="at">col =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
 <span id="cb228-16"><a href="historic-temperature-scenarios.html#cb228-16" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">15</span>) <span class="sc">+</span></span>
 <span id="cb228-17"><a href="historic-temperature-scenarios.html#cb228-17" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Mean monthly maximum temperature (°C)&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-259-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-219-1.png" width="672" /></p>
 <ol start="2" style="list-style-type: decimal">
 <li><em>Produce chill distributions for these scenarios and plot them.</em></li>
 </ol>
@@ -1369,7 +1370,7 @@ Tmax
 <span id="cb232-15"><a href="historic-temperature-scenarios.html#cb232-15" tabindex="-1"></a>             <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
 <span id="cb232-16"><a href="historic-temperature-scenarios.html#cb232-16" tabindex="-1"></a>  <span class="fu">scale_fill_discrete</span>(<span class="at">name =</span> <span class="st">&quot;Scenario&quot;</span>,</span>
 <span id="cb232-17"><a href="historic-temperature-scenarios.html#cb232-17" tabindex="-1"></a>                      <span class="at">breaks =</span> <span class="fu">unique</span>(all_scenarios<span class="sc">$</span>scenario)) </span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-261-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-221-1.png" width="672" /></p>
 <div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="historic-temperature-scenarios.html#cb233-1" tabindex="-1"></a><span class="fu">write.csv</span>(actual_chill,<span class="st">&quot;Yakima/Yakima_observed_chill_305_59.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 
 </div>
