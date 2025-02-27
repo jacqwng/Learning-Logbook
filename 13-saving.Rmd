@@ -1,4 +1,4 @@
-# Saving and loading data (and hiding this in markdown)
+# Saving and loading data
 
 ## Learning Goals
 
